@@ -1,0 +1,49 @@
+{
+  "context": "[Document: Field Handbook on Paddy Pathology & Disease Management (DOA, 2023) | Section: 4.2 Brown Spot (Bipolaris oryzae)]\nBrown Spot (Bipolaris oryzae) manifests primarily on seedlings and older leaves as distinct oval, dark brown spots with a grey or whitish center surrounded by a yellow halo. Severe infections also discolor grain hulls, reducing milling quality and germination rates. Management: Foliar application of Azoxystrobin 250 g/L SC at 15 mL per 16 L knapsack sprayer or Tebuconazole 250 g/L EC at 15-20 mL per 16 L sprayer. Maintain adequate soil potash (MOP) levels to enhance physiological resistance. Avoid water stress.\n\n[Document: Organic and Integrated Pest Management in Sri Lankan Rice Ecosystems (RRDI, 2022) | Section: Chapter 6 Bio-Fungicides]\nNeem Seed Kernel Extract (NSKE 5%) applied at 50 g/L water provides effective prophylactic suppression against fungal conidia germination. Trichoderma viride enriched compost applied at 2.5 kg/ha improves root vigor and suppresses soil-borne inoculum.\n\n[Document: Recommended Pesticides and Pre-Harvest Safety Periods (DOA, 2023) | Section: Table 3 Paddy Fungicides]\nAzoxystrobin 250 g/L SC: Recommended rate 100 mL/acre. Pre-Harvest Interval (PHI): 14 days. Re-entry period: 24 hours.",
+  "sources": [
+    {
+      "id": "DOA-PADDY-PATH-2023-CH04-S02",
+      "document_id": "DOA-PADDY-PATH-2023-V2",
+      "title": "Field Handbook on Paddy Pathology & Disease Management",
+      "section": "Section 4.2: Fungal Foliar Diseases - Brown Spot (Bipolaris oryzae)",
+      "content": "Brown Spot (Bipolaris oryzae) manifests primarily on seedlings and older leaves as distinct oval, dark brown spots with a grey or whitish center surrounded by a yellow halo. Severe infections also discolor grain hulls, reducing milling quality and germination rates. Management: Foliar application of Azoxystrobin 250 g/L SC at 15 mL per 16 L knapsack sprayer or Tebuconazole 250 g/L EC at 15-20 mL per 16 L sprayer. Maintain adequate soil potash (MOP) levels to enhance physiological resistance. Avoid water stress.",
+      "score": 0.94,
+      "author_organization": "Department of Agriculture (DOA), Sri Lanka",
+      "publication_year": 2023,
+      "url": "https://doa.gov.lk/rrdi/pathology/brown-spot-guidelines"
+    },
+    {
+      "id": "RRDI-IPM-2022-CH06-S01",
+      "document_id": "RRDI-IPM-GUIDE-2022",
+      "title": "Organic and Integrated Pest Management in Sri Lankan Rice Ecosystems",
+      "section": "Chapter 6: Bio-Fungicides & Botanical Formulations",
+      "content": "Neem Seed Kernel Extract (NSKE 5%) applied at 50 g/L water provides effective prophylactic suppression against fungal conidia germination. Trichoderma viride enriched compost applied at 2.5 kg/ha improves root vigor and suppresses soil-borne inoculum.",
+      "score": 0.88,
+      "author_organization": "Rice Research and Development Institute (RRDI), Batalagoda",
+      "publication_year": 2022,
+      "url": "https://doa.gov.lk/rrdi/ipm/organic-protocols"
+    },
+    {
+      "id": "DOA-PEST-SAFETY-2023-TB03",
+      "document_id": "DOA-PESTICIDE-GUIDELINES-2023",
+      "title": "Recommended Pesticides and Pre-Harvest Safety Periods",
+      "section": "Table 3: Approved Paddy Fungicides and Pre-Harvest Intervals",
+      "content": "Azoxystrobin 250 g/L SC: Recommended rate 100 mL/acre. Pre-Harvest Interval (PHI): 14 days. Re-entry period: 24 hours.",
+      "score": 0.81,
+      "author_organization": "Office of the Registrar of Pesticides, Peradeniya",
+      "publication_year": 2023,
+      "url": "https://rop.gov.lk/guidelines/paddy-pesticides-2023"
+    }
+  ],
+  "confidence": [
+    0.94,
+    0.88,
+    0.81
+  ],
+  "metadata": {
+    "total_chunks_retrieved": 3,
+    "query_embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "vector_distance_metric": "cosine",
+    "execution_time_ms": 28
+  }
+}

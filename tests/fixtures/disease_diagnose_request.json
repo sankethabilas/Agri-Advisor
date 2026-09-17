@@ -1,0 +1,15 @@
+{
+  "crop": "Paddy",
+  "symptoms": [
+    "oval brown spots on leaves with grey or whitish center",
+    "yellow halo surrounding leaf lesions",
+    "dark brown spots on seed glumes and panicles"
+  ],
+  "location": {
+    "district": "Anuradhapura",
+    "province": "North Central",
+    "agro_ecological_zone": "DL1b"
+  },
+  "growth_stage": "Tillering",
+  "season": "Maha"
+}

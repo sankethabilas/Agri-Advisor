@@ -1,0 +1,123 @@
+{
+  "current": {
+    "temperature_c": 28.6,
+    "humidity_pct": 89,
+    "rainfall_mm": 6.4,
+    "wind_speed_kmh": 14.2,
+    "wind_direction": "SW",
+    "condition": "Moderate Rain",
+    "icon": "10d",
+    "timestamp": "2026-09-17T17:00:00Z"
+  },
+  "forecast": [
+    {
+      "date": "2026-09-18",
+      "temp_min_c": 24.2,
+      "temp_max_c": 31.5,
+      "rainfall_mm": 22.0,
+      "rainfall_prob_pct": 85,
+      "humidity_pct": 92,
+      "wind_speed_kmh": 16.5,
+      "condition": "Heavy Showers"
+    },
+    {
+      "date": "2026-09-19",
+      "temp_min_c": 23.8,
+      "temp_max_c": 30.2,
+      "rainfall_mm": 18.5,
+      "rainfall_prob_pct": 80,
+      "humidity_pct": 90,
+      "wind_speed_kmh": 15.0,
+      "condition": "Thunderstorms"
+    },
+    {
+      "date": "2026-09-20",
+      "temp_min_c": 24.0,
+      "temp_max_c": 32.0,
+      "rainfall_mm": 5.2,
+      "rainfall_prob_pct": 45,
+      "humidity_pct": 82,
+      "wind_speed_kmh": 12.0,
+      "condition": "Scattered Showers"
+    },
+    {
+      "date": "2026-09-21",
+      "temp_min_c": 24.5,
+      "temp_max_c": 33.1,
+      "rainfall_mm": 0.0,
+      "rainfall_prob_pct": 20,
+      "humidity_pct": 74,
+      "wind_speed_kmh": 10.5,
+      "condition": "Partly Cloudy"
+    },
+    {
+      "date": "2026-09-22",
+      "temp_min_c": 25.0,
+      "temp_max_c": 33.5,
+      "rainfall_mm": 0.0,
+      "rainfall_prob_pct": 15,
+      "humidity_pct": 70,
+      "wind_speed_kmh": 9.8,
+      "condition": "Sunny"
+    },
+    {
+      "date": "2026-09-23",
+      "temp_min_c": 24.8,
+      "temp_max_c": 33.0,
+      "rainfall_mm": 1.2,
+      "rainfall_prob_pct": 25,
+      "humidity_pct": 72,
+      "wind_speed_kmh": 11.2,
+      "condition": "Partly Cloudy"
+    },
+    {
+      "date": "2026-09-24",
+      "temp_min_c": 24.3,
+      "temp_max_c": 32.4,
+      "rainfall_mm": 3.0,
+      "rainfall_prob_pct": 35,
+      "humidity_pct": 76,
+      "wind_speed_kmh": 12.5,
+      "condition": "Isolated Showers"
+    }
+  ],
+  "disease_risk": {
+    "level": "High",
+    "score": 0.88,
+    "susceptible_diseases": [
+      "Paddy Brown Spot (Bipolaris oryzae)",
+      "Paddy Blast (Magnaporthe oryzae)",
+      "Sheath Blight (Rhizoctonia solani)"
+    ],
+    "contributing_factors": [
+      "Continuous relative humidity above 88% over the next 48 hours",
+      "Daytime temperature range (28°C-31°C) optimal for fungal spore germination",
+      "High leaf wetness duration (>14 hours/day)"
+    ]
+  },
+  "pest_risk": {
+    "level": "Moderate",
+    "score": 0.62,
+    "susceptible_pests": [
+      "Brown Plant Hopper (Nilaparvata lugens)",
+      "Paddy Stem Borer (Scirpophaga incertulas)"
+    ],
+    "contributing_factors": [
+      "Warm nocturnal temperatures (>24°C)",
+      "Dense canopy moisture favoring micro-arthropod multiplication"
+    ]
+  },
+  "advisory": "DO NOT SPRAY PESTICIDES OR APPLY FERTILIZER TODAY: 85% probability of heavy rainfall (22mm) will wash away chemical and granular inputs within 2 hours. Ensure all drainage spillways and field bund channels are unblocked to prevent ponding and root suffocation.",
+  "alerts": [
+    {
+      "id": "ALT-WZ-20260917-01",
+      "alert_type": "heavy_rain",
+      "severity": "warning",
+      "title": "Heavy Rain & Canopy Wetness Alert",
+      "description": "Heavy showers exceeding 35mm total accumulation expected in Anuradhapura district within the next 36 to 48 hours.",
+      "valid_from": "2026-09-17T18:00:00Z",
+      "valid_to": "2026-09-19T18:00:00Z",
+      "recommended_action": "Halt chemical spraying and fertilizer broadcasting. Inspect drainage cuts."
+    }
+  ]
+}
