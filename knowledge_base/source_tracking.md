@@ -21,6 +21,20 @@ The table is maintained during knowledge-base curation to prevent duplicate docu
 | R-D-011 | Rice | Disease | Bacterial Leaf Streak | IRRI Rice Diseases Online Resource | https://rice-diseases.irri.org/ | ✅ | Completed | Disease symptoms, conditions, transmission and diagnosis verified |
 | R-D-012 | Rice | Disease | Grassy Stunt | IRRI Rice Diseases Online Resource | https://rice-diseases.irri.org/ | ✅ | Completed | Viral disease; symptoms, vector transmission and diagnosis verified |
 | R-D-013 | Rice | Disease | Ragged Stunt | IRRI Rice Diseases Online Resource | https://rice-diseases.irri.org/ | ✅ | Completed | Viral disease; symptoms, vector transmission and diagnosis verified |
+| T-D-001 | Tomato | Disease | Tomato Damping-off | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Disease symptoms, causal pathogens and management verified |
+| T-D-002 | Tomato | Disease | Tomato Early Blight | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Disease symptoms, causal organism and management verified |
+| T-D-003 | Tomato | Disease | Tomato Late Blight | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Disease symptoms, causal organism and management verified |
+| T-D-004 | Tomato | Disease | Tomato Target Spot | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Disease symptoms, causal organism and management status verified |
+| T-D-005 | Tomato | Disease | Tomato Powdery Mildew | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Disease symptoms, causal organism and management verified |
+| T-D-006 | Tomato | Disease | Tomato Anthracnose | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Disease symptoms, causal organism and management verified |
+| T-D-007 | Tomato | Disease | Tomato Septoria Leaf Spot | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Disease symptoms, causal organism and management verified |
+| T-D-008 | Tomato | Disease | Tomato Collar Rot and Root Rot | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Disease symptoms, causal pathogens and management information verified |
+| T-D-009 | Tomato | Disease | Tomato Bacterial Wilt | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Disease symptoms, causal organism, diagnosis and management verified |
+| T-D-010 | Tomato | Disease | Tomato Yellow Leaf Curl Virus | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Viral disease, vector, symptoms and management verified |
+| T-D-011 | Tomato | Disease | Tomato Curly Top Virus | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Viral disease, vector, symptoms and management verified |
+| T-D-012 | Tomato | Disease | Tomato Spotted Wilt Virus | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Viral disease, vector, symptoms and management verified |
+| T-D-013 | Tomato | Disease | Tomato Cucumber Mosaic Virus | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Viral disease, vector, symptoms and management verified |
+| T-C-001 | Tomato | Crop Management | Tomato Cultivation and Management | Sri Lanka Department of Agriculture | https://doa.gov.lk/hordi-crop-tomato/ | ✅ | Completed | Cultivation conditions, nursery management, transplanting, spacing, fertilizer, irrigation, weeding and harvesting verified |
 
 
 ## Status Legend

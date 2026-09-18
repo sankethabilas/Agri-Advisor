@@ -128,5 +128,145 @@
     "source": "IRRI Rice Diseases Online Resource",
     "region": "general",
     "season": "general"
+  },
+  {
+    "id": "T-D-001",
+    "title": "Tomato Damping-off",
+    "text": "Damping-off is a disease of tomato seedlings that causes seedling death due to root infection. The causal pathogens listed by the Sri Lanka Department of Agriculture are Pythium spp., Phytophthora spp., Fusarium spp., Rhizoctonia spp., Sclerotium spp., and Colletotrichum spp. Disease management includes preparing nursery beds on suitable land, heat sterilization, and appropriate seed and soil treatments. Recommended seed treatments include Thiram 80 WP at 5 g/kg of seed or Homai at 4 g/kg of seed. Recommended soil treatments include Thiram 80 WP at 7 g/5 L/m² or Homai at 5 g/5 L/m².",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-002",
+    "title": "Tomato Early Blight",
+    "text": "Early blight of tomato is a fungal disease caused by Alternaria solani. Symptoms include dark patches with concentric rings on leaves, fruits, and stems. Disease management involves using recommended fungicides at the initial stage of disease development according to Department of Agriculture recommendations. The source lists Mancozeb 80% WP at 20 g/10 L of water, Metalaxyl 8% + Mancozeb 64% WP at 12.5 g/10 L of water, and Metiram 55% + Pyraclostrobin 5% WG at 8 ml/10 L of water.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-003",
+    "title": "Tomato Late Blight",
+    "text": "Late blight of tomato is a disease caused by Phytophthora infestans. Symptoms first appear on lower, older leaves as water-soaked grey-green spots. The spots later darken and white fungal growth develops on the underside of affected leaves. Disease management involves using recommended fungicides at the initial stage of disease development according to Department of Agriculture recommendations. The source lists Mancozeb 80% WP at 20 g/10 L of water, Metalaxyl 8% + Mancozeb 64% WP at 12.5 g/10 L of water, and Metiram 55% + Pyraclostrobin 5% WG at 8 ml/10 L of water.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-004",
+    "title": "Tomato Target Spot",
+    "text": "Target spot of tomato is a fungal disease caused by Corynespora cassiicola. Symptoms include circular, dark-brown necrotic lesions in a concentric pattern on leaves, often surrounded by a yellow halo. The lesions can spread to the leaflets, while severe infection causes leaves to turn yellow, collapse, and die. Spots can also occur on stems and fruits. The Sri Lanka Department of Agriculture states that suitable fungicides for this disease are under testing.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-005",
+    "title": "Tomato Powdery Mildew",
+    "text": "Powdery mildew of tomato is a fungal disease caused by Oidium lycopersicum. Symptoms include light-green to bright-yellow lesions on the upper surface of leaves. White powdery patches develop on the lower leaf surface when the fungus produces spores. Severe infection can result in leaf defoliation. Disease management involves applying recommended fungicides at the initial stage of disease development. The source lists sulfur 80% WG at 50 g/10 L of water, chlorothalonil 500 g/L SC at 30 ml/10 L of water, and carbendazim 50% WP at 7 g/10 L of water.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-006",
+    "title": "Tomato Anthracnose",
+    "text": "Anthracnose of tomato is a fungal disease caused by Colletotrichum coccodes. Symptoms include die-back from apical buds, flower dropping, and black, sunken lesions on leaves, stems, and fruits. Fruit infection can result in fruit rot. Management includes treating seeds with recommended fungicides before sowing and applying recommended fungicides at the initial stage of disease development according to Department of Agriculture recommendations.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-007",
+    "title": "Tomato Septoria Leaf Spot",
+    "text": "Septoria leaf spot of tomato is a fungal disease caused by Septoria lycopersici. Symptoms begin as water-soaked areas on affected leaves that develop into circular lesions with brown to gray centers. Disease management involves using recommended fungicides according to Department of Agriculture recommendations. The source lists Daconil at 15–30 ml/10 L of water, Mancozeb at 20 ml/10 L, Topsin at 6 g/10 L, and Carbendazim at 7 g/10 L.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-008",
+    "title": "Tomato Collar Rot and Root Rot",
+    "text": "Collar rot and root rot of tomato are caused by Fusarium spp., Rhizoctonia spp., and Sclerotium spp. The pathogens attack the collar portion of the plant. Infection causes the lower leaves to dry, followed by drying of the entire plant. The affected plant develops a characteristic wilting symptom and may eventually die.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-009",
+    "title": "Tomato Bacterial Wilt",
+    "text": "Bacterial wilt of tomato is a bacterial disease caused by Ralstonia solanacearum. The main symptom is permanent wilting of the plant even when adequate water is present in the soil. A useful diagnostic symptom is viscous bacterial ooze that exudes from the cut end of an affected stem when it is immersed in water. Management includes using wilt-resistant tomato varieties, practicing crop rotation with legumes and cereals, and maintaining good field sanitation.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-010",
+    "title": "Tomato Yellow Leaf Curl Virus",
+    "text": "Tomato Yellow Leaf Curl Virus (TYLCV) is a viral disease of tomato transmitted by whiteflies. Symptoms include upward curling of leaves, yellow or chlorotic leaf margins, smaller-than-normal leaves, plant stunting, and flower drop. When plants are infected early in their growth, they may produce no fruit. Infected plants may occur randomly throughout the field. Management focuses on prevention through disease-free seeds, weed-free fields, field sanitation, removal of old crop debris, elimination of weeds, and reduction of the vector population using insecticides.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-011",
+    "title": "Tomato Curly Top Virus",
+    "text": "Curly Top Virus (CTV) is a viral disease of tomato transmitted by leafhoppers. Symptoms include inward rolling of leaflets along the midrib. The petiole and midrib frequently curve downward, causing the leaves to appear drooping without actual wilting. Affected leaves become thick, crisp, brittle, and dull green, with purple veins. Management focuses on prevention through disease-free seeds, weed-free fields, field sanitation, removal of old crop debris, elimination of weeds, and reduction of the vector population using insecticides.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-012",
+    "title": "Tomato Spotted Wilt Virus",
+    "text": "Tomato Spotted Wilt Virus (TSWV) is a viral disease of tomato spread by thrips. Symptoms include bronzing, leaf curling, necrotic streaks and spots on leaves, and dark-brown streaks on leaf petioles, stems, and growing tips. Infected plants become small and stunted. Ripe fruits may develop pale-red or yellow areas on the skin. Severe infection can cause extensive necrosis and plant death. Management focuses on prevention through disease-free seeds, weed-free fields, field sanitation, removal of old crop debris, elimination of weeds, and reduction of the vector population using insecticides.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-D-013",
+    "title": "Tomato Cucumber Mosaic Virus",
+    "text": "Cucumber Mosaic Virus (CMV) is a viral disease of tomato transmitted by aphids. Early symptoms include yellowing, bushy growth, and considerable plant stunting. As the disease develops, leaves may become filiform or develop narrow, shoestring-like leaf blades. Leaf mottling is also a characteristic symptom. Management focuses on using disease-free seeds, maintaining weed-free fields and good field sanitation, and reducing the vector population using insecticides.",
+    "crop": "tomato",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "T-C-001",
+    "title": "Tomato Cultivation and Management",
+    "text": "Tomato (Solanum lycopersicon) is an important vegetable crop in the Solanaceae family and can be cultivated in almost all agroclimatic zones in Sri Lanka except the up-country wet zone. Suitable conditions include a temperature of about 21–24°C, soil pH of 5.5–7.5, and an elevation of 1000–2000 m. Addition of organic matter supports better growth. The recommended seed requirement is 200–250 g/ha. Suitable periods for nursery establishment are mid-March or the end of August. Raised nursery beds of about 1 m × 3 m and 15–20 cm height are recommended. Well-decomposed farmyard manure and topsoil can be mixed at a 1:1 ratio, and nursery-bed sterilization can be carried out by burning clean paddy husk and straw layers. Seeds should be treated before sowing according to the recommended seed-treatment method. Seedlings should be transplanted 14–18 days after sowing when they have 3–5 true leaves. Seedlings should be hardened before transplanting and thoroughly watered 12–14 hours before transplanting. Recommended field spacing is 80 cm × 50 cm. Land should be well prepared, supplied with decomposed organic matter, and provided with drainage to prevent water retention. For districts other than Badulla, the chemical fertilizer recommendation is 65 kg/ha Urea, 325 kg/ha TSP, and 65 kg/ha MOP as basal fertilizer 1–2 days before planting; 65 kg/ha Urea at 3 weeks after planting; and 65 kg/ha Urea plus 65 kg/ha MOP at 6 weeks after planting. For Badulla District, TSP is recommended at 215 kg/ha. Excessive watering, particularly during dry periods, should be avoided because it can cause fruit cracking. Fields should be kept free of weeds, especially during the first 3–6 weeks after transplanting, and weeding should be done before fertilizer application. Tomatoes are harvested when fruits reach the green-yellow stage and should be sorted according to size and quality and stored in a well-aerated place. Typical yield is about 20–30 tonnes per hectare, depending on season, variety, and climate.",
+    "crop": "tomato",
+    "category": "crop_management",
+    "source": "Sri Lanka Department of Agriculture",
+    "region": "Sri Lanka",
+    "season": "general"
   }
 ]
