@@ -129,5 +129,5 @@ All commit messages in the repository **must** adhere strictly to the following 
 ## 5. Conflict Resolution Protocol
 
 - **Different Files**: Because each developer owns a vertical slice, conflicts are minimized.
-- **Shared Files (`requirements.txt`, root configs)**: Coordinated with the file owner before editing.
+- **Shared Files (`../requirements`, root configs)**: Coordinated with the file owner before editing.
 - **API Contract Discrepancies**: Discussed at daily stand-ups and decided by the Team Lead (Sanketh) in `/docs/api-contract.md`.
