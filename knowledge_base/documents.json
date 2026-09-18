@@ -78,5 +78,55 @@
     "source": "Sri Lanka Department of Agriculture - Bacterial Leaf Blight",
     "region": "Sri Lanka",
     "season": "general"
+  },
+  {
+    "id": "R-D-009",
+    "title": "Bakanae",
+    "text": "Bakanae is a rice disease caused by Fusarium fujikuroi. The pathogen is primarily seed-borne, and infected or infested seed is an important source of inoculum. A characteristic symptom is abnormal elongation of seedlings after germination. Infected seedlings become unusually tall, thin, and yellowish-green and may become weak or die before transplanting. In mature plants, infected tillers may have pale-green flag leaves, produce adventitious roots at lower stem nodes, and develop leaves that dry from the lower part of the plant. Severely affected plants may die before maturity, while plants that reach maturity may produce few tillers and sterile or infected grains. Infected grains may show reddish discoloration. The disease can also persist through soil-borne inoculum and infected crop residues, while weeds around fields may contribute to pathogen survival. Disease severity is associated with the amount of infected seed-borne inoculum. Management focuses mainly on seed health, including the use of high-quality seed from fields free of Bakanae and appropriate seed treatment. Proper disposal of infected rice residues and weeds can also help reduce disease incidence. Prevention through healthy seed and suitable seed treatment is particularly important because resistant cultivars are not a well-established primary control strategy for Bakanae.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "IRRI Rice Diseases Online Resource",
+    "region": "general",
+    "season": "general"
+  },
+  {
+    "id": "R-D-010",
+    "title": "Stem Rot",
+    "text": "Stem rot is a rice disease caused by Nakataea oryzae, formerly known as Magnaporthe salvinii. The disease usually appears during the later stages of rice growth. Initial symptoms are irregular blackish lesions on the outer leaf sheath, commonly occurring above the waterline. The infection can progress into the inner leaf sheath and culm, causing the leaf sheath to partially or completely rot. Internodes may become blackish and collapse, and severely infected plants may lodge before harvest. Stem rot is generally considered a monocyclic disease, and disease severity is closely related to the amount of initial inoculum present in the field. Sclerotia and infected plant debris remaining in the field after harvest are important sources of primary inoculum. Sclerotia can persist in the upper soil layer for several years under suitable conditions. After field irrigation, sclerotia may float on the water surface and germinate when they come into contact with rice leaf sheaths, initiating infection. Therefore, the amount and survival of sclerotia in the field are important factors affecting disease incidence and severity. Some gramineous weeds in rice fields can also become infected and may contribute to pathogen survival.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "IRRI Rice Diseases Online Resource",
+    "region": "general",
+    "season": "general"
+  },
+  {
+    "id": "R-D-011",
+    "title": "Bacterial Leaf Streak",
+    "text": "Bacterial leaf streak is a rice disease caused by Xanthomonas oryzae pv. oryzicola. It is commonly associated with high temperature and humidity and can develop during rainy conditions. The disease may appear from the tillering stage to the panicle-initiation or booting stages. Initial symptoms are short, fine, translucent, water-soaked streaks between the larger veins of leaves. When viewed against light, young lesions appear translucent. The streaks enlarge lengthwise between the veins and may become light brown or yellowish-brown. Under humid conditions, small yellowish-amber bacterial ooze droplets may appear on the lesions. In susceptible plants, numerous lesions may merge, causing large portions of the leaf to become brown, bleached, or grayish-white. Severe infection can reduce photosynthetic leaf area and may reduce grain weight. Continuous rainfall after disease appearance can promote severe disease development, while disease development may slow when rainfall stops and newly emerging leaves remain healthy. Bacterial leaf streak can be confused with bacterial leaf blight and narrow brown leaf spot. Bacterial leaf streak generally produces thinner, translucent streaks between the veins and may produce small bead-like bacterial ooze on the leaf surface. The pathogen enters rice tissues mainly through stomata and natural injuries and multiplies within leaf tissues. Infected rice seed is an important source of primary inoculum and can contribute to long-distance dissemination and initial disease development.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "IRRI Rice Diseases Online Resource",
+    "region": "general",
+    "season": "general"
+  },
+  {
+    "id": "R-D-013",
+    "title": "Grassy Stunt",
+    "text": "Grassy stunt is a viral disease of rice caused by Rice grassy stunt virus (RGSV). The disease is transmitted persistently by the brown planthopper (Nilaparvata lugens), which is the main vector and an important factor in disease spread. Grassy stunt occurs mainly in South and Southeast Asia and has also been reported in Sri Lanka and other parts of Asia. Typical symptoms include severe plant stunting, excessive tillering, short and narrow leaves, and an erect, grass-like appearance. Leaves may become pale green or pale yellow and develop numerous rusty, chlorotic, or yellowish spots that can expand into irregular blotches or stripes. Infected plants usually produce few small panicles with unfilled or discolored grains. Disease severity depends on the growth stage at infection. Plants infected at early stages can show severe stunting and major yield reduction, while later infections may cause less height reduction but can still result in severe leaf and panicle damage. Some infected plants may survive until harvest, and symptoms can remain visible in ratoon rice after harvest. Different RGSV strains can vary in symptom severity and their effects on tillering. Field diagnosis is commonly based on characteristic symptoms, but symptoms alone may not always provide a conclusive diagnosis. Confirmation can be performed using transmission tests with brown planthoppers or laboratory detection methods such as ELISA.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "IRRI Rice Diseases Online Resource",
+    "region": "general",
+    "season": "general"
+  },
+  {
+    "id": "R-D-014",
+    "title": "Ragged Stunt",
+    "text": "Ragged stunt is a viral disease of rice caused by Rice ragged stunt virus (RRSV). The disease is transmitted persistently by the brown planthopper (Nilaparvata lugens), which is the main vector and an important factor in disease spread. Ragged stunt occurs mainly in South and Southeast Asia and has also been reported in Sri Lanka and other parts of Asia. Early symptoms include delayed development of new leaves, short and malformed leaves, twisting of leaf tips, and breaks, notches, or indentations along leaf edges. As the disease develops, plants become stunted and may develop swollen veins or gall-like swellings on leaf blades and sheaths. Infected plants may show delayed flowering, incomplete panicle exertion, poor panicle development, and unfilled or discolored grains. Nodal branches may also develop on infected tillers. Symptoms can become less obvious on newly emerging leaves as the plant grows, causing some field infections to be overlooked, but symptoms may become more noticeable again at the heading stage, particularly on flag leaves, which can become short, deformed, and ragged. Disease severity and symptom expression vary among rice cultivars and growth stages. Early infection can cause severe damage and yield loss. Ragged stunt symptoms can resemble other rice viral diseases, particularly diseases associated with deformed leaves and vein swelling, so field symptoms alone may not always provide a conclusive diagnosis.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "IRRI Rice Diseases Online Resource",
+    "region": "general",
+    "season": "general"
   }
 ]

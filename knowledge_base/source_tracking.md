@@ -16,6 +16,12 @@ The table is maintained during knowledge-base curation to prevent duplicate docu
 | R-D-006 | Rice | Disease | Sheath Rot | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_sheathrot/ | ✅ | Completed | Disease symptoms, favourable conditions and management verified |
 | R-D-007 | Rice | Disease | Narrow Brown Leaf Spot | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_narrowbrownleafspot/ | ✅ | Completed | Disease symptoms and management verified |
 | R-D-008 | Rice | Disease | Bacterial Leaf Blight | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_bacterialleafblight/ | ✅ | Completed | Mandatory disease topic; symptoms and management verified |
+| R-D-009 | Rice | Disease | Bakanae | IRRI Rice Diseases Online Resource | https://rice-diseases.irri.org/ | ✅ | Completed | Disease symptoms, transmission and prevention verified |
+| R-D-010 | Rice | Disease | Stem Rot | IRRI Rice Diseases Online Resource | https://rice-diseases.irri.org/ | ✅ | Completed | Disease symptoms, inoculum sources and disease development verified |
+| R-D-011 | Rice | Disease | Bacterial Leaf Streak | IRRI Rice Diseases Online Resource | https://rice-diseases.irri.org/ | ✅ | Completed | Disease symptoms, conditions, transmission and diagnosis verified |
+| R-D-012 | Rice | Disease | Grassy Stunt | IRRI Rice Diseases Online Resource | https://rice-diseases.irri.org/ | ✅ | Completed | Viral disease; symptoms, vector transmission and diagnosis verified |
+| R-D-013 | Rice | Disease | Ragged Stunt | IRRI Rice Diseases Online Resource | https://rice-diseases.irri.org/ | ✅ | Completed | Viral disease; symptoms, vector transmission and diagnosis verified |
+
 
 ## Status Legend
 
