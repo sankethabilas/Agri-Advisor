@@ -1,0 +1,15 @@
+{
+  "error": {
+    "code": "RESOURCE_NOT_FOUND",
+    "message": "The requested agricultural advisory resource or disease entry was not found in knowledge base.",
+    "status_code": 404,
+    "details": [
+      {
+        "field": "crop",
+        "issue": "Crop 'Dragonfruit' is currently not supported in the active Sri Lankan DOA dataset."
+      }
+    ],
+    "timestamp": "2026-09-17T17:00:00Z",
+    "request_id": "req-1a2b-3c4d"
+  }
+}

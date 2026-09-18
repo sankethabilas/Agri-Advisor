@@ -1,0 +1,11 @@
+{
+  "location": {
+    "district": "Anuradhapura",
+    "province": "North Central",
+    "latitude": 8.3114,
+    "longitude": 80.4037,
+    "agro_ecological_zone": "DL1b"
+  },
+  "crop": "Paddy",
+  "growth_stage": "Tillering"
+}

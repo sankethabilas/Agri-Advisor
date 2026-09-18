@@ -1,0 +1,33 @@
+{
+  "status": "healthy",
+  "version": "1.0.0",
+  "environment": "development",
+  "timestamp": "2026-09-17T17:00:00Z",
+  "services": {
+    "orchestrator": {
+      "status": "healthy",
+      "latency_ms": 2,
+      "message": "Orchestrator core online"
+    },
+    "disease_agent": {
+      "status": "healthy",
+      "latency_ms": 14,
+      "message": "Disease diagnostic engine connected"
+    },
+    "weather_agent": {
+      "status": "healthy",
+      "latency_ms": 42,
+      "message": "OpenWeatherMap API connection verified"
+    },
+    "rag_agent": {
+      "status": "healthy",
+      "latency_ms": 18,
+      "message": "ChromaDB vector store indexed and responsive"
+    },
+    "crop_agent": {
+      "status": "healthy",
+      "latency_ms": 9,
+      "message": "Crop advisory guidelines loaded"
+    }
+  }
+}

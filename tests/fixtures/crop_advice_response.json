@@ -1,0 +1,195 @@
+{
+  "crop": "Paddy (Rice)",
+  "season": "Maha",
+  "agro_ecological_zone": "IL1a (Low Country Intermediate Zone)",
+  "soil_type": "Low Humic Gley (LHG)",
+  "land_extent_acres": 2.0,
+  "advisory_sections": {
+    "1_varieties": {
+      "section_title": "Recommended Rice Varieties for Low Country Intermediate Zone",
+      "recommended_varieties": [
+        {
+          "variety_name": "Bg 352",
+          "age_class_months": 3.5,
+          "yield_potential_mt_ha": 6.5,
+          "grain_type": "White Short Grain (Samba)",
+          "pest_disease_resistance": [
+            "Resistant to Gall Midge (Biotype 1)",
+            "Moderately resistant to Blast and Brown Plant Hopper"
+          ],
+          "special_attributes": "High tillering capacity, excellent response to nitrogen fertilization, superior consumer cooking quality."
+        },
+        {
+          "variety_name": "Bg 358",
+          "age_class_months": 3.5,
+          "yield_potential_mt_ha": 6.0,
+          "grain_type": "White Intermediate Grain (Nadu)",
+          "pest_disease_resistance": [
+            "Tolerant to iron toxicity and moderate salinity",
+            "Resistant to Bacterial Leaf Blight"
+          ],
+          "special_attributes": "Highly suitable for ill-drained Low Humic Gley soils prone to iron toxicity."
+        },
+        {
+          "variety_name": "Bw 367",
+          "age_class_months": 3.5,
+          "yield_potential_mt_ha": 5.8,
+          "grain_type": "Red Intermediate Grain (Red Nadu)",
+          "pest_disease_resistance": [
+            "High resistance to iron toxicity",
+            "Tolerant to submerged seedling conditions"
+          ],
+          "special_attributes": "High nutritional and antioxidant value, ideal for traditional red rice markets."
+        }
+      ],
+      "selection_guidance": "For well-drained fertile plots, Bg 352 is optimal for maximum yield. For low-lying fields with iron accumulation or poor drainage, select Bg 358 or Bw 367."
+    },
+    "2_land_preparation": {
+      "section_title": "Field Preparation and Bund Management",
+      "first_plowing": {
+        "timing": "3 to 4 weeks prior to sowing (with initial seasonal rains / canal water issue)",
+        "depth_cm": 15.0,
+        "instructions": "Invert weeds and crop residues to facilitate anaerobic decomposition. Impound 5-10 cm water for 7-10 days."
+      },
+      "second_plowing_and_puddling": {
+        "timing": "10-14 days after first plowing",
+        "instructions": "Puddle soil thoroughly using a 2-wheel or 4-wheel tractor with rotovator to break clods and create an impervious hardpan layer that prevents percolation water loss."
+      },
+      "bund_maintenance": {
+        "instructions": "Reconstruct and plaster field bunds (Niyara) with fresh puddled mud (height 30cm, width 30cm) to prevent lateral water leakage and seal crab/rat burrows."
+      },
+      "leveling": {
+        "instructions": "Final leveling using a wooden leveling board (Poruwa) or laser leveler in shallow standing water (1-2 cm). Uniform leveling is mandatory for effective weed suppression and even seedling emergence."
+      },
+      "organic_manure_incorporation": {
+        "recommendation": "Incorporate 4-6 MT/acre of well-decomposed cattle manure, paddy straw, or compost during the first plowing to enhance cation exchange capacity."
+      }
+    },
+    "3_planting_schedule": {
+      "section_title": "Crop Establishment and Sowing Calendar",
+      "sowing_window": "October 15 to November 10 (Maha season)",
+      "establishment_method": "Direct Wet Seeding (Row Seeding using 8-row drum seeder or Wet Broadcasting)",
+      "seed_rate_kg_per_acre": 30.0,
+      "seed_treatment_and_sprouting": {
+        "soaking": "Soak certified seeds in clean water for 24 hours.",
+        "incubation": "Drain water and incubate seeds under moist gunny bags in shade for 24 to 36 hours until the white radicle sprout emerges to 1-2 mm length.",
+        "precaution": "Do not allow sprouts to grow longer than 2 mm to avoid mechanical breakage during broadcasting."
+      },
+      "spacing": "Row spacing of 20 cm x 10-15 cm between hills (for drum seeding or mechanical transplanting)."
+    },
+    "4_fertilizer_management": {
+      "section_title": "Targeted 4-Stage Fertilizer Schedule (DOA Recommendations)",
+      "target_yield_basis": "Target yield: 5.5 - 6.0 MT/ha (110 - 120 bushels/acre)",
+      "organic_integration": "Incorporate 1,000 kg/acre well-matured compost or decomposed straw prior to final leveling.",
+      "chemical_stages": [
+        {
+          "stage_number": 1,
+          "stage_name": "Basal Dressing",
+          "timing": "At final land preparation, immediately before sowing/planting",
+          "nutrients": {
+            "urea_kg_per_acre": 15.0,
+            "triple_super_phosphate_tsp_kg_per_acre": 25.0,
+            "muriate_of_potash_mop_kg_per_acre": 15.0,
+            "zinc_sulphate_kg_per_acre": 2.0
+          },
+          "application_method": "Broadcast evenly and incorporate into the top 5 cm soil layer."
+        },
+        {
+          "stage_number": 2,
+          "stage_name": "First Top Dressing (Early Tillering)",
+          "timing": "14 to 16 Days After Sowing (DAS)",
+          "nutrients": {
+            "urea_kg_per_acre": 30.0,
+            "triple_super_phosphate_tsp_kg_per_acre": 0.0,
+            "muriate_of_potash_mop_kg_per_acre": 0.0
+          },
+          "application_method": "Broadcast onto saturated soil with 1-2 cm shallow water layer."
+        },
+        {
+          "stage_number": 3,
+          "stage_name": "Second Top Dressing (Maximum Tillering)",
+          "timing": "28 to 32 Days After Sowing (DAS)",
+          "nutrients": {
+            "urea_kg_per_acre": 35.0,
+            "triple_super_phosphate_tsp_kg_per_acre": 0.0,
+            "muriate_of_potash_mop_kg_per_acre": 15.0
+          },
+          "application_method": "Drain standing water, broadcast fertilizer, and re-introduce water after 24 hours."
+        },
+        {
+          "stage_number": 4,
+          "stage_name": "Panicle Initiation (Heading Stage)",
+          "timing": "50 to 55 Days After Sowing (DAS - for 3.5 month varieties)",
+          "nutrients": {
+            "urea_kg_per_acre": 20.0,
+            "triple_super_phosphate_tsp_kg_per_acre": 0.0,
+            "muriate_of_potash_mop_kg_per_acre": 10.0
+          },
+          "application_method": "Apply when 10% of shoots show green ring panicle initiation."
+        }
+      ]
+    },
+    "5_water_management": {
+      "section_title": "Water Regime & Alternate Wetting and Drying (AWD)",
+      "establishment_phase": "Days 1-7 DAS: Keep field moist and saturated; avoid standing water to prevent pre-germinated seed rotting.",
+      "vegetative_phase": "Days 8-45 DAS: Implement AWD. Allow water depth to rise to 3-5 cm, then allow water level to drop naturally until hairline cracks appear on soil before re-flooding.",
+      "reproductive_flowering_phase": "Days 46-75 DAS: CRITICAL STAGE. Maintain continuous 5 cm standing water from panicle initiation through flowering and milky grain stage. Never allow moisture deficit.",
+      "terminal_drainage": "Days 76-90 DAS: Completely drain the field 10 to 14 days before harvest to hasten uniform grain ripening and harden the soil for harvesting machinery."
+    },
+    "6_weed_control": {
+      "section_title": "Integrated Weed Management (IWM)",
+      "preventive_cultural": "Clean irrigation inlets with mesh screens, maintain 3-5 cm water layer from 8 DAS to inhibit weed seed germination.",
+      "mechanical_weeding": "Operate a rotary cono-weeder at 14 DAS and 28 DAS in row-seeded fields to uproot weeds and incorporate weed biomass as green manure.",
+      "chemical_herbicide_options": [
+        {
+          "target_stage": "Early Post-Emergence (6-10 DAS)",
+          "active_ingredient": "Bispyribac-sodium 100 g/L SC",
+          "commercial_rate": "60 mL/acre (150 mL/ha) dissolved in 160 L water",
+          "target_spectrum": "Grasses (Echinochloa crus-galli), sedges, and broadleaf weeds."
+        },
+        {
+          "target_stage": "Post-Emergence Broadleaf/Sedges (15-20 DAS)",
+          "active_ingredient": "MCPA 600 g/L SL",
+          "commercial_rate": "500 mL/acre (1.25 L/ha) in 160 L water",
+          "target_spectrum": "Broadleaf weeds (Monochoria vaginalis) and sedges (Cyperus iria, Fimbristylis miliacea)."
+        }
+      ]
+    },
+    "7_harvesting_and_post_harvest": {
+      "section_title": "Harvesting Guidelines, Threshing, and Storage Protocols",
+      "maturity_indices": "Harvest when 85-90% of panicle grains turn golden straw color and moisture drops to 20-22%. Flag leaves turn pale yellow.",
+      "harvesting_procedure": "Cut crop 10-15 cm above ground level. Thresh immediately (within 24 hours) using combine harvester or mechanical thresher to avoid fungal moulding.",
+      "cleaning_and_drying": "Clean winnowed grain to remove chaff and unfilled grains. Sun dry on clean canvas tarpaulins with frequent raking for 2-3 days until moisture drops to 13-14%.",
+      "safe_storage": "Store in airtight hermetic bags (PICS bags) or clean wooden storage bins in a well-ventilated, pest-proof store elevated on wooden pallets 15 cm above ground."
+    },
+    "8_crop_rotation_and_intercropping": {
+      "section_title": "Crop Rotation, Relay Cropping, and Soil Regeneration",
+      "recommended_rotations": [
+        {
+          "crop": "Mung Bean (Vigna radiata / Green Gram - MI 5, MI 6)",
+          "cropping_window": "Yala Season (Relay sown 7-10 days before Maha paddy harvest or direct sown after harvest)",
+          "duration_days": 65,
+          "nitrogen_fixation_kg_ha": 35.0,
+          "economic_benefit": "Generates high supplementary cash income with minimal water requirement."
+        },
+        {
+          "crop": "Cowpea (Vigna unguiculata - Bombay Cowpea, Waruni)",
+          "cropping_window": "Late Yala / Fallow gap",
+          "duration_days": 70,
+          "nitrogen_fixation_kg_ha": 40.0,
+          "economic_benefit": "Drought hardy, excellent high-protein grain and substantial organic green biomass."
+        },
+        {
+          "crop": "Black Gram (Vigna mungo - Anuradha)",
+          "cropping_window": "Post-Maha residual moisture window",
+          "duration_days": 75,
+          "nitrogen_fixation_kg_ha": 30.0,
+          "economic_benefit": "Zero-tillage establishment in paddy stubble; high market demand."
+        }
+      ],
+      "soil_health_benefits": "Legume rotation disrupts mono-cropping pest cycles (Brown Plant Hopper, Stem Borer), breaks disease spore perpetuation, improves soil aggregate stability, and saves 20-25 kg Urea/acre in succeeding season."
+    }
+  },
+  "source": "Sri Lanka Department of Agriculture (DOA) - Paddy Crop Management Compendium (Circular RRDI-2023-01)",
+  "generated_at": "2026-09-17T17:00:00Z"
+}
