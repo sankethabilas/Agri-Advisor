@@ -8,11 +8,14 @@ The table is maintained during knowledge-base curation to prevent duplicate docu
 
 | ID | Crop | Category | Topic | Source | Source URL | Verified | Status | Notes |
 |---|---|---|---|---|---|---|---|---|
-| R-D-001 | Rice | Disease | Bacterial Leaf Blight | Sri Lanka Department of Agriculture | — | ✅ | Planned | Mandatory disease topic |
-| R-D-002 | Rice | Disease | Rice Blast | IRRI | — | ✅ | Planned | Disease symptoms and management |
-| R-T-001 | Rice | Treatment | Bacterial Leaf Blight – Cultural Management | Sri Lanka Department of Agriculture | — | ✅ | Planned | Management information |
-| R-C-001 | Rice | Cultivation | Land Preparation | Sri Lanka Department of Agriculture | — | ⬜ | Planned | Source to be verified |
-| T-D-001 | Tomato | Disease | Early Blight | Sri Lanka Department of Agriculture | — | ✅ | Planned | Mandatory disease topic |
+| R-D-001 | Rice | Disease | Rice Blast | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_riceblast/ | ✅ | Completed | Disease symptoms, favourable conditions and management verified |
+| R-D-002 | Rice | Disease | Sheath Blight | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_sheathblight/ | ✅ | Completed | Disease symptoms, favourable conditions and management verified |
+| R-D-003 | Rice | Disease | Brown Spot | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_brownspot/ | ✅ | Completed | Disease symptoms, favourable conditions and management verified |
+| R-D-004 | Rice | Disease | False Smut | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_falsesmut/ | ✅ | Completed | Disease symptoms, favourable conditions and management verified |
+| R-D-005 | Rice | Disease | Leaf Scald | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_leafscald/ | ✅ | Completed | Disease symptoms and management verified |
+| R-D-006 | Rice | Disease | Sheath Rot | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_sheathrot/ | ✅ | Completed | Disease symptoms, favourable conditions and management verified |
+| R-D-007 | Rice | Disease | Narrow Brown Leaf Spot | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_narrowbrownleafspot/ | ✅ | Completed | Disease symptoms and management verified |
+| R-D-008 | Rice | Disease | Bacterial Leaf Blight | Sri Lanka Department of Agriculture | https://doa.gov.lk/rrdi_ricediseases_bacterialleafblight/ | ✅ | Completed | Mandatory disease topic; symptoms and management verified |
 
 ## Status Legend
 

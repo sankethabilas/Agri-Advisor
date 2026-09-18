@@ -1,0 +1,82 @@
+[
+  {
+    "id": "R-D-001",
+    "title": "Rice Blast",
+    "text": "Rice blast is a fungal disease of rice caused by Magnaporthe grisea (Pyricularia grisea). The disease can affect rice at any growth stage and may affect leaves, nodes, panicles, and seeds. Depending on the infected plant part, it is referred to as leaf blast, node blast, panicle blast, or neck blast. The common symptom is spindle-shaped leaf spots with brown or reddish/yellowish-brown margins, ashy centers, and pointed ends. Fully developed lesions are normally 1.0–1.5 cm long and 0.3–0.5 cm wide. Infected nodes may become black and rot. Infection at the base of the panicle can cause rotten neck or neck rot, resulting in the panicle falling off. Severe infection may affect secondary branches and grains, causing partly filled grains known as whiteheads. Disease development is favoured by low night temperatures of 17–20°C, high humidity, foggy and dark weather conditions, excessive nitrogen fertilizer application, and high plant density. Susceptible rice varieties listed by the Sri Lanka Department of Agriculture include Bg 358, Bg 357, Bg 360, Bw 367, At 373, and Bg 94/1. Management during the crop season includes applying urea at recommended dosages or according to the leaf colour chart and practising weed management. For the following season after infection, management includes using resistant varieties such as Bg 403, Bg 406, Bg 366, Bg 359, Bw 361, and Bg 250; using certified disease-free seed paddy; adding burnt paddy husk at 250 kg per acre to the soil during land preparation; and avoiding the addition of disease-infected straw.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture - Rice Blast",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "R-D-002",
+    "title": "Sheath Blight",
+    "text": "Sheath blight is a fungal disease of rice caused by Thanatephorus cucumeris (Rhizoctonia solani). Symptoms usually appear at the base of the stem near the water level and may spread to leaves and panicles. Rice is particularly vulnerable during the maximum tillering and flowering stages. Initial lesions develop on the leaf sheath near the water or soil surface and may be oval or ellipsoidal before becoming larger and irregular. Lesions may have white centers with green, brown, and orange coloration. When the flag leaf is infected, panicle exertion can be affected. The fungus forms sclerotia on the leaf sheath surface, which can survive in soil for years. Disease development is favoured by high temperatures up to 40°C, high humidity above 90%, excessive nitrogen fertilizer, foggy and dark conditions, shade, high plant density, and varieties with many tillers. Almost all rice varieties in Sri Lanka are susceptible. Management includes applying urea at recommended dosages or according to the leaf colour chart and practising weed management. If the disease spreads rapidly, the Department of Agriculture recommends specific fungicides. For the following season, recommended practices include using certified disease-free seed paddy, deep ploughing to bury infected plant residues, using the recommended seed rate, maintaining an average plant population, adding burnt paddy husk during land preparation, and avoiding infected straw. There are no genetically resistant rice varieties to this disease, although varieties with a clean plant base may escape the disease.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture - Sheath Blight",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "R-D-003",
+    "title": "Brown Spot",
+    "text": "Brown spot is a fungal disease of rice caused by Cochliobolus miyabeanus (Bipolaris oryzae). It is a seed-borne disease that can affect coleoptiles, leaves, leaf sheaths, immature florets, panicle branches, glumes, and grains. The disease may be present from plant emergence but becomes more prevalent as plants approach maturity and leaves begin to senesce. Symptoms include brown circular to oval spots on coleoptiles, which can cause seedling blight and result in sparse stands and weak plants. Leaf spots range from small dark brown or reddish-brown spots to larger oval or circular spots with dark brown margins and light reddish-brown or grey centers. Similar spots may occur on leaf sheaths and hulls. Infection of glumes can cause black discoloration, while infection of immature florets can hinder grain development and result in lightweight or chalky kernels. Economic losses are more significant when the fungus attacks panicles and grains. Disease development is favoured by temperatures of 16–36°C, high humidity of 86–100%, soils with low nutrient levels or problem soils such as saline or iron-toxic soils, and drought. Management includes applying urea at recommended dosages or according to the leaf colour chart and practising weed management. For the following season, recommended practices include improving soil quality with organic fertilizer, using certified disease-free seed paddy, adding burnt paddy husk at 250 kg per acre during land preparation, avoiding infected straw, treating seed paddy with hot water at 53–54°C for 10–12 minutes, treating seeds with a seed-protectant fungicide, crop rotation, and proper land levelling.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture - Brown Spot",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "R-D-004",
+    "title": "False Smut",
+    "text": "False smut is a fungal disease of rice caused by Ustilaginoidea virens. It mainly affects mature panicles and grains, with symptoms becoming visible as grains mature. When a grain becomes fully developed, the pericarp may split slightly, allowing the pathogen to enter and develop inside the grain. The seed coat remains green while orange to brown-green fungal structures develop within the grain. The disease may occur in one or more grains of a mature panicle. Later, the outer covering ruptures and exposes greenish-black spores, and the affected grain may be replaced by one or more sclerotia. Disease development is favoured by temperatures of 25–35°C, high humidity, rain and wind during flowering, excessive nitrogen fertilizer, high plant density, and weeds. Susceptible varieties listed by the Department of Agriculture include Bw 367 and Bg 403. Management during the crop season includes applying urea at recommended dosages or according to the leaf colour chart and practising water management. For the following season, recommended practices include using certified disease-free seed paddy, weed management, adding burnt paddy husk during land preparation, avoiding infected material, and maintaining appropriate water and plant population management.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture - False Smut",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "R-D-005",
+    "title": "Leaf Scald",
+    "text": "Leaf scald is a fungal disease of rice caused by Monographella albescens (Microdochium oryzae). It is common and can sometimes be severe in major rice-growing districts in Sri Lanka. The disease affects mature leaves, panicles, and seedlings and is seed-borne, surviving between seasons through infected seeds. Lesions usually begin at the tips or edges of leaf blades and develop a chevron pattern of light tan and darker reddish-brown areas. The leading edge of lesions may appear yellow to gold, causing affected rice fields to have a yellow or golden appearance. Lesions from leaf edges may have an indistinct mottled pattern, and affected leaves eventually dry and become straw-coloured. When panicles are infected, developing florets or grain hulls may show uniform light to dark reddish-brown discoloration, and the disease can cause sterility or abortion of developing kernels. Management during the crop season includes applying urea at recommended dosages or according to the leaf colour chart. For the following season, recommended practices include using certified disease-free seed paddy, weed management, adding burnt paddy husk at 250 kg per acre during land preparation, and avoiding infected material.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture - Leaf Scald",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "R-D-006",
+    "title": "Sheath Rot",
+    "text": "Sheath rot is a fungal disease of rice caused by Sarocladium oryzae. It affects most prevailing rice varieties and is usually a minor disease affecting scattered tillers, although larger areas may occasionally experience significant damage. The disease mainly affects the uppermost leaf sheaths enclosing the young panicle during the boot stage. Symptoms include oblong or irregular oval lesions with grey or light-brown centers and diffuse dark reddish-brown margins, producing an irregular target-like pattern. Affected flag-leaf sheaths commonly develop reddish-brown discoloration. Early or severe infections can affect the panicle, causing partial emergence; the un-emerged portion may rot and the florets can become red-brown to dark brown. Grains from damaged panicles may become reddish-brown to dark brown and may fail to fill. A powdery white growth consisting of fungal spores and hyphae may appear on the inner surface of affected sheaths. Disease development during flowering to fruiting is favoured by temperatures of 20–28°C, high humidity, and excessive nitrogen fertilizer. Management includes applying urea at recommended dosages or according to the leaf colour chart. For the following season, recommended practices include applying organic fertilizer to improve soil conditions, using certified disease-free seed paddy, weed management, adding burnt paddy husk during land preparation, avoiding infected straw, and managing insect populations such as sheath mites.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture - Sheath Rot",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "R-D-007",
+    "title": "Narrow Brown Leaf Spot",
+    "text": "Narrow brown leaf spot is a fungal disease of rice caused by Sphaerulina oryzina (Cercospora janseana). It affects leaf blades, leaf sheaths, pedicels, and glumes. Disease severity varies from year to year and generally increases as rice plants approach maturity. The severity also depends on varietal susceptibility and can result in severe leaf necrosis, premature ripening, yield reduction, and lodging. Typical lesions on leaves and upper leaf sheaths are light to dark brown, narrow and linear, and develop parallel to the leaf veins. They are usually 2–10 mm long and 1–1.5 mm wide. In highly susceptible varieties, lesions may enlarge and merge to form brown linear necrotic areas. Lesions on glumes are generally shorter but may be wider, while brown lesions may also occur on pedicels. Leaf sheaths may develop a netlike pattern of brown and light brown to yellow areas known as net blotch. Management during the crop season includes applying urea at recommended dosages or according to the leaf colour chart. For the following season, recommended practices include applying organic fertilizer to improve soil quality, using certified disease-free seed paddy, weed management, adding burnt paddy husk at 250 kg per acre during land preparation, and avoiding infected straw.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture - Narrow Brown Leaf Spot",
+    "region": "Sri Lanka",
+    "season": "general"
+  },
+  {
+    "id": "R-D-008",
+    "title": "Bacterial Leaf Blight",
+    "text": "Bacterial leaf blight is a bacterial disease of rice caused by Xanthomonas oryzae pv. oryzae. It can affect rice during the seedling and maturity stages, mainly affecting the leaves. At the seedling stage, symptoms include wilting and yellowing of leaves or complete wilting of seedlings, known as kresek. Kresek may sometimes be confused with early rice stem borer damage. Kresek can be distinguished by yellowish bacterial ooze appearing from cut leaf ends when the leaves are squeezed, while affected plants are not easily pulled from the soil compared with plants damaged by stem borers. On mature plants, lesions commonly develop as water-soaked orange stripes on leaf blades or leaf tips. The lesions have wavy margins and progress towards the leaf base. The disease can occur in both irrigated and rainfed lowland areas and is favoured by temperatures of 25–34°C, strong winds, continuous heavy rain, high humidity, and excessive nitrogen fertilizer application. Management includes applying urea at recommended dosages or according to the leaf colour chart and ensuring good field drainage. When the disease is observed, water supply should be stopped and the field allowed to dry where possible. If complete water removal is not possible, water should be directed out through drainage ditches or watercourses. Drainage water from infected fields should not be diverted through disease-free fields where possible. Application of potassium fertilizer after disease detection can help manage further spread.",
+    "crop": "rice",
+    "category": "disease",
+    "source": "Sri Lanka Department of Agriculture - Bacterial Leaf Blight",
+    "region": "Sri Lanka",
+    "season": "general"
+  }
+]
