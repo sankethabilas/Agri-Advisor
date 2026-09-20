@@ -2131,6 +2131,255 @@
     "source_id": "DOA-HORDI-CAPSICUM",
     "region": "Sri Lanka",
     "season": "General"
+  },
+  {
+    "id": "O-C-001-SI",
+    "title": "බී ලූණු වගාව සඳහා දේශගුණික හා පාංශු අවශ්‍යතා",
+    "text": "බී ලූණු වගාව සඳහා සුදුසු දේශගුණික තත්ත්වයක් සහ හොඳ ජලවහනයක් සහිත පසක් අවශ්‍ය වේ. වගා කිරීමට පෙර ප්‍රදේශයට හා පසට ගැළපෙන වගා තත්ත්වයන් සලකා බැලිය යුතුය. පසෙහි තත්ත්වය හොඳින් සකස් කර ගැනීම සාර්ථක බී ලූණු වගාව සඳහා වැදගත් වේ.",
+    "crop": "Big Onion",
+    "category": "Cultivation",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "O-C-001-EN",
+    "title": "Climate and Soil Requirements for Big Onion Cultivation",
+    "text": "Big onion cultivation requires suitable climatic conditions and well-drained soil. Before cultivation, the conditions suitable for the particular area and soil should be considered. Proper soil preparation is important for successful big onion cultivation.",
+    "crop": "Big Onion",
+    "category": "Cultivation",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "O-C-002-SI",
+    "title": "නිර්දේශිත බී ලූණු ප්‍රභේද",
+    "text": "බී ලූණු වගාව සඳහා නිර්දේශිත ප්‍රභේද ලෙස Dambulla Selection, MIBO-01, Pusa Red, Agrifound Light Red සහ Nasik Red සඳහන් කර ඇත. ප්‍රදේශයට සහ වගා තත්ත්වයට ගැළපෙන නිර්දේශිත ප්‍රභේදයක් තෝරා ගැනීම වැදගත් වේ.",
+    "crop": "Big Onion",
+    "category": "Variety",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-002",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "O-C-002-EN",
+    "title": "Recommended Big Onion Varieties",
+    "text": "The recommended big onion varieties include Dambulla Selection, MIBO-01, Pusa Red, Agrifound Light Red, and Nasik Red. Selecting a recommended variety suitable for the growing area and cultivation conditions is important.",
+    "crop": "Big Onion",
+    "category": "Variety",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-002",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "O-C-003-SI",
+    "title": "වගා කාලය සහ බී ලූණු බීජ අවශ්‍යතාව",
+    "text": "බී ලූණු වගාව සඳහා ප්‍රදේශයට ගැළපෙන නිසි වගා කාලය තෝරා ගැනීම වැදගත් වේ. බීජ අවශ්‍යතාවය තවාන් සකස් කිරීමේ ක්‍රමය සහ බීජ වපුරන ආකාරය අනුව වෙනස් වේ. බීජ ප්‍රමාණය නිසි ලෙස සැලසුම් කර තවාන් සඳහා අවශ්‍ය ප්‍රමාණය ලබාගත යුතුය.",
+    "crop": "Big Onion",
+    "category": "Cultivation",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-003",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "O-C-003-EN",
+    "title": "Cultivation Season and Seed Requirement",
+    "text": "Selecting the appropriate cultivation season for the growing area is important for big onion production. The seed requirement varies according to the nursery preparation method and the method used for sowing the seeds. The required quantity of seed should be planned before establishing the nursery.",
+    "crop": "Big Onion",
+    "category": "Cultivation",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-003",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "O-C-004-SI",
+    "title": "බී ලූණු තවාන් කළමනාකරණය සහ පස විෂබීජහරණය",
+    "text": "බී ලූණු පැළ නිෂ්පාදනය සඳහා හොඳින් සකස් කළ තවානක් භාවිතා කළ යුතුය. තවාන් පස විෂබීජහරණය කිරීම සඳහා පස පුළුස්සා විෂබීජහරණය කිරීම, සූර්ය තාප විෂබීජහරණය (solarization) හෝ නිර්දේශිත රසායනික ක්‍රම භාවිතා කළ හැක. තවාන සකස් කිරීමේදී පසෙහි ජලවහනය සහ පසෙහි තත්ත්වය පිළිබඳ අවධානය යොමු කළ යුතුය.",
+    "crop": "Big Onion",
+    "category": "Nursery Management",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-004",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "O-C-004-EN",
+    "title": "Big Onion Nursery Management and Soil Sterilization",
+    "text": "A properly prepared nursery should be used for producing healthy big onion seedlings. Nursery soil can be sterilized using methods such as burning the soil, solarization, or recommended chemical treatments. Attention should be given to soil condition and drainage when preparing the nursery.",
+    "crop": "Big Onion",
+    "category": "Nursery Management",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-004",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "O-C-005-SI",
+    "title": "බීජ ප්‍රතිකාර සහ බී ලූණු තවාන් වැපිරීම",
+    "text": "බී ලූණු බීජ වපුරීමට පෙර බීජ ප්‍රතිකාර කිරීම සඳහා Thiram 80% 4–4.5 g/kg බීජ හෝ Thiophanate methyl 50% + Thiram 30% WP 4 g/kg බීජ භාවිතා කරන බව මූලාශ්‍රයේ සඳහන් වේ. පේළි ක්‍රමයට වපුරන විට එක් තවාන් පාත්තියකට බීජ 35–40 g පමණ භාවිතා කර පේළි අතර සෙන්ටිමීටර් 10 ක පරතරයක් සහ සෙන්ටිමීටර් 1 ක් පමණ ගැඹුරු furrows සකස් කළ යුතුය. විසුරුවා වපුරන ක්‍රමයේදී එක් පාත්තියකට බීජ 70–80 g පමණ භාවිතා කළ හැක. බීජ වපුරා අවසන් වූ පසු පොලිතින් ආවරණයක් යෙදිය හැක. පැළ වර්ධනය දුර්වල නම් Urea 15 g, ජලය ලීටර් 4.5 ක දියකර පත්‍ර මත යෙදීමෙන් පසු පත්‍ර සෝදා හැරිය යුතු බව මූලාශ්‍රයේ සඳහන් වේ.",
+    "crop": "Big Onion",
+    "category": "Seed Treatment",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-005",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "O-C-005-EN",
+    "title": "Big Onion Seed Treatment and Nursery Sowing",
+    "text": "The source recommends seed treatment before sowing using either Thiram 80% at 4–4.5 g per kg of seed or Thiophanate methyl 50% + Thiram 30% WP at 4 g per kg of seed. For row sowing, approximately 35–40 g of seed can be used per nursery bed, with 10 cm spacing between rows and furrows about 1 cm deep. For broadcasting, approximately 70–80 g of seed can be used per bed. After sowing, the nursery may be covered with polythene. If seedling growth is poor, the source states that 15 g of urea can be dissolved in 4.5 litres of water and applied to the leaves, followed by washing the leaves.",
+    "crop": "Big Onion",
+    "category": "Seed Treatment",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-005",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "O-C-006-SI",
+    "title": "බී ලූණු ක්ෂේත්‍ර සකස් කිරීම සහ පැළ සිටුවීම",
+    "text": "වී වගා කළ ඉඩම්වල උස් පාත්ති සහ වැලි සහිත පසක පහත් පාත්ති සකස් කළ හැක. දින 35 ක් පමණ වයසැති, නිරෝගී සහ අවම වශයෙන් පත්‍ර 3 ක් සහිත පැළ ක්ෂේත්‍රයේ සිටුවීමට තෝරා ගත යුතුය. පේළි අතර පරතරය සෙන්ටිමීටර් 10 ක්ද, පැළ අතර පරතරය සෙන්ටිමීටර් 10 ක්ද තබා, සෙන්ටිමීටර් 1–1.5 ක් පමණ ගැඹුරට පැළ සිටුවිය යුතුය. සිටුවීමට පෙර පැළවල මුල් නිර්දේශිත දිලීරනාශක ද්‍රාවණයක විනාඩි 30 ක් පමණ ගිල්වා ප්‍රතිකාර කිරීම සඳහන් කර ඇත.",
+    "crop": "Big Onion",
+    "category": "Field Establishment",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-006",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "O-C-006-EN",
+    "title": "Big Onion Field Preparation and Planting",
+    "text": "Raised beds can be prepared in paddy lands, while sunken beds can be prepared in sandy soils. Healthy seedlings about 35 days old and having at least three leaves should be selected for field planting. A spacing of 10 cm between rows and 10 cm between plants is recommended, with seedlings planted at a depth of about 1–1.5 cm. Before planting, the roots can be dipped in a recommended fungicide solution for about 30 minutes.",
+    "crop": "Big Onion",
+    "category": "Field Establishment",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-006",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "O-F-001-SI",
+    "title": "බී ලූණු තවාන් සහ ක්ෂේත්‍ර පොහොර කළමනාකරණය",
+    "text": "බී ලූණු වගාවේ පොහොර යෙදීම පසෙහි තත්ත්වය සහ වගා අවශ්‍යතාවය අනුව සිදු කළ යුතු අතර පස පරීක්ෂා කර පොහොර නිර්දේශ ලබා ගැනීම වැදගත් වේ. තවාන් සඳහා මූලික පොහොර ලෙස සමහර ප්‍රදේශවල Urea 15 g, TSP 30 g සහ MOP 15 g වැනි ප්‍රමාණ මූලාශ්‍රයේ සඳහන් වේ. නමුත් ලබාදුන් මූලාශ්‍ර උපුටනයේ තවාන් පොහොර වගුවේ සියලුම අගයන් සහ ශීර්ෂ පැහැදිලිව නොපෙනෙන බැවින් සම්පූර්ණ වගුව නැවත තහවුරු නොකර නොපැහැදිලි අගයන් භාවිතා නොකළ යුතුය. ක්ෂේත්‍රයේ කාබනික පොහොර හෙක්ටයාරයකට ටොන් 10–12 ක් පමණ යෙදීම සඳහන් කර ඇත. ක්ෂේත්‍ර පොහොර වගුවේද ලබාදුන් උපුටනයේ සමහර අගයන් පැහැදිලි නොවන බැවින් නිවැරදි නිර්දේශය සඳහා මුල් කෘෂිකර්ම දෙපාර්තමේන්තු ලේඛනය පරීක්ෂා කළ යුතුය.",
+    "crop": "Big Onion",
+    "category": "Fertilizer",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-F-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "O-F-001-EN",
+    "title": "Big Onion Nursery and Field Fertilizer Management",
+    "text": "Fertilizer application in big onion cultivation should be carried out according to soil condition and crop requirements, and soil testing is recommended before determining fertilizer requirements. The source mentions nursery basal fertilizer quantities such as 15 g urea, 30 g TSP, and 15 g MOP for some areas. However, the extracted nursery fertilizer table provided does not clearly preserve all headings and values, so unclear values should not be reconstructed or invented without checking the original document. For field cultivation, the source mentions approximately 10–12 tonnes of organic fertilizer per hectare. Some values in the field fertilizer table are also unclear in the supplied extraction; therefore, the original Department of Agriculture document should be checked before using the exact fertilizer rates.",
+    "crop": "Big Onion",
+    "category": "Fertilizer",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-F-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "O-C-007-SI",
+    "title": "බී ලූණු ජල කළමනාකරණය සහ වල් පැළෑටි පාලනය",
+    "text": "බී ලූණු වගාවේ පළමු මාසය තුළ දින 2–3 කට වරක් ජලය සැපයිය යුතු අතර පළමු මාසයෙන් පසු දින 4–5 කට වරක් ජලය සැපයීම සඳහන් කර ඇත. අස්වැන්න නෙළීමට සති 2 කට පෙර ජලය සැපයීම නතර කළ යුතුය. වල් පැළෑටි පාලනය සඳහා ගැඹුරු සී සෑම සිදු කිරීම වැදගත් වන අතර, වල් පැළෑටි මතුවීමට පෙර oxyfluorfen හෝ pendimethalin භාවිතා කළ හැකි බව මූලාශ්‍රයේ සඳහන් වේ. සති 3–4 කට පසු අවශ්‍ය නම් අතින් වල් පැළෑටි ඉවත් කළ හැක.",
+    "crop": "Big Onion",
+    "category": "Water and Weed Management",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-007",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "O-C-007-EN",
+    "title": "Big Onion Water and Weed Management",
+    "text": "During the first month of big onion cultivation, irrigation should be provided every 2–3 days, while after the first month irrigation can be provided every 4–5 days. Irrigation should be stopped two weeks before harvesting. Deep ploughing is important for weed management. The source states that oxyfluorfen or pendimethalin can be used as pre-emergence herbicides, followed by hand weeding after about 3–4 weeks when necessary.",
+    "crop": "Big Onion",
+    "category": "Water and Weed Management",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-007",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "O-C-008-SI",
+    "title": "බී ලූණු අස්වනු නෙළීම සහ ගබඩා කිරීම",
+    "text": "අස්වනු නෙළීමට සති 3 කට පෙර කෘමිනාශක යෙදීම නතර කළ යුතු අතර සති 2 කට පෙර ජලය සැපයීම නතර කළ යුතුය. පත්‍ර කහ පැහැයට හැරී ගෙල නැමීම ආරම්භ වන අතර වගාවේ 50% කට වැඩි ප්‍රමාණයක මෙය සිදු වූ විට ඉතිරි පැළ ලී පුවරුවක් ආධාරයෙන් පහළට තල්ලු කළ හැක. සති 2 කට පමණ පසු අස්වැන්න නෙළා, තද හිරු එළියට නොදමා වාතයේ වියළා ගත යුතුය. ගෙල දුඹුරු පැහැ වූ පසු පත්‍ර කොටස අඟලක් පමණ ඉතිරි කර කපා දැමිය යුතුය. ගබඩා කිරීම සඳහා ලී පටි හෝ දැල් මත බල්බ තැබිය හැකි අතර වියළි පත්‍ර සහිත පොකුරු ලෙස එල්ලා තැබිය හැක. ගබඩා ස්ථානය වර්ෂාවෙන් සහ පිනි වලින් ආරක්ෂිත, හොඳින් වාතාශ්‍රය ලැබෙන සහ ආලෝකය සහිත ස්ථානයක් විය යුතුය. නරක් වූ හෝ පැළ වූ බල්බ නිරන්තරයෙන් පරීක්ෂා කර ඉවත් කළ යුතුය.",
+    "crop": "Big Onion",
+    "category": "Harvest and Storage",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-008",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "O-C-008-EN",
+    "title": "Big Onion Harvesting and Storage",
+    "text": "Insecticide application should be stopped three weeks before harvesting, and irrigation should be stopped two weeks before harvesting. The leaves become yellow and the necks begin to fall over. When this condition occurs in more than 50% of the crop, the remaining plants can be pressed down using a plank. Harvesting can be carried out about two weeks later. The bulbs should be air-dried rather than exposed to strong sunlight. When the neck becomes brown, the leaves should be cut while leaving approximately one inch of the neck. For storage, bulbs can be placed on wooden slats or mesh, or stored in bunches by hanging them with dry leaves. The storage area should be protected from rain and dew, well ventilated, and adequately lighted. Rotten or sprouted bulbs should be regularly inspected and removed.",
+    "crop": "Big Onion",
+    "category": "Harvest and Storage",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-008",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "O-C-009-SI",
+    "title": "බී ලූණු වගාව සඳහා තාක්ෂණික හා ආයතනික තොරතුරු",
+    "text": "බී ලූණු වගාව පිළිබඳ වැඩිදුර තාක්ෂණික තොරතුරු සඳහා කෘෂිකර්ම දෙපාර්තමේන්තුවේ Field Crops Research and Development Institute (FCRDI), මහඉලුප්පල්ලම සම්බන්ධ කරගත හැක. මූලාශ්‍රයේ FCRDI මහඉලුප්පල්ලම සඳහා 025-2249177 සහ 025-2249132 යන දුරකථන අංක සඳහන් කර ඇත. National Agriculture Information and Communication Centre (NAICC), ගන්නෝරුව ද කෘෂිකාර්මික තොරතුරු සඳහා ආයතනික මූලාශ්‍රයක් ලෙස සඳහන් වේ. මෙම තොරතුරු කෘෂිකර්ම දෙපාර්තමේන්තුව/කෘෂිකර්ම අමාත්‍යාංශය විසින් 2016 දී ලබාදුන් මූලාශ්‍රයට අදාළ වේ.",
+    "crop": "Big Onion",
+    "category": "Reference",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-009",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "O-C-009-EN",
+    "title": "Technical and Institutional Information for Big Onion Cultivation",
+    "text": "For further technical information on big onion cultivation, the Department of Agriculture's Field Crops Research and Development Institute (FCRDI), Mahailluppallama can be contacted. The source provides the telephone numbers 025-2249177 and 025-2249132 for FCRDI Mahailluppallama. The National Agriculture Information and Communication Centre (NAICC), Gannoruwa is also identified as an institutional source of agricultural information. These details are associated with the source provided by the Department of Agriculture and Ministry of Agriculture in 2016.",
+    "crop": "Big Onion",
+    "category": "Reference",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "O-C-009",
+    "region": "Sri Lanka",
+    "season": "General"
   }
 ]
 
