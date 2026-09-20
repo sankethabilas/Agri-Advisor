@@ -2380,6 +2380,255 @@
     "source_id": "O-C-009",
     "region": "Sri Lanka",
     "season": "General"
+  },
+  {
+    "id": "MZ-C-001-SI",
+    "title": "බඩ ඉරිඟු වගාව පිළිබඳ හැඳින්වීම සහ සාමාන්‍ය තොරතුරු",
+    "text": "මෙම බඩ ඉරිඟු වගා තොරතුරු කෘෂිකර්ම දෙපාර්තමේන්තුවේ 2016 වර්ෂයේ ප්‍රකාශනයක් මත පදනම් වේ. බඩ ඉරිඟු වගාව සඳහා ප්‍රදේශයට හා වගා ක්‍රමයට ගැළපෙන දේශගුණික තත්ත්ව, පස, වගා කාලය, ප්‍රභේද, බීජ ප්‍රමාණය, පරතරය, පොහොර, ජල සම්පාදනය, වල් පැළෑටි පාලනය සහ අස්වනු කළමනාකරණය සැලකිල්ලට ගත යුතුය.",
+    "crop": "Maize",
+    "category": "Cultivation",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MZ-C-001-EN",
+    "title": "Introduction and General Information on Maize Cultivation",
+    "text": "This maize cultivation information is based on a 2016 publication of the Department of Agriculture, Sri Lanka. Successful maize cultivation requires consideration of climate, soil, cultivation season, varieties, seed requirement, spacing, fertilizer application, irrigation, weed management, and harvesting practices suitable for the area and cultivation system.",
+    "crop": "Maize",
+    "category": "Cultivation",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MZ-C-002-SI",
+    "title": "බඩ ඉරිඟු වගාව සඳහා දේශගුණික අවශ්‍යතා සහ පස",
+    "text": "බඩ ඉරිඟු පහතරට වියළි සහ අතරමැදි කලාපවල මහ කන්නයේ අහස් දියෙන් සාර්ථකව වගා කළ හැකිය. අතිරේක ජලසම්පාදන පහසුකම් ඇත්නම් යල කන්නයේදී ද වගා කළ හැක. තෙත් කලාපයේ හොඳින් ජලවහනය වන ඉඩම්වල අමු කරල් සඳහා යල කන්නයේදී වගා කළ හැක. හොඳින් ජලය බැස යන ගැඹුරු පසක්, විශේෂයෙන් කාබනික ද්‍රව්‍ය අඩංගු රතු දුඹුරු පස, බඩ ඉරිඟු වගාව සඳහා සුදුසු වේ.",
+    "crop": "Maize",
+    "category": "Climate and Soil",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-002",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MZ-C-002-EN",
+    "title": "Climate and Soil Requirements for Maize Cultivation",
+    "text": "Maize can be successfully cultivated under rainfed conditions during the Maha season in the low-country dry and intermediate zones. With supplementary irrigation facilities, it can also be cultivated during the Yala season. In the wet zone, maize for fresh cobs can be cultivated during the Yala season in well-drained lands. Deep, well-drained soils, particularly reddish-brown soils containing organic matter, are suitable for maize cultivation.",
+    "crop": "Maize",
+    "category": "Climate and Soil",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-002",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MZ-C-003-SI",
+    "title": "බඩ ඉරිඟු බිම් සැකසීම සහ සිටුවීමේ කාලය",
+    "text": "බඩ ඉරිඟු වගාව සඳහා සෙ.මී. 15–20 ක් පමණ ගැඹුරට පස පෙරළා, සියුම්ව සකස් කළ සමතලා බිමක් පිළියෙල කරගත යුතුය. අහස් දියෙන් සිදු කරන මහ කන්නයේ වගාව සැප්තැම්බර් අග හෝ ඔක්තෝබර් මුල ආරම්භ කළ හැක. යල කන්නයේ වගාව අප්‍රේල් මුල ආරම්භ කළ හැක. මනා ජල සම්පාදනය සහ කෘමි පාලනය තිබේ නම් අමු කරල් හෙවත් බේබි කෝන් වියළි කලාපයේ ඕනෑම කාලයක වගා කළ හැක.",
+    "crop": "Maize",
+    "category": "Land Preparation",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-003",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MZ-C-003-EN",
+    "title": "Maize Land Preparation and Planting Time",
+    "text": "For maize cultivation, the soil should be turned to a depth of approximately 15–20 cm and prepared into a fine, level seedbed. Rainfed Maha cultivation can be started in late September or early October. Yala cultivation can be started in early April. Fresh cobs or baby corn can be cultivated at any time of the year in the dry zone when adequate irrigation and insect pest management are available.",
+    "crop": "Maize",
+    "category": "Land Preparation",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-003",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MZ-C-004-SI",
+    "title": "බඩ ඉරිඟු සඳහා නිර්දේශිත ප්‍රභේද",
+    "text": "බඩ ඉරිඟු සඳහා විවෘත පරාගිත ප්‍රභේද ලෙස භද්‍රා සහ රුවන් සඳහන් කර ඇත. භද්‍රා ප්‍රභේදයේ බීජ තැඹිලි පැහැති වන අතර වගා කාලය දින 105–110 ක් පමණ වන අතර සාමාන්‍ය අස්වැන්න හෙක්ටයාරයකට ටොන් 04 කි. රුවන් ප්‍රභේදයේ ද බීජ තැඹිලි පැහැති වන අතර වගා කාලය දින 105–110 ක් සහ සාමාන්‍ය අස්වැන්න හෙක්ටයාරයකට ටොන් 04 කි. දෙමුහුම් ප්‍රභේද ලෙස සම්පත් සහ MI Maize Hybrid 1 සඳහන් කර ඇත. සම්පත් ප්‍රභේදයේ බීජ තැඹිලි පැහැති වන අතර වගා කාලය දින 105–110 ක් සහ සාමාන්‍ය අස්වැන්න හෙක්ටයාරයකට ටොන් 05 කි. MI Maize Hybrid 1 හි බීජ තැඹිලි පැහැති වන අතර වගා කාලය දින 105–110 ක් වේ. ලබාදුන් මූලාශ්‍ර උපුටනයේ එහි සාමාන්‍ය අස්වැන්න 'ටොන් 5-5' ලෙස දැක්වී ඇති බැවින් එය තහවුරු නොකර වෙනස් නොකළ යුතුය.",
+    "crop": "Maize",
+    "category": "Variety",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-004",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MZ-C-004-EN",
+    "title": "Recommended Maize Varieties",
+    "text": "The recommended open-pollinated maize varieties include Bhadra and Ruwan. Bhadra has orange-colored seeds, a maturity period of approximately 105–110 days, and an average yield of 4 tonnes per hectare. Ruwan also has orange-colored seeds, a maturity period of 105–110 days, and an average yield of 4 tonnes per hectare. The recommended hybrid varieties include Sampath and MI Maize Hybrid 1. Sampath has orange-colored seeds, a maturity period of 105–110 days, and an average yield of 5 tonnes per hectare. MI Maize Hybrid 1 has orange-colored seeds and a maturity period of 105–110 days. In the supplied source extraction, its average yield appears as '5-5 tonnes', so this value has not been interpreted or corrected without verification from the original source.",
+    "crop": "Maize",
+    "category": "Variety",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-004",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MZ-C-005-SI",
+    "title": "බඩ ඉරිඟු බීජ අවශ්‍යතාවය සහ පරතරය",
+    "text": "බඩ ඉරිඟු වගාව සඳහා සාමාන්‍යයෙන් හෙක්ටයාරයකට බීජ කිලෝග්‍රෑම් 15–20 ක් පමණ අවශ්‍ය වේ. දෙමුහුම් බීජ භාවිතා කරන විට හෙක්ටයාරයකට කිලෝග්‍රෑම් 12 ක් පමණ අවශ්‍ය වේ. සෙ.මී. 60 × 30 පරතරයෙන් එක් ස්ථානයක එක් පැළයක් සිටුවන විට හෙක්ටයාරයකට පැළ 55,555 ක් පමණ ලබාගත හැක. සෙ.මී. 60 × 60 පරතරයෙන් එක් ස්ථානයක පැළ දෙකක් සිටුවන විට ද හෙක්ටයාරයකට පැළ 55,555 ක් පමණ ලබාගත හැක. වාරි පහසුකම් යටතේ සෙ.මී. 75 × 15 පරතරයෙන් එක් පැළයක් තබා හෙක්ටයාරයකට පැළ 88,888 ක් පමණ ලබාගත හැක. යාන්ත්‍රීකරණය කිරීමේදී පේලි අතර සෙ.මී. 80 සහ පැළ අතර සෙ.මී. 20–25 පරතරයක් තබා පැළ ගහණය 55,000 මට්ටමේ පවත්වාගත හැක.",
+    "crop": "Maize",
+    "category": "Seed and Spacing",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-005",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MZ-C-005-EN",
+    "title": "Maize Seed Requirement and Spacing",
+    "text": "Approximately 15–20 kg of seed per hectare is required for maize cultivation. When hybrid seed is used, approximately 12 kg per hectare is required. With a spacing of 60 × 30 cm and one plant per planting point, approximately 55,555 plants can be maintained per hectare. With a spacing of 60 × 60 cm and two plants per planting point, approximately 55,555 plants can also be maintained per hectare. Under irrigation, a spacing of 75 × 15 cm with one plant per planting point can provide approximately 88,888 plants per hectare. For mechanized cultivation, a row spacing of 80 cm and plant spacing of 20–25 cm can maintain a plant population of approximately 55,000 plants per hectare.",
+    "crop": "Maize",
+    "category": "Seed and Spacing",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-005",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MZ-F-001-SI",
+    "title": "බඩ ඉරිඟු පොහොර යෙදීම",
+    "text": "අහස් දියෙන් වගා කරන බඩ ඉරිඟු සඳහා මූලික පොහොර ලෙස සිටුවීමට පෙර හෝ සිටුවා දින 10–14 ඇතුළත හෙක්ටයාරයකට යූරියා කිලෝග්‍රෑම් 75, සාන්ද්‍ර සුපර් පොස්පේට් කිලෝග්‍රෑම් 100 සහ මියුරියේට් ඔෆ් පොටෑෂ් කිලෝග්‍රෑම් 50 යෙදිය යුතු බව සඳහන් වේ. සති 4–5 දී මතුපිට පොහොර ලෙස හෙක්ටයාරයකට යූරියා කිලෝග්‍රෑම් 140 යෙදිය යුතුය. ජල සම්පාදනය යටතේ සාමාන්‍ය පැළ ගහණයක් වන 55,555 සඳහා යූරියා කිලෝග්‍රෑම් 225 ක්ද, වැඩි පැළ ගහණයක් වන 75,000–88,000 සඳහා යූරියා කිලෝග්‍රෑම් 350 ක්ද මතුපිට පොහොර ලෙස යෙදිය යුතු බව මූලාශ්‍රයේ සඳහන් වේ.",
+    "crop": "Maize",
+    "category": "Fertilizer",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-F-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MZ-F-001-EN",
+    "title": "Maize Fertilizer Application",
+    "text": "For rainfed maize cultivation, the source recommends applying basal fertilizer before planting or within 10–14 days after planting at 75 kg urea, 100 kg concentrated superphosphate, and 50 kg muriate of potash per hectare. At 4–5 weeks, 140 kg of urea per hectare should be applied as top dressing. Under irrigation, the source recommends 225 kg of urea per hectare as top dressing for a normal plant population of 55,555 plants, and 350 kg of urea per hectare for a higher plant population of 75,000–88,000 plants.",
+    "crop": "Maize",
+    "category": "Fertilizer",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-F-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MZ-C-006-SI",
+    "title": "බඩ ඉරිඟු ජල සම්පාදනය සහ වල් පැළෑටි මර්දනය",
+    "text": "බඩ ඉරිඟු වගාවේ මල් පිපෙන අවධියේදී ජල හිඟයක් ඇති නොවීමට වගබලා ගත යුතුය. බීජ සිටුවා දින 85–90 කට පසු ජල සම්පාදනය නතර කළ හැක. වගාවේ මුල් සති 3–4 තුළ ක්ෂේත්‍රය වල් පැළෑටිවලින් තොරව පවත්වා ගැනීම අත්‍යවශ්‍ය වේ. නිසි බිම් සැකසීම, පේලි අතර පරතරය භාවිතා කිරීම සහ යාන්ත්‍රීකරණය මඟින් වල් පැළෑටි මර්දනය කළ හැක.",
+    "crop": "Maize",
+    "category": "Water and Weed Management",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-006",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MZ-C-006-EN",
+    "title": "Maize Irrigation and Weed Management",
+    "text": "During the flowering stage of maize, care should be taken to prevent water stress. Irrigation can be stopped approximately 85–90 days after planting. During the first 3–4 weeks, it is essential to keep the field free from weeds. Weed management can be carried out through proper land preparation, appropriate row spacing, and mechanization.",
+    "crop": "Maize",
+    "category": "Water and Weed Management",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-006",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MZ-C-007-SI",
+    "title": "බඩ ඉරිඟු අස්වනු නෙලීම සහ පසු අස්වනු කටයුතු",
+    "text": "අමු කරල් දින 70–75 කින් පමණ නෙලා ගත හැකි අතර කෙඳි දුඹුරු හෝ කළු පැහැයට හැරුණු පසු නෙලීමට සුදුසු වේ. පැසුණු කරල්වල කොළපු වියළී බීජයේ පහළ කෙළවරේ කළු ස්ථරයක් මතු වූ පසු අස්වනු නෙලිය යුතුය. මනා පාලනයක් යටතේ හෙක්ටයාරයකට කිලෝග්‍රෑම් 5000–7000 ක පමණ අස්වැන්නක් ලබාගත හැක. නෙලාගත් කරල් කොළපු පිටින් දින 2–3 ක් අව්වේ වියළා, පසුව කොළපු ඉවත් කර බීජ වෙන්කර ගත යුතුය.",
+    "crop": "Maize",
+    "category": "Harvest and Post-Harvest",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-007",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MZ-C-007-EN",
+    "title": "Maize Harvesting and Post-Harvest Handling",
+    "text": "Fresh maize cobs can be harvested after approximately 70–75 days, when the silks become brown or black. Mature maize cobs should be harvested after the husks dry and a black layer appears at the lower end of the seed. Under good management, a yield of approximately 5,000–7,000 kg per hectare can be obtained. Harvested cobs should be dried in the sun with the husks for 2–3 days, after which the husks can be removed and the seeds separated.",
+    "crop": "Maize",
+    "category": "Harvest and Post-Harvest",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-007",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MZ-C-008-SI",
+    "title": "බඩ ඉරිඟු වගාවේ ප්‍රධාන කළමනාකරණ කරුණු",
+    "text": "බඩ ඉරිඟු වගාව සාර්ථකව පවත්වා ගැනීම සඳහා නිසි වගා කාලය තෝරා ගැනීම, හොඳින් ජලය බැස යන පසක් භාවිතා කිරීම, නිර්දේශිත ප්‍රභේද තෝරා ගැනීම, නිසි බීජ ප්‍රමාණය සහ පැළ පරතරය පවත්වා ගැනීම, නිර්දේශිත පොහොර යෙදීම, මල් පිපෙන අවධියේ ප්‍රමාණවත් ජල සම්පාදනය, මුල් සති 3–4 තුළ වල් පැළෑටි පාලනය සහ නිසි කාලයේ අස්වනු නෙලීම වැදගත් වේ. අමු කරල් නිෂ්පාදනය සහ පැසුණු බීජ නිෂ්පාදනය සඳහා වගා කළමනාකරණ අවශ්‍යතා වෙනස් විය හැක.",
+    "crop": "Maize",
+    "category": "Crop Management",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-008",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MZ-C-008-EN",
+    "title": "Key Management Practices in Maize Cultivation",
+    "text": "Successful maize cultivation requires selecting the appropriate cultivation season, using well-drained soil, selecting recommended varieties, maintaining suitable seed rates and plant spacing, applying recommended fertilizer, providing adequate water during the flowering stage, controlling weeds during the first 3–4 weeks, and harvesting at the appropriate maturity stage. Management requirements may differ depending on whether the crop is produced for fresh cobs or mature grain.",
+    "crop": "Maize",
+    "category": "Crop Management",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-008",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MZ-C-009-SI",
+    "title": "බඩ ඉරිඟු වගාව සඳහා විමසීම් සහ වැඩිදුර තොරතුරු",
+    "text": "බඩ ඉරිඟු වගාව පිළිබඳ වැඩිදුර තාක්ෂණික තොරතුරු සහ උපදෙස් සඳහා කෘෂිකර්ම දෙපාර්තමේන්තුවේ ක්ෂේත්‍ර භෝග පර්යේෂණ හා සංවර්ධන ආයතනය (FCRDI), මහඉළුප්පල්ලම සම්බන්ධ කරගත හැක. මූලාශ්‍රයේ අධ්‍යක්ෂ, ක්ෂේත්‍ර භෝග පර්යේෂණ හා සංවර්ධන ආයතනය, මහඉළුප්පල්ලම ලෙස සඳහන් කර ඇති අතර දුරකථන අංක ලෙස 025-2249177 සහ 025-2249132 ලබා දී ඇත.",
+    "crop": "Maize",
+    "category": "Reference",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-009",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MZ-C-009-EN",
+    "title": "Further Information and Technical Inquiries for Maize Cultivation",
+    "text": "For further technical information and advice on maize cultivation, the Field Crops Research and Development Institute (FCRDI), Mahailluppallama of the Department of Agriculture can be contacted. The source identifies the Director of the Field Crops Research and Development Institute, Mahailluppallama, and provides the telephone numbers 025-2249177 and 025-2249132.",
+    "crop": "Maize",
+    "category": "Reference",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MZ-C-009",
+    "region": "Sri Lanka",
+    "season": "General"
   }
 ]
 
