@@ -2629,6 +2629,205 @@
     "source_id": "MZ-C-009",
     "region": "Sri Lanka",
     "season": "General"
+  },
+  {
+    "id": "MG-C-001-SI",
+    "title": "මුං වගා කරන ආකාරය",
+    "text": "මුං වගාව නියමිත කාලයට සිදු කිරීම වැදගත් වේ. මහ කන්නයේ වර්ෂා ජලයෙන් වගා කරන විට නොවැම්බර් මැදදී වගාව ආරම්භ කිරීම සුදුසුය. යල කන්නයේදී අප්‍රේල් මාසයේ ලැබෙන පළමු වැස්සත් සමඟ වගාව ආරම්භ කළ යුතුය. අස්වනු නෙලන අවධියේ වියළි කාලගුණ තත්ත්වයක් පැවතීම සුදුසුය. හොඳින් ජලය වහනය වන බිමක් තෝරාගත යුතු අතර පෙර කන්නයේ රනිල බෝග වගා නොකරන ලද බිමක් වඩාත් සුදුසුය. බිම් සැකසීමේදී පස සෙ.මී. 15–20 ක් පමණ ගැඹුරට පෙරළා කැට පොඩිකර ගත යුතුය. බීජ සමතලා භූමියේ හෝ වැටි හා කාණු ක්‍රමයට සිටුවිය හැක.",
+    "crop": "Mungbean",
+    "category": "Cultivation",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MG-C-001-EN",
+    "title": "Mungbean Cultivation Method",
+    "text": "Timely cultivation is important for mungbean production. Under rainfed Maha conditions, cultivation should preferably begin in mid-November. During the Yala season, cultivation should begin with the first rains received in April. Dry weather conditions are desirable during the harvesting period. A well-drained field should be selected, and a field that was not cultivated with a legume crop during the previous season is preferable. For land preparation, the soil should be turned to a depth of approximately 15–20 cm and the soil clods should be broken down. Seeds can be planted on level land or using ridge-and-furrow methods.",
+    "crop": "Mungbean",
+    "category": "Cultivation",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MG-C-002-SI",
+    "title": "මුං බීජ ප්‍රතිකාර සහ සිටුවීම",
+    "text": "මුං බෝගය දිලීර රෝගවලින් ආරක්ෂා කර ගැනීම සඳහා සුදුසු දිලීරනාශකයකින් බීජ කිලෝග්‍රෑම් 1 කට ග්‍රෑම් 4 ක් මිශ්‍ර කර බීජ ප්‍රතිකාර කළ යුතුය. බීජ සිටුවීමේදී පේළි අතර සෙ.මී. 30 ක් සහ පැළ අතර සෙ.මී. 15 ක පරතරයක් පවත්වා ගත යුතුය. හෙක්ටයාරයකට බීජ කිලෝග්‍රෑම් 35–40 ක් පමණ අවශ්‍ය වේ.",
+    "crop": "Mungbean",
+    "category": "Seed Treatment and Planting",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-002",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MG-C-002-EN",
+    "title": "Mungbean Seed Treatment and Planting",
+    "text": "To protect mungbean from fungal diseases, the seeds should be treated by mixing 4 g of a suitable fungicide with 1 kg of seed. During planting, a spacing of 30 cm between rows and 15 cm between plants should be maintained. Approximately 35–40 kg of seed is required per hectare.",
+    "crop": "Mungbean",
+    "category": "Seed Treatment and Planting",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-002",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MG-C-003-SI",
+    "title": "මුං සඳහා නිර්දේශිත ප්‍රභේද",
+    "text": "මූලාශ්‍රයේ මුං සඳහා ප්‍රභේද කිහිපයක් සඳහන් කර ඇත. බොම්බේ / බොබේ ප්‍රභේදයේ වයස දින 75–90 ක් සහ අස්වැන්න කිලෝග්‍රෑම් 1400 ක් පමණ බව සඳහන් වේ. D5.24 ලෙස උපුටනය වී ඇති ප්‍රභේදයේ වයස දින 60–70 ක් සහ අස්වැන්න කිලෝග්‍රෑම් 1500 ක් පමණ වේ. 'විශේෂිත ප්‍රභේද 01' ලෙස උපුටනය වී ඇති නාමයේ වයස දින 55–65 ක් සහ අස්වැන්න කිලෝග්‍රෑම් 1600 ක් පමණ වේ. 'විශේෂිත ප්‍රභේද 02' ලෙස උපුටනය වී ඇති නාමයේ වයස දින 60–70 ක් සහ අස්වැන්න කිලෝග්‍රෑම් 1500 ක් පමණ වේ. තවත් OCR-දෝෂ සහිත ප්‍රභේද දෙකක වයස දින 60–70 සහ 60–65 අතර වන අතර අස්වැන්න කිලෝග්‍රෑම් 1600 සහ 1500 පමණ ලෙස උපුටනය වී ඇත. ලේඛනයේ සඳහන් අනෙකුත් ප්‍රභේද නාම ලෙස එම්.අයි.සී.පී. 01, වරුණි, ධවල, එම්.අයි.35 සහ ඒ.එන්.කේ.සී.පී. 01 සඳහන් වේ. හානි වූ ප්‍රභේද නාම මුල් ලේඛනය පරීක්ෂා නොකර නිවැරදි කර නොගත යුතුය.",
+    "crop": "Mungbean",
+    "category": "Variety",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-003",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MG-C-003-EN",
+    "title": "Recommended Mungbean Varieties",
+    "text": "Several mungbean varieties are listed in the source. The Bombay/Bobe variety has a maturity period of 75–90 days and an average yield of approximately 1,400 kg per hectare. The variety extracted as D5.24 has a maturity period of 60–70 days and an average yield of approximately 1,500 kg per hectare. The variety extracted as 'Special Variety 01' has a maturity period of 55–65 days and an average yield of approximately 1,600 kg per hectare. The variety extracted as 'Special Variety 02' has a maturity period of 60–70 days and an average yield of approximately 1,500 kg per hectare. Two additional variety names are corrupted in the supplied extraction; their maturity periods are 60–70 and 60–65 days, with yields of approximately 1,600 and 1,500 kg per hectare respectively. Other variety names stated in the document include MICP 01, Varuni, Dhawala, MI35, and ANKCP 01. Corrupted variety names should be verified against the original document before being normalized.",
+    "crop": "Mungbean",
+    "category": "Variety",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-003",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MG-F-001-SI",
+    "title": "මුං වගාව සඳහා පොහොර යෙදීම",
+    "text": "මුං වගාවේ පොහොර යෙදීම සඳහා මූලික පොහොර බීජ සිටුවීමට පෙර යෙදිය යුතු බව මූලාශ්‍රයේ සඳහන් වේ. අහස් දියෙන් සිදු කරන වගාව සඳහා මූලික පොහොර ලෙස හෙක්ටයාරයකට කිලෝග්‍රෑම් 35, 100 සහ 75 යන ප්‍රමාණ තුනක් සඳහන් කර ඇත. ලබාදුන් උපුටනයේ මෙම අගයන්ට අදාළ පොහොර වර්ගවල ශීර්ෂ පැහැදිලිව නොපෙනෙන බැවින් ඒවා අනුමාන කර නම් නොකළ යුතුය. මතුපිට පොහොර සිටුවා දින 30 කදී යෙදිය යුතු බව සඳහන් කර ඇත. නිවැරදි පොහොර වර්ග සහ සම්පූර්ණ නිර්දේශය සඳහා මුල් ලේඛනය තහවුරු කළ යුතුය.",
+    "crop": "Mungbean",
+    "category": "Fertilizer",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-F-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MG-F-001-EN",
+    "title": "Mungbean Fertilizer Application",
+    "text": "The source states that basal fertilizer should be applied before planting mungbean. For rainfed cultivation, three basal fertilizer quantities of 35, 100, and 75 kg per hectare are shown in the supplied extraction. However, the fertilizer names corresponding to these quantities are not clearly preserved in the extracted text, so they should not be guessed or assigned without verification. Top dressing should be applied 30 days after planting. The original document should be checked to confirm the fertilizer types and the complete recommendation.",
+    "crop": "Mungbean",
+    "category": "Fertilizer",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-F-001",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MG-C-004-SI",
+    "title": "මුං වගා නඩත්තුව",
+    "text": "මුං වගාවේ සිටුවා සති 3 කට පමණ පසු එක් ස්ථානයක එක පැළයක් පමණක් සිටින සේ අතිරික්ත පැළ ගලවා ඉවත් කළ යුතුය. වල් මර්ධනය සිටුවා සති 3 දී සහ සති 6 දී සිදු කළ යුතුය. ජල සම්පාදනයේදී පළමු සති 3 තුළ දින 4 කට වරක් පමණ ජලය ලබාදිය යුතු අතර ඉන් පසු දින 7 කට වරක් ජලය සැපයිය හැක. මල් පිපෙන සහ කරල් පිරෙන අවස්ථාවලදී ප්‍රමාණවත් ජල සම්පාදනය ඉතා වැදගත් වේ. පසේ තෙතමනය අනුව ජලය සැපයීම තීරණය කළ හැක.",
+    "crop": "Mungbean",
+    "category": "Crop Maintenance",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-004",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MG-C-004-EN",
+    "title": "Mungbean Crop Maintenance",
+    "text": "Approximately three weeks after planting, excess seedlings should be removed so that one plant remains at each planting point. Weed control should be carried out at about three weeks and six weeks after planting. During the first three weeks, irrigation should be provided approximately every four days, followed by irrigation every seven days. Adequate water supply is particularly important during flowering and pod-filling stages. Irrigation should be adjusted according to soil moisture conditions.",
+    "crop": "Mungbean",
+    "category": "Crop Maintenance",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-004",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MG-C-005-SI",
+    "title": "මුං අස්වනු නෙලීම සහ ගබඩා කිරීම",
+    "text": "මුං කරල් පිදුරු පැහැයට හැරුණු විට වාර කිහිපයකදී අස්වනු නෙලා ගත යුතුය. නෙලාගත් කරල් අව්වේ වියළා ගෝනිවල දමා ලීයකින් තැලීමෙන් බීජ වෙන්කර ගත හැක. කරල්වලින් වෙන්කරගත් බීජ පිරිසිදු කර අව්වේ හොඳින් වියළා ගත යුතුය. රනිල ගුල්ලාගේ හානියෙන් බීජ ආරක්ෂා කර ගැනීම සඳහා වරින් වර බීජ වියළීම සිදු කළ හැක.",
+    "crop": "Mungbean",
+    "category": "Harvest and Storage",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-005",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MG-C-005-EN",
+    "title": "Mungbean Harvesting and Storage",
+    "text": "Mungbean pods should be harvested in several rounds when the pods become straw-colored. Harvested pods can be dried in the sun and placed in sacks, after which the seeds can be separated by beating the sacks with a wooden stick. The separated seeds should be cleaned and thoroughly dried in the sun. Periodic drying of the seeds can be carried out to help protect them from damage by pulse beetles.",
+    "crop": "Mungbean",
+    "category": "Harvest and Storage",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-005",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "MG-C-006-SI",
+    "title": "මැද කන්නයේ මුං වගාව",
+    "text": "මැද කන්නයේ මුං වගාව මහ කන්නයේ අස්වනු නෙලාගත් පසුව, සාමාන්‍යයෙන් පෙබරවාරි මාසයේ සිට යල කන්නයේ වී වගාව ආරම්භ කරන අප්‍රේල් මස අග දක්වා පවතින මාස 2–3 ක කාලය තුළ සිදු කළ හැක. කුඹුරුවල ශේෂ වී ඇති තෙතමනය සහ අතරින් පතර ලැබෙන වැසි උපයෝගී කර ගනිමින් කෙටි කාලීන රනිල බෝගයක් ලෙස වගා කළ හැක. වැඩි නඩත්තුවක් අවශ්‍ය නොවන අතර අස්වැන්න පහසුවෙන් වැඩි මුදලකට අලෙවි කළ හැක. දින 50–70 කදී අස්වනු ලබාගත හැකි බෝග සුදුසු වේ. හොඳින් හෝ මධ්‍යස්ථ ලෙස ජලය බැස යන හෝ කාන්දු වන කුඹුරු වගාව සඳහා තෝරාගත යුතුය.",
+    "crop": "Mungbean",
+    "category": "Off-season Cultivation",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-006",
+    "region": "Sri Lanka",
+    "season": "Mada Season"
+  },
+  {
+    "id": "MG-C-006-EN",
+    "title": "Mungbean Cultivation During the Intermediate Season",
+    "text": "Mungbean can be cultivated during the intermediate period after harvesting the Maha-season crop, generally from February until the end of April, before Yala-season rice cultivation begins. It can be grown as a short-duration legume crop by utilizing residual moisture in paddy fields together with occasional rainfall. It requires relatively little maintenance and the harvested crop can be sold at a higher price. Crops that can be harvested within 50–70 days are suitable for this period. Paddy fields with good or moderate drainage or infiltration should be selected.",
+    "crop": "Mungbean",
+    "category": "Off-season Cultivation",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-006",
+    "region": "Sri Lanka",
+    "season": "Mada Season"
+  },
+
+  {
+    "id": "MG-C-007-SI",
+    "title": "මුං වගාව සඳහා විමසීම් සහ වැඩිදුර තොරතුරු",
+    "text": "මුං වගාව පිළිබඳ වැඩිදුර තාක්ෂණික තොරතුරු සඳහා කෘෂිකර්ම දෙපාර්තමේන්තුවේ ක්ෂේත්‍ර බෝග පර්යේෂණ හා සංවර්ධන ආයතනය, මහඉලුප්පල්ලම සම්බන්ධ කරගත හැක. මූලාශ්‍රයේ දුරකථන සහ ෆැක්ස් අංක ලෙස 025-2249177 සහ 025-2249132 සඳහන් වේ. ලේඛනය සකස් කිරීම සඳහා ජාතික කෘෂි තොරතුරු හා සන්නිවේදන මධ්‍යස්ථානය, ගන්නෝරුව සහ මුද්‍රණය සඳහා කෘෂිකර්ම ප්‍රකාශන ඒකකය, ගන්නෝරුව සම්බන්ධ වී ඇත. මෙම තොරතුරු කෘෂිකර්ම දෙපාර්තමේන්තුව/කෘෂිකර්ම අමාත්‍යාංශය විසින් 2016 දී ප්‍රකාශයට පත් කළ ලේඛනයකට අදාළ වන අතර ආහාර නිෂ්පාදන ජාතික වැඩසටහන 2016–2018 යටතේ සකස් කර ඇත.",
+    "crop": "Mungbean",
+    "category": "Reference",
+    "language": "si",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-007",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "MG-C-007-EN",
+    "title": "Further Information and Technical Inquiries for Mungbean Cultivation",
+    "text": "For further technical information on mungbean cultivation, the Field Crops Research and Development Institute, Mahailluppallama of the Department of Agriculture can be contacted. The source provides the telephone and fax numbers 025-2249177 and 025-2249132. The document was prepared with the involvement of the National Agriculture Information and Communication Centre, Gannoruwa, and printed by the Agriculture Publications Unit, Gannoruwa. The information is associated with a 2016 publication of the Department of Agriculture and Ministry of Agriculture and was prepared under the National Food Production Programme 2016–2018.",
+    "crop": "Mungbean",
+    "category": "Reference",
+    "language": "en",
+    "source": "Department of Agriculture, Sri Lanka",
+    "source_id": "MG-C-007",
+    "region": "Sri Lanka",
+    "season": "General"
   }
 ]
 
