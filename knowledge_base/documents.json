@@ -1732,6 +1732,405 @@
     "source_id": "DOA-FIELD-CROP-GUIDE",
     "region": "Sri Lanka",
     "season": "general"
-  }
+  },
+  {
+    "id": "CH-C-001-SI",
+    "title": "මිරිස් වගාව - සාමාන්‍ය හැඳින්වීම",
+    "text": "මිරිස් (Capsicum annuum L.) ශ්‍රී ලංකාවේ වැදගත් එළවළු හා කුළුබඩු බෝගයකි. ශ්‍රී ලංකාවේ වසරකට ඒක පුද්ගල වියළි මිරිස් පරිභෝජනය කි.ග්‍රෑ. 2.10–2.31 වන අතර එයට නොදෙවෙනි ප්‍රමාණයක් අමු මිරිස් ලෙසද පරිභෝජනයට එකතු වේ.",
+    "crop": "Chilli",
+    "category": "Cultivation",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-C-001-EN",
+    "title": "Chilli Cultivation - General Introduction",
+    "text": "Chilli (Capsicum annuum L.) is an important vegetable and spice crop in Sri Lanka. The annual per capita consumption of dried chilli in Sri Lanka is 2.10–2.31 kg, and a comparable amount is also consumed as fresh chilli.",
+    "crop": "Chilli",
+    "category": "Cultivation",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
 
+  {
+    "id": "CH-C-002-SI",
+    "title": "මිරිස් වගාවේ දේශගුණික හා පාංශු අවශ්‍යතා",
+    "text": "මුහුදු මට්ටමේ සිට මීටර් 1600 පමණ උස් ප්‍රදේශ දක්වා මිරිස් වගා කළ හැක. සුදුසු උෂ්ණත්ව පරාසය 21°C–27°C කි. වාර්ෂික වර්ෂාපතනය මි.මී. 600–1000 පවතින ප්‍රදේශවල අහස් දියෙන් වගා කළ හැක. මනා ජලවහනයක් සහිත ගැඹුරු වැලි ලෝම පස ඉතාමත් සුදුසු වේ. පසෙහි පවතින කාබනික ද්‍රව්‍ය ප්‍රමාණය ඉතා වැදගත් වේ.",
+    "crop": "Chilli",
+    "category": "Cultivation",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-C-002-EN",
+    "title": "Climate and Soil Requirements for Chilli",
+    "text": "Chilli can be cultivated from sea level up to areas around 1600 m above sea level. The suitable temperature range is 21°C–27°C. Chilli can be cultivated under rainfed conditions in areas receiving 600–1000 mm of annual rainfall. Deep sandy loam soils with good drainage are highly suitable. The amount of organic matter present in the soil is also very important.",
+    "crop": "Chilli",
+    "category": "Cultivation",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-C-003-SI",
+    "title": "මිරිස් වගා කළ යුතු කාලය",
+    "text": "මහ කන්නයේදී ඔක්තෝබර් අග සිට නොවැම්බර් මැද දක්වා මිරිස් වගා කළ හැක. යල කන්නයේදී අප්‍රේල් සිට මැයි මස මුල දක්වා වගා කළ හැක. පාලනය කළ හැකි තත්ත්ව යටතේ වසර පුරාම මිරිස් වගා කළ හැක.",
+    "crop": "Chilli",
+    "category": "Cultivation",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "Maha/Yala"
+  },
+  {
+    "id": "CH-C-003-EN",
+    "title": "Chilli Planting Seasons",
+    "text": "During the Maha season, chilli can be cultivated from late October to mid-November. During the Yala season, cultivation can be carried out from April to early May. Under controlled conditions, chilli can be cultivated throughout the year.",
+    "crop": "Chilli",
+    "category": "Cultivation",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "Maha/Yala"
+  },
+
+  {
+    "id": "CH-C-004-SI",
+    "title": "මිරිස් නිර්දේශිත ප්‍රභේද",
+    "text": "මිරිස් සඳහා MI I 01, MI I 02, K A 02, අරුණළු, MI HOT, MI GREEN, ගල්කිරියාගම වරණය, MI VARANIYA 1, MI CH 03, MI PC 01, MI CH HY 01 සහ MI CH HY 02 වැනි ප්‍රභේද සඳහන් කර ඇත. MI I 01 සෙ.මී. 65–75 උසට වැඩෙන අතර කරල් සෙ.මී. 9–13 දිග වේ. MI I 02 හොඳින් අතු බෙදී පඳුරු ආකාරයට වැඩෙන අතර කරල් කෙටි හා සැර වැඩිය. K A 02 MI 2 හා PC1 මුහුම් කර නිපදවා ඇති අතර යල කන්නයට සුදුසුය. අරුණළු MI 2 හා සන්තාකා මුහුම් කර නිපදවා ඇති අතර කරල් සෙ.මී. 8–11 පමණ දිගය. MI HOT අමු හා වියළි මිරිස් සඳහා සුදුසු අතර ඇන්ත්‍රැක්නෝස් රෝගයට මධ්‍යස්ථ ප්‍රතිරෝධී වේ. MI GREEN උතුරු පළාතට වඩාත් සුදුසු අතර කරල් සෙ.මී. 12–14 දිගය. ගල්කිරියාගම වරණය උතුරු මැද පළාතට සුදුසු අතර අමු මිරිස් අස්වැන්න හෙක්ටයාරයකට ටොන් 12–15ක් සහ වියළි මිරිස් අස්වැන්න ටොන් 3.0ක් පමණ වේ. MI VARANIYA 1 පහතරට තෙත් කලාපයේ ගෙවතු වගාවට සුදුසු අතර හෙක්ටයාරයකට ටොන් 20–25ක අස්වැන්නක් ලබාගත හැක. MI CH 03 අපනයනය සඳහා සුදුසු අතර හෙක්ටයාරයකට ටොන් 15–18ක අස්වැන්නක් ලබාගත හැක. MI PC 01 විශේෂයෙන් නැගෙනහිර පළාත සඳහා නිර්දේශ කර ඇති අතර අමු හා වියළි මිරිස් සඳහා භාවිත කළ හැක. MI CH HY 01 අමු මිරිස් සඳහා සුදුසු අතර හෙක්ටයාරයකට ටොන් 35ක අස්වැන්නක් ලබාගත හැකි අතර කොළ කොඩවීම හා වෛරස් රෝගවලට ඉහළ ප්‍රතිරෝධීතාවක් දක්වයි. MI CH HY 02 වියළි සහ අමු මිරිස් සඳහා සුදුසු අතර හෙක්ටයාරයකට ටොන් 35ක අස්වැන්නක් ලබාගත හැක.",
+    "crop": "Chilli",
+    "category": "Variety Selection",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-C-004-EN",
+    "title": "Recommended Chilli Varieties",
+    "text": "The source lists chilli varieties including MI I 01, MI I 02, K A 02, Arunalu, MI HOT, MI GREEN, Galkiriyagama Selection, MI VARANIYA 1, MI CH 03, MI PC 01, MI CH HY 01 and MI CH HY 02. MI I 01 grows to about 65–75 cm and produces pods 9–13 cm long. MI I 02 branches well and develops a bushy growth habit, with short and highly pungent pods. K A 02 was developed by crossing MI 2 and PC1 and is suitable for Yala cultivation. Arunalu was developed by crossing MI 2 and Santhaka and produces pods around 8–11 cm long. MI HOT is suitable for both fresh and dried chilli production and has moderate resistance to anthracnose. MI GREEN is particularly suitable for the Northern Province and produces pods about 12–14 cm long. Galkiriyagama Selection is suitable for the North Central Province and produces about 12–15 tonnes of fresh chilli and 3.0 tonnes of dried chilli per hectare. MI VARANIYA 1 is suitable for home gardens in the low-country wet zone and can produce around 20–25 tonnes per hectare. MI CH 03 is suitable for export and can produce about 15–18 tonnes per hectare. MI PC 01 is particularly recommended for the Eastern Province and can be used for both fresh and dried chilli. MI CH HY 01 is suitable for fresh chilli, can produce around 35 tonnes per hectare and has high resistance to leaf curl and viral diseases. MI CH HY 02 is suitable for both dried and fresh chilli and can produce around 35 tonnes per hectare.",
+    "crop": "Chilli",
+    "category": "Variety Selection",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-C-005-SI",
+    "title": "මිරිස් බීජ අවශ්‍යතාවය සහ තවාන් සැකසීම",
+    "text": "විවෘත පරාගික මිරිස් ප්‍රභේද සඳහා හෙක්ටයාරයකට බීජ කි.ග්‍රෑ. 1.0ක් සහ දෙමුහුම් ප්‍රභේද සඳහා හෙක්ටයාරයකට බීජ ග්‍රෑම් 500ක් අවශ්‍ය වේ. හොඳින් හිරු එළිය ලැබෙන ස්ථානයක, පෙර කන්නවල සොලනේසියේ කුලයට අයත් බෝග වගා නොකළ මීටර් 1ක් පළල සහ අවශ්‍ය තරමට දිග පාත්ති සකස් කර ජීවාණුහරණය කළ යුතුය. බීජ කි.ග්‍රෑ. 1කට 80% කැප්ටාන් ග්‍රෑම් 40ක් යොදා බීජ ප්‍රතිකාර කර තවානේ පේළි දිගේ විසුරුවා හැරිය යුතුය. මීටර් 1 පළල හා මීටර් 3 දිග පාත්තියකට බීජ ග්‍රෑම් 40ක් පමණ තවාන් කළ හැක.",
+    "crop": "Chilli",
+    "category": "Nursery Management",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-C-005-EN",
+    "title": "Chilli Seed Requirement and Nursery Preparation",
+    "text": "For open-pollinated chilli varieties, 1.0 kg of seed per hectare is required, while hybrid varieties require 500 g of seed per hectare. Nursery beds should be prepared in a location receiving good sunlight, avoiding areas where crops belonging to the Solanaceae family were cultivated during the previous season. Beds should be about 1 m wide and of the required length and should be disinfected. Seeds should be treated using 40 g of 80% Captan per 1 kg of seed and then distributed in rows on the nursery bed. About 40 g of seed can be sown in a nursery bed measuring 1 m wide and 3 m long.",
+    "crop": "Chilli",
+    "category": "Nursery Management",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-C-006-SI",
+    "title": "මිරිස් ක්ෂේත්‍රයේ සිටුවීම හා පරතරය",
+    "text": "දෙමුහුම් ප්‍රභේද සඳහා එක් වලකට එක පැළයක් වශයෙන් පැළ අතර සෙ.මී. 60ක් සහ පේළි අතර සෙ.මී. 45ක් පරතරයක් භාවිතා කළ හැක. අනෙකුත් ප්‍රභේද සඳහා එක් වලකට පැළ දෙක බැගින් මෙම පරතරයම භාවිතා කළ හැක. දෙමුහුම් ප්‍රභේද සඳහා එක් වලකට පැළ දෙකක් සිටුවන්නේ නම් පැළ අතර සෙ.මී. 60ක් සහ පේළි අතර සෙ.මී. 60ක් පරතරයක් භාවිතා කළ හැක. ක්ෂේත්‍රය සෙ.මී. 30–45 ගැඹුරින් පස පෙරලා හොඳින් කැට පොඩි වන සේ සකස් කළ යුතුය. ජලය බැස යන ආකාරයේ කාණු සකස් කළ යුතු අතර දින 25–30ක් පමණ වයසැති, සෙ.මී. 15ක් පමණ උස පැළ ක්ෂේත්‍රයේ සිටුවිය යුතුය.",
+    "crop": "Chilli",
+    "category": "Field Establishment",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-C-006-EN",
+    "title": "Chilli Field Planting and Spacing",
+    "text": "For hybrid varieties planted with one plant per hole, a spacing of 60 cm between plants and 45 cm between rows can be used. For other varieties, two plants per hole can be used with the same spacing. If two plants per hole are used for hybrid varieties, a spacing of 60 cm between plants and 60 cm between rows can be used. The field should be prepared by turning the soil to a depth of 30–45 cm and breaking the soil clods well. Drainage channels should be prepared. Seedlings around 25–30 days old and approximately 15 cm tall should be transplanted into the field.",
+    "crop": "Chilli",
+    "category": "Field Establishment",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-C-007-SI",
+    "title": "මිරිස් වගාවේ ජල සම්පාදනය",
+    "text": "මිරිස් වගාව සඳහා හෙක්ටයාරයකට අක්කර අඩි 4ක පමණ ජල ප්‍රමාණයක් අවශ්‍ය වේ. වගාව ආරම්භයේදී පසේ තෙතමනය අනුව ජලය යෙදිය යුතුය. මාස 2කට පසු සතියකට වරක් ජලය සැපයීම ප්‍රමාණවත් වේ. පසේ වයනය අනුව ජල සම්පාදන අවශ්‍යතාවය තරමක් වෙනස් විය හැක.",
+    "crop": "Chilli",
+    "category": "Irrigation",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-C-007-EN",
+    "title": "Irrigation for Chilli Cultivation",
+    "text": "Chilli cultivation requires approximately 4 acre-feet of water per hectare. At the beginning of cultivation, irrigation should be provided according to soil moisture. After two months, watering once a week is sufficient. Irrigation requirements may vary somewhat depending on soil texture.",
+    "crop": "Chilli",
+    "category": "Irrigation",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-C-008-SI",
+    "title": "මිරිස් වගාවේ පොහොර යෙදීම",
+    "text": "මිරිස් වගාවේ මූලික පොහොර ලෙස ත්‍රිත්ව සුපර් පොස්පේට් කි.ග්‍රෑ. 100ක් සහ මියුරියේට් ඔෆ් පොටෑෂ් කි.ග්‍රෑ. 50ක් හෙක්ටයාරයකට යෙදිය යුතුය. සති 2දී යූරියා කි.ග්‍රෑ. 100ක්, සති 4දී කි.ග්‍රෑ. 125ක්, සති 8දී කි.ග්‍රෑ. 125ක් සමඟ මියුරියේට් ඔෆ් පොටෑෂ් කි.ග්‍රෑ. 50ක්, සති 12දී යූරියා කි.ග්‍රෑ. 125ක් සහ සති 16දී යූරියා කි.ග්‍රෑ. 125ක් යෙදිය යුතුය. පොස්පරස් හා පොටෑසියම් මූලික පොහොර ලෙස යෙදීම පාංශු පරීක්ෂාවකින් පසුව කිරීම වඩාත් යෝග්‍ය වේ.",
+    "crop": "Chilli",
+    "category": "Fertilizer",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-C-008-EN",
+    "title": "Fertilizer Application for Chilli",
+    "text": "As the basal fertilizer for chilli, 100 kg of Triple Super Phosphate and 50 kg of Muriate of Potash should be applied per hectare. At 2 weeks, 100 kg of urea should be applied. At 4 weeks, 125 kg of urea should be applied. At 8 weeks, 125 kg of urea together with 50 kg of Muriate of Potash should be applied. At 12 weeks, 125 kg of urea should be applied, followed by another 125 kg of urea at 16 weeks. It is preferable to apply phosphorus and potassium as basal fertilizers after conducting a soil test.",
+    "crop": "Chilli",
+    "category": "Fertilizer",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-C-009-SI",
+    "title": "මිරිස් වගාවේ වල් පැළෑටි පාලනය",
+    "text": "හැකි සෑම විටම මිරිස් වගාව වල් පැළෑටි වලින් තොරව තබා ගත යුතුය. පැළ සිටුවීමෙන් පසුව ඇලක්ලෝර් 480 ග්‍රෑම්/ලීටරයට ඊ.සී. හෙක්ටයාරයට ලීටර් 5ක් යෙදීමෙන් මුල් සති 3–4 කාලය තුළ වල් පැළෑටි පාලනය කර ගත හැකි බව මූලාශ්‍රයේ සඳහන් වේ. පසේ තෙතමනය පවත්වා ගැනීම වල් නාශකයේ කාර්යක්ෂමතාව වැඩි කිරීමට හේතු වේ.",
+    "crop": "Chilli",
+    "category": "Weed Management",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-C-009-EN",
+    "title": "Weed Management in Chilli",
+    "text": "The chilli field should be kept free of weeds as much as possible. The source states that applying Alachlor 480 g/L EC at 5 L per hectare after transplanting can control weeds during the first 3–4 weeks. Maintaining soil moisture helps improve the effectiveness of the herbicide.",
+    "crop": "Chilli",
+    "category": "Weed Management",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-D-010-SI",
+    "title": "මිරිස් දිලීර රෝග - දියමලන්කෑම, ඇන්ත්‍රැක්නෝස් සහ කොළ පුල්ලි",
+    "text": "මිරිස්වල දියමලන්කෑම රෝගය Fusarium spp., Pythium spp., Rhizoctonia සහ Sclerotium spp. වැනි පසේ ජීවත් වන දිලීර නිසා ඇති විය හැක. බීජ ප්‍රරෝහණය දුර්වල වීම, බීජ පැළවල පාදස්ථ කොටස කළු වී කුණු වී කඩා වැටීම සහ මුල් කළු වී වියළි කුණුවීම මෙහි ලක්ෂණ වේ. හොඳින් ජලය බැස යන ස්ථානයක තවාන් දැමීම, සොලනේසියේ කුලයට අයත් බෝග පෙර වගා නොකළ ස්ථාන තෝරා ගැනීම, තවාන් ජීවාණුහරණය කිරීම සහ බීජ ප්‍රතිකාර කිරීම මඟින් රෝගය වළක්වා ගත හැක. ඇන්ත්‍රැක්නෝස් Colletotrichum capsici දිලීරය නිසා ඇති වන අතර මහ කන්නයේ හා වර්ෂාව බහුල අවස්ථාවල වැඩිපුර පැතිරේ. ආසාදිත කරල්වල ගිලුණු අළු-දුඹුරු කැළැල් ඇතිවී පසුව කළු දිලීර බීජාණු දැකිය හැක. කොළ පුල්ලි රෝගය Cercospora capsici දිලීරය නිසා ඇති වන අතර පත්‍රවල කහ පැහැති වලයක් සහිත රවුම් දුඹුරු පුල්ලි ඇතිවීම, පත්‍ර කහවීම සහ අකාලයේ හැලීම සිදුවිය හැක.",
+    "crop": "Chilli",
+    "category": "Disease",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-D-010-EN",
+    "title": "Fungal Diseases of Chilli - Damping-off, Anthracnose and Cercospora Leaf Spot",
+    "text": "Chilli damping-off can be caused by soil-borne fungi such as Fusarium spp., Pythium spp., Rhizoctonia and Sclerotium spp. Symptoms include poor seed germination, blackening and rotting of the basal portion of seedlings followed by collapse, and blackening and dry rotting of roots. The disease can be reduced by using well-drained nursery sites, avoiding locations where Solanaceae crops were previously cultivated, disinfecting nursery beds and treating seeds. Anthracnose is caused by Colletotrichum capsici and is more prevalent during the Maha season and periods of heavy rainfall. Infected pods develop sunken greyish-brown lesions, followed later by visible black fungal spores. Cercospora leaf spot is caused by Cercospora capsici and can produce circular brown spots surrounded by yellow areas on leaves, followed by yellowing and premature leaf drop.",
+    "crop": "Chilli",
+    "category": "Disease",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-D-011-SI",
+    "title": "මිරිස් පාමුල කුණුවීම සහ රිකිලි කුණුවීම",
+    "text": "පාමුල කුණුවීම Sclerotium දිලීරය නිසා ඇති වන අතර පස මට්ටමෙන් ශාක කඳ කුණු වීමට පටන් ගනී. පත්‍ර කහ පැහැයට හැරී ශාකය මිය යා හැක. දැඩි ආසාදනයකදී ශාක පාමුල සුදු පැහැති දිලීර ජාලයක් සහ අබ ඇට වැනි දිලීර බීජාණු දැකිය හැක. තවාන් පාත්ති ජීවාණුහරණය කිරීමෙන් තවාන් අවස්ථාවේ රෝගය වළක්වා ගත හැක. වගාවේදී රෝගී ශාක පස සමඟ ඉවත් කිරීම සහ ජලවහනය දියුණු කිරීම වැදගත් වේ. රිකිලි කුණුවීම Choanephora දිලීරය නිසා අධික වර්ෂා සහිත මහ කන්නයේ හා අධික ආර්ද්‍රතාවයේදී ඇති වේ. පුෂ්ප අංකුර හා පුෂ්ප දුඹුරු හෝ කළු පැහැයට හැරීම, රිකිලි ඉහළ සිට පහළට මැරීම, මෘදු කුණුවීම සහ අළු පැහැති බීජාණු ඇතිවීම ලක්ෂණ වේ. රෝගී රිකිලි මුල් අවස්ථාවේදීම ඉවත් කර විනාශ කළ යුතුය.",
+    "crop": "Chilli",
+    "category": "Disease",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-D-011-EN",
+    "title": "Chilli Collar Rot and Choanephora Blight",
+    "text": "Collar rot is caused by the Sclerotium fungus and begins with rotting of the plant stem at soil level. Leaves may turn yellow and the plant may die. Under severe infection, a white fungal network and mustard-seed-like fungal structures can be observed around the plant base. Nursery-bed disinfection can help prevent the disease during the nursery stage. During cultivation, infected plants should be removed together with surrounding soil and good drainage should be maintained. Choanephora blight occurs during the Maha season under heavy rainfall and high humidity and is caused by the Choanephora fungus. Symptoms include browning or blackening of flower buds and flowers, rapid death of shoots from the top downward, soft rotting and grey fungal spores. Infected shoots should be removed and destroyed as soon as symptoms are observed.",
+    "crop": "Chilli",
+    "category": "Disease",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-D-012-SI",
+    "title": "මිරිස් පිටිපුස් සහ බැක්ටීරියා හිටුමැරීම",
+    "text": "පිටිපුස් රෝගය Oidiopies දිලීරය නිසා උණුසුම් තෙත් පරිසරවලදී ඇති වේ. මුලදී පත්‍ර මතුපිට කහ පැහැති පැල්ලම් ඇතිවී පසුව දුඹුරු පැහැයට හැරී මැරී යයි. පත්‍රවල යටි පැත්තේ සුදු පැහැති පිටි වැනි බීජාණු දැකිය හැක. බැක්ටීරියා හිටුමැරීම Pseudomonas solanaciarum බැක්ටීරියාව නිසා ඇති වන අතර ආසාදනයෙන් පසු ශාකය ඉක්මනින් මැලවී යයි. මුල් හා කඳ පාමුල කුණු විය හැක. කඳේ හරස් කැපුමක් වතුරට දැමූ විට සුදු පැහැති බැක්ටීරියා ශ්‍රාවයක් පිටතට පැමිණිය හැක. මියගිය ශාක පස සමඟ ක්ෂේත්‍රයෙන් ඉවත් කළ යුතු අතර ආසාදිත ක්ෂේත්‍රවලින් නිරෝගී ක්ෂේත්‍ර වෙත ජලය ගෙන නොයා යුතුය. හොඳ ජලවහනයක් පවත්වා ගැනීම වැදගත් වේ. පෙර කන්නයේ සොලනේසියේ කුලයේ බෝග වගා කළ ඉඩම්වල මිරිස් වගා කිරීමෙන් වැළකිය යුතුය.",
+    "crop": "Chilli",
+    "category": "Disease",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-D-012-EN",
+    "title": "Chilli Powdery Mildew and Bacterial Wilt",
+    "text": "Powdery mildew is caused by the Oidiopies fungus and occurs under warm and humid conditions. Initially, yellow patches appear on the leaf surface, later turning brown and dying. White powder-like fungal spores can be observed on the underside of leaves. Bacterial wilt is caused by Pseudomonas solanaciarum and infected plants wilt rapidly. Roots and the lower stem may rot. When a cross-section of the stem is placed in water, a white bacterial ooze may be observed. Dead plants should be removed from the field together with surrounding soil, and water should not be transferred from infected fields to healthy fields. Good drainage is important. Chilli should not be cultivated in land where Solanaceae crops were grown during the previous season.",
+    "crop": "Chilli",
+    "category": "Disease",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-D-013-SI",
+    "title": "මිරිස් වෛරස් රෝග",
+    "text": "කූඩිත්තන්, පැළ මැක්කන් හා මයිටාවන් මඟින් විවිධ වෛරස් මිරිස් ශාකයට ඇතුල් විය හැක. වෛරස් රෝගවලට සාමාන්‍ය රසායනික ප්‍රතිකාර නොමැති බැවින් රෝගය ඇතිවීම හා පැතිරීම වැළැක්වීම වැදගත් වේ. පිපිඤ්ඤා විචිත්‍ර වෛරස් රෝගයේදී පත්‍ර මත කොළ හා කහ පැහැති පුල්ලි, නාරටි පැහැදිලි වීම, පත්‍ර හැඩය වෙනස් වීම, පත්‍ර කුඩා හා සිහින් වීම, ශාක කුරු වීම සහ කරල් කුඩා වීම සිදුවිය හැක. නාරටි පෑදීමේ වෛරස් රෝගයේදී පත්‍ර මත අක්‍රමවත් කහ ලප, නාරටි දෙපස තද කොළ පැහැය, කුඩා කරල් සහ කුරු ශාක දක්නට ලැබේ. තක්කාලි පුල්ලි මැලවීමේ වෛරස් රෝගයේදී පත්‍ර මත රවුම් තද කොළ හෝ කහ පැහැති පැල්ලම්, අතු දුඹුරු වීම, මැලවීම සහ කරල් මත රවුම් කහ පැහැති ලප ඇති විය හැක.",
+    "crop": "Chilli",
+    "category": "Disease",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-D-013-EN",
+    "title": "Viral Diseases of Chilli",
+    "text": "Various viruses can enter chilli plants through aphids, thrips and mites. Since there is no general chemical treatment for viral diseases, preventing infection and spread is important. Cucumber mosaic virus can cause green and yellow mottling on leaves, prominent veins, changes in leaf shape, smaller and thinner leaves, dwarfing of plants and smaller pods. Chilli veinal mottle virus can cause irregular yellow spots on leaves, dark green colour along the veins, smaller pods and plant dwarfing. Tomato spotted wilt virus can cause circular dark green or yellow patches on leaves, browning and wilting of branches, and circular yellow spots on pods.",
+    "crop": "Chilli",
+    "category": "Disease",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-D-014-SI",
+    "title": "මිරිස් කොළ කොඩවීමේ සංකීර්ණය සහ පාලනය",
+    "text": "මිරිස් කොළ කොඩවීම ප්‍රධාන ගැටළුවක් වන අතර තවාන් අවස්ථාවේ සිට වගාවේ ඕනෑම අවස්ථාවක ඇති විය හැක. පැළ මැක්කන්, කුඩිත්තන් හා මයිටාවන් ශාක යුෂ උරාබීමෙන් ද, සුදු මැස්සන් මඟින් කොළ කොඩවීමේ වෛරසය බෝ කිරීමෙන් ද කොළ කොඩවීම ඇති විය හැක. වෛරස් නිසා ඇති වන කොළ කොඩවීමේදී පත්‍ර ලා කහ පැහැයට හැරීම, නාරටි පැහැදිලි වීම, පර්ව කෙටි වීම, ශාක කුරු වීම, අධික රිකිළි ඇති වීම සහ පත්‍ර කුඩා, ඝන හා බෝට්ටුවක හැඩයට පත්වීම සිදුවිය හැක. කොළ කොඩවීම පාලනය සඳහා ඒකාබද්ධ පළිබෝධ පාලන ක්‍රම භාවිත කිරීම සුදුසුය. පෙර කන්නයේ මිරිස් වගා කළ ස්ථානවල වගා කිරීමෙන් වැළකීම, උසස් ගුණාත්මයෙන් යුත් බීජ භාවිතය, නිර්දේශිත තවාන් ක්‍රම අනුගමනය කිරීම, නිසි කාලයේ ක්ෂේත්‍රයේ සිටුවීම, නිර්දේශිත ප්‍රමාණයට පොහොර යෙදීම, වල් පැළ පාලනය, ආවරණ බෝග භාවිතය සහ අවශ්‍ය අවස්ථාවලදී පමණක් නිර්දේශිත කෘමිනාශක භාවිතය වැදගත් වේ. අධික නයිට්‍රජනීය පොහොර යෙදීමෙන් පටක මෘදු වී කෘමි හානියට හිතකර තත්ත්වයක් ඇති විය හැක.",
+    "crop": "Chilli",
+    "category": "Pest and Disease Management",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-D-014-EN",
+    "title": "Chilli Leaf Curl Complex and Management",
+    "text": "Chilli leaf curl is a major problem and can occur at any stage from the nursery to the field. Leaf curl can result from sap feeding by thrips, aphids and mites, as well as transmission of leaf curl viruses by whiteflies. Viral leaf curl symptoms may include pale yellow leaves, prominent veins, shortened internodes, dwarfing, excessive branching and small, thick leaves with a boat-like shape. Integrated pest management is recommended for controlling leaf curl. Important measures include avoiding fields where chilli was cultivated during the previous season, using high-quality seed, following recommended nursery practices, transplanting at the appropriate time, applying fertilizers at recommended rates, controlling weeds, using barrier crops and applying recommended insecticides only when necessary. Excessive nitrogen fertilizer can produce soft plant tissues that may create favourable conditions for insect damage.",
+    "crop": "Chilli",
+    "category": "Pest and Disease Management",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-C-015-SI",
+    "title": "මිරිස් පත්‍ර සිහින්වීමේ අසාමාන්‍යතාව",
+    "text": "පත්‍ර සිහින්වීමේ අසාමාන්‍යතාව වියළි කලාපයේ කුඹුරු ඉඩම්වල මිරිස් වගාවේදී දක්නට ලැබෙන තත්ත්වයකි. එයට නිශ්චිත හේතුව තවම හඳුනාගෙන නොමැති නමුත් දුර්වල ජලවහනය සහිත අවස්ථාවලදී බහුලව දැකිය හැකි බව වාර්තා වී ඇත. ළපටි පත්‍ර කහ පැහැයට හැරී පසුව නාරටි තද කොළ පැහැයක් ගනී. පත්‍ර දාරය සිහින්වී හැකිළීම, පාර්ශ්වික අංකුර විශාල සංඛ්‍යාවක් වර්ධනය වීම සහ පර්ව අතර දුර අඩුවීම සිදුවේ. මුල් අවස්ථාවේදී ඇති වුවහොත් මුළු පැළයම කුරු වී කරල් හට නොගැනීමට හැක. ජල සම්පාදන කාලාන්තරය වැඩි කිරීම සහ පස බුරුල් කර මූල මණ්ඩලයට හොඳ වාතාශ්‍රයක් ලබා දීමෙන් තත්ත්වය තරමක් පාලනය කළ හැක.",
+    "crop": "Chilli",
+    "category": "Disorder",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-C-015-EN",
+    "title": "Narrow Leaf Disorder in Chilli",
+    "text": "Narrow Leaf Disorder is a condition observed in chilli cultivation on paddy lands in the dry zone. Its exact cause has not yet been identified, but it has been reported to occur more frequently where drainage is poor. Young leaves may become yellow and the veins may later become dark green. The leaf margins become narrow and curled, many lateral shoots develop and the distance between internodes decreases. If the condition occurs at an early growth stage, the entire plant may become dwarfed and fail to produce pods. Increasing the interval between irrigation events and loosening the soil to improve aeration around the root zone can help to reduce the condition to some extent.",
+    "crop": "Chilli",
+    "category": "Disorder",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+
+  {
+    "id": "CH-C-016-SI",
+    "title": "මිරිස් අස්වනු නෙලීම සහ වියළි මිරිස් නිෂ්පාදනය",
+    "text": "මිරිස් සිටුවා දින 70–80 අතර පළමු අස්වැන්න නෙලිය හැක. සාමාන්‍ය අමු මිරිස් අස්වැන්න හෙක්ටයාරයකට ටොන් 12–15ක් වන අතර වියළි මිරිස් අස්වැන්න ටොන් 3.0–4.0ක් පමණ වේ. දෙමුහුම් ප්‍රභේද සඳහා හෙක්ටයාරයකට ටොන් 30–35ක පමණ අස්වැන්නක් ලබාගත හැක. වියළි මිරිස් නිෂ්පාදනය සඳහා රත් පැහැ වූ කරල් සහ කරලෙන් හතරෙන් තුනක් පමණ රත් පැහැ වූ කරල් නෙලීම සුදුසුය. රෝග හා පළිබෝධ වලින් තොර ඒකාකාරී රත් පැහැයක් වන තුරු වාතාශ්‍රය හොඳින් ලැබෙන කාමරයක දින 2ක් පමණ ගොඩ ගසා තැබිය යුතුය. ඉන්පසු දින 4–5ක් පමණ අව්වේ වියළා ගත යුතුය. දිගු කාලයක් කල් තබා ගැනීමට නම් වරින් වර අව්වේ දමා වියළීම අවශ්‍ය වේ.",
+    "crop": "Chilli",
+    "category": "Harvest and Postharvest",
+    "language": "si",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  },
+  {
+    "id": "CH-C-016-EN",
+    "title": "Chilli Harvesting and Dried Chilli Production",
+    "text": "The first chilli harvest can be obtained around 70–80 days after transplanting. The average fresh chilli yield is about 12–15 tonnes per hectare, while dried chilli yield is approximately 3.0–4.0 tonnes per hectare. Hybrid varieties can produce around 30–35 tonnes per hectare. For dried chilli production, fully red pods and pods that are about three-quarters red should be harvested. The harvested pods should be kept in a well-ventilated room for about two days until they develop a uniform red colour and are free from disease and pest damage. They should then be sun-dried for approximately 4–5 days. For long-term storage, periodic sun-drying is required.",
+    "crop": "Chilli",
+    "category": "Harvest and Postharvest",
+    "language": "en",
+    "source": "Department of Agriculture - HORDI",
+    "source_id": "DOA-HORDI-CAPSICUM",
+    "region": "Sri Lanka",
+    "season": "General"
+  }
 ]
+
