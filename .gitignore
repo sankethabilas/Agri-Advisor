@@ -98,3 +98,6 @@ spacy_models/
 *~
 .DS_Store
 Thumbs.db
+
+# ChromaDB persistent vector store
+chroma_store/
