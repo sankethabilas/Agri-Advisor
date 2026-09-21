@@ -10,8 +10,12 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_DIR  = PROJECT_ROOT / "tests" / "fixtures"
 
-# Path to the mock response used when the API is unreachable
-FALLBACK_FIXTURE = FIXTURE_DIR / "orchestrator_process_response.json"
+# Path to the mock response used when the API is unreachable.
+# T-12: use the richer orchestrator_response.json when present so that
+# all 8 structured blocks are rendered in demo / offline mode.
+_RICH_FIXTURE = FIXTURE_DIR / "orchestrator_response.json"
+_LEAN_FIXTURE = FIXTURE_DIR / "orchestrator_process_response.json"
+FALLBACK_FIXTURE = _RICH_FIXTURE if _RICH_FIXTURE.exists() else _LEAN_FIXTURE
 
 # ---------------------------------------------------------------------------
 # API
