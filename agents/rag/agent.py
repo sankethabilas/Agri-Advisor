@@ -53,6 +53,38 @@ class RAGAgent:
 
         return context
 
+    def build_sources(self, results):
+        """
+        Build source information and similarity scores
+        from the ChromaDB search results.
+        """
+        sources = []
+        confidence = []
+
+        ids = results["ids"][0]
+        documents = results["documents"][0]
+        metadatas = results["metadatas"][0]
+        distances = results["distances"][0]
+
+        for i in range(len(ids)):
+            similarity = 1 - distances[i]
+
+            metadata = metadatas[i]
+
+            source = {
+                "id": ids[i],
+                "title": metadata["title"],
+                "content": documents[i],
+                "crop": metadata["crop"],
+                "category": metadata["category"],
+                "score": similarity
+            }
+
+            sources.append(source)
+            confidence.append(similarity)
+
+        return sources, confidence
+
 # ensure initializes correctly and connects to the existing ChromaDB collection
 if __name__ == "__main__":
     agent = RAGAgent()
@@ -72,6 +104,11 @@ if __name__ == "__main__":
         query_embedding=embedding,
         top_k=3
     )
+
+    print("\nRetrieved Metadata:")
+
+    for metadata in results["metadatas"][0]:
+        print(metadata)
 
     context = agent.build_context(results)
 
