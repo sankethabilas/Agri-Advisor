@@ -24,9 +24,24 @@ class RAGAgent:
             embedding_function=self.embedding_function
         )
 
+    # Encode a query into an embedding vector
+    def encode_query(self, query: str):
+        """
+        Convert the farmer's query into an embedding vector
+        using the same model used during knowledge-base indexing.
+        """
+        return self.embedding_function([query])
+
 # ensure initializes correctly and connects to the existing ChromaDB collection
 if __name__ == "__main__":
     agent = RAGAgent()
     print("RAG Agent initialized successfully.")
     print(f"Collection: {agent.collection.name}")
     print(f"Documents: {agent.collection.count()}")
+
+    #temperory test query to check if the embedding works
+    query = "My rice leaves have yellow spots"
+    embedding = agent.encode_query(query)
+
+    print(f"Query: {query}")
+    print(f"Embedding dimensions: {len(embedding[0])}")
