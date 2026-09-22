@@ -32,16 +32,42 @@ class RAGAgent:
         """
         return self.embedding_function([query])
 
+    # Search the knowledge base for the most relevant documents
+    def search(self, query_embedding, top_k: int = 3):
+        """
+        Search ChromaDB for the most similar knowledge-base documents.
+        """
+        return self.collection.query(
+            query_embeddings=query_embedding,
+            n_results=top_k
+        )
+
 # ensure initializes correctly and connects to the existing ChromaDB collection
 if __name__ == "__main__":
     agent = RAGAgent()
+
     print("RAG Agent initialized successfully.")
     print(f"Collection: {agent.collection.name}")
     print(f"Documents: {agent.collection.count()}")
 
-    #temperory test query to check if the embedding works
     query = "My rice leaves have yellow spots"
+
     embedding = agent.encode_query(query)
 
     print(f"Query: {query}")
     print(f"Embedding dimensions: {len(embedding[0])}")
+
+    results = agent.search(
+        query_embedding=embedding,
+        top_k=3
+    )
+
+    print("\nSearch Results:")
+
+    for i in range(3):
+        print(f"\nRank {i + 1}")
+        print(f"ID: {results['ids'][0][i]}")
+        print(f"Distance: {results['distances'][0][i]}")
+        print(f"Title: {results['metadatas'][0][i]['title']}")
+        print(f"Crop: {results['metadatas'][0][i]['crop']}")
+        print(f"Category: {results['metadatas'][0][i]['category']}")
