@@ -42,6 +42,17 @@ class RAGAgent:
             n_results=top_k
         )
 
+    # combine the retrieved document texts into a single context string  
+    def build_context(self, results):
+        """
+        Combine the retrieved document texts into a single context string.
+        """
+        documents = results["documents"][0]
+
+        context = "\n\n".join(documents)
+
+        return context
+
 # ensure initializes correctly and connects to the existing ChromaDB collection
 if __name__ == "__main__":
     agent = RAGAgent()
@@ -61,6 +72,11 @@ if __name__ == "__main__":
         query_embedding=embedding,
         top_k=3
     )
+
+    context = agent.build_context(results)
+
+    print("\nRetrieved Context:")
+    print(context)
 
     print("\nSearch Results:")
 
