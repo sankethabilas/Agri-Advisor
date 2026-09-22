@@ -13,10 +13,12 @@ class Settings:
     openweather_city: str = os.getenv("OPENWEATHER_CITY", "Colombo")
     groq_api_key: str = os.getenv("GROQ_API_KEY", "")
     groq_model: str = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+    jwt_secret_key: str = os.getenv("JWT_SECRET_KEY", "")
 
     def require_api_key(self) -> None:
         missing = []
         if not self.openweather_api_key:
+            missing.append("OPENWEATHER_API_KEY")
         if not self.groq_api_key:
             missing.append("GROQ_API_KEY")
         if missing:
