@@ -1,0 +1,19 @@
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid request payload: Missing or invalid parameters.",
+    "status_code": 400,
+    "details": [
+      {
+        "field": "crop",
+        "issue": "Crop name is required and cannot be empty."
+      },
+      {
+        "field": "symptoms",
+        "issue": "At least one observed symptom must be provided."
+      }
+    ],
+    "timestamp": "2026-09-17T17:00:00Z",
+    "request_id": "req-9b8a-45c1"
+  }
+}

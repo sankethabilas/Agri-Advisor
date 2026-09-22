@@ -1,0 +1,71 @@
+{
+  "disease": "Paddy Brown Spot (Bipolaris oryzae)",
+  "confidence": 0.94,
+  "severity": "Moderate",
+  "treatment": {
+    "chemical": [
+      {
+        "name": "Azoxystrobin 250 g/L SC (Amistar)",
+        "dosage": "15 mL per 16 L knapsack sprayer (100 mL/acre)",
+        "instructions": "Spray during calm weather, thoroughly covering the plant foliage. Use clean water.",
+        "pre_harvest_interval_days": 14
+      },
+      {
+        "name": "Tebuconazole 250 g/L EC (Folicur)",
+        "dosage": "15-20 mL per 16 L sprayer (120 mL/acre)",
+        "instructions": "Alternate with non-triazole fungicides to prevent resistance development.",
+        "pre_harvest_interval_days": 21
+      }
+    ],
+    "organic": [
+      {
+        "name": "Neem Seed Kernel Extract (NSKE 5%)",
+        "dosage": "50 g crushed neem seed per liter of water (800 g / 16 L sprayer)",
+        "instructions": "Extract overnight in water, filter through muslin cloth, and spray early in the morning."
+      },
+      {
+        "name": "Trichoderma viride Bio-fungicide formulation",
+        "dosage": "5 g/kg seed treatment or 2.5 kg/ha mixed with well-rotted organic compost",
+        "instructions": "Apply at the root zone during moist soil conditions to establish beneficial fungal colony."
+      }
+    ],
+    "cultural": [
+      {
+        "practice": "Water Drainage & Aeration",
+        "description": "Drain stagnant water for 48 hours to aerate the root zone and reduce humidity within the crop canopy."
+      },
+      {
+        "practice": "Nutrient Rebalancing (Potash Application)",
+        "description": "Apply supplemental MOP (Muriate of Potash) at 15 kg/acre to reinforce cell walls against fungal penetration. Avoid excessive nitrogen."
+      },
+      {
+        "practice": "Field Sanitation",
+        "description": "Remove weed hosts (e.g., Echinochloa colona, Leersia hexandra) along field bunds that harbor fungal spores."
+      }
+    ]
+  },
+  "prevention": [
+    "Use certified clean seed paddy sourced from DOA seed production farms (e.g., Bg 352, Bg 358, Bw 367).",
+    "Perform hot water seed treatment at 52°C–54°C for 15 minutes before pre-germination.",
+    "Maintain balanced N:P:K fertilization as per DOA agro-ecological zone guidelines.",
+    "Adopt optimal planting density (20 cm x 15 cm) to promote air circulation within the canopy."
+  ],
+  "source": "Sri Lanka Department of Agriculture (DOA) - Field Handbook on Paddy Pathology & Disease Management (2023 Edition)",
+  "symptoms_confirmed": [
+    "Oval brown lesions on leaf blades with grey/whitish centers",
+    "Yellow chlorotic halo surrounding leaf spots",
+    "Dark brown spots on seed glumes and panicle branches"
+  ],
+  "differential_diagnoses": [
+    {
+      "disease": "Paddy Blast (Magnaporthe oryzae)",
+      "confidence": 0.38,
+      "distinguishing_factor": "Blast lesions are typically spindle-shaped with pointed ends, whereas Brown Spot produces rounded/oval lesions."
+    },
+    {
+      "disease": "Narrow Brown Leaf Spot (Cercospora janseana)",
+      "confidence": 0.22,
+      "distinguishing_factor": "Narrow brown spot causes linear, narrow streaks parallel to leaf veins, not oval spots."
+    }
+  ]
+}

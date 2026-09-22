@@ -1,0 +1,15 @@
+{
+  "error": {
+    "code": "UPSTREAM_AGENT_ERROR",
+    "message": "An internal error occurred while communicating with an upstream agent service.",
+    "status_code": 500,
+    "details": [
+      {
+        "service": "weather_agent",
+        "issue": "Upstream weather provider API returned 502 Bad Gateway. Falling back to regional seasonal baseline."
+      }
+    ],
+    "timestamp": "2026-09-17T17:00:00Z",
+    "request_id": "req-7e8f-9a0b"
+  }
+}

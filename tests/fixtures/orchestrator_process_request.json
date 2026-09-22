@@ -1,0 +1,14 @@
+{
+  "query": "My paddy crop in Anuradhapura has yellowing leaves with small oval brown spots. What is the disease and how should I treat it?",
+  "user_id": "farmer_anu_0842",
+  "location": {
+    "district": "Anuradhapura",
+    "province": "North Central",
+    "latitude": 8.3114,
+    "longitude": 80.4037,
+    "agro_ecological_zone": "DL1b"
+  },
+  "session_id": "sess_20260917_001",
+  "language": "en",
+  "crop_context": "Paddy"
+}

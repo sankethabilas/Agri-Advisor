@@ -1,0 +1,12 @@
+{
+  "crop": "Paddy",
+  "location": {
+    "district": "Kurunegala",
+    "province": "North Western",
+    "agro_ecological_zone": "IL1a"
+  },
+  "season": "Maha",
+  "soil_type": "Low Humic Gley (LHG)",
+  "land_extent_acres": 2.0,
+  "irrigation_type": "Major Irrigation"
+}

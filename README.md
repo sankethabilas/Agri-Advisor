@@ -144,3 +144,14 @@ All commits must follow the conventional commit format:
 - **Scopes**: `orchestrator` | `disease` | `weather` | `rag` | `crop` | `ui` | `auth` | `kb` | `deploy`
 
 For full examples and detailed PR guidelines, refer to [Git Workflow Guide](docs/git-workflow.md).
+
+## Knowledge Base Indexing
+
+The agricultural knowledge base is stored in:
+
+`knowledge_base/documents.json`
+
+To create or update the local ChromaDB vector index, run:
+
+```bash
+python scripts/index_knowledge_base.py
