@@ -200,14 +200,16 @@ class RagRetrieveRequest(BaseModel):
 
 class RagSourceItem(BaseModel):
     id: str
-    document_id: str
     title: str
-    section: str
     content: str
-    score: float
-    author_organization: str
-    publication_year: int
-    url: Optional[str] = None
+    crop: str
+    category: str
+    language: str
+    source: str
+    source_id: str
+    region: str
+    season: str
+    score: float = Field(..., ge=0.0, le=1.0)
 
 
 class RagMetadata(BaseModel):
