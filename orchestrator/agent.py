@@ -23,6 +23,12 @@ from orchestrator.schemas import (
     WeatherAdviceResponse,
     WeatherAlert,
 )
+from orchestrator.nlp import (
+    NLPResult,
+    analyze_query as nlp_analyze_query,
+    handle_general_query as nlp_handle_general_query,
+    nlp_analyzer,
+)
 from orchestrator.session_context import SessionManager, session_manager as default_session_manager
 from orchestrator.stubs import AgentStubService, stub_service as default_stub_service
 
@@ -45,52 +51,26 @@ class OrchestratorAgent:
         self._weather_agent = weather_agent or self.stubs.get_weather_advice
         self._rag_agent = rag_agent or self.stubs.get_rag_retrieve
         self._crop_agent = crop_agent or self.stubs.get_crop_advice
+        self.nlp = nlp_analyzer
 
-    def classify_intent(self, query: str) -> Tuple[Literal["disease_diagnosis", "weather_inquiry", "crop_cultivation", "general_farming", "mixed"], float]:
-        """Classify user intent using domain keyword patterns and confidence estimation."""
-        q = query.lower()
+    def analyze_query(self, query: str) -> NLPResult:
+        """Analyze query using the T-10 NLP pipeline."""
+        return self.nlp.analyze_query(query)
 
-        disease_keywords = ["spot", "spots", "yellow", "brown", "blast", "rot", "wilt", "wilting", "lesion", "lesions", "fungus", "fungal", "pest", "caterpillar", "bug", "disease", "symptom", "dying", "blight"]
-        weather_keywords = ["weather", "rain", "rainfall", "forecast", "monsoon", "temperature", "temp", "humidity", "flood", "drought", "wind", "storm"]
-        crop_keywords = ["variety", "varieties", "fertilizer", "urea", "tsp", "mop", "planting", "sowing", "spacing", "harvest", "harvesting", "cultivation", "cultivate", "maha", "yala", "land preparation", "irrigation", "soil"]
+    def handle_general_query(self, query: str, nlp_result: Optional[NLPResult] = None) -> Dict[str, Any]:
+        """Handle broad or unrecognised queries."""
+        return self.nlp.handle_general_query(query, nlp_result)
 
-        disease_matches = sum(1 for kw in disease_keywords if kw in q)
-        weather_matches = sum(1 for kw in weather_keywords if kw in q)
-        crop_matches = sum(1 for kw in crop_keywords if kw in q)
-
-        categories = []
-        if disease_matches > 0:
-            categories.append("disease_diagnosis")
-        if weather_matches > 0:
-            categories.append("weather_inquiry")
-        if crop_matches > 0:
-            categories.append("crop_cultivation")
-
-        if len(categories) > 1:
-            return "mixed", 0.92
-        elif len(categories) == 1:
-            if categories[0] == "disease_diagnosis":
-                return "disease_diagnosis", min(0.70 + (disease_matches * 0.1), 0.98)
-            elif categories[0] == "weather_inquiry":
-                return "weather_inquiry", min(0.70 + (weather_matches * 0.1), 0.98)
-            elif categories[0] == "crop_cultivation":
-                return "crop_cultivation", min(0.70 + (crop_matches * 0.1), 0.98)
-
-        return "general_farming", 0.75
+    def classify_intent(self, query: str) -> Tuple[Literal["disease_diagnosis", "weather_query", "crop_advice", "mixed_query", "general_query"], float]:
+        """Classify user intent using the NLP module."""
+        result = self.nlp.analyze_query(query)
+        return result.intent, result.confidence
 
     def extract_crop_entity(self, query: str, active_context: Optional[str] = None) -> str:
         """Extract crop from query or retain session context."""
-        known_crops = ["paddy", "rice", "tomato", "chilli", "chili", "maize", "corn", "brinjal", "eggplant", "tea", "rubber", "coconut", "mung bean", "cowpea", "potato", "onion"]
-        q = query.lower()
-        for crop in known_crops:
-            if crop in q:
-                if crop in ["paddy", "rice"]:
-                    return "Paddy"
-                if crop in ["chilli", "chili"]:
-                    return "Chilli"
-                if crop in ["corn", "maize"]:
-                    return "Maize"
-                return crop.capitalize()
+        extracted = self.nlp.entity_extractor.extract_crop(query)
+        if extracted:
+            return extracted
         return active_context or "Paddy"
 
     def process(self, request: OrchestratorProcessRequest) -> OrchestratorProcessResponse:
@@ -106,9 +86,11 @@ class OrchestratorAgent:
             language=request.language,
         )
 
-        # 2. Extract intent and crop context
-        intent, confidence = self.classify_intent(request.query)
-        crop = self.extract_crop_entity(request.query, active_context=session.active_crop or request.crop_context)
+        # 2. Extract intent and crop context via NLP Layer
+        nlp_res = self.nlp.analyze_query(request.query)
+        intent = nlp_res.intent
+        confidence = nlp_res.confidence
+        crop = nlp_res.entities.crop or session.active_crop or request.crop_context or "Paddy"
         session.active_crop = crop
 
         agents_consulted: List[str] = []

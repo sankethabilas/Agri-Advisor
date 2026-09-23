@@ -52,7 +52,17 @@ class WeatherAlert(BaseModel):
 class ResponseMetadata(BaseModel):
     session_id: str
     user_id: str
-    intent: Literal["disease_diagnosis", "weather_inquiry", "crop_cultivation", "general_farming", "mixed"]
+    intent: Literal[
+        "disease_diagnosis",
+        "weather_inquiry",
+        "weather_query",
+        "crop_cultivation",
+        "crop_advice",
+        "general_farming",
+        "general_query",
+        "mixed",
+        "mixed_query",
+    ]
     confidence: float = Field(..., ge=0.0, le=1.0)
     agents_consulted: List[str]
     language: Literal["en", "si", "ta"]
