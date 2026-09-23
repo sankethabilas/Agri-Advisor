@@ -43,21 +43,33 @@ class RAGAgent:
         )
 
     # combine the retrieved document texts into a single context string  
-    def build_context(self, results):
+    def build_context(self, sources):
         """
-        Combine the retrieved document texts into a single context string.
+        Combine the retrieved source contents into a single context string.
+        Handle the empty-result case explicitly.
         """
-        documents = results["documents"][0]
+
+        if not sources:
+            return ""
+
+        documents = []
+
+        for source in sources:
+            documents.append(source["content"])
 
         context = "\n\n".join(documents)
 
         return context
 
-    def build_sources(self, results):
+    def build_sources(self, results, min_score: float = 0.60):
         """
         Build source information and similarity scores
         from the ChromaDB search results.
+
+        Only keep results whose similarity score
+        is greater than or equal to min_score.
         """
+
         sources = []
         confidence = []
 
@@ -68,6 +80,10 @@ class RAGAgent:
 
         for i in range(len(ids)):
             similarity = 1 - distances[i]
+
+            # Skip weak / irrelevant results
+            if similarity < min_score:
+                continue
 
             metadata = metadatas[i]
 
@@ -98,7 +114,7 @@ if __name__ == "__main__":
     print(f"Collection: {agent.collection.name}")
     print(f"Documents: {agent.collection.count()}")
 
-    query = "My rice leaves have yellow spots"
+    query = "How do I repair a motorcycle engine?"
 
     embedding = agent.encode_query(query)
 
@@ -115,7 +131,12 @@ if __name__ == "__main__":
     for metadata in results["metadatas"][0]:
         print(metadata)
 
-    context = agent.build_context(results)
+    sources, confidence = agent.build_sources(
+    results,
+    min_score=0.60
+)
+
+    context = agent.build_context(sources)
 
     print("\nRetrieved Context:")
     print(context)
@@ -135,7 +156,6 @@ if __name__ == "__main__":
         print(f"Region: {results['metadatas'][0][i]['region']}")
         print(f"Season: {results['metadatas'][0][i]['season']}")
 
-    sources, confidence = agent.build_sources(results)
 
     print("\nSources:")
 
@@ -144,3 +164,21 @@ if __name__ == "__main__":
 
     print("\nConfidence:")
     print(confidence)
+
+    if not sources:
+        print("\nNo sufficiently relevant documents found.")
+        print("Context:", context)
+        print("Sources:", sources)
+        print("Confidence:", confidence)
+
+    else:
+        print("\nRetrieved Context:")
+        print(context)
+
+        print("\nSources:")
+
+        for source in sources:
+            print(source)
+
+        print("\nConfidence:")
+        print(confidence)
