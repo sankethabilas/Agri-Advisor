@@ -1,8 +1,16 @@
 """
 ui/components.py
 Reusable Streamlit rendering components for the Agri-Advisor advisory response.
-Each function is responsible for one "block" of the eight-block layout defined
-in /docs/ui-spec.md, Section 4.
+
+Task T-08 (original blocks) + Task T-12 (structured 8-block renderer).
+
+The public entry point `render_advisory_response` now delegates to
+`ui.advisory_renderer.render_eight_block_advisory` when the response
+contains structured blocks (diagnosis, immediate_treatment, etc.).
+A legacy flat-answer path is preserved for older API shapes.
+
+Each individual block function is kept here for backwards compatibility
+and can be used standalone if needed.
 """
 from __future__ import annotations
 
@@ -13,6 +21,7 @@ from typing import Any
 import streamlit as st
 
 from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE
+from ui.advisory_renderer import render_eight_block_advisory  # T-12
 
 
 # ============================================================================
@@ -180,9 +189,29 @@ def render_followup(session_id: str | None = None) -> None:
 
 def render_advisory_response(response: dict[str, Any], is_fallback: bool = False) -> None:
     """
-    Render the complete eight-block advisory response layout as defined in
-    /docs/ui-spec.md Section 4.
+    Render the complete eight-block advisory response layout (T-08 / T-12).
+
+    Delegation strategy:
+    - If the response contains any T-12 structured keys (diagnosis,
+      immediate_treatment, prevention, or why_explanation), delegate
+      entirely to `render_eight_block_advisory` from advisory_renderer.py.
+    - Otherwise fall back to the original flat-markdown rendering path
+      so that older orchestrator responses remain displayable.
     """
+    # Detect structured T-12 blocks
+    has_structured = any([
+        response.get("diagnosis"),
+        response.get("immediate_treatment"),
+        response.get("prevention"),
+        response.get("why_explanation"),
+    ])
+
+    if has_structured:
+        # ── T-12 path: fully structured 8-block renderer ─────────────────
+        render_eight_block_advisory(response, is_fallback=is_fallback)
+        return
+
+    # ── Legacy path: flat markdown answer (pre-T-12 responses) ────────────
     if is_fallback:
         st.warning(
             "⚠️ **Demo Mode** — The Agri-Advisor server is not running. "
@@ -197,11 +226,9 @@ def render_advisory_response(response: dict[str, Any], is_fallback: bool = False
     language      = metadata.get("language", "en")
     session_id    = metadata.get("session_id")
 
-    # ── Blocks 1–4, 7–8 come from the synthesized `answer` markdown ─────────
     if answer:
         st.markdown("### 📋 Advisory Response")
 
-        # Detect and badge confidence labels inline (High / Medium / Low)
         def _badge_replace(m: re.Match) -> str:  # type: ignore[type-arg]
             label = m.group(0)
             return f"{label} {_confidence_badge(label)}"
@@ -213,11 +240,9 @@ def render_advisory_response(response: dict[str, Any], is_fallback: bool = False
             count=1,
             flags=re.IGNORECASE | re.DOTALL,
         )
-
         st.markdown(badged_answer, unsafe_allow_html=True)
 
-    # Metadata ribbon (agents consulted, latency) – shown collapsed, no raw IDs
-    agents = metadata.get("agents_consulted", [])
+    agents  = metadata.get("agents_consulted", [])
     latency = metadata.get("latency_ms")
     if agents or latency:
         with st.expander("🔍 Response details", expanded=False):
@@ -232,16 +257,9 @@ def render_advisory_response(response: dict[str, Any], is_fallback: bool = False
             if latency:
                 st.markdown(f"**Response time:** {latency} ms")
 
-    # ── Block 5 — Weather Alert ──────────────────────────────────────────────
     render_weather_alert(weather_alert)
-
-    # ── Block 6 — Sources ───────────────────────────────────────────────────
     render_sources(sources)
-
-    # ── Block 7 — Disclaimer ────────────────────────────────────────────────
     render_disclaimer(language)
-
-    # ── Block 8 — Follow-up & Helpline ──────────────────────────────────────
     render_followup(session_id)
 
 

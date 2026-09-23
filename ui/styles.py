@@ -162,5 +162,148 @@ hr {
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: #F9FAFB; }
 ::-webkit-scrollbar-thumb { background: #A7F3D0; border-radius: 3px; }
+
+/* ── T-12: Eight-block advisory layout ───────────────────────────────────── */
+
+/* Block section headers */
+.advisory-block-header {
+    border-left: 4px solid #16A34A;
+    padding-left: 12px;
+    margin: 24px 0 10px 0;
+}
+.advisory-block-header h3 {
+    font-size: 1.15rem !important;
+    color: #14532D !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+}
+
+/* Block 1 — Diagnosis card gradient */
+.diagnosis-card {
+    background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+    border: 1px solid #BBF7D0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 8px;
+}
+.diagnosis-card .disease-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #14532D;
+    margin-bottom: 4px;
+}
+
+/* Block 2 — Treatment step cards */
+.treatment-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    border: 1px solid #D1FAE5;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+.treatment-step:hover {
+    box-shadow: 0 3px 12px rgba(21, 128, 61, 0.12);
+}
+.treatment-step .step-num {
+    background: #14532D;
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 1rem;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Urgency badges */
+.urgency-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+/* Block 3 — Prevention list */
+.prevention-list {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    list-style: none;
+    margin: 0;
+}
+.prevention-list li {
+    padding: 6px 0;
+    color: #1F2937;
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+/* Block 4 — Weather alert card */
+.weather-alert-card {
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Block 5 — Source citation cards */
+.source-card {
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    transition: border-color 0.15s ease;
+}
+.source-card:hover { border-color: #A7F3D0; }
+.source-card a { color: #1D4ED8; text-decoration: none; font-weight: 600; }
+.source-card a:hover { text-decoration: underline; }
+
+/* Block 6 — Disclaimer */
+.disclaimer-card {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 10px;
+    padding: 16px 20px;
+}
+
+/* Block 7 — Confidence progress bar */
+.confidence-bar-container {
+    margin: 6px 0 12px 0;
+}
+.confidence-bar-track {
+    background: #E5E7EB;
+    border-radius: 6px;
+    height: 10px;
+    overflow: hidden;
+}
+.confidence-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.6s ease;
+}
+
+/* Streamlit metric tweak for weather risk display */
+[data-testid="stMetric"] {
+    background: #FAFAFA;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 10px 14px !important;
+}
+[data-testid="stMetricValue"] {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: #14532D !important;
+}
 </style>
 """
