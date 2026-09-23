@@ -32,15 +32,44 @@ class RAGAgent:
         """
         return self.embedding_function([query])
 
-    # Search the knowledge base for the most relevant documents
-    def search(self, query_embedding, top_k: int = 3):
+    def search(
+        self,
+        query_embedding,
+        top_k: int = 3,
+        crop_filter: str = None,
+        category_filter: str = None
+    ):
         """
-        Search ChromaDB for the most similar knowledge-base documents.
+        Search ChromaDB for the most similar knowledge-base documents,
+        with optional crop and category filters.
         """
-        return self.collection.query(
-            query_embeddings=query_embedding,
-            n_results=top_k
-        )
+        filters = []
+
+        if crop_filter:
+            filters.append({
+                "crop": {"$eq": crop_filter}
+            })
+
+        if category_filter:
+            filters.append({
+                "category": {"$eq": category_filter}
+            })
+
+        query_args = {
+            "query_embeddings": query_embedding,
+            "n_results": top_k
+        }
+
+        # Apply filters only when supplied
+        if len(filters) == 1:
+            query_args["where"] = filters[0]
+
+        elif len(filters) > 1:
+            query_args["where"] = {
+                "$and": filters
+            }
+
+        return self.collection.query(**query_args)
 
     # combine the retrieved document texts into a single context string  
     def build_context(self, sources):
