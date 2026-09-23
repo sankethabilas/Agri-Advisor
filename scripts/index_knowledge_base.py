@@ -78,10 +78,12 @@ def index_documents(filepath):
             "title": document["title"],
             "crop": document["crop"],
             "category": document["category"],
+            "language": document["language"],
             "source": document["source"],
+            "source_id": document["source_id"],
             "region": document["region"],
             "season": document["season"]
-        }
+}
 
         metadatas.append(metadata)
 

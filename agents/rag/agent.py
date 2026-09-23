@@ -77,6 +77,11 @@ class RAGAgent:
                 "content": documents[i],
                 "crop": metadata["crop"],
                 "category": metadata["category"],
+                "language": metadata["language"],
+                "source": metadata["source"],
+                "source_id": metadata["source_id"],
+                "region": metadata["region"],
+                "season": metadata["season"],
                 "score": similarity
             }
 
@@ -124,3 +129,18 @@ if __name__ == "__main__":
         print(f"Title: {results['metadatas'][0][i]['title']}")
         print(f"Crop: {results['metadatas'][0][i]['crop']}")
         print(f"Category: {results['metadatas'][0][i]['category']}")
+        print(f"Language: {results['metadatas'][0][i]['language']}")
+        print(f"Source: {results['metadatas'][0][i]['source']}")
+        print(f"Source ID: {results['metadatas'][0][i]['source_id']}")
+        print(f"Region: {results['metadatas'][0][i]['region']}")
+        print(f"Season: {results['metadatas'][0][i]['season']}")
+
+    sources, confidence = agent.build_sources(results)
+
+    print("\nSources:")
+
+    for source in sources:
+        print(source)
+
+    print("\nConfidence:")
+    print(confidence)
