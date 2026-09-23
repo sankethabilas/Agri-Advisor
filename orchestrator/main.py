@@ -33,6 +33,7 @@ from orchestrator.schemas import (
 )
 from orchestrator.session_context import session_manager
 from orchestrator.stubs import stub_service
+from agents.weather.agent import WeatherServiceError, weather_agent
 
 app = FastAPI(
     title="Agri-Advisor Orchestrator Hub",
@@ -168,12 +169,15 @@ async def diagnose_crop_disease(request: DiseaseDiagnoseRequest) -> DiseaseDiagn
 @app.post(
     "/api/weather/advice",
     response_model=WeatherAdviceResponse,
-    summary="Get Weather & Microclimate Risks (Stub)",
+    summary="Get Live Weather & Microclimate Risks",
     description="Returns live weather conditions, 7-day forecast, disease/pest risk scores, and weather alerts.",
     tags=["Weather Agent"],
 )
 async def get_weather_advice(request: WeatherAdviceRequest) -> WeatherAdviceResponse:
-    return stub_service.get_weather_advice(request)
+    try:
+        return weather_agent.get_weather_advice(request.location, request.crop)
+    except WeatherServiceError as error:
+        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail=str(error)) from error
 
 
 @app.post(

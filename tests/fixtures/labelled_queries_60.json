@@ -1,0 +1,396 @@
+[
+  {
+    "id": "q01",
+    "query": "My rice has yellow spots on the leaves",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Paddy",
+    "expected_symptoms": ["yellow spots"]
+  },
+  {
+    "id": "q02",
+    "query": "Tomato leaves are curling and have brown patches on the edges in Matale",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Tomato",
+    "expected_location": "Matale",
+    "expected_symptoms": ["brown patches", "leaf curl"]
+  },
+  {
+    "id": "q03",
+    "query": "Bacterial leaf blight observed in paddy fields in Polonnaruwa",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Paddy",
+    "expected_location": "Polonnaruwa",
+    "expected_symptoms": ["bacterial blight"]
+  },
+  {
+    "id": "q04",
+    "query": "Chilli plants are wilting rapidly with root rot after irrigation",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Chilli",
+    "expected_symptoms": ["wilting", "root rot"]
+  },
+  {
+    "id": "q05",
+    "query": "There is white powdery mildew on my pumpkin leaves",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Pumpkin",
+    "expected_symptoms": ["powdery mildew"]
+  },
+  {
+    "id": "q06",
+    "query": "Brown planthopper infestation damaging rice crop in Ampara",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Paddy",
+    "expected_location": "Ampara",
+    "expected_symptoms": ["brown planthopper"]
+  },
+  {
+    "id": "q07",
+    "query": "Brinjal leaves have small holes and caterpillar damage",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Brinjal",
+    "expected_symptoms": ["caterpillar"]
+  },
+  {
+    "id": "q08",
+    "query": "Neck blast fungus spreading in Bg 358 paddy nursery",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Paddy",
+    "expected_symptoms": ["neck blast", "blast"]
+  },
+  {
+    "id": "q09",
+    "query": "Early blight dark brown lesions seen on tomato stems",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Tomato",
+    "expected_symptoms": ["early blight", "brown lesions"]
+  },
+  {
+    "id": "q10",
+    "query": "Maize stem borer attacking young corn shoots in Anuradhapura",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Maize",
+    "expected_location": "Anuradhapura",
+    "expected_symptoms": ["stem borer"]
+  },
+  {
+    "id": "q11",
+    "query": "Onion leaves turning yellow with tip burn and purple spots",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Onion",
+    "expected_symptoms": ["tip burn", "yellowing"]
+  },
+  {
+    "id": "q12",
+    "query": "Potato late blight causing rotting and dark water soaked lesions",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Potato",
+    "expected_symptoms": ["late blight", "rot"]
+  },
+  {
+    "id": "q13",
+    "query": "Cabbage heads are rotting with foul smell in Nuwara Eliya",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Cabbage",
+    "expected_location": "Nuwara Eliya",
+    "expected_symptoms": ["rot"]
+  },
+  {
+    "id": "q14",
+    "query": "Banana leaves showing yellow streak and dieback in Kurunegala",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Banana",
+    "expected_location": "Kurunegala",
+    "expected_symptoms": ["dieback"]
+  },
+  {
+    "id": "q15",
+    "query": "Sheath rot fungus attacking paddy panicles during heading stage",
+    "expected_intent": "disease_diagnosis",
+    "expected_crop": "Paddy",
+    "expected_symptoms": ["sheath rot"]
+  },
+  {
+    "id": "q16",
+    "query": "What is the 7 day weather forecast for Anuradhapura?",
+    "expected_intent": "weather_query",
+    "expected_location": "Anuradhapura"
+  },
+  {
+    "id": "q17",
+    "query": "Will it rain in Kandy tomorrow afternoon?",
+    "expected_intent": "weather_query",
+    "expected_location": "Kandy"
+  },
+  {
+    "id": "q18",
+    "query": "Is there any flood risk or heavy rainfall expected in Galle this week?",
+    "expected_intent": "weather_query",
+    "expected_location": "Galle"
+  },
+  {
+    "id": "q19",
+    "query": "Expected temperature and humidity levels in Jaffna district",
+    "expected_intent": "weather_query",
+    "expected_location": "Jaffna"
+  },
+  {
+    "id": "q20",
+    "query": "Rainfall forecast for Hambantota dry zone",
+    "expected_intent": "weather_query",
+    "expected_location": "Hambantota"
+  },
+  {
+    "id": "q21",
+    "query": "Monsoon rain prediction for Kurunegala area",
+    "expected_intent": "weather_query",
+    "expected_location": "Kurunegala"
+  },
+  {
+    "id": "q22",
+    "query": "Is heavy rain coming to Polonnaruwa tomorrow?",
+    "expected_intent": "weather_query",
+    "expected_location": "Polonnaruwa"
+  },
+  {
+    "id": "q23",
+    "query": "What is the temperature and wind speed forecast in Badulla?",
+    "expected_intent": "weather_query",
+    "expected_location": "Badulla"
+  },
+  {
+    "id": "q24",
+    "query": "Check weather condition and showers in Batticaloa",
+    "expected_intent": "weather_query",
+    "expected_location": "Batticaloa"
+  },
+  {
+    "id": "q25",
+    "query": "Will dry spell continue in Monaragala?",
+    "expected_intent": "weather_query",
+    "expected_location": "Monaragala"
+  },
+  {
+    "id": "q26",
+    "query": "Rainfall and cloud cover forecast for Colombo today",
+    "expected_intent": "weather_query",
+    "expected_location": "Colombo"
+  },
+  {
+    "id": "q27",
+    "query": "Is storm or high wind expected in Trincomalee?",
+    "expected_intent": "weather_query",
+    "expected_location": "Trincomalee"
+  },
+  {
+    "id": "q28",
+    "query": "Weather outlook and rainfall in Ratnapura wet zone",
+    "expected_intent": "weather_query",
+    "expected_location": "Ratnapura"
+  },
+  {
+    "id": "q29",
+    "query": "Forecast for drought and hot weather in Puttalam",
+    "expected_intent": "weather_query",
+    "expected_location": "Puttalam"
+  },
+  {
+    "id": "q30",
+    "query": "Rain prediction for Vavuniya over the weekend",
+    "expected_intent": "weather_query",
+    "expected_location": "Vavuniya"
+  },
+  {
+    "id": "q31",
+    "query": "What is the recommended fertilizer schedule for paddy in Maha season?",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Paddy"
+  },
+  {
+    "id": "q32",
+    "query": "When is the best time for planting maize in Anuradhapura?",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Maize",
+    "expected_location": "Anuradhapura"
+  },
+  {
+    "id": "q33",
+    "query": "How much urea and TSP fertilizer should I apply for chilli per acre?",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Chilli"
+  },
+  {
+    "id": "q34",
+    "query": "What are the best high yield tomato varieties recommended by DOA?",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Tomato"
+  },
+  {
+    "id": "q35",
+    "query": "Seed rate and plant spacing for brinjal cultivation",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Brinjal"
+  },
+  {
+    "id": "q36",
+    "query": "Land preparation and nursery management steps for rice farming",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Paddy"
+  },
+  {
+    "id": "q37",
+    "query": "Recommended irrigation schedule and water management for big onion",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Onion"
+  },
+  {
+    "id": "q38",
+    "query": "How to harvest and store mung bean seeds safely?",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Mung Bean"
+  },
+  {
+    "id": "q39",
+    "query": "Fertilizer plan and MOP dosage for tea plantation during Yala",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Tea"
+  },
+  {
+    "id": "q40",
+    "query": "Cultivation guide and spacing recommendation for coconut saplings",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Coconut"
+  },
+  {
+    "id": "q41",
+    "query": "Best planting distance and seed rate for green gram in dry zone",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Mung Bean"
+  },
+  {
+    "id": "q42",
+    "query": "How to apply basal fertilizer for potato cultivation in Nuwara Eliya",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Potato",
+    "expected_location": "Nuwara Eliya"
+  },
+  {
+    "id": "q43",
+    "query": "Organic fertilizer and weed control methods for carrot crops",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Carrot"
+  },
+  {
+    "id": "q44",
+    "query": "When should I harvest banana bunches for maximum yield?",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Banana"
+  },
+  {
+    "id": "q45",
+    "query": "Soil preparation and transplanting spacing for cabbage in Badulla",
+    "expected_intent": "crop_advice",
+    "expected_crop": "Cabbage",
+    "expected_location": "Badulla"
+  },
+  {
+    "id": "q46",
+    "query": "Will heavy rain in Galle worsen fungal leaf blast on my paddy?",
+    "expected_intent": "mixed_query",
+    "expected_crop": "Paddy",
+    "expected_location": "Galle"
+  },
+  {
+    "id": "q47",
+    "query": "Should I apply urea fertilizer to chilli if rainfall is forecast in Kurunegala?",
+    "expected_intent": "mixed_query",
+    "expected_crop": "Chilli",
+    "expected_location": "Kurunegala"
+  },
+  {
+    "id": "q48",
+    "query": "How does hot weather affect bacterial blight spread in tomato crops in Matale?",
+    "expected_intent": "mixed_query",
+    "expected_crop": "Tomato",
+    "expected_location": "Matale"
+  },
+  {
+    "id": "q49",
+    "query": "Can I harvest maize before the heavy monsoon rains start in Anuradhapura?",
+    "expected_intent": "mixed_query",
+    "expected_crop": "Maize",
+    "expected_location": "Anuradhapura"
+  },
+  {
+    "id": "q50",
+    "query": "Rain forecast and fertilizer application for paddy tillering stage in Polonnaruwa",
+    "expected_intent": "mixed_query",
+    "expected_crop": "Paddy",
+    "expected_location": "Polonnaruwa"
+  },
+  {
+    "id": "q51",
+    "query": "Will high humidity cause powdery mildew on pumpkin in Kandy during rainy season?",
+    "expected_intent": "mixed_query",
+    "expected_crop": "Pumpkin",
+    "expected_location": "Kandy"
+  },
+  {
+    "id": "q52",
+    "query": "Is it safe to spray fungicide for rice brown spot given tomorrow's rainfall forecast in Matara?",
+    "expected_intent": "mixed_query",
+    "expected_crop": "Paddy",
+    "expected_location": "Matara"
+  },
+  {
+    "id": "q53",
+    "query": "How to contact the agriculture extension officer in my agrarian service center?",
+    "expected_intent": "general_query"
+  },
+  {
+    "id": "q54",
+    "query": "What is the hotline number for Department of Agriculture assistance?",
+    "expected_intent": "general_query"
+  },
+  {
+    "id": "q55",
+    "query": "Tell me about agricultural subsidies available for smallholder farmers",
+    "expected_intent": "general_query"
+  },
+  {
+    "id": "q56",
+    "query": "Hello good morning how does Agri-Advisor work?",
+    "expected_intent": "general_query"
+  },
+  {
+    "id": "q57",
+    "query": "Where can I buy certified seeds in Sri Lanka?",
+    "expected_intent": "general_query"
+  },
+  {
+    "id": "q58",
+    "query": "Can you explain crop insurance schemes for flood damage?",
+    "expected_intent": "general_query"
+  },
+  {
+    "id": "q59",
+    "query": "Who is the local Govi Nena extension officer for Hambantota?",
+    "expected_intent": "general_query",
+    "expected_location": "Hambantota"
+  },
+  {
+    "id": "q60",
+    "query": "General guidance on smart farming techniques and soil health",
+    "expected_intent": "general_query"
+  },
+  {
+    "id": "q61",
+    "query": "Are there any training programs conducted by DOA at In-Service Training Institutes?",
+    "expected_intent": "general_query"
+  },
+  {
+    "id": "q62",
+    "query": "Thank you for the advice, have a great day",
+    "expected_intent": "general_query"
+  }
+]
