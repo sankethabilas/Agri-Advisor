@@ -1,0 +1,419 @@
+{
+  "rice": {
+    "crop": "Rice",
+    "varieties": [
+      {
+        "name": "Bg 403",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a resistant variety for rice blast management"
+        ],
+        "source": {
+          "source_id": "R-D-001",
+          "name": "Sri Lanka Department of Agriculture - Rice Blast"
+        }
+      },
+      {
+        "name": "Bg 406",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a resistant variety for rice blast management"
+        ],
+        "source": {
+          "source_id": "R-D-001",
+          "name": "Sri Lanka Department of Agriculture - Rice Blast"
+        }
+      },
+      {
+        "name": "Bg 366",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a resistant variety for rice blast management"
+        ],
+        "source": {
+          "source_id": "R-D-001",
+          "name": "Sri Lanka Department of Agriculture - Rice Blast"
+        }
+      },
+      {
+        "name": "Bg 359",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a resistant variety for rice blast management"
+        ],
+        "source": {
+          "source_id": "R-D-001",
+          "name": "Sri Lanka Department of Agriculture - Rice Blast"
+        }
+      },
+      {
+        "name": "Bw 361",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a resistant variety for rice blast management"
+        ],
+        "source": {
+          "source_id": "R-D-001",
+          "name": "Sri Lanka Department of Agriculture - Rice Blast"
+        }
+      },
+      {
+        "name": "Bg 250",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a resistant variety for rice blast management"
+        ],
+        "source": {
+          "source_id": "R-D-001",
+          "name": "Sri Lanka Department of Agriculture - Rice Blast"
+        }
+      }
+    ]
+  },
+
+  "chilli": {
+    "crop": "Chilli",
+    "varieties": [
+      {
+        "name": "MI I 01",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Recommended chilli variety",
+          "Plants grow approximately 65–75 cm tall",
+          "Produces pods approximately 9–13 cm long"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      },
+      {
+        "name": "MI I 02",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Recommended chilli variety",
+          "Good branching and bushy growth habit",
+          "Produces short and highly pungent pods"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      },
+      {
+        "name": "K A 02",
+        "region": ["Sri Lanka"],
+        "season": ["Yala"],
+        "suitability_reasons": [
+          "Suitable for Yala cultivation"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      },
+      {
+        "name": "Arunalu",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Recommended chilli variety",
+          "Produces pods approximately 8–11 cm long"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      },
+      {
+        "name": "MI HOT",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Suitable for both fresh and dried chilli production",
+          "Moderately resistant to anthracnose"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      },
+      {
+        "name": "MI GREEN",
+        "region": ["Northern Province"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Particularly suitable for the Northern Province",
+          "Produces pods approximately 12–14 cm long"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      },
+      {
+        "name": "Galkiriyagama Selection",
+        "region": ["North Central Province"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Suitable for the North Central Province",
+          "Can produce approximately 12–15 tonnes of fresh chilli per hectare",
+          "Can produce approximately 3 tonnes of dried chilli per hectare"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      },
+      {
+        "name": "MI VARANIYA 1",
+        "region": ["Low-country wet zone"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Suitable for home gardens in the low-country wet zone",
+          "Can produce approximately 20–25 tonnes per hectare"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      },
+      {
+        "name": "MI CH 03",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Suitable for export",
+          "Can produce approximately 15–18 tonnes per hectare"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      },
+      {
+        "name": "MI CH HY 01",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Suitable for fresh chilli production",
+          "Can produce approximately 35 tonnes per hectare",
+          "Shows high resistance to leaf curl and viral diseases"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      },
+      {
+        "name": "MI CH HY 02",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Suitable for both dried and fresh chilli production",
+          "Can produce approximately 35 tonnes per hectare"
+        ],
+        "source": {
+          "source_id": "DOA-HORDI-CAPSICUM",
+          "name": "Department of Agriculture - HORDI"
+        }
+      }
+    ]
+  },
+
+  "maize": {
+    "crop": "Maize",
+    "varieties": [
+      {
+        "name": "Bhadra",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Recommended open-pollinated variety",
+          "Maturity period approximately 105–110 days",
+          "Average yield approximately 4 tonnes per hectare"
+        ],
+        "source": {
+          "source_id": "MZ-C-004",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      },
+      {
+        "name": "Ruwan",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Recommended open-pollinated variety",
+          "Maturity period approximately 105–110 days",
+          "Average yield approximately 4 tonnes per hectare"
+        ],
+        "source": {
+          "source_id": "MZ-C-004",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      },
+      {
+        "name": "Sampath",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Recommended hybrid variety",
+          "Maturity period approximately 105–110 days",
+          "Average yield approximately 5 tonnes per hectare"
+        ],
+        "source": {
+          "source_id": "MZ-C-004",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      },
+      {
+        "name": "MI Maize Hybrid 1",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Recommended hybrid variety",
+          "Maturity period approximately 105–110 days"
+        ],
+        "source": {
+          "source_id": "MZ-C-004",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      }
+    ]
+  },
+
+  "finger_millet": {
+    "crop": "Finger Millet",
+    "varieties": [
+      {
+        "name": "Ravana",
+        "region": ["Sri Lanka"],
+        "season": ["Yala"],
+        "suitability_reasons": [
+          "Particularly suitable for irrigated cultivation during the Yala season",
+          "Maturity period approximately 90–100 days",
+          "Yield approximately 2500–4000 kg per hectare"
+        ],
+        "source": {
+          "source_id": "FM-C-004",
+          "name": "Department of Agriculture, Sri Lanka (2016)"
+        }
+      },
+      {
+        "name": "Oshadha",
+        "region": ["Sri Lanka"],
+        "season": ["Maha", "Yala"],
+        "suitability_reasons": [
+          "Suitable for both Maha and Yala seasons",
+          "Moderately tolerant to leaf blight",
+          "Maturity period approximately 90–100 days",
+          "Yield approximately 2500–3500 kg per hectare"
+        ],
+        "source": {
+          "source_id": "FM-C-004",
+          "name": "Department of Agriculture, Sri Lanka (2016)"
+        }
+      }
+    ]
+  },
+
+  "mungbean": {
+    "crop": "Mungbean",
+    "varieties": [
+      {
+        "name": "Bombay/Bobe",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Maturity period approximately 75–90 days",
+          "Average yield approximately 1400 kg per hectare"
+        ],
+        "source": {
+          "source_id": "MG-C-003",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      },
+      {
+        "name": "D5.24",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Maturity period approximately 60–70 days",
+          "Average yield approximately 1500 kg per hectare"
+        ],
+        "source": {
+          "source_id": "MG-C-003",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      },
+      {
+        "name": "MICP 01",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a recommended mungbean variety in the source"
+        ],
+        "source": {
+          "source_id": "MG-C-003",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      },
+      {
+        "name": "Varuni",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a recommended mungbean variety in the source"
+        ],
+        "source": {
+          "source_id": "MG-C-003",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      },
+      {
+        "name": "Dhawala",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a recommended mungbean variety in the source"
+        ],
+        "source": {
+          "source_id": "MG-C-003",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      },
+      {
+        "name": "MI35",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a recommended mungbean variety in the source"
+        ],
+        "source": {
+          "source_id": "MG-C-003",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      },
+      {
+        "name": "ANKCP 01",
+        "region": ["Sri Lanka"],
+        "season": ["general"],
+        "suitability_reasons": [
+          "Listed as a recommended mungbean variety in the source"
+        ],
+        "source": {
+          "source_id": "MG-C-003",
+          "name": "Department of Agriculture, Sri Lanka"
+        }
+      }
+    ]
+  }
+}
