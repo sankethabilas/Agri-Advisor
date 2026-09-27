@@ -1,0 +1,995 @@
+{
+  "rice_blast": {
+    "disease": "Rice Blast",
+    "chemical": [],
+    "organic": [
+      "Add burnt paddy husk at 250 kg per acre during land preparation"
+    ],
+    "cultural": [
+      "Apply urea at recommended dosages or according to the leaf colour chart",
+      "Practice weed management",
+      "Avoid adding disease-infected straw to the field"
+    ],
+    "prevention": [
+      "Use resistant varieties such as Bg 403, Bg 406, Bg 366, Bg 359, Bw 361 and Bg 250",
+      "Use certified disease-free seed paddy",
+      "Avoid excessive nitrogen fertilizer application",
+      "Maintain appropriate plant density",
+      "Avoid disease-infected straw"
+    ],
+    "source": {
+      "source_id": "R-D-001",
+      "name": "Sri Lanka Department of Agriculture - Rice Blast"
+    }
+  },
+
+  "rice_sheath_blight": {
+    "disease": "Sheath Blight",
+    "chemical": [],
+    "organic": [
+      "Add burnt paddy husk during land preparation"
+    ],
+    "cultural": [
+      "Apply urea at recommended dosages or according to the leaf colour chart",
+      "Practice weed management",
+      "Deep plough to bury infected plant residues",
+      "Use the recommended seed rate",
+      "Maintain an average plant population",
+      "Avoid infected straw"
+    ],
+    "prevention": [
+      "Use certified disease-free seed paddy",
+      "Avoid excessive nitrogen fertilizer",
+      "Avoid excessive plant density",
+      "Remove or bury infected crop residues"
+    ],
+    "source": {
+      "source_id": "R-D-002",
+      "name": "Sri Lanka Department of Agriculture - Sheath Blight"
+    }
+  },
+
+  "rice_brown_spot": {
+    "disease": "Brown Spot",
+    "chemical": [
+      "Use a seed-protectant fungicide for seed treatment according to recommendations"
+    ],
+    "organic": [
+      "Improve soil quality with organic fertilizer",
+      "Add burnt paddy husk at 250 kg per acre during land preparation"
+    ],
+    "cultural": [
+      "Apply urea at recommended dosages or according to the leaf colour chart",
+      "Practice weed management",
+      "Treat seed paddy with hot water at 53–54°C for 10–12 minutes",
+      "Practice crop rotation",
+      "Maintain proper land levelling",
+      "Avoid infected straw"
+    ],
+    "prevention": [
+      "Use certified disease-free seed paddy",
+      "Improve soil fertility",
+      "Use appropriate seed treatment",
+      "Practice crop rotation",
+      "Avoid infected straw"
+    ],
+    "source": {
+      "source_id": "R-D-003",
+      "name": "Sri Lanka Department of Agriculture - Brown Spot"
+    }
+  },
+
+  "rice_false_smut": {
+    "disease": "False Smut",
+    "chemical": [],
+    "organic": [
+      "Add burnt paddy husk during land preparation"
+    ],
+    "cultural": [
+      "Apply urea at recommended dosages or according to the leaf colour chart",
+      "Practice water management",
+      "Practice weed management",
+      "Maintain appropriate plant population",
+      "Avoid infected plant material"
+    ],
+    "prevention": [
+      "Use certified disease-free seed paddy",
+      "Avoid excessive nitrogen fertilizer",
+      "Maintain appropriate plant density",
+      "Maintain suitable water management",
+      "Control weeds"
+    ],
+    "source": {
+      "source_id": "R-D-004",
+      "name": "Sri Lanka Department of Agriculture - False Smut"
+    }
+  },
+
+  "rice_leaf_scald": {
+    "disease": "Leaf Scald",
+    "chemical": [],
+    "organic": [
+      "Add burnt paddy husk at 250 kg per acre during land preparation"
+    ],
+    "cultural": [
+      "Apply urea at recommended dosages or according to the leaf colour chart",
+      "Practice weed management",
+      "Avoid infected plant material"
+    ],
+    "prevention": [
+      "Use certified disease-free seed paddy",
+      "Control weeds",
+      "Avoid infected plant material"
+    ],
+    "source": {
+      "source_id": "R-D-005",
+      "name": "Sri Lanka Department of Agriculture - Leaf Scald"
+    }
+  },
+
+  "rice_sheath_rot": {
+    "disease": "Sheath Rot",
+    "chemical": [],
+    "organic": [
+      "Apply organic fertilizer to improve soil conditions",
+      "Add burnt paddy husk during land preparation"
+    ],
+    "cultural": [
+      "Apply urea at recommended dosages or according to the leaf colour chart",
+      "Practice weed management",
+      "Avoid infected straw",
+      "Manage insect populations such as sheath mites"
+    ],
+    "prevention": [
+      "Use certified disease-free seed paddy",
+      "Improve soil conditions",
+      "Control weeds",
+      "Avoid infected straw",
+      "Manage sheath mite populations"
+    ],
+    "source": {
+      "source_id": "R-D-006",
+      "name": "Sri Lanka Department of Agriculture - Sheath Rot"
+    }
+  },
+
+  "rice_narrow_brown_leaf_spot": {
+    "disease": "Narrow Brown Leaf Spot",
+    "chemical": [],
+    "organic": [
+      "Apply organic fertilizer to improve soil quality",
+      "Add burnt paddy husk at 250 kg per acre during land preparation"
+    ],
+    "cultural": [
+      "Apply urea at recommended dosages or according to the leaf colour chart",
+      "Practice weed management",
+      "Avoid infected straw"
+    ],
+    "prevention": [
+      "Use certified disease-free seed paddy",
+      "Improve soil quality",
+      "Practice weed management",
+      "Avoid infected straw"
+    ],
+    "source": {
+      "source_id": "R-D-007",
+      "name": "Sri Lanka Department of Agriculture - Narrow Brown Leaf Spot"
+    }
+  },
+
+  "rice_bacterial_leaf_blight": {
+    "disease": "Bacterial Leaf Blight",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Apply urea at recommended dosages or according to the leaf colour chart",
+      "Ensure good field drainage",
+      "Stop water supply and allow the field to dry when disease is observed where possible",
+      "Direct excess water out through drainage channels",
+      "Apply potassium fertilizer after disease detection according to recommendations"
+    ],
+    "prevention": [
+      "Avoid excessive nitrogen fertilizer application",
+      "Maintain good field drainage",
+      "Avoid directing drainage water from infected fields through disease-free fields"
+    ],
+    "source": {
+      "source_id": "R-D-008",
+      "name": "Sri Lanka Department of Agriculture - Bacterial Leaf Blight"
+    }
+  },
+
+  "tomato_early_blight": {
+    "disease": "Tomato Early Blight",
+    "chemical": [
+      "Mancozeb 80% WP at 20 g per 10 L of water",
+      "Metalaxyl 8% + Mancozeb 64% WP at 12.5 g per 10 L of water",
+      "Metiram 55% + Pyraclostrobin 5% WG at 8 ml per 10 L of water"
+    ],
+    "organic": [],
+    "cultural": [],
+    "prevention": [
+      "Monitor plants for early disease symptoms",
+      "Begin disease management at the initial stage of disease development"
+    ],
+    "source": {
+      "source_id": "T-D-002",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_late_blight": {
+    "disease": "Tomato Late Blight",
+    "chemical": [
+      "Mancozeb 80% WP at 20 g per 10 L of water",
+      "Metalaxyl 8% + Mancozeb 64% WP at 12.5 g per 10 L of water",
+      "Metiram 55% + Pyraclostrobin 5% WG at 8 ml per 10 L of water"
+    ],
+    "organic": [],
+    "cultural": [],
+    "prevention": [
+      "Monitor lower and older leaves for early disease symptoms",
+      "Begin disease management at the initial stage of disease development"
+    ],
+    "source": {
+      "source_id": "T-D-003",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_target_spot": {
+    "disease": "Tomato Target Spot",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "T-D-004",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_powdery_mildew": {
+    "disease": "Tomato Powdery Mildew",
+    "chemical": [
+      "Sulfur 80% WG at 50 g per 10 L of water",
+      "Chlorothalonil 500 g/L SC at 30 ml per 10 L of water",
+      "Carbendazim 50% WP at 7 g per 10 L of water"
+    ],
+    "organic": [],
+    "cultural": [],
+    "prevention": [
+      "Monitor plants for early powdery mildew symptoms",
+      "Begin disease management at the initial stage of disease development"
+    ],
+    "source": {
+      "source_id": "T-D-005",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_anthracnose": {
+    "disease": "Tomato Anthracnose",
+    "chemical": [
+      "Use recommended seed-treatment fungicides before sowing",
+      "Use recommended fungicides at the initial stage of disease development"
+    ],
+    "organic": [],
+    "cultural": [
+      "Treat seeds before sowing"
+    ],
+    "prevention": [
+      "Use appropriate seed treatment before sowing",
+      "Monitor plants for early disease development"
+    ],
+    "source": {
+      "source_id": "T-D-006",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_septoria_leaf_spot": {
+    "disease": "Tomato Septoria Leaf Spot",
+    "chemical": [
+      "Daconil at 15–30 ml per 10 L of water",
+      "Mancozeb at 20 ml per 10 L of water",
+      "Topsin at 6 g per 10 L of water",
+      "Carbendazim at 7 g per 10 L of water"
+    ],
+    "organic": [],
+    "cultural": [],
+    "prevention": [
+      "Monitor leaves for early water-soaked lesions"
+    ],
+    "source": {
+      "source_id": "T-D-007",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_collar_root_rot": {
+    "disease": "Tomato Collar Rot and Root Rot",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "T-D-008",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_bacterial_wilt": {
+    "disease": "Tomato Bacterial Wilt",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Use wilt-resistant tomato varieties",
+      "Practice crop rotation with legumes and cereals",
+      "Maintain good field sanitation"
+    ],
+    "prevention": [
+      "Use wilt-resistant varieties",
+      "Practice crop rotation",
+      "Maintain good field sanitation"
+    ],
+    "source": {
+      "source_id": "T-D-009",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_yellow_leaf_curl_virus": {
+    "disease": "Tomato Yellow Leaf Curl Virus",
+    "chemical": [
+      "Reduce the whitefly vector population using recommended insecticides"
+    ],
+    "organic": [],
+    "cultural": [
+      "Maintain weed-free fields",
+      "Practice field sanitation",
+      "Remove old crop debris",
+      "Eliminate weeds"
+    ],
+    "prevention": [
+      "Use disease-free seeds",
+      "Maintain weed-free fields",
+      "Remove old crop debris",
+      "Control whitefly vectors"
+    ],
+    "source": {
+      "source_id": "T-D-010",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_curly_top_virus": {
+    "disease": "Tomato Curly Top Virus",
+    "chemical": [
+      "Reduce the leafhopper vector population using recommended insecticides"
+    ],
+    "organic": [],
+    "cultural": [
+      "Maintain weed-free fields",
+      "Practice field sanitation",
+      "Remove old crop debris",
+      "Eliminate weeds"
+    ],
+    "prevention": [
+      "Use disease-free seeds",
+      "Maintain weed-free fields",
+      "Remove old crop debris",
+      "Control leafhopper vectors"
+    ],
+    "source": {
+      "source_id": "T-D-011",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "chilli_damping_off": {
+    "disease": "Chilli Damping-off",
+    "chemical": [
+      "Captan 50% WP at 6 g per kg of seed",
+      "Captan 80% WP at 4 g per kg of seed",
+      "Thiram 80% WP at 5 g per kg of seed",
+      "Thiophanate methyl 50% + Thiram 30% WP at 4 g per kg of seed"
+    ],
+    "organic": [],
+    "cultural": [
+      "Sterilize nursery beds",
+      "Treat seed before sowing",
+      "Maintain appropriate plant density",
+      "Remove diseased seedlings with surrounding soil before irrigation"
+    ],
+    "prevention": [
+      "Use nursery sterilization",
+      "Use appropriate seed treatment",
+      "Avoid excessive nursery plant density",
+      "Remove infected seedlings before irrigation"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_anthracnose": {
+    "disease": "Chilli Anthracnose",
+    "chemical": [
+      "Mancozeb 80 WP at 20 g per 10 L of water",
+      "Maneb 80 WP at 20 g per 10 L of water",
+      "Thiophanate methyl 70 WP at 6 g per 10 L of water",
+      "Carbendazim 50 WP at 7 g per 10 L of water",
+      "Chlorothalonil 500 g/L SC at 30 ml per 10 L of water",
+      "Propiconazole 250 g/L EC at 10 ml per 10 L of water",
+      "Copper 37.5 WP at 40 g per 10 L of water"
+    ],
+    "organic": [],
+    "cultural": [
+      "Remove diseased pods and plants",
+      "Use healthy seed",
+      "Treat seed before planting",
+      "Practice crop rotation"
+    ],
+    "prevention": [
+      "Use healthy seed",
+      "Remove infected pods and plants",
+      "Practice crop rotation",
+      "Reduce infected crop residues"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_cercospora_leaf_spot": {
+    "disease": "Chilli Cercospora Leaf Spot",
+    "chemical": [
+      "Copper 50 WP",
+      "Mancozeb 80 WP",
+      "Maneb 80 WP",
+      "Propineb 70 WP",
+      "Tebuconazole 250 EW",
+      "Chlorothalonil",
+      "Propiconazole",
+      "Copper 37.5 WP"
+    ],
+    "organic": [],
+    "cultural": [
+      "Follow cultural management measures used for chilli anthracnose"
+    ],
+    "prevention": [
+      "Remove infected plant material",
+      "Use healthy planting material",
+      "Practice crop rotation"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_choanephora_blight": {
+    "disease": "Chilli Choanephora Blight",
+    "chemical": [
+      "Copper-based fungicides listed in the source",
+      "Mancozeb",
+      "Maneb",
+      "Propineb",
+      "Chlorothalonil"
+    ],
+    "organic": [],
+    "cultural": [
+      "Maintain recommended plant spacing",
+      "Remove and destroy diseased plant parts"
+    ],
+    "prevention": [
+      "Maintain recommended spacing",
+      "Remove diseased plant parts promptly"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_collar_rot": {
+    "disease": "Chilli Collar Rot",
+    "chemical": [
+      "Thiram 80% WP soil treatment",
+      "Thiophanate methyl 70% WP soil treatment",
+      "Thiophanate methyl 50% + Thiram 30% WP soil treatment"
+    ],
+    "organic": [],
+    "cultural": [
+      "Remove diseased plants before irrigation"
+    ],
+    "prevention": [
+      "Remove infected plants promptly",
+      "Prevent spread during irrigation"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_powdery_mildew": {
+    "disease": "Chilli Powdery Mildew",
+    "chemical": [
+      "Thiophanate methyl 70 WP",
+      "Sulfur 80 WP",
+      "Chlorothalonil"
+    ],
+    "organic": [],
+    "cultural": [
+      "Practice water management",
+      "Practice crop rotation"
+    ],
+    "prevention": [
+      "Maintain suitable water management",
+      "Practice crop rotation"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_bacterial_wilt": {
+    "disease": "Chilli Bacterial Wilt",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Remove diseased plants",
+      "Prevent irrigation water from moving from diseased fields to healthy fields",
+      "Increase irrigation intervals",
+      "Practice crop rotation"
+    ],
+    "prevention": [
+      "Prevent movement of irrigation water from infected to healthy fields",
+      "Remove diseased plants",
+      "Practice crop rotation"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_leaf_curl_virus": {
+    "disease": "Chilli Leaf Curl Virus",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Control the whitefly vector",
+      "Remove diseased plants",
+      "Remove weeds"
+    ],
+    "prevention": [
+      "Control whiteflies",
+      "Remove infected plants",
+      "Maintain weed-free fields"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_banded_leaf_sheath_blight": {
+    "disease": "Maize Banded Leaf and Sheath Blight",
+    "chemical": [],
+    "organic": [
+      "Use mulching according to source recommendations"
+    ],
+    "cultural": [
+      "Maintain an appropriate plant population"
+    ],
+    "prevention": [
+      "Maintain appropriate plant population",
+      "Use recommended mulching practices"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_southern_rust": {
+    "disease": "Maize Southern Rust",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_physoderma_brown_spot": {
+    "disease": "Maize Physoderma Brown Spot",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Practice crop rotation",
+      "Destroy infected crop residues"
+    ],
+    "prevention": [
+      "Practice crop rotation",
+      "Remove infected crop residues"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_bacterial_stalk_rot": {
+    "disease": "Maize Bacterial Stalk Rot",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Remove diseased plants",
+      "Practice crop rotation"
+    ],
+    "prevention": [
+      "Remove infected plants",
+      "Practice crop rotation"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "rice_bakanae": {
+    "disease": "Bakanae",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Use high-quality seed from fields free of Bakanae",
+      "Use appropriate seed treatment",
+      "Properly dispose of infected rice residues",
+      "Remove weeds that may contribute to pathogen survival"
+    ],
+    "prevention": [
+      "Use healthy seed",
+      "Use appropriate seed treatment",
+      "Avoid infected crop residues",
+      "Control weeds"
+    ],
+    "source": {
+      "source_id": "R-D-009",
+      "name": "IRRI Rice Diseases Online Resource"
+    }
+  },
+
+  "rice_stem_rot": {
+    "disease": "Stem Rot",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "R-D-010",
+      "name": "IRRI Rice Diseases Online Resource"
+    }
+  },
+
+  "rice_bacterial_leaf_streak": {
+    "disease": "Bacterial Leaf Streak",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "R-D-011",
+      "name": "IRRI Rice Diseases Online Resource"
+    }
+  },
+
+  "rice_grassy_stunt": {
+    "disease": "Grassy Stunt",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "R-D-013",
+      "name": "IRRI Rice Diseases Online Resource"
+    }
+  },
+
+  "rice_ragged_stunt": {
+    "disease": "Ragged Stunt",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "R-D-014",
+      "name": "IRRI Rice Diseases Online Resource"
+    }
+  },
+
+  "tomato_damping_off": {
+    "disease": "Tomato Damping-off",
+    "chemical": [
+      "Thiram 80 WP at 5 g per kg of seed",
+      "Homai at 4 g per kg of seed",
+      "Thiram 80 WP at 7 g per 5 L per square metre as soil treatment",
+      "Homai at 5 g per 5 L per square metre as soil treatment"
+    ],
+    "organic": [],
+    "cultural": [
+      "Prepare nursery beds on suitable land",
+      "Use heat sterilization of nursery beds",
+      "Use appropriate seed treatment",
+      "Use appropriate soil treatment"
+    ],
+    "prevention": [
+      "Use suitable nursery sites",
+      "Sterilize nursery beds",
+      "Treat seeds before sowing"
+    ],
+    "source": {
+      "source_id": "T-D-001",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_spotted_wilt_virus": {
+    "disease": "Tomato Spotted Wilt Virus",
+    "chemical": [
+      "Reduce the thrips vector population using recommended insecticides"
+    ],
+    "organic": [],
+    "cultural": [
+      "Maintain weed-free fields",
+      "Practice field sanitation",
+      "Remove old crop debris",
+      "Eliminate weeds"
+    ],
+    "prevention": [
+      "Use disease-free seeds",
+      "Maintain weed-free fields",
+      "Remove old crop debris",
+      "Control thrips vectors"
+    ],
+    "source": {
+      "source_id": "T-D-012",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_cucumber_mosaic_virus": {
+    "disease": "Tomato Cucumber Mosaic Virus",
+    "chemical": [
+      "Reduce the aphid vector population using recommended insecticides"
+    ],
+    "organic": [],
+    "cultural": [
+      "Maintain weed-free fields",
+      "Practice good field sanitation"
+    ],
+    "prevention": [
+      "Use disease-free seeds",
+      "Maintain weed-free fields",
+      "Control aphid vectors"
+    ],
+    "source": {
+      "source_id": "T-D-013",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "chilli_cucumber_mosaic_virus": {
+    "disease": "Chilli Cucumber Mosaic Virus",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Control aphid vectors",
+      "Remove diseased plants",
+      "Remove weeds",
+      "Avoid cultivation with listed alternate host crops such as banana, cucumber and tomato"
+    ],
+    "prevention": [
+      "Control aphid vectors",
+      "Remove diseased plants",
+      "Maintain weed-free fields",
+      "Avoid nearby alternate host crops listed by the source"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_helminthosporium_leaf_spot": {
+    "disease": "Maize Helminthosporium Leaf Spot",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Improve field drainage",
+      "Destroy diseased plants"
+    ],
+    "prevention": [
+      "Maintain good drainage",
+      "Remove diseased plants"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_northern_leaf_blight": {
+    "disease": "Maize Northern Leaf Blight",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Improve field drainage"
+    ],
+    "prevention": [
+      "Maintain good field drainage"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "peanut_early_late_leaf_spot": {
+    "disease": "Peanut Early and Late Leaf Spot",
+    "chemical": [
+      "Bitertanol",
+      "Propineb",
+      "Chlorothalonil"
+    ],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "peanut_rust": {
+    "disease": "Peanut Rust",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "peanut_collar_rot": {
+    "disease": "Peanut Collar Rot",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "peanut_bud_necrosis": {
+    "disease": "Peanut Bud Necrosis",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Establish a maize barrier of three rows"
+    ],
+    "prevention": [
+      "Use a three-row maize barrier to reduce disease-vector movement"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_cercospora_leaf_spot": {
+    "disease": "Legume Cercospora Leaf Spot",
+    "chemical": [
+      "Copper-based fungicide",
+      "Mancozeb 80 WP",
+      "Chlorothalonil"
+    ],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_powdery_mildew": {
+    "disease": "Legume Powdery Mildew",
+    "chemical": [
+      "Thiophanate methyl 70% WP",
+      "Sulfur 80% WP"
+    ],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_anthracnose": {
+    "disease": "Legume Anthracnose",
+    "chemical": [
+      "Mancozeb 80% WP",
+      "Carbendazim 50% WP"
+    ],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_yellow_mosaic_virus": {
+    "disease": "Legume Yellow Mosaic Virus",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Control whiteflies and other insect vectors",
+      "Use resistant varieties where available"
+    ],
+    "prevention": [
+      "Control insect vectors",
+      "Use resistant varieties where available"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_leaf_curl_virus": {
+    "disease": "Legume Leaf Curl Virus",
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Control whiteflies and aphids",
+      "Use resistant varieties such as MI 6 where applicable"
+    ],
+    "prevention": [
+      "Control whitefly and aphid vectors",
+      "Use resistant varieties where applicable"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_bacterial_blister_purple_seed_stain": {
+    "disease": "Legume Bacterial Blister and Purple Seed Stain",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  }
+}
