@@ -1,0 +1,209 @@
+{
+  "maha": {
+    "name": "Maha",
+    "description": "Major cultivation season associated with the main rainy period in Sri Lanka.",
+    "crop_windows": {
+      "rice": {
+        "planting_window": [],
+        "notes": [],
+        "source": []
+      },
+
+      "chilli": {
+        "planting_window": [
+          "Late October to mid-November"
+        ],
+        "notes": [
+          "Chilli can be cultivated during the Maha season from late October to mid-November."
+        ],
+        "source": [
+          {
+            "source_id": "CH-C-003-EN",
+            "name": "Department of Agriculture - HORDI"
+          }
+        ]
+      },
+
+      "maize": {
+        "planting_window": [
+          "Late September to early October"
+        ],
+        "notes": [
+          "Rainfed Maha maize cultivation can be started in late September or early October."
+        ],
+        "source": [
+          {
+            "source_id": "MZ-C-003-EN",
+            "name": "Department of Agriculture, Sri Lanka"
+          }
+        ]
+      },
+
+      "tomato": {
+        "planting_window": [
+          "Nursery establishment around the end of August"
+        ],
+        "notes": [
+          "The source gives the end of August as one suitable period for tomato nursery establishment."
+        ],
+        "source": [
+          {
+            "source_id": "T-C-001",
+            "name": "Sri Lanka Department of Agriculture"
+          }
+        ]
+      },
+
+      "cowpea": {
+        "planting_window": [
+          "Around mid-November"
+        ],
+        "notes": [
+          "Rainfed cowpea cultivation during Maha should preferably begin around mid-November."
+        ],
+        "source": [
+          {
+            "source_id": "CP-C-001-EN",
+            "name": "Department of Agriculture, Ministry of Agriculture (2016)"
+          }
+        ]
+      },
+
+      "finger_millet": {
+        "planting_window": [
+          "Direct sowing with the first rains in October",
+          "Nursery establishment during the first week of September",
+          "Transplanting during the second or third week of October"
+        ],
+        "notes": [
+          "These recommendations apply to Maha-season upland finger millet cultivation."
+        ],
+        "source": [
+          {
+            "source_id": "FM-C-005",
+            "name": "Department of Agriculture, Sri Lanka (2016)"
+          }
+        ]
+      }
+    }
+  },
+
+  "yala": {
+    "name": "Yala",
+    "description": "Cultivation season associated with the secondary rainy period in Sri Lanka.",
+    "crop_windows": {
+      "rice": {
+        "planting_window": [],
+        "notes": [],
+        "source": []
+      },
+
+      "chilli": {
+        "planting_window": [
+          "April to early May"
+        ],
+        "notes": [
+          "Chilli can be cultivated during Yala from April to early May."
+        ],
+        "source": [
+          {
+            "source_id": "CH-C-003-EN",
+            "name": "Department of Agriculture - HORDI"
+          }
+        ]
+      },
+
+      "maize": {
+        "planting_window": [
+          "Early April"
+        ],
+        "notes": [
+          "Yala maize cultivation can be started in early April."
+        ],
+        "source": [
+          {
+            "source_id": "MZ-C-003-EN",
+            "name": "Department of Agriculture, Sri Lanka"
+          }
+        ]
+      },
+
+      "tomato": {
+        "planting_window": [
+          "Nursery establishment around mid-March"
+        ],
+        "notes": [
+          "The source gives mid-March as one suitable period for tomato nursery establishment."
+        ],
+        "source": [
+          {
+            "source_id": "T-C-001",
+            "name": "Sri Lanka Department of Agriculture"
+          }
+        ]
+      },
+
+      "cowpea": {
+        "planting_window": [
+          "With the first rainfall received in April"
+        ],
+        "notes": [
+          "Yala cowpea cultivation should preferably begin with the first rainfall received in April."
+        ],
+        "source": [
+          {
+            "source_id": "CP-C-001-EN",
+            "name": "Department of Agriculture, Ministry of Agriculture (2016)"
+          }
+        ]
+      },
+
+      "finger_millet": {
+        "planting_window": [
+          "Nursery establishment during the first week of March",
+          "Transplanting during the first week of April"
+        ],
+        "notes": [
+          "These recommendations apply to Yala-season paddy cultivation of finger millet."
+        ],
+        "source": [
+          {
+            "source_id": "FM-C-005",
+            "name": "Department of Agriculture, Sri Lanka (2016)"
+          }
+        ]
+      }
+    }
+  },
+
+  "year_round": {
+    "name": "Year-round or controlled cultivation",
+    "crop_windows": {
+      "chilli": {
+        "planting_window": [
+          "Can be cultivated throughout the year under controlled conditions"
+        ],
+        "notes": [],
+        "source": [
+          {
+            "source_id": "CH-C-003-EN",
+            "name": "Department of Agriculture - HORDI"
+          }
+        ]
+      },
+
+      "maize_baby_corn": {
+        "planting_window": [
+          "Can be cultivated throughout the year in the dry zone when adequate irrigation and insect pest management are available"
+        ],
+        "notes": [],
+        "source": [
+          {
+            "source_id": "MZ-C-003-EN",
+            "name": "Department of Agriculture, Sri Lanka"
+          }
+        ]
+      }
+    }
+  }
+}
