@@ -274,7 +274,93 @@
         "source_id": "MZ-C-007",
         "name": "Department of Agriculture, Sri Lanka - Maize Harvesting and Postharvest"
       }
-    ]
+    ],
+    "worked_example": {
+  "title": "Maha Maize Advisory Example",
+  "scenario": {
+    "crop": "Maize",
+    "region": "Sri Lanka",
+    "season": "Maha"
+  },
+
+  "recommended_varieties": [
+    {
+      "name": "Bhadra",
+      "type": "open-pollinated",
+      "maturity": "105–110 days",
+      "expected_yield": "approximately 4 tonnes per hectare"
+    },
+    {
+      "name": "Ruwan",
+      "type": "open-pollinated",
+      "maturity": "105–110 days",
+      "expected_yield": "approximately 4 tonnes per hectare"
+    },
+    {
+      "name": "Sampath",
+      "type": "hybrid",
+      "maturity": "105–110 days",
+      "expected_yield": "approximately 5 tonnes per hectare"
+    }
+  ],
+
+  "planting": {
+    "window": "Late September to early October",
+    "seed_requirement": "Approximately 15–20 kg per hectare, or approximately 12 kg per hectare for hybrid seed",
+    "spacing": "60 cm × 30 cm with one plant per planting point",
+    "expected_population": "Approximately 55,555 plants per hectare"
+  },
+
+  "fertilizer_schedule": [
+    {
+      "stage": "Basal",
+      "timing": "Before planting or within 10–14 days after planting",
+      "application": [
+        "75 kg/ha urea",
+        "100 kg/ha concentrated superphosphate",
+        "50 kg/ha muriate of potash"
+      ]
+    },
+    {
+      "stage": "Top dressing",
+      "timing": "4–5 weeks after planting",
+      "application": [
+        "140 kg/ha urea for rainfed cultivation"
+      ]
+    }
+  ],
+
+  "irrigation": [
+    "Avoid water stress during the flowering stage",
+    "Irrigation may be stopped approximately 85–90 days after planting"
+  ],
+
+  "weed_and_crop_management": [
+    "Keep the field free from weeds during the first 3–4 weeks",
+    "Use appropriate row spacing",
+    "Remove diseased plants where recommended",
+    "Practice crop rotation where appropriate"
+  ],
+
+  "harvesting": [
+    "Fresh cobs may be harvested approximately 70–75 days after planting",
+    "Harvest fresh cobs when silks become brown or black",
+    "Harvest mature cobs when husks are dry and a black layer develops at the base of the grain"
+  ],
+
+  "expected_yield": "Approximately 4–5 tonnes per hectare depending on the selected variety",
+
+  "source_ids": [
+    "MZ-C-003",
+    "MZ-C-004",
+    "MZ-C-005",
+    "MZ-F-001",
+    "MZ-C-006",
+    "MZ-C-007"
+  ],
+
+  "note": "Temporary worked example based entirely on the currently curated knowledge base. The originally documented rice example can be added later after its missing source material is verified."
+}
   },
 
   "mungbean": {
