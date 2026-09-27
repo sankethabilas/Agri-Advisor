@@ -1,13 +1,20 @@
 """
 ui/advisory_renderer.py
 Task T-12 — Advisory Response Rendering in the UI  (Day 3, Agri-Advisor)
+Task T-17 — Language Selection & Multi-Language Scaffolding
 
 Renders the eight-block structured advisory layout from an orchestrator
 response payload.  All keys are accessed via .get() so that missing
 optional blocks never crash the UI.
 
+T-17 additions:
+    render_eight_block_advisory now accepts a ``lang`` argument.  When lang
+    is not "en", advisory text blocks are translated at render-time via
+    utils.translator.translate_advisory_text.  The stored response dict is
+    never mutated (pipeline always stays in English, per T-17.4).
+
 Entry point:
-    render_eight_block_advisory(response: dict, is_fallback: bool = False)
+    render_eight_block_advisory(response: dict, is_fallback: bool = False, lang: str = "en")
 
 Block map:
     B1  — Diagnosis          (disease_name, scientific_name, severity, confidence)
@@ -26,12 +33,53 @@ Fixture wire-up:
 from __future__ import annotations
 
 import math
+import sys
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 import streamlit as st
 
+# Allow utils.* imports when this module is loaded from any entry point
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE
+
+# T-17: translation helpers (imported lazily in _translate_advisory_block)
+# to avoid hard-failing when the utils package is not yet on sys.path in tests
+try:
+    from utils.translator import translate_advisory_text, TranslationResult  # noqa: F401
+    _TRANSLATOR_AVAILABLE = True
+except ImportError:
+    _TRANSLATOR_AVAILABLE = False
+
+# ============================================================================
+# T-17 Translation helper
+# ============================================================================
+
+def _translate_block_text(
+    text: str,
+    lang: str,
+    technical_terms: list[str] | None = None,
+) -> tuple[str, bool]:
+    """
+    Translate a single advisory text string at render-time (T-17.3 / T-17.4).
+
+    Returns (translated_text, had_warning) where ``had_warning`` is True
+    when the translation API failed and the original English text was returned
+    (T-17.7 graceful fallback).
+
+    If ``lang`` is "en" or the translator is not available, the original text
+    is returned immediately with no warning.
+    """
+    if lang == "en" or not text.strip():
+        return text, False
+
+    if not _TRANSLATOR_AVAILABLE:
+        return text, True  # signal warning so caller can toast once
+
+    result = translate_advisory_text(text, lang, technical_terms)
+    return result.text, not result.success
 
 
 # ============================================================================
@@ -647,17 +695,21 @@ def _render_metadata_ribbon(metadata: dict[str, Any]) -> None:
 def render_eight_block_advisory(
     response: dict[str, Any],
     is_fallback: bool = False,
+    lang: str = "en",
 ) -> None:
     """
     Render the complete eight-block advisory layout.
 
     Accepts any dict matching /tests/fixtures/orchestrator_response.json.
     All blocks are guarded with .get() so that missing keys are silently
-    skipped — never raising a KeyError (Block 8 partial-response contract).
+    skipped -- never raising a KeyError (Block 8 partial-response contract).
 
     Args:
         response:    Orchestrator response dict (may be partial).
         is_fallback: True when fixture data is being shown (offline mode).
+        lang:        T-17 target locale code ("en", "si", "ta").
+                     Advisory text blocks are translated at render-time.
+                     The response dict is NEVER mutated.
     """
     # ── Demo mode banner ─────────────────────────────────────────────────────
     if is_fallback:
@@ -668,17 +720,17 @@ def render_eight_block_advisory(
         )
 
     # ── Extract top-level keys defensively (Block 8 guard) ───────────────────
-    answer             = _safe_str(response.get("answer"))
-    diagnosis          = response.get("diagnosis") or {}
+    answer              = _safe_str(response.get("answer"))
+    diagnosis           = response.get("diagnosis") or {}
     immediate_treatment = response.get("immediate_treatment") or {}
-    prevention         = response.get("prevention") or []
-    weather_alert      = response.get("weather_alert") or {}
-    sources            = response.get("sources") or []
-    disclaimer         = response.get("disclaimer")          # may be None
-    why_explanation    = response.get("why_explanation") or {}
-    metadata           = response.get("metadata") or {}
-    language           = _safe_str(metadata.get("language"), "en")
-    session_id         = metadata.get("session_id")
+    prevention          = response.get("prevention") or []
+    weather_alert       = response.get("weather_alert") or {}
+    sources             = response.get("sources") or []
+    disclaimer          = response.get("disclaimer")          # may be None
+    why_explanation     = response.get("why_explanation") or {}
+    metadata            = response.get("metadata") or {}
+    language            = _safe_str(metadata.get("language"), "en")
+    session_id          = metadata.get("session_id")
 
     # Detect whether the response is "structured" (has any Block 1–7 data)
     has_structured_blocks = any([
@@ -686,6 +738,75 @@ def render_eight_block_advisory(
         why_explanation,
     ])
 
+    # ── T-17: Build technical-term protection list ────────────────────────────
+    _tech_terms: list[str] = []
+    if diagnosis:
+        if dn := diagnosis.get("disease_name"):
+            _tech_terms.append(str(dn))
+        if sn := diagnosis.get("scientific_name"):
+            _tech_terms.append(str(sn))
+    for step in (immediate_treatment.get("steps") or []):
+        for k in ("chemical_name", "product"):
+            if step.get(k):
+                _tech_terms.append(str(step[k]))
+
+    # T-17.7 sentinel: did any translation call degrade to fallback?
+    _translation_warning = False
+
+    # ── T-17.4: Translate narrative text fields at render-time ───────────────
+    # Structural fields (severity, confidence, urgency_tag, source URLs) are
+    # kept in English to preserve meaning and avoid mis-translation artefacts.
+
+    # B3 Prevention: translate each item string / tip dict
+    _translated_prevention: list = []
+    for item in prevention:
+        if isinstance(item, str):
+            t, w = _translate_block_text(item, lang, _tech_terms)
+            _translation_warning = _translation_warning or w
+            _translated_prevention.append(t)
+        elif isinstance(item, dict):
+            tip_key = next(
+                (k for k in ("tip", "text", "description") if item.get(k)), None
+            )
+            if tip_key:
+                t, w = _translate_block_text(str(item[tip_key]), lang, _tech_terms)
+                _translation_warning = _translation_warning or w
+                new_item = {**item, tip_key: t}
+                _translated_prevention.append(new_item)
+            else:
+                _translated_prevention.append(item)
+        else:
+            _translated_prevention.append(item)
+
+    # B7 Why explanation: translate narrative keys
+    _translated_why: dict = dict(why_explanation)
+    for narrative_key in ("narrative", "explanation", "reasoning", "summary"):
+        if why_explanation.get(narrative_key):
+            t, w = _translate_block_text(
+                str(why_explanation[narrative_key]), lang, _tech_terms
+            )
+            _translation_warning = _translation_warning or w
+            _translated_why[narrative_key] = t
+
+    # B8 Raw answer: translate if no structured blocks
+    _translated_answer = answer
+    if not has_structured_blocks and answer:
+        _translated_answer, w = _translate_block_text(answer, lang, _tech_terms)
+        _translation_warning = _translation_warning or w
+
+    # Disclaimer: prefer pre-translated static string; fall back to dynamic
+    _disclaimer = disclaimer
+    if lang != "en" and not _disclaimer:
+        _disclaimer = DISCLAIMERS.get(lang) or DISCLAIMERS.get("en")
+
+    # ── T-17.7: Single toast if translation degraded ──────────────────────────
+    if _translation_warning and lang != "en":
+        st.toast(
+            "⚠️ Translation service unavailable — showing original English advisory.",
+            icon="🌐",
+        )
+
+    # ── Report heading (T-17.6: st.markdown with UTF-8 str) ──────────────────
     st.markdown("---")
     st.markdown("## 🌾 Agricultural Advisory Report")
 
@@ -702,7 +823,7 @@ def render_eight_block_advisory(
     render_block2_immediate_treatment(immediate_treatment)
 
     # ── Block 3: Prevention ──────────────────────────────────────────────────
-    render_block3_prevention(prevention)
+    render_block3_prevention(_translated_prevention)
 
     # ── Block 4: Weather Advisory ────────────────────────────────────────────
     render_block4_weather_advisory(weather_alert)
@@ -711,16 +832,14 @@ def render_eight_block_advisory(
     render_block5_sources(sources)
 
     # ── Block 6: Disclaimer ──────────────────────────────────────────────────
-    render_block6_disclaimer(disclaimer, language)
+    render_block6_disclaimer(_disclaimer, language)
 
     # ── Block 7: "Why?" Explanation ──────────────────────────────────────────
-    render_block7_why_explanation(why_explanation)
+    render_block7_why_explanation(_translated_why)
 
     # ── Block 8: Partial-response fallback ───────────────────────────────────
-    # If none of the structured blocks had data, render the raw answer text
-    # so the farmer still receives useful information.
     if not has_structured_blocks:
-        render_block8_raw_answer_fallback(answer)
+        render_block8_raw_answer_fallback(_translated_answer)
 
     # ── Follow-up prompt & feedback ───────────────────────────────────────────
     st.markdown("---")
@@ -741,3 +860,4 @@ def render_eight_block_advisory(
     with col_no:
         if st.button("👎 No", key=f"helpful_no_{session_id}"):
             st.toast("Sorry to hear that. We'll keep improving!", icon="🙏")
+
