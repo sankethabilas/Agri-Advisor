@@ -1,0 +1,306 @@
+{
+  "rice": {
+    "crop": "Rice",
+
+    "planting": [],
+
+    "fertilizer": [
+      "Apply nitrogen fertilizer at recommended rates or according to the leaf colour chart",
+      "Avoid excessive nitrogen fertilizer because it can increase susceptibility to several rice diseases"
+    ],
+
+    "irrigation": [
+      "Maintain appropriate water management according to crop condition",
+      "Ensure good drainage when disease conditions require field drying"
+    ],
+
+    "pest_disease_management": [
+      "Use certified disease-free seed paddy",
+      "Practice weed management",
+      "Avoid introducing infected straw or crop residues into clean fields",
+      "Use resistant varieties where recommended",
+      "Monitor fields regularly for disease symptoms"
+    ],
+
+    "harvesting": [],
+
+    "rotation": [
+      "Practice crop rotation where recommended for soil-borne and seed-borne disease management"
+    ],
+
+    "sustainability": [
+      "Use burnt paddy husk during land preparation where recommended",
+      "Use organic fertilizer to improve soil quality where recommended",
+      "Avoid unnecessary or excessive nitrogen fertilizer application",
+      "Maintain field sanitation",
+      "Use healthy certified seed"
+    ],
+
+    "source": [
+      {
+        "source_id": "R-D-001",
+        "name": "Sri Lanka Department of Agriculture - Rice Blast"
+      },
+      {
+        "source_id": "R-D-003",
+        "name": "Sri Lanka Department of Agriculture - Brown Spot"
+      },
+      {
+        "source_id": "R-D-008",
+        "name": "Sri Lanka Department of Agriculture - Bacterial Leaf Blight"
+      }
+    ]
+  },
+
+  "tomato": {
+    "crop": "Tomato",
+
+    "planting": [
+      "Use approximately 200–250 g of seed per hectare",
+      "Establish nursery beds around mid-March or the end of August where suitable",
+      "Prepare raised nursery beds approximately 1 m × 3 m and 15–20 cm high",
+      "Transplant seedlings 14–18 days after sowing when they have 3–5 true leaves",
+      "Harden seedlings before transplanting",
+      "Water seedlings thoroughly 12–14 hours before transplanting",
+      "Use field spacing of approximately 80 cm × 50 cm",
+      "Provide adequate field drainage to prevent water retention"
+    ],
+
+    "fertilizer": [
+      "For districts other than Badulla, apply 65 kg/ha urea, 325 kg/ha TSP and 65 kg/ha MOP as basal fertilizer 1–2 days before planting",
+      "Apply 65 kg/ha urea at approximately 3 weeks after planting",
+      "Apply 65 kg/ha urea plus 65 kg/ha MOP at approximately 6 weeks after planting",
+      "For Badulla District, use the source-specific TSP recommendation of 215 kg/ha"
+    ],
+
+    "irrigation": [
+      "Avoid excessive watering",
+      "Avoid sudden excessive irrigation during dry periods because fruit cracking can occur",
+      "Maintain good drainage to prevent water retention"
+    ],
+
+    "pest_disease_management": [
+      "Use treated seed according to recommended seed-treatment practices",
+      "Maintain good field sanitation",
+      "Keep the field free of weeds, especially during the first 3–6 weeks after transplanting",
+      "Carry out weeding before fertilizer application",
+      "Monitor plants for disease symptoms and manage diseases at an early stage"
+    ],
+
+    "harvesting": [
+      "Harvest tomatoes when fruits reach the green-yellow stage",
+      "Sort harvested fruits according to size and quality",
+      "Store harvested fruits in a well-aerated location",
+      "Typical yield is approximately 20–30 tonnes per hectare depending on variety, season and climate"
+    ],
+
+    "rotation": [],
+
+    "sustainability": [
+      "Add well-decomposed organic matter to the soil",
+      "Use well-decomposed farmyard manure in nursery preparation",
+      "Maintain proper drainage",
+      "Avoid excessive irrigation",
+      "Maintain field sanitation and weed control"
+    ],
+
+    "source": [
+      {
+        "source_id": "T-C-001",
+        "name": "Sri Lanka Department of Agriculture - Tomato Cultivation and Management"
+      }
+    ]
+  },
+
+  "chilli": {
+    "crop": "Chilli",
+
+    "planting": [
+      "During Maha, establish the crop from late October to mid-November",
+      "During Yala, establish the crop from April to early May",
+      "Under controlled conditions, chilli can be cultivated throughout the year",
+      "Use nursery beds in locations receiving good sunlight",
+      "Avoid nursery locations where Solanaceae crops were cultivated during the previous season",
+      "Disinfect nursery beds before sowing",
+      "Use approximately 1.0 kg of seed per hectare for open-pollinated varieties",
+      "Use approximately 500 g of seed per hectare for hybrid varieties"
+    ],
+
+    "fertilizer": [
+      "Apply 100 kg/ha Triple Super Phosphate and 50 kg/ha Muriate of Potash as basal fertilizer",
+      "Apply 100 kg/ha urea at 2 weeks",
+      "Apply 125 kg/ha urea at 4 weeks",
+      "Apply 125 kg/ha urea together with 50 kg/ha Muriate of Potash at 8 weeks",
+      "Apply additional recommended urea applications at later growth stages according to the source",
+      "Use soil-test information where available before determining phosphorus and potassium requirements"
+    ],
+
+    "irrigation": [
+      "Maintain suitable water management",
+      "Avoid transferring irrigation water from diseased fields to healthy fields",
+      "Increase irrigation intervals where recommended for bacterial wilt management"
+    ],
+
+    "pest_disease_management": [
+      "Use healthy plants produced from quality seed",
+      "Start cultivation at the recommended time",
+      "Avoid excessive urea application",
+      "Use recommended fertilizer rates",
+      "Remove diseased plants and infected plant parts",
+      "Control alternate hosts and weeds",
+      "Use yellow sticky traps where appropriate",
+      "Use wind barriers such as maize or finger millet where recommended",
+      "Use mulching where appropriate",
+      "Practice crop rotation",
+      "Use recommended disease-specific treatments when necessary"
+    ],
+
+    "harvesting": [
+      "Begin the first harvest approximately 70–80 days after transplanting",
+      "Fresh chilli yield is commonly about 12–15 tonnes per hectare",
+      "Hybrid varieties can produce approximately 30–35 tonnes per hectare",
+      "For dried chilli production, harvest fully red pods and pods that are approximately three-quarters red",
+      "Keep harvested pods in a well-ventilated room for approximately two days",
+      "Sun-dry pods for approximately 4–5 days",
+      "Periodically sun-dry stored chilli for long-term storage"
+    ],
+
+    "rotation": [
+      "Practice crop rotation to reduce disease carry-over",
+      "Avoid repeatedly cultivating Solanaceae crops in the same nursery site"
+    ],
+
+    "sustainability": [
+      "Use quality seed and healthy planting material",
+      "Practice crop rotation",
+      "Use mulching",
+      "Use wind barriers where appropriate",
+      "Remove alternate hosts and weeds",
+      "Avoid excessive nitrogen fertilizer",
+      "Base phosphorus and potassium fertilizer decisions on soil testing where possible"
+    ],
+
+    "source": [
+      {
+        "source_id": "DOA-HORDI-CAPSICUM",
+        "name": "Department of Agriculture - HORDI"
+      },
+      {
+        "source_id": "DOA-FIELD-CROP-GUIDE",
+        "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+      }
+    ]
+  },
+
+  "maize": {
+    "crop": "Maize",
+
+    "planting": [
+      "Prepare soil to approximately 15–20 cm depth and create a fine level seedbed",
+      "Start rainfed Maha cultivation in late September or early October",
+      "Start Yala cultivation in early April",
+      "Use approximately 15–20 kg of seed per hectare for normal maize cultivation",
+      "Use approximately 12 kg of seed per hectare when using hybrid seed",
+      "Use 60 cm × 30 cm spacing with one plant per planting point for approximately 55,555 plants per hectare",
+      "Alternatively use 60 cm × 60 cm spacing with two plants per planting point",
+      "Under irrigation, 75 cm × 15 cm spacing can support approximately 88,888 plants per hectare",
+      "For mechanized cultivation, maintain approximately 80 cm between rows and 20–25 cm between plants"
+    ],
+
+    "fertilizer": [
+      "For rainfed maize, apply basal fertilizer before planting or within 10–14 days after planting",
+      "Rainfed basal recommendation: 75 kg/ha urea",
+      "Rainfed basal recommendation: 100 kg/ha concentrated superphosphate",
+      "Rainfed basal recommendation: 50 kg/ha Muriate of Potash",
+      "Apply 140 kg/ha urea at approximately 4–5 weeks as top dressing under rainfed cultivation",
+      "Under irrigation with approximately 55,555 plants per hectare, apply 225 kg/ha urea as top dressing according to the source",
+      "For high plant populations of approximately 75,000–88,000 plants per hectare under irrigation, the source recommends 350 kg/ha urea as top dressing"
+    ],
+
+    "irrigation": [
+      "Avoid water stress during the flowering stage",
+      "Irrigation can be stopped approximately 85–90 days after planting",
+      "Baby corn can be cultivated throughout the year in the dry zone when adequate irrigation is available"
+    ],
+
+    "pest_disease_management": [
+      "Keep the field free from weeds during the first 3–4 weeks",
+      "Use good land preparation as part of weed management",
+      "Use appropriate row spacing",
+      "Use mechanized weed management where applicable",
+      "Remove diseased plants where recommended",
+      "Destroy infected crop residues where recommended",
+      "Practice crop rotation for relevant diseases"
+    ],
+
+    "harvesting": [
+      "Fresh cobs can generally be harvested approximately 70–75 days after planting",
+      "Harvest fresh cobs when silks become brown or black",
+      "Harvest mature cobs when husks are dry and a black layer develops at the base of the grain",
+      "Under good management, approximately 5000–7000 kg per hectare may be obtained according to the source"
+    ],
+
+    "rotation": [
+      "Practice crop rotation where appropriate",
+      "Destroy disease-infected crop residues before the next crop"
+    ],
+
+    "sustainability": [
+      "Match plant population to available irrigation and management conditions",
+      "Maintain the field weed-free during early crop establishment",
+      "Use crop rotation",
+      "Remove infected crop residues",
+      "Avoid water stress at critical growth stages"
+    ],
+
+    "source": [
+      {
+        "source_id": "MZ-C-003",
+        "name": "Department of Agriculture, Sri Lanka - Maize Land Preparation and Planting Time"
+      },
+      {
+        "source_id": "MZ-C-005",
+        "name": "Department of Agriculture, Sri Lanka - Maize Seed Requirement and Spacing"
+      },
+      {
+        "source_id": "MZ-F-001",
+        "name": "Department of Agriculture, Sri Lanka - Maize Fertilizer Application"
+      },
+      {
+        "source_id": "MZ-C-006",
+        "name": "Department of Agriculture, Sri Lanka - Maize Water and Weed Management"
+      },
+      {
+        "source_id": "MZ-C-007",
+        "name": "Department of Agriculture, Sri Lanka - Maize Harvesting and Postharvest"
+      }
+    ]
+  },
+
+  "mungbean": {
+    "crop": "Mungbean",
+
+    "planting": [],
+
+    "fertilizer": [
+      "Apply basal fertilizer before sowing according to the source recommendation"
+    ],
+
+    "irrigation": [],
+
+    "pest_disease_management": [],
+
+    "harvesting": [],
+
+    "rotation": [],
+
+    "sustainability": [],
+
+    "source": [
+      {
+        "source_id": "MG-F-001",
+        "name": "Department of Agriculture, Sri Lanka"
+      }
+    ]
+  }
+}
