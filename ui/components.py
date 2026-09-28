@@ -187,7 +187,11 @@ def render_followup(session_id: str | None = None) -> None:
 # § Full Advisory Response renderer
 # ============================================================================
 
-def render_advisory_response(response: dict[str, Any], is_fallback: bool = False) -> None:
+def render_advisory_response(
+    response: dict[str, Any],
+    is_fallback: bool = False,
+    lang: str = "en",
+) -> None:
     """
     Render the complete eight-block advisory response layout (T-08 / T-12).
 
@@ -197,6 +201,13 @@ def render_advisory_response(response: dict[str, Any], is_fallback: bool = False
       entirely to `render_eight_block_advisory` from advisory_renderer.py.
     - Otherwise fall back to the original flat-markdown rendering path
       so that older orchestrator responses remain displayable.
+
+    Args:
+        response:    Orchestrator response dict.
+        is_fallback: True when fixture / demo data is being shown.
+        lang:        T-17 target locale code ("en", "si", "ta").
+                     Translation is applied inside render_eight_block_advisory
+                     at render-time; the stored response always stays in English.
     """
     # Detect structured T-12 blocks
     has_structured = any([
@@ -207,8 +218,9 @@ def render_advisory_response(response: dict[str, Any], is_fallback: bool = False
     ])
 
     if has_structured:
-        # ── T-12 path: fully structured 8-block renderer ─────────────────
-        render_eight_block_advisory(response, is_fallback=is_fallback)
+        # T-12 path: fully structured 8-block renderer
+        # T-17: pass lang so output blocks are translated before rendering
+        render_eight_block_advisory(response, is_fallback=is_fallback, lang=lang)
         return
 
     # ── Legacy path: flat markdown answer (pre-T-12 responses) ────────────

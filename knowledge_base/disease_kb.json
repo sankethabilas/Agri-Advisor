@@ -1,0 +1,1327 @@
+{
+  "rice_blast": {
+    "id": "R-D-001",
+    "name": "Rice Blast",
+    "scientific_name": "Magnaporthe grisea (Pyricularia grisea)",
+    "disease_type": "fungal",
+    "crop": "rice",
+    "symptoms": [
+      "spindle-shaped leaf spots",
+      "brown or reddish-brown lesion margins",
+      "ashy lesion centres",
+      "blackened and rotting nodes",
+      "neck rot at the base of the panicle",
+      "partly filled grains or whiteheads"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "R-D-001",
+      "name": "Sri Lanka Department of Agriculture - Rice Blast"
+    }
+  },
+
+  "rice_sheath_blight": {
+    "id": "R-D-002",
+    "name": "Sheath Blight",
+    "scientific_name": "Thanatephorus cucumeris (Rhizoctonia solani)",
+    "disease_type": "fungal",
+    "crop": "rice",
+    "symptoms": [
+      "lesions on leaf sheaths near the water or soil surface",
+      "oval or ellipsoidal lesions",
+      "large irregular lesions",
+      "white lesion centres",
+      "green, brown or orange lesion coloration",
+      "sclerotia on the leaf sheath surface",
+      "poor panicle exertion when the flag leaf is infected"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "R-D-002",
+      "name": "Sri Lanka Department of Agriculture - Sheath Blight"
+    }
+  },
+
+  "rice_brown_spot": {
+    "id": "R-D-003",
+    "name": "Brown Spot",
+    "scientific_name": "Cochliobolus miyabeanus (Bipolaris oryzae)",
+    "disease_type": "fungal",
+    "crop": "rice",
+    "symptoms": [
+      "brown circular or oval spots on coleoptiles",
+      "seedling blight",
+      "sparse stands and weak plants",
+      "dark brown or reddish-brown leaf spots",
+      "oval or circular lesions with dark margins",
+      "light reddish-brown or grey lesion centres",
+      "black discoloration of glumes",
+      "lightweight or chalky kernels"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "R-D-003",
+      "name": "Sri Lanka Department of Agriculture - Brown Spot"
+    }
+  },
+
+  "rice_false_smut": {
+    "id": "R-D-004",
+    "name": "False Smut",
+    "scientific_name": "Ustilaginoidea virens",
+    "disease_type": "fungal",
+    "crop": "rice",
+    "symptoms": [
+      "orange to brown-green fungal structures inside grains",
+      "green seed coat on affected grains",
+      "greenish-black spores on mature affected grains",
+      "replacement of grains by fungal structures",
+      "sclerotia developing in affected grains"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "R-D-004",
+      "name": "Sri Lanka Department of Agriculture - False Smut"
+    }
+  },
+
+  "rice_leaf_scald": {
+    "id": "R-D-005",
+    "name": "Leaf Scald",
+    "scientific_name": "Monographella albescens (Microdochium oryzae)",
+    "disease_type": "fungal",
+    "crop": "rice",
+    "symptoms": [
+      "lesions beginning at leaf tips or edges",
+      "chevron-shaped lesions",
+      "light tan and reddish-brown areas",
+      "yellow or golden lesion edges",
+      "yellow or golden field appearance",
+      "dry straw-coloured leaves",
+      "reddish-brown discoloration of grain hulls",
+      "sterility or abortion of developing kernels"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "R-D-005",
+      "name": "Sri Lanka Department of Agriculture - Leaf Scald"
+    }
+  },
+
+  "rice_sheath_rot": {
+    "id": "R-D-006",
+    "name": "Sheath Rot",
+    "scientific_name": "Sarocladium oryzae",
+    "disease_type": "fungal",
+    "crop": "rice",
+    "symptoms": [
+      "oblong or irregular oval lesions on upper leaf sheaths",
+      "grey or light-brown lesion centres",
+      "dark reddish-brown lesion margins",
+      "target-like lesion pattern",
+      "reddish-brown flag-leaf sheath discoloration",
+      "partial panicle emergence",
+      "rotting of un-emerged panicle portions",
+      "reddish-brown or dark-brown grains",
+      "white powdery fungal growth inside affected sheaths"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "R-D-006",
+      "name": "Sri Lanka Department of Agriculture - Sheath Rot"
+    }
+  },
+
+  "rice_narrow_brown_leaf_spot": {
+    "id": "R-D-007",
+    "name": "Narrow Brown Leaf Spot",
+    "scientific_name": "Sphaerulina oryzina (Cercospora janseana)",
+    "disease_type": "fungal",
+    "crop": "rice",
+    "symptoms": [
+      "light to dark brown narrow linear lesions",
+      "lesions parallel to leaf veins",
+      "brown linear necrotic areas",
+      "brown lesions on pedicels",
+      "spots on glumes",
+      "net-like brown and yellow pattern on leaf sheaths",
+      "premature ripening",
+      "lodging in severe cases"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "R-D-007",
+      "name": "Sri Lanka Department of Agriculture - Narrow Brown Leaf Spot"
+    }
+  },
+
+  "rice_bacterial_leaf_blight": {
+    "id": "R-D-008",
+    "name": "Bacterial Leaf Blight",
+    "scientific_name": "Xanthomonas oryzae pv. oryzae",
+    "disease_type": "bacterial",
+    "crop": "rice",
+    "symptoms": [
+      "wilting and yellowing of seedling leaves",
+      "complete seedling wilting or kresek",
+      "yellowish bacterial ooze from cut leaf ends",
+      "water-soaked orange stripes on leaves",
+      "lesions with wavy margins",
+      "lesions progressing from leaf tips toward the base"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "R-D-008",
+      "name": "Sri Lanka Department of Agriculture - Bacterial Leaf Blight"
+    }
+  },
+
+  "tomato_early_blight": {
+    "id": "T-D-002",
+    "name": "Tomato Early Blight",
+    "scientific_name": "Alternaria solani",
+    "disease_type": "fungal",
+    "crop": "tomato",
+    "symptoms": [
+      "dark patches on leaves",
+      "concentric rings in lesions",
+      "dark patches on fruits",
+      "dark patches on stems"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-002",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_late_blight": {
+    "id": "T-D-003",
+    "name": "Tomato Late Blight",
+    "scientific_name": "Phytophthora infestans",
+    "disease_type": "oomycete",
+    "crop": "tomato",
+    "symptoms": [
+      "water-soaked grey-green spots on older leaves",
+      "darkening of affected leaf spots",
+      "white growth on the underside of affected leaves"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-003",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_target_spot": {
+    "id": "T-D-004",
+    "name": "Tomato Target Spot",
+    "scientific_name": "Corynespora cassiicola",
+    "disease_type": "fungal",
+    "crop": "tomato",
+    "symptoms": [
+      "circular dark-brown necrotic lesions",
+      "concentric lesion pattern",
+      "yellow halo around lesions",
+      "yellowing of infected leaves",
+      "leaf collapse",
+      "spots on stems",
+      "spots on fruits"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-004",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_powdery_mildew": {
+    "id": "T-D-005",
+    "name": "Tomato Powdery Mildew",
+    "scientific_name": "Oidium lycopersicum",
+    "disease_type": "fungal",
+    "crop": "tomato",
+    "symptoms": [
+      "light-green to bright-yellow lesions on upper leaf surfaces",
+      "white powdery patches on lower leaf surfaces",
+      "leaf defoliation in severe infections"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-005",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_anthracnose": {
+    "id": "T-D-006",
+    "name": "Tomato Anthracnose",
+    "scientific_name": "Colletotrichum coccodes",
+    "disease_type": "fungal",
+    "crop": "tomato",
+    "symptoms": [
+      "die-back from apical buds",
+      "flower dropping",
+      "black sunken lesions on leaves",
+      "black sunken lesions on stems",
+      "black sunken lesions on fruits",
+      "fruit rot"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-006",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_septoria_leaf_spot": {
+    "id": "T-D-007",
+    "name": "Tomato Septoria Leaf Spot",
+    "scientific_name": "Septoria lycopersici",
+    "disease_type": "fungal",
+    "crop": "tomato",
+    "symptoms": [
+      "water-soaked areas on leaves",
+      "circular leaf lesions",
+      "brown to grey lesion centres"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-007",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_collar_root_rot": {
+    "id": "T-D-008",
+    "name": "Tomato Collar Rot and Root Rot",
+    "scientific_name": "Fusarium spp., Rhizoctonia spp. and Sclerotium spp.",
+    "disease_type": "fungal",
+    "crop": "tomato",
+    "symptoms": [
+      "infection around the collar region",
+      "drying of lower leaves",
+      "progressive drying of the whole plant",
+      "wilting",
+      "plant death"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-008",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_bacterial_wilt": {
+    "id": "T-D-009",
+    "name": "Tomato Bacterial Wilt",
+    "scientific_name": "Ralstonia solanacearum",
+    "disease_type": "bacterial",
+    "crop": "tomato",
+    "symptoms": [
+      "permanent plant wilting despite adequate soil moisture",
+      "viscous bacterial ooze from a cut stem immersed in water"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-009",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_yellow_leaf_curl_virus": {
+    "id": "T-D-010",
+    "name": "Tomato Yellow Leaf Curl Virus",
+    "scientific_name": "Tomato Yellow Leaf Curl Virus (TYLCV)",
+    "disease_type": "viral",
+    "crop": "tomato",
+    "symptoms": [
+      "upward curling of leaves",
+      "yellow or chlorotic leaf margins",
+      "smaller-than-normal leaves",
+      "plant stunting",
+      "flower drop",
+      "failure to produce fruit when infected early"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-010",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_curly_top_virus": {
+    "id": "T-D-011",
+    "name": "Tomato Curly Top Virus",
+    "scientific_name": "Curly Top Virus (CTV)",
+    "disease_type": "viral",
+    "crop": "tomato",
+    "symptoms": [
+      "inward rolling of leaflets along the midrib",
+      "downward-curving petioles and midribs",
+      "drooping appearance without actual wilting",
+      "thick and brittle leaves",
+      "dull-green leaves",
+      "purple veins"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-011",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "chilli_damping_off": {
+    "id": "CH-D-001-EN",
+    "name": "Chilli Damping-off",
+    "scientific_name": "Fusarium spp., Pythium spp., Sclerotium spp., Phytophthora spp. and Rhizoctonia spp.",
+    "disease_type": "fungal",
+    "crop": "chilli",
+    "symptoms": [
+      "seedlings dying before emergence",
+      "scattered seedlings wilting in the nursery",
+      "seedling collapse",
+      "wet rotting tissue near the soil surface"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_anthracnose": {
+    "id": "CH-D-002-EN",
+    "name": "Chilli Anthracnose",
+    "scientific_name": "Colletotrichum capsici",
+    "disease_type": "fungal",
+    "crop": "chilli",
+    "symptoms": [
+      "browning and death of shoot tips",
+      "small circular sunken spots on mature pods",
+      "light-grey to brown lesions",
+      "concentric areas containing black spots",
+      "straw-coloured infected pods",
+      "rust-coloured seeds"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_cercospora_leaf_spot": {
+    "id": "CH-D-003-EN",
+    "name": "Chilli Cercospora Leaf Spot",
+    "scientific_name": "Cercospora capsici",
+    "disease_type": "fungal",
+    "crop": "chilli",
+    "symptoms": [
+      "circular lesions on leaves",
+      "light-grey lesion centres",
+      "dark-brown lesion margins",
+      "yellowing of infected leaves",
+      "premature leaf fall",
+      "spots on stems during severe infection",
+      "spots on petioles during severe infection"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_choanephora_blight": {
+    "id": "CH-D-004-EN",
+    "name": "Chilli Choanephora Blight",
+    "scientific_name": "Choanephora spp.",
+    "disease_type": "fungal",
+    "crop": "chilli",
+    "symptoms": [
+      "dark-brown flower buds",
+      "dark-brown shoot-tip tissues",
+      "wet rot of flower buds and shoot tips",
+      "shoots dying from the top downward",
+      "greyish thread-like fungal growth"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_collar_rot": {
+    "id": "CH-D-005-EN",
+    "name": "Chilli Collar Rot",
+    "scientific_name": "Fusarium spp., Pythium spp., Sclerotium spp., Phytophthora spp. and Rhizoctonia spp.",
+    "disease_type": "fungal",
+    "crop": "chilli",
+    "symptoms": [
+      "plant wilting",
+      "yellowing of leaves",
+      "root rot",
+      "plant death",
+      "white fungal growth near the collar region",
+      "sclerotia near the collar region"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_powdery_mildew": {
+    "id": "CH-D-006-EN",
+    "name": "Chilli Powdery Mildew",
+    "scientific_name": "Oidiopsis sicula",
+    "disease_type": "fungal",
+    "crop": "chilli",
+    "symptoms": [
+      "yellow spots on upper leaf surfaces",
+      "white fungal growth on lower leaf surfaces",
+      "yellowing of leaves",
+      "leaf fall during severe infection"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_bacterial_wilt": {
+    "id": "CH-D-007-EN",
+    "name": "Chilli Bacterial Wilt",
+    "scientific_name": "Ralstonia spp.",
+    "disease_type": "bacterial",
+    "crop": "chilli",
+    "symptoms": [
+      "plant wilting",
+      "rapid drying of plants",
+      "plant death",
+      "bacterial streaming from a cut stem placed in water"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "chilli_leaf_curl_virus": {
+    "id": "CH-D-008-EN",
+    "name": "Chilli Leaf Curl Virus",
+    "scientific_name": "Chilli Leaf Curl Virus",
+    "disease_type": "viral",
+    "crop": "chilli",
+    "symptoms": [
+      "yellowing of leaves",
+      "reduced leaf size",
+      "upward leaf curling",
+      "boat-shaped leaves",
+      "shortened internodes",
+      "plant stunting"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_banded_leaf_sheath_blight": {
+    "id": "MZ-D-002-EN",
+    "name": "Maize Banded Leaf and Sheath Blight",
+    "scientific_name": "Rhizoctonia spp.",
+    "disease_type": "fungal",
+    "crop": "maize",
+    "symptoms": [
+      "elongated grey-green lesions",
+      "lesions becoming dark brown",
+      "mustard-seed-like sclerotia"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_southern_rust": {
+    "id": "MZ-D-003-EN",
+    "name": "Maize Southern Rust",
+    "scientific_name": "Puccinia polysora",
+    "disease_type": "fungal",
+    "crop": "maize",
+    "symptoms": [
+      "orange-coloured pustules",
+      "release of spores from pustules",
+      "plant decline during severe infection",
+      "plant death during severe infection"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_physoderma_brown_spot": {
+    "id": "MZ-D-004-EN",
+    "name": "Maize Physoderma Brown Spot",
+    "scientific_name": "Physoderma maydis",
+    "disease_type": "fungal",
+    "crop": "maize",
+    "symptoms": [
+      "chocolate-brown spots around the midrib",
+      "lesions around the midrib",
+      "weakening of affected tissue",
+      "breakage of affected tissue"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_bacterial_stalk_rot": {
+    "id": "MZ-D-005-EN",
+    "name": "Maize Bacterial Stalk Rot",
+    "scientific_name": "Erwinia spp.",
+    "disease_type": "bacterial",
+    "crop": "maize",
+    "symptoms": [
+      "dark-brown discoloration of the lower stalk",
+      "wet rot near the soil surface",
+      "characteristic odor from rotting stalk tissue"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+  
+  "rice_bakanae": {
+    "id": "R-D-009",
+    "name": "Bakanae",
+    "scientific_name": "Fusarium fujikuroi",
+    "disease_type": "fungal",
+    "crop": "rice",
+    "symptoms": [
+      "abnormal elongation of seedlings",
+      "unusually tall and thin seedlings",
+      "yellowish-green seedlings",
+      "weak seedlings",
+      "seedling death before transplanting",
+      "pale-green flag leaves",
+      "adventitious roots at lower stem nodes",
+      "drying of lower leaves",
+      "few tillers",
+      "sterile or infected grains",
+      "reddish discoloration of grains"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "general"
+    ],
+    "source": {
+      "source_id": "R-D-009",
+      "name": "IRRI Rice Diseases Online Resource"
+    }
+  },
+
+  "rice_stem_rot": {
+    "id": "R-D-010",
+    "name": "Stem Rot",
+    "scientific_name": "Nakataea oryzae (formerly Magnaporthe salvinii)",
+    "disease_type": "fungal",
+    "crop": "rice",
+    "symptoms": [
+      "irregular blackish lesions on the outer leaf sheath",
+      "lesions above the waterline",
+      "rotting of the inner leaf sheath",
+      "rotting of the culm",
+      "blackened internodes",
+      "collapsed internodes",
+      "lodging before harvest"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "general"
+    ],
+    "source": {
+      "source_id": "R-D-010",
+      "name": "IRRI Rice Diseases Online Resource"
+    }
+  },
+
+  "rice_bacterial_leaf_streak": {
+    "id": "R-D-011",
+    "name": "Bacterial Leaf Streak",
+    "scientific_name": "Xanthomonas oryzae pv. oryzicola",
+    "disease_type": "bacterial",
+    "crop": "rice",
+    "symptoms": [
+      "short fine translucent water-soaked streaks",
+      "streaks between the larger leaf veins",
+      "light-brown or yellowish-brown streaks",
+      "yellowish-amber bacterial ooze droplets",
+      "merged leaf lesions",
+      "brown or bleached leaf areas",
+      "greyish-white leaf areas"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "general"
+    ],
+    "source": {
+      "source_id": "R-D-011",
+      "name": "IRRI Rice Diseases Online Resource"
+    }
+  },
+
+  "rice_grassy_stunt": {
+    "id": "R-D-013",
+    "name": "Grassy Stunt",
+    "scientific_name": "Rice grassy stunt virus (RGSV)",
+    "disease_type": "viral",
+    "crop": "rice",
+    "symptoms": [
+      "severe plant stunting",
+      "excessive tillering",
+      "short and narrow leaves",
+      "erect grass-like plant appearance",
+      "pale-green or pale-yellow leaves",
+      "rusty or chlorotic leaf spots",
+      "yellowish blotches or stripes",
+      "small panicles",
+      "unfilled or discoloured grains"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "South and Southeast Asia",
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "R-D-013",
+      "name": "IRRI Rice Diseases Online Resource"
+    }
+  },
+
+  "rice_ragged_stunt": {
+    "id": "R-D-014",
+    "name": "Ragged Stunt",
+    "scientific_name": "Rice ragged stunt virus (RRSV)",
+    "disease_type": "viral",
+    "crop": "rice",
+    "symptoms": [
+      "delayed development of new leaves",
+      "short malformed leaves",
+      "twisting of leaf tips",
+      "breaks or notches along leaf edges",
+      "plant stunting",
+      "swollen veins",
+      "gall-like swellings on leaves and sheaths",
+      "delayed flowering",
+      "incomplete panicle exertion",
+      "poor panicle development",
+      "unfilled or discoloured grains"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "South and Southeast Asia",
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "R-D-014",
+      "name": "IRRI Rice Diseases Online Resource"
+    }
+  },
+
+  "tomato_damping_off": {
+    "id": "T-D-001",
+    "name": "Tomato Damping-off",
+    "scientific_name": "Pythium spp., Phytophthora spp., Fusarium spp., Rhizoctonia spp., Sclerotium spp. and Colletotrichum spp.",
+    "disease_type": "fungal",
+    "crop": "tomato",
+    "symptoms": [
+      "root infection in seedlings",
+      "seedling death",
+      "poor nursery establishment"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-001",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_spotted_wilt_virus": {
+    "id": "T-D-012",
+    "name": "Tomato Spotted Wilt Virus",
+    "scientific_name": "Tomato Spotted Wilt Virus (TSWV)",
+    "disease_type": "viral",
+    "crop": "tomato",
+    "symptoms": [
+      "bronzing of leaves",
+      "leaf curling",
+      "necrotic streaks on leaves",
+      "necrotic leaf spots",
+      "dark-brown streaks on petioles",
+      "dark-brown streaks on stems",
+      "dark-brown streaks on growing tips",
+      "plant stunting",
+      "pale-red or yellow areas on ripe fruits",
+      "plant death in severe infection"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-012",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "tomato_cucumber_mosaic_virus": {
+    "id": "T-D-013",
+    "name": "Tomato Cucumber Mosaic Virus",
+    "scientific_name": "Cucumber Mosaic Virus (CMV)",
+    "disease_type": "viral",
+    "crop": "tomato",
+    "symptoms": [
+      "yellowing",
+      "bushy growth",
+      "considerable plant stunting",
+      "filiform leaves",
+      "narrow shoestring-like leaf blades",
+      "leaf mottling"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "T-D-013",
+      "name": "Sri Lanka Department of Agriculture"
+    }
+  },
+
+  "chilli_cucumber_mosaic_virus": {
+    "id": "CH-D-009-EN",
+    "name": "Chilli Cucumber Mosaic Virus",
+    "scientific_name": "Cucumber Mosaic Virus (CMV)",
+    "disease_type": "viral",
+    "crop": "chilli",
+    "symptoms": [
+      "light-green mosaic patterns on young leaves",
+      "yellow mosaic patterns on young leaves",
+      "narrow leaves",
+      "thin leaves",
+      "abnormal leaf growth"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_helminthosporium_leaf_spot": {
+    "id": "MZ-D-001-EN",
+    "name": "Maize Helminthosporium Leaf Spot",
+    "scientific_name": "Helminthosporium spp.",
+    "disease_type": "fungal",
+    "crop": "maize",
+    "symptoms": [
+      "reddish leaf margins",
+      "elongated brown lesions on leaves"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "maize_northern_leaf_blight": {
+    "id": "MZ-D-006-EN",
+    "name": "Maize Northern Leaf Blight",
+    "scientific_name": "Helminthosporium turcicum",
+    "disease_type": "fungal",
+    "crop": "maize",
+    "symptoms": [
+      "long grey lesions on leaves",
+      "black spores on affected lesions"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "peanut_early_late_leaf_spot": {
+    "id": "PN-D-001-EN",
+    "name": "Peanut Early and Late Leaf Spot",
+    "scientific_name": "Cercospora arachidicola and Cercospora personata",
+    "disease_type": "fungal",
+    "crop": "peanut",
+    "symptoms": [
+      "brown spots on upper leaf surfaces",
+      "brown spots on lower leaf surfaces"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "peanut_rust": {
+    "id": "PN-D-002-EN",
+    "name": "Peanut Rust",
+    "scientific_name": "Puccinia arachidis",
+    "disease_type": "fungal",
+    "crop": "peanut",
+    "symptoms": [
+      "orange-coloured pustules on leaves"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "peanut_collar_rot": {
+    "id": "PN-D-003-EN",
+    "name": "Peanut Collar Rot",
+    "scientific_name": "Sclerotium rolfsii",
+    "disease_type": "fungal",
+    "crop": "peanut",
+    "symptoms": [
+      "white fungal growth around the base of the stem"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "peanut_bud_necrosis": {
+    "id": "PN-D-004-EN",
+    "name": "Peanut Bud Necrosis",
+    "scientific_name": "Peanut bud necrosis virus",
+    "disease_type": "viral",
+    "crop": "peanut",
+    "symptoms": [
+      "plant tissue death",
+      "brown necrotic tissue",
+      "death of the growing tip"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_cercospora_leaf_spot": {
+    "id": "LG-D-001-EN",
+    "name": "Legume Cercospora Leaf Spot",
+    "scientific_name": "Cercospora canescens and Cercospora cruenta",
+    "disease_type": "fungal",
+    "crop": "legumes",
+    "symptoms": [
+      "reddish leaf spots",
+      "brown leaf spots"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_powdery_mildew": {
+    "id": "LG-D-002-EN",
+    "name": "Legume Powdery Mildew",
+    "scientific_name": "not specified in source",
+    "disease_type": "fungal",
+    "crop": "legumes",
+    "symptoms": [
+      "white patches on leaves",
+      "white patches becoming grey"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_anthracnose": {
+    "id": "LG-D-003-EN",
+    "name": "Legume Anthracnose",
+    "scientific_name": "not specified in source",
+    "disease_type": "fungal",
+    "crop": "legumes",
+    "symptoms": [
+      "dark-purple lesions on stems",
+      "brown lesions on stems",
+      "dark-purple lesions on pods",
+      "brown lesions on pods"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_yellow_mosaic_virus": {
+    "id": "LG-D-005-EN",
+    "name": "Legume Yellow Mosaic Virus",
+    "scientific_name": "Yellow mosaic virus",
+    "disease_type": "viral",
+    "crop": "legumes",
+    "symptoms": [
+      "bright yellow mosaic symptoms on leaves"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_leaf_curl_virus": {
+    "id": "LG-D-006-EN",
+    "name": "Legume Leaf Curl Virus",
+    "scientific_name": "Leaf curl virus",
+    "disease_type": "viral",
+    "crop": "legumes",
+    "symptoms": [
+      "shortened veins",
+      "shortened internodes",
+      "leaf curling",
+      "plant stunting"
+    ],
+    "severity": {
+      "level": "high",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  },
+
+  "legume_bacterial_blister_purple_seed_stain": {
+    "id": "LG-D-007-EN",
+    "name": "Legume Bacterial Blister and Purple Seed Stain",
+    "scientific_name": "not specified in source",
+    "disease_type": "mixed",
+    "crop": "legumes",
+    "symptoms": [
+      "purple discoloration of seeds",
+      "pink discoloration of seeds"
+    ],
+    "severity": {
+      "level": "medium",
+      "basis": "derived from documented disease impact"
+    },
+    "region": [
+      "Sri Lanka"
+    ],
+    "source": {
+      "source_id": "DOA-FIELD-CROP-GUIDE",
+      "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
+    }
+  }
+}
