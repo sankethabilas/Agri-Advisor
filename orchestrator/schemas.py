@@ -212,14 +212,20 @@ class RagSourceItem(BaseModel):
     id: str
     title: str
     content: str
-    crop: str
-    category: str
-    language: str
-    source: str
-    source_id: str
-    region: str
-    season: str
+    crop: Optional[str] = None
+    category: Optional[str] = None
+    language: Optional[str] = None
+    source: Optional[str] = None
+    source_id: Optional[str] = None
+    region: Optional[str] = None
+    season: Optional[str] = None
     score: float = Field(..., ge=0.0, le=1.0)
+    document_id: Optional[str] = None
+    section: Optional[str] = None
+    author_organization: Optional[str] = None
+    publication_year: Optional[int] = None
+    url: Optional[str] = None
+    reference_url: Optional[str] = None
 
 
 class RagMetadata(BaseModel):
