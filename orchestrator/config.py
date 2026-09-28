@@ -13,13 +13,18 @@ class Settings:
     openweather_city: str = os.getenv("OPENWEATHER_CITY", "Colombo")
     groq_api_key: str = os.getenv("GROQ_API_KEY", "")
     groq_model: str = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+    openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
+    openai_model: str = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
+    llm_provider: str = os.getenv("LLM_PROVIDER", "groq")
     jwt_secret_key: str = os.getenv("JWT_SECRET_KEY", "")
 
     def require_api_key(self) -> None:
         missing = []
         if not self.openweather_api_key:
             missing.append("OPENWEATHER_API_KEY")
-        if not self.groq_api_key:
+        if self.llm_provider == "openai" and not self.openai_api_key:
+            missing.append("OPENAI_API_KEY")
+        elif self.llm_provider == "groq" and not self.groq_api_key:
             missing.append("GROQ_API_KEY")
         if missing:
             raise RuntimeError(f"Missing required environment variables: {', '.join(missing)}")
