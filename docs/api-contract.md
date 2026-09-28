@@ -460,7 +460,8 @@ Integrates live meteorological observations and 7-day forecasts from OpenWeather
         "level": { "type": "string", "enum": ["Low", "Moderate", "High", "Critical"] },
         "score": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
         "susceptible_diseases": { "type": "array", "items": { "type": "string" } },
-        "contributing_factors": { "type": "array", "items": { "type": "string" } }
+        "contributing_factors": { "type": "array", "items": { "type": "string" } },
+        "recommendation": { "type": "string", "description": "Optional action appropriate to the risk level and forecast safety constraints." }
       }
     },
     "pest_risk": {
@@ -470,7 +471,8 @@ Integrates live meteorological observations and 7-day forecasts from OpenWeather
         "level": { "type": "string", "enum": ["Low", "Moderate", "High", "Critical"] },
         "score": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
         "susceptible_pests": { "type": "array", "items": { "type": "string" } },
-        "contributing_factors": { "type": "array", "items": { "type": "string" } }
+        "contributing_factors": { "type": "array", "items": { "type": "string" } },
+        "recommendation": { "type": "string", "description": "Optional action appropriate to the risk level and forecast safety constraints." }
       }
     },
     "advisory": {
@@ -484,7 +486,7 @@ Integrates live meteorological observations and 7-day forecasts from OpenWeather
         "required": ["id", "alert_type", "severity", "title", "description", "valid_from", "valid_to", "recommended_action"],
         "properties": {
           "id": { "type": "string" },
-          "alert_type": { "type": "string", "enum": ["heavy_rain", "flood", "drought", "high_wind", "pest_outbreak"] },
+          "alert_type": { "type": "string", "enum": ["heavy_rain", "flood", "drought", "high_wind", "pest_outbreak", "extreme_heat"] },
           "severity": { "type": "string", "enum": ["advisory", "watch", "warning", "emergency"] },
           "title": { "type": "string" },
           "description": { "type": "string" },
