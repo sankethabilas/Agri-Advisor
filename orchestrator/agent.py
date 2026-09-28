@@ -33,6 +33,9 @@ from orchestrator.session_context import SessionManager, session_manager as defa
 from orchestrator.stubs import AgentStubService, stub_service as default_stub_service
 
 
+from orchestrator.router import AgentRouter, RoutingResult, agent_router as default_agent_router
+
+
 class OrchestratorAgent:
     """Central Hub coordinating specialist agents, session state, and advisory synthesis."""
 
@@ -44,13 +47,18 @@ class OrchestratorAgent:
         weather_agent: Optional[Callable[[WeatherAdviceRequest], WeatherAdviceResponse]] = None,
         rag_agent: Optional[Callable[[RagRetrieveRequest], RagRetrieveResponse]] = None,
         crop_agent: Optional[Callable[[CropAdviceRequest], CropAdviceResponse]] = None,
+        router: Optional[AgentRouter] = None,
     ) -> None:
         self.session_manager = session_mgr or default_session_manager
         self.stubs = stubs or default_stub_service
-        self._disease_agent = disease_agent or self.stubs.get_disease_diagnosis
-        self._weather_agent = weather_agent or self.stubs.get_weather_advice
-        self._rag_agent = rag_agent or self.stubs.get_rag_retrieve
-        self._crop_agent = crop_agent or self.stubs.get_crop_advice
+        self.router = router or AgentRouter(
+            session_mgr=self.session_manager,
+            stubs=self.stubs,
+            disease_agent=disease_agent,
+            weather_agent=weather_agent,
+            rag_agent=rag_agent,
+            crop_agent=crop_agent,
+        )
         self.nlp = nlp_analyzer
 
     def analyze_query(self, query: str) -> NLPResult:
@@ -88,55 +96,22 @@ class OrchestratorAgent:
 
         # 2. Extract intent and crop context via NLP Layer
         nlp_res = self.nlp.analyze_query(request.query)
-        intent = nlp_res.intent
-        confidence = nlp_res.confidence
-        crop = nlp_res.entities.crop or session.active_crop or request.crop_context or "Paddy"
-        session.active_crop = crop
 
-        agents_consulted: List[str] = []
-
-        # 3. Query Weather Agent
-        weather_req = WeatherAdviceRequest(
-            location=request.location,
-            crop=crop,
+        # 3. Dispatch specialist agents via Router (Task T-14)
+        routing_res: RoutingResult = self.router.dispatch(
+            request=request,
+            nlp_res=nlp_res,
+            session=session,
         )
-        weather_res: WeatherAdviceResponse = self._weather_agent(weather_req)
-        agents_consulted.append("weather_agent")
 
-        # 4. Query RAG Agent for grounded citations
-        rag_req = RagRetrieveRequest(
-            query=request.query,
-            top_k=3,
-            crop_filter=crop,
-        )
-        rag_res: RagRetrieveResponse = self._rag_agent(rag_req)
-        agents_consulted.append("rag_agent")
-
-        # 5. Query Disease Agent if relevant
-        disease_res: Optional[DiseaseDiagnoseResponse] = None
-        if intent in ["disease_diagnosis", "mixed"]:
-            disease_req = DiseaseDiagnoseRequest(
-                crop=crop,
-                symptoms=[request.query],
-                location=request.location,
-                season="Maha",
-            )
-            disease_res = self._disease_agent(disease_req)
-            agents_consulted.append("disease_agent")
-            if disease_res and disease_res.disease not in session.confirmed_diseases:
-                session.confirmed_diseases.append(disease_res.disease)
-
-        # 6. Query Crop Agent if relevant
-        crop_res: Optional[CropAdviceResponse] = None
-        if intent in ["crop_cultivation", "mixed"]:
-            crop_req = CropAdviceRequest(
-                crop=crop,
-                location=request.location,
-                season="Maha",
-                soil_type="Reddish Brown Earths (RBE)",
-            )
-            crop_res = self._crop_agent(crop_req)
-            agents_consulted.append("crop_agent")
+        intent = routing_res.intent
+        confidence = routing_res.confidence
+        crop = routing_res.crop
+        agents_consulted = routing_res.selected_agents
+        disease_res = routing_res.disease_response
+        weather_res = routing_res.weather_response
+        crop_res = routing_res.crop_response
+        rag_res = routing_res.rag_response
 
         # 7. Synthesize Response
         answer_parts: List[str] = []
@@ -161,7 +136,7 @@ class OrchestratorAgent:
                 f"Based on verified guidelines from the Department of Agriculture (DOA), here are the recommended practices for your query.\n"
             )
 
-        if weather_res.alerts:
+        if weather_res and weather_res.alerts:
             top_alert = weather_res.alerts[0]
             answer_parts.append(
                 f"\n> ⚠️ **Weather Advisory Notice ({top_alert.title})**: {top_alert.recommended_action}\n"
@@ -171,21 +146,22 @@ class OrchestratorAgent:
 
         # 8. Map sources
         sources: List[SourceItem] = []
-        for i, src in enumerate(rag_res.sources):
-            score = rag_res.confidence[i] if i < len(rag_res.confidence) else 0.85
-            sources.append(
-                SourceItem(
-                    title=src.title,
-                    author_organization=src.author_organization,
-                    document_id=src.document_id,
-                    section=src.section,
-                    confidence_score=round(score, 2),
-                    reference_url=src.url,
+        if rag_res and rag_res.sources:
+            for i, src in enumerate(rag_res.sources):
+                score = rag_res.confidence[i] if (rag_res.confidence and i < len(rag_res.confidence)) else getattr(src, "score", 0.85)
+                sources.append(
+                    SourceItem(
+                        title=src.title,
+                        author_organization=getattr(src, "author_organization", None) or getattr(src, "source", "DOA Sri Lanka") or "DOA Sri Lanka",
+                        document_id=getattr(src, "document_id", None) or getattr(src, "source_id", "DOA-REF-01") or "DOA-REF-01",
+                        section=getattr(src, "section", "") or "General Agricultural Guidelines",
+                        confidence_score=round(score, 2),
+                        reference_url=getattr(src, "url", None) or getattr(src, "reference_url", None),
+                    )
                 )
-            )
 
         # 9. Map weather alert
-        if weather_res.alerts:
+        if weather_res and weather_res.alerts:
             first_alert = weather_res.alerts[0]
             weather_alert = WeatherAlert(
                 severity="moderate" if first_alert.severity in ["watch", "advisory"] else "high",
