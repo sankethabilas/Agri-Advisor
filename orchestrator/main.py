@@ -34,6 +34,7 @@ from orchestrator.schemas import (
 from orchestrator.session_context import session_manager
 from orchestrator.stubs import stub_service
 from agents.weather.agent import WeatherServiceError, weather_agent
+from agents.disease.agent import disease_agent
 
 app = FastAPI(
     title="Agri-Advisor Orchestrator Hub",
@@ -158,12 +159,12 @@ async def process_farmer_query(request: OrchestratorProcessRequest) -> Orchestra
 @app.post(
     "/api/disease/diagnose",
     response_model=DiseaseDiagnoseResponse,
-    summary="Diagnose Crop Disease (Stub)",
+    summary="Diagnose Crop Disease",
     description="Matches symptoms to diseases, determines severity, and generates 3-tier treatment recommendations.",
     tags=["Disease Agent"],
 )
 async def diagnose_crop_disease(request: DiseaseDiagnoseRequest) -> DiseaseDiagnoseResponse:
-    return stub_service.get_disease_diagnosis(request)
+    return disease_agent.diagnose(request)
 
 
 @app.post(
