@@ -36,6 +36,9 @@ from orchestrator.stubs import AgentStubService, stub_service as default_stub_se
 from orchestrator.router import AgentRouter, RoutingResult, agent_router as default_agent_router
 
 
+from orchestrator.synthesis import ResponseSynthesizer, synthesizer as default_synthesizer
+
+
 class OrchestratorAgent:
     """Central Hub coordinating specialist agents, session state, and advisory synthesis."""
 
@@ -48,6 +51,7 @@ class OrchestratorAgent:
         rag_agent: Optional[Callable[[RagRetrieveRequest], RagRetrieveResponse]] = None,
         crop_agent: Optional[Callable[[CropAdviceRequest], CropAdviceResponse]] = None,
         router: Optional[AgentRouter] = None,
+        synthesizer: Optional[ResponseSynthesizer] = None,
     ) -> None:
         self.session_manager = session_mgr or default_session_manager
         self.stubs = stubs or default_stub_service
@@ -59,6 +63,7 @@ class OrchestratorAgent:
             rag_agent=rag_agent,
             crop_agent=crop_agent,
         )
+        self.synthesizer = synthesizer or default_synthesizer
         self.nlp = nlp_analyzer
 
     def analyze_query(self, query: str) -> NLPResult:
@@ -113,36 +118,11 @@ class OrchestratorAgent:
         crop_res = routing_res.crop_response
         rag_res = routing_res.rag_response
 
-        # 7. Synthesize Response
-        answer_parts: List[str] = []
-        if disease_res:
-            answer_parts.append(
-                f"### 🌾 Diagnosis for {crop}\n"
-                f"**Identified Issue:** {disease_res.disease} (Confidence: {int(disease_res.confidence * 100)}%, Severity: {disease_res.severity})\n\n"
-                f"#### Recommended Immediate Actions:\n"
-                f"- **Cultural Control:** {disease_res.treatment.cultural[0].description if disease_res.treatment.cultural else 'Ensure proper field drainage.'}\n"
-                f"- **Organic Treatment:** {disease_res.treatment.organic[0].name} ({disease_res.treatment.organic[0].instructions if disease_res.treatment.organic else ''})\n"
-                f"- **Chemical Treatment:** {disease_res.treatment.chemical[0].name} ({disease_res.treatment.chemical[0].dosage}) - *Observe {disease_res.treatment.chemical[0].pre_harvest_interval_days}-day PHI*.\n"
-            )
-        elif crop_res:
-            answer_parts.append(
-                f"### 🌱 Cultivation Advisory for {crop} ({crop_res.season} Season)\n"
-                f"**Agro-Ecological Zone:** {crop_res.agro_ecological_zone}\n\n"
-                f"Please follow the Department of Agriculture 4-stage fertilizer and water management guidelines for optimal yields.\n"
-            )
-        else:
-            answer_parts.append(
-                f"### 🌾 Agricultural Advisory for {crop} ({request.location.district})\n"
-                f"Based on verified guidelines from the Department of Agriculture (DOA), here are the recommended practices for your query.\n"
-            )
-
-        if weather_res and weather_res.alerts:
-            top_alert = weather_res.alerts[0]
-            answer_parts.append(
-                f"\n> ⚠️ **Weather Advisory Notice ({top_alert.title})**: {top_alert.recommended_action}\n"
-            )
-
-        answer_text = "\n".join(answer_parts).strip()
+        # 7. Synthesize Response (Task T-18: Grounded 8-block advisory synthesis with LLM & Rule FR-47 fallback)
+        answer_text = self.synthesizer.synthesize(
+            request=request,
+            routing_res=routing_res,
+        )
 
         # 8. Map sources
         sources: List[SourceItem] = []
