@@ -123,7 +123,7 @@ class OrchestratorAgent:
         # 7. Synthesize Response (Task T-18)
         answer_text = self.synthesizer.synthesize(request, routing_res)
 
-        # 8. Map sources
+        # 8. Map sources from RAG and Specialist Agents (T-22.5)
         sources: List[SourceItem] = []
         if rag_res and rag_res.sources:
             for i, src in enumerate(rag_res.sources):
@@ -143,6 +143,32 @@ class OrchestratorAgent:
                             src, "reference_url", None),
                     )
                 )
+
+        if disease_res and disease_res.source:
+            dis_title = f"{disease_res.disease} Management Protocol"
+            if not any(s.title == dis_title for s in sources):
+                sources.append(
+                    SourceItem(
+                        title=dis_title,
+                        author_organization=disease_res.source if "Department" in disease_res.source else "Sri Lanka Department of Agriculture",
+                        document_id="DOA-PATH-GUIDE",
+                        section="Pathology & Crop Protection",
+                        confidence_score=round(disease_res.confidence, 2),
+                        reference_url="https://doa.gov.lk",
+                    )
+                )
+
+        if crop_res and crop_res.source and len(sources) < 2:
+            sources.append(
+                SourceItem(
+                    title=f"DOA {crop_res.crop} Cultivation Guidelines",
+                    author_organization="Sri Lanka Department of Agriculture",
+                    document_id="DOA-AGRONOMY-GUIDE",
+                    section="Agronomy & Crop Management",
+                    confidence_score=0.90,
+                    reference_url="https://doa.gov.lk",
+                )
+            )
 
         # 9. Map weather alert
         if weather_res and weather_res.alerts:
