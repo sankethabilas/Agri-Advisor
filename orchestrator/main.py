@@ -37,7 +37,7 @@ from orchestrator.session_context import session_manager
 from orchestrator.stubs import stub_service
 from agents.weather.agent import WeatherServiceError, weather_agent
 from agents.disease.agent import disease_agent
-from orchestrator.schemas import AuthCredentials
+from orchestrator.schemas import AuthCredentials, FeedbackRequest, FeedbackResponse
 from orchestrator.security import (
     create_access_token,
     filter_generated_output,
@@ -79,14 +79,16 @@ if os.getenv("APP_ENV", "development").lower() == "production":
 @app.post("/api/auth/register", status_code=status.HTTP_201_CREATED, tags=["Authentication"])
 async def register_user(credentials: AuthCredentials) -> Dict[str, str]:
     if not user_store.create_user(credentials.username, credentials.password):
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="An account with that username already exists.")
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT,
+                            detail="An account with that username already exists.")
     return {"user_id": credentials.username, "message": "Account created successfully."}
 
 
 @app.post("/api/auth/login", tags=["Authentication"])
 async def login_user(credentials: AuthCredentials) -> Dict[str, Any]:
     if not user_store.authenticate(credentials.username, credentials.password):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid username or password.")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                            detail="Invalid username or password.")
     return {
         "access_token": create_access_token(credentials.username),
         "token_type": "bearer",
@@ -95,17 +97,37 @@ async def login_user(credentials: AuthCredentials) -> Dict[str, Any]:
     }
 
 
+_feedback_store: list[dict[str, Any]] = []
+
+
+@app.post("/api/feedback", response_model=FeedbackResponse, tags=["Feedback"])
+async def submit_feedback(
+    feedback: FeedbackRequest,
+    current_user: str = Depends(get_current_user),
+) -> FeedbackResponse:
+    """Record whether the authenticated farmer found an advisory helpful."""
+    _feedback_store.append({
+        "user_id": current_user,
+        "session_id": feedback.session_id,
+        "helpful": feedback.helpful,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    })
+    return FeedbackResponse(accepted=True, message="Feedback received.")
+
+
 # ==============================================================================
 # Standard RFC 7807 Error Handlers (Subtask T-02.7)
 # ==============================================================================
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
-    request_id = getattr(request.state, "request_id", f"req-{uuid.uuid4().hex[:8]}")
+    request_id = getattr(request.state, "request_id",
+                         f"req-{uuid.uuid4().hex[:8]}")
     details = []
     for err in exc.errors():
         field_path = " -> ".join(str(loc) for loc in err.get("loc", []))
-        details.append(ErrorDetail(field=field_path, issue=err.get("msg", "Invalid parameter")))
+        details.append(ErrorDetail(field=field_path,
+                       issue=err.get("msg", "Invalid parameter")))
 
     payload = ErrorPayload(
         code="VALIDATION_ERROR",
@@ -123,7 +145,8 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exc: HTTPException) -> JSONResponse:
-    request_id = getattr(request.state, "request_id", f"req-{uuid.uuid4().hex[:8]}")
+    request_id = getattr(request.state, "request_id",
+                         f"req-{uuid.uuid4().hex[:8]}")
     code_map = {
         400: "VALIDATION_ERROR",
         401: "UNAUTHORIZED",
@@ -154,8 +177,10 @@ async def http_exception_handler(request: Request, exc: HTTPException) -> JSONRe
 
 @app.exception_handler(Exception)
 async def generic_exception_handler(request: Request, exc: Exception) -> JSONResponse:
-    request_id = getattr(request.state, "request_id", f"req-{uuid.uuid4().hex[:8]}")
-    logger.error(f"Unhandled exception in request {request_id}: {exc}", exc_info=True)
+    request_id = getattr(request.state, "request_id",
+                         f"req-{uuid.uuid4().hex[:8]}")
+    logger.error(
+        f"Unhandled exception in request {request_id}: {exc}", exc_info=True)
 
     payload = ErrorPayload(
         code="INTERNAL_SERVER_ERROR",
@@ -187,7 +212,8 @@ async def process_farmer_query(
     current_user: str = Depends(get_current_user),
 ) -> OrchestratorProcessResponse:
     if request.user_id != current_user:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Token identity must match request user_id.")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
+                            detail="Token identity must match request user_id.")
 
     retry_after = user_rate_limiter.check(current_user)
     if retry_after:
@@ -199,19 +225,26 @@ async def process_farmer_query(
 
     safe_query = sanitize_text(request.query, max_length=1000)
     if not safe_query:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Query is empty after sanitization.")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                            detail="Query is empty after sanitization.")
     injection = find_prompt_injection(safe_query)
     if injection:
-        logger.warning("Blocked prompt-injection pattern in orchestrator query.")
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Request contains a prohibited instruction pattern.")
+        logger.warning(
+            "Blocked prompt-injection pattern in orchestrator query.")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                            detail="Request contains a prohibited instruction pattern.")
 
-    safe_crop_context = sanitize_text(request.crop_context, max_length=100) if request.crop_context else None
+    safe_crop_context = sanitize_text(
+        request.crop_context, max_length=100) if request.crop_context else None
     safe_district = sanitize_text(request.location.district, max_length=100)
-    safe_zone = sanitize_text(request.location.agro_ecological_zone, max_length=32) if request.location.agro_ecological_zone else None
+    safe_zone = sanitize_text(request.location.agro_ecological_zone,
+                              max_length=32) if request.location.agro_ecological_zone else None
     for contextual_text in (safe_crop_context, safe_district, safe_zone):
         if contextual_text and find_prompt_injection(contextual_text):
-            logger.warning("Blocked prompt-injection pattern in orchestrator request context.")
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Request contains a prohibited instruction pattern.")
+            logger.warning(
+                "Blocked prompt-injection pattern in orchestrator request context.")
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                                detail="Request contains a prohibited instruction pattern.")
 
     safe_request = request.model_copy(update={
         "query": safe_query,
@@ -255,7 +288,8 @@ async def get_weather_advice(request: WeatherAdviceRequest) -> WeatherAdviceResp
     try:
         return weather_agent.get_weather_advice(request.location, request.crop)
     except WeatherServiceError as error:
-        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail=str(error)) from error
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY, detail=str(error)) from error
 
 
 @app.post(
@@ -345,4 +379,5 @@ async def root_overview() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("orchestrator.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("orchestrator.main:app",
+                host="0.0.0.0", port=8000, reload=True)

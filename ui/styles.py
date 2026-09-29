@@ -305,5 +305,123 @@ hr {
     font-weight: 700 !important;
     color: #14532D !important;
 }
+
+/* ── T-20: Authentication screens ───────────────────────────────────────── */
+
+/* Full-page auth background */
+.auth-bg {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #052e16 0%, #14532d 40%, #1a6b3c 70%, #166534 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Glass card */
+.auth-card {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(187, 247, 208, 0.6);
+    border-radius: 20px;
+    padding: 40px 36px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25),
+        0 4px 16px rgba(21, 128, 61, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    margin: 20px auto;
+    max-width: 480px;
+}
+
+/* Card header block */
+.auth-header-block {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.auth-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 2px 6px rgba(21, 128, 61, 0.4));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+}
+
+.auth-title {
+    font-size: 1.75rem !important;
+    font-weight: 800 !important;
+    color: #14532D !important;
+    margin: 0 0 6px 0 !important;
+    letter-spacing: -0.5px;
+}
+
+.auth-subtitle {
+    font-size: 0.95rem !important;
+    color: #6B7280 !important;
+    margin: 0 !important;
+}
+
+/* Switch link text */
+.auth-switch-text {
+    text-align: center;
+    color: #6B7280 !important;
+    font-size: 0.88rem !important;
+    margin: 14px 0 6px 0 !important;
+}
+
+/* ── Logout button — red tint in sidebar ───────────────────────────────── */
+.logout-btn > button {
+    background: linear-gradient(135deg, #DC2626, #B91C1C) !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+}
+.logout-btn > button:hover {
+    background: linear-gradient(135deg, #B91C1C, #991B1B) !important;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4) !important;
+    transform: translateY(-1px);
+}
+
+/* ── Auth hero strip above the card ────────────────────────────────────── */
+.auth-hero {
+    background: linear-gradient(135deg, #14532D 0%, #166534 50%, #15803D 100%);
+    border-radius: 12px;
+    padding: 18px 24px;
+    text-align: center;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(21, 128, 61, 0.3);
+}
+.auth-hero h1 {
+    color: #FFFFFF !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+}
+.auth-hero p {
+    color: #BBF7D0 !important;
+    font-size: 0.9rem !important;
+    margin: 4px 0 0 0 !important;
+}
+
+/* ── Authenticated user chip in header ─────────────────────────────────── */
+.user-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(220, 252, 231, 0.9);
+    border: 1px solid #86EFAC;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #14532D;
+    white-space: nowrap;
+}
 </style>
 """

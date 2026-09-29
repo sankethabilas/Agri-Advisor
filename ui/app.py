@@ -1,6 +1,6 @@
 """
 ui/app.py
-Agri-Advisor — Streamlit UI Shell  (Task T-08 + T-17)
+Agri-Advisor — Streamlit UI Shell  (Task T-08 + T-17 + T-20)
 
 Entry point:
     streamlit run ui/app.py
@@ -13,8 +13,42 @@ T-17 additions:
     - Language selector (en / si / ta) persisted in session_state["selected_language"]
     - All static UI strings sourced from utils.i18n.get_string()
     - Dynamic advisory output translated at render-time via advisory_renderer
+
+T-20 additions:
+    - Registration screen  (T-20.1)
+    - Login screen with client-side validation  (T-20.2)
+    - JWT stored in session_state, attached to every API request  (T-20.4)
+    - Query screen is gated behind authentication  (T-20.5)
+    - Logout control in sidebar  (T-20.5)
+    - Friendly error messages for invalid credentials / expired tokens  (T-20.6)
+    - Authenticated user_id and saved district in query payload  (T-20.7)
 """
 from __future__ import annotations
+from utils.i18n import SUPPORTED_LANGUAGES, get_string
+from ui.styles import GLOBAL_CSS
+from ui.config import (
+    APP_ICON,
+    APP_SUBTITLE,
+    APP_TITLE,
+    CROP_CONTEXTS,
+    DISTRICTS,
+    LANGUAGES,
+)
+from ui.components import (
+    render_advisory_response,
+    render_conversation_history,
+    render_error,
+)
+from ui.auth_pages import render_auth_screen
+from ui.auth import (
+    clear_auth,
+    get_auth_headers,
+    init_auth_session,
+    is_authenticated,
+    mark_token_expired,
+    token_just_expired,
+)
+from ui.api_client import _ApiError, build_payload, call_orchestrator
 
 import sys
 import uuid
@@ -26,24 +60,9 @@ import streamlit as st
 # Allow `ui.*` and `utils.*` imports when launched from the project root
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from ui.api_client import _ApiError, build_payload, call_orchestrator
-from ui.components import (
-    render_advisory_response,
-    render_conversation_history,
-    render_error,
-)
-from ui.config import (
-    APP_ICON,
-    APP_SUBTITLE,
-    APP_TITLE,
-    CROP_CONTEXTS,
-    DISTRICTS,
-    LANGUAGES,
-)
-from ui.styles import GLOBAL_CSS
 
 # T-17: i18n helpers
-from utils.i18n import SUPPORTED_LANGUAGES, get_string
+
 
 # ============================================================================
 # Page configuration  (must be the very first Streamlit call)
@@ -60,7 +79,7 @@ st.set_page_config(
     },
 )
 
-# Inject global CSS
+# Inject global CSS (includes T-20 auth card styles)
 st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
 
 
@@ -69,22 +88,25 @@ st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
 # ============================================================================
 
 def _init_session() -> None:
-    """Initialise all session-state keys on first load."""
-    if "user_id" not in st.session_state:
-        st.session_state.user_id = f"farmer_{uuid.uuid4().hex[:8]}"
+    """Initialise all session-state keys on first load (T-08 + T-17 + T-20)."""
+    # T-20: auth keys first (they gate everything else)
+    init_auth_session()
+
+    # Query screen state (only relevant after login)
     if "session_id" not in st.session_state:
-        st.session_state.session_id = None          # populated from first API response
+        st.session_state.session_id = None
     if "conversation_history" not in st.session_state:
-        st.session_state.conversation_history = []  # list[dict]
+        st.session_state.conversation_history = []
     if "last_response" not in st.session_state:
         st.session_state.last_response = None
     if "last_is_fallback" not in st.session_state:
         st.session_state.last_is_fallback = False
     if "last_error" not in st.session_state:
-        st.session_state.last_error = None          # tuple(status_code, body) | None
+        st.session_state.last_error = None
+
+    # T-17 locale
     if "language" not in st.session_state:
         st.session_state.language = "en"
-    # T-17.1 — canonical session key for the selected locale code
     if "selected_language" not in st.session_state:
         st.session_state.selected_language = "en"
 
@@ -93,20 +115,54 @@ _init_session()
 
 
 # ============================================================================
+# T-20.5 — Auth gate: redirect unauthenticated users to login/register
+# ============================================================================
+
+if not is_authenticated():
+    # Show a minimal branded header above the auth card
+    st.markdown(
+        f"""
+        <div class="auth-hero">
+            <h1>{APP_ICON} {APP_TITLE}</h1>
+            <p>Smart Farming Assistant for Sri Lanka</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    render_auth_screen()
+    st.stop()
+
+
+# ============================================================================
+# Authenticated section — everything below is gated
+# ============================================================================
+
+# T-20.6 — surface token-expiry banner on re-entry
+if token_just_expired():
+    st.error(
+        "⏱️ **Your session has expired.** Please sign in again.",
+        icon="🔒",
+    )
+    clear_auth()
+    st.rerun()
+
+
+# ============================================================================
 # Header
 # ============================================================================
 
 def _render_header() -> None:
     """
-    Render the green gradient header with language selector.
+    Render the green gradient header with language selector and user chip.
 
     T-17.1 -- The selectbox persists the chosen locale code in
     both ``st.session_state.selected_language`` (T-17 canonical key)
     and ``st.session_state.language`` (legacy key used by the API payload).
-    """
-    header_col, lang_col = st.columns([4, 1])
 
-    # Resolve current language for header tagline
+    T-20 -- Shows a user chip with the authenticated username.
+    """
+    header_col, user_col, lang_col = st.columns([4, 1.5, 1])
+
     _lang = st.session_state.get("selected_language", "en")
 
     with header_col:
@@ -121,13 +177,22 @@ def _render_header() -> None:
             unsafe_allow_html=True,
         )
 
+    # T-20: authenticated user chip
+    with user_col:
+        st.markdown("<br><br>", unsafe_allow_html=True)
+        user_id = st.session_state.get("user_id", "")
+        if user_id:
+            st.markdown(
+                f'<div class="user-chip">👤 {user_id}</div>',
+                unsafe_allow_html=True,
+            )
+
     with lang_col:
         st.markdown("<br><br>", unsafe_allow_html=True)
 
-        # T-17.1: language selector -- options from SUPPORTED_LANGUAGES
-        lang_options = list(SUPPORTED_LANGUAGES.keys())   # display labels
-        # Find current index so the widget reflects session state on rerun
-        current_code  = st.session_state.get("selected_language", "en")
+        # T-17.1: language selector
+        lang_options = list(SUPPORTED_LANGUAGES.keys())
+        current_code = st.session_state.get("selected_language", "en")
         current_label = next(
             (lbl for lbl, code in SUPPORTED_LANGUAGES.items() if code == current_code),
             lang_options[0],
@@ -144,8 +209,8 @@ def _render_header() -> None:
         selected_code = SUPPORTED_LANGUAGES[selected_lang_label]
 
         # Persist in BOTH keys for backward compatibility
-        st.session_state.selected_language = selected_code  # T-17 canonical
-        st.session_state.language          = selected_code  # legacy API payload key
+        st.session_state.selected_language = selected_code
+        st.session_state.language = selected_code
 
 
 _render_header()
@@ -160,6 +225,10 @@ _lang = st.session_state.get("selected_language", "en")
 
 st.markdown(f"### 🌱 {get_string('app_subtitle', _lang)}")
 
+# T-20.7: pre-populate district from the user's saved district (if set)
+_saved_district = st.session_state.get("saved_district")
+_default_district = _saved_district if _saved_district in DISTRICTS else "Anuradhapura"
+
 with st.form(key="query_form", clear_on_submit=False):
     # Row 1: District + Crop context
     col_district, col_crop = st.columns(2)
@@ -168,7 +237,7 @@ with st.form(key="query_form", clear_on_submit=False):
         district = st.selectbox(
             get_string("lbl_district", _lang),
             options=DISTRICTS,
-            index=DISTRICTS.index("Anuradhapura"),
+            index=DISTRICTS.index(_default_district),
             help="Select the district where your farm is located.",
         )
 
@@ -196,7 +265,8 @@ with st.form(key="query_form", clear_on_submit=False):
     char_count = len(query_text)
     if char_count > 800:
         css_class = "error" if char_count >= 1000 else "warn"
-        counter_label = get_string("lbl_char_counter", _lang).format(count=char_count)
+        counter_label = get_string(
+            "lbl_char_counter", _lang).format(count=char_count)
         st.markdown(
             f'<div class="char-counter {css_class}">{counter_label}</div>',
             unsafe_allow_html=True,
@@ -220,18 +290,28 @@ if submitted:
         st.error(get_string("err_empty_query", _lang))
         st.stop()
 
+    # T-20.7: use the authenticated user_id; fall back gracefully
+    auth_user_id = st.session_state.get(
+        "user_id") or f"farmer_{uuid.uuid4().hex[:8]}"
+
     payload = build_payload(
         query=query_text.strip(),
-        user_id=st.session_state.user_id,
-        district=district,
+        user_id=auth_user_id,                         # T-20.7: real user_id
+        district=district,                            # T-20.7: may be saved district
         language=st.session_state.language,
         crop_context=crop_context,
         session_id=st.session_state.session_id,
     )
 
+    progress = st.progress(0, text="Preparing your advisory request…")
     with st.spinner("🌿 Analysing your crop problem — this usually takes a few seconds…"):
         try:
-            response, is_fallback = call_orchestrator(payload)
+            progress.progress(15, text="Contacting the advisory service…")
+            response, is_fallback = call_orchestrator(
+                payload,
+                auth_headers=get_auth_headers(),      # T-20.4: JWT attached
+            )
+            progress.progress(100, text="Advisory ready")
             st.session_state.last_error = None
 
             # Persist session_id for multi-turn continuity
@@ -240,13 +320,13 @@ if submitted:
                 st.session_state.session_id = session_id
 
             # Store result
-            st.session_state.last_response    = response
+            st.session_state.last_response = response
             st.session_state.last_is_fallback = is_fallback
 
-            # Append to conversation history (store a short summary)
+            # Append to conversation history
             answer_full = response.get("answer", "")
-            # Take the first 200 chars as a summary preview
-            answer_summary = answer_full[:200].rstrip() + ("…" if len(answer_full) > 200 else "")
+            answer_summary = answer_full[:200].rstrip(
+            ) + ("…" if len(answer_full) > 200 else "")
             st.session_state.conversation_history.append({
                 "query":          query_text.strip(),
                 "district":       district,
@@ -257,14 +337,25 @@ if submitted:
             })
 
         except _ApiError as exc:
-            st.session_state.last_response    = None
+            progress.empty()
+            st.session_state.last_response = None
             st.session_state.last_is_fallback = False
-            st.session_state.last_error       = (exc.status_code, exc.body)
+            st.session_state.last_error = (exc.status_code, exc.body)
+
+            # T-20.6: token-expiry redirect
+            if exc.status_code == 401:
+                st.warning(
+                    "⏱️ **Your session has expired.** You will be redirected to sign in.",
+                    icon="🔒",
+                )
+                clear_auth()
+                st.rerun()
 
         except Exception as exc:  # noqa: BLE001
-            st.session_state.last_response    = None
+            progress.empty()
+            st.session_state.last_response = None
             st.session_state.last_is_fallback = False
-            st.session_state.last_error       = (0, {"detail": str(exc)})
+            st.session_state.last_error = (0, {"detail": str(exc)})
 
 
 # ============================================================================
@@ -289,28 +380,54 @@ elif st.session_state.last_response is not None:
     render_advisory_response(
         st.session_state.last_response,
         is_fallback=st.session_state.last_is_fallback,
-        lang=_render_lang,           # T-17: target locale for output translation
+        lang=_render_lang,
     )
     st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ============================================================================
-# Sidebar — session info (debug / developer panel)
+# Sidebar — session info + T-20.5 logout control
 # ============================================================================
 
 with st.sidebar:
-    # T-17: localised sidebar labels
     _slang = st.session_state.get("selected_language", "en")
 
+    # ── Authenticated user panel ──────────────────────────────────────────
+    auth_user = st.session_state.get("user_id", "")
+    saved_district = st.session_state.get("saved_district", "—")
+
     st.markdown(f"### {get_string('sidebar_heading', _slang)}")
-    st.markdown(f"{get_string('lbl_user_id', _slang)} `{st.session_state.user_id}`")
+    st.markdown(
+        f"""
+        <div style="
+            background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+            border: 1px solid #BBF7D0;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+        ">
+            <p style="margin:0;font-size:0.9rem;color:#166534;font-weight:600;">
+                👤 {auth_user}
+            </p>
+            <p style="margin:4px 0 0 0;font-size:0.8rem;color:#4B5563;">
+                📍 {saved_district}
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
     if st.session_state.session_id:
-        st.markdown(f"{get_string('lbl_session_id', _slang)} `{st.session_state.session_id}`")
+        st.markdown(
+            f"{get_string('lbl_session_id', _slang)} `{st.session_state.session_id}`")
     st.markdown(f"{get_string('lbl_language_code', _slang)} `{_slang}`")
-    st.markdown(f"{get_string('lbl_turns', _slang)} {len(st.session_state.conversation_history)}")
+    st.markdown(
+        f"{get_string('lbl_turns', _slang)} {len(st.session_state.conversation_history)}")
 
     st.markdown("---")
-    if st.button(get_string("btn_clear", _slang), use_container_width=True):
+
+    # Clear conversation
+    if st.button(get_string("btn_clear", _slang), use_container_width=True, key="btn_clear_conv"):
         for key in ("conversation_history", "last_response", "last_is_fallback",
                     "last_error", "session_id"):
             if key in st.session_state:
@@ -318,8 +435,17 @@ with st.sidebar:
         st.rerun()
 
     st.markdown("---")
+
+    # T-20.5: Logout control
+    st.markdown('<div class="logout-btn">', unsafe_allow_html=True)
+    if st.button("🚪 Sign Out", use_container_width=True, key="btn_logout"):
+        clear_auth()
+        st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    st.markdown("---")
     st.markdown(
         '<p style="font-size:0.78rem;color:#6B7280;">Agri-Advisor v0.1.0<br>'
-        'T-08 · T-17 · UI Shell</p>',
+        'T-08 · T-17 · T-20 · UI Shell</p>',
         unsafe_allow_html=True,
     )
