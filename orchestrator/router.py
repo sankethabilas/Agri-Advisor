@@ -100,9 +100,17 @@ class AgentRouter:
         """Execute disease diagnosis request with stub fallback."""
         if self._disease_agent is not None:
             try:
+                if hasattr(self._disease_agent, "diagnose"):
+                    return self._disease_agent.diagnose(req)
                 return self._disease_agent(req)
             except Exception as e:
                 logger.warning(f"Disease agent execution failed ({e}). Falling back to stub.")
+        else:
+            try:
+                from agents.disease.agent import disease_agent
+                return disease_agent.diagnose(req)
+            except Exception as e:
+                logger.warning(f"Live DiseaseAgent import/call failed ({e}). Falling back to stub.")
         return self.stubs.get_disease_diagnosis(req)
 
     def call_weather_agent(self, req: WeatherAdviceRequest) -> WeatherAdviceResponse:
@@ -126,18 +134,34 @@ class AgentRouter:
         """Execute crop advisory request with stub fallback."""
         if self._crop_agent is not None:
             try:
+                if hasattr(self._crop_agent, "get_crop_advice"):
+                    return self._crop_agent.get_crop_advice(req)
                 return self._crop_agent(req)
             except Exception as e:
                 logger.warning(f"Crop agent execution failed ({e}). Falling back to stub.")
+        else:
+            try:
+                from agents.crop.agent import crop_agent
+                return crop_agent.get_crop_advice(req)
+            except Exception as e:
+                logger.warning(f"Live CropAgent import/call failed ({e}). Falling back to stub.")
         return self.stubs.get_crop_advice(req)
 
     def call_rag_agent(self, req: RagRetrieveRequest) -> RagRetrieveResponse:
         """Execute RAG knowledge retrieval request with stub fallback."""
         if self._rag_agent is not None:
             try:
+                if hasattr(self._rag_agent, "retrieve"):
+                    return self._rag_agent.retrieve(req)
                 return self._rag_agent(req)
             except Exception as e:
                 logger.warning(f"RAG agent execution failed ({e}). Falling back to stub.")
+        else:
+            try:
+                from agents.rag.agent import rag_agent
+                return rag_agent.retrieve(req)
+            except Exception as e:
+                logger.warning(f"Live RAGAgent import/call failed ({e}). Falling back to stub.")
         return self.stubs.get_rag_retrieve(req)
 
     # --------------------------------------------------------------------------

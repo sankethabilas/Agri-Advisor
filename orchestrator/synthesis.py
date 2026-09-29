@@ -235,7 +235,7 @@ class RuleBasedFallbackSynthesizer:
             blocks.append(
                 f"### 💊 Recommended Immediate Treatment Plan\n"
                 f"#### 1. Chemical Control (Emergency Intervention):\n"
-                f"{chr(10).join(chem_lines) if chem_lines else '- No immediate chemical treatment required.'}\n\n"
+                f"{chr(10).join(chem_lines) if chem_lines else '- No synthetic chemical fungicide/bactericide required at this stage. (Pre-Harvest Interval (PHI): Observe standard 14-day pre-harvest safety interval if chemical intervention becomes necessary under extension officer guidance).'}\n\n"
                 f"#### 2. Organic & Bio-Pesticide Control:\n"
                 f"{chr(10).join(org_lines) if org_lines else '- Standard organic bio-fungicides.'}\n\n"
                 f"#### 3. Cultural & Agronomic Field Practices:\n"

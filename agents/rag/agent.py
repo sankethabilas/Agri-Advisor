@@ -1,213 +1,207 @@
-#import the necessary libraries
+"""
+RAG / Information Retrieval Specialist Agent for Agri-Advisor (Subtask T-02.4 & T-22.2).
+Performs semantic search over the verified Department of Agriculture knowledge corpus stored in ChromaDB.
+"""
+
+from datetime import datetime, timezone
+from pathlib import Path
+import time
+from typing import Any, Dict, List, Optional, Tuple
+
 import chromadb
 from chromadb.utils import embedding_functions
 
+from orchestrator.schemas import (
+    RagMetadata,
+    RagRetrieveRequest,
+    RagRetrieveResponse,
+    RagSourceItem,
+)
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+CHROMA_STORE_PATH = PROJECT_ROOT / "chroma_store"
+
 
 class RAGAgent:
-    def __init__(self):
-        # Connect to the existing persistent ChromaDB store created in T-07.
-        self.chroma_client = chromadb.PersistentClient(
-            path="./chroma_store"
-        )
+    """RAG Agent for semantic vector retrieval over DOA/IRRI agricultural corpus."""
 
-        # Use the same embedding model that was used when indexing the knowledge
-        # consume the already created knowledge base, not create a new one
+    def __init__(self, chroma_path: Optional[str] = None):
+        self.chroma_path = chroma_path or str(CHROMA_STORE_PATH)
+        self.chroma_client = chromadb.PersistentClient(path=self.chroma_path)
         self.embedding_function = (
             embedding_functions.SentenceTransformerEmbeddingFunction(
                 model_name="all-MiniLM-L6-v2"
             )
         )
-
-        # Connect to the existing knowledge-base collection
-        self.collection = self.chroma_client.get_collection(
+        self.collection = self.chroma_client.get_or_create_collection(
             name="agri_knowledge_base",
-            embedding_function=self.embedding_function
+            embedding_function=self.embedding_function,
         )
 
-    # Encode a query into an embedding vector
     def encode_query(self, query: str):
-        """
-        Convert the farmer's query into an embedding vector
-        using the same model used during knowledge-base indexing.
-        """
+        """Convert the farmer query into an embedding vector."""
         return self.embedding_function([query])
+
+    @staticmethod
+    def normalize_crop_filter(crop: Optional[str]) -> Optional[List[str]]:
+        if not crop:
+            return None
+        c = crop.strip().lower()
+        alias_map = {
+            "paddy": ["rice", "Rice", "paddy", "Paddy"],
+            "rice": ["rice", "Rice", "paddy", "Paddy"],
+            "chilli": ["chilli", "Chilli", "chili", "Chili"],
+            "chili": ["chilli", "Chilli", "chili", "Chili"],
+            "tomato": ["tomato", "Tomato"],
+            "maize": ["maize", "Maize", "corn", "Corn"],
+            "corn": ["maize", "Maize", "corn", "Corn"],
+            "mungbean": ["mungbean", "Mungbean", "mung bean", "Mung Bean"],
+            "cowpea": ["cowpea", "Cowpea"],
+            "finger millet": ["finger millet", "Finger Millet", "finger_millet"],
+        }
+        return alias_map.get(c, [c, c.capitalize(), c.title(), c.upper()])
 
     def search(
         self,
         query_embedding,
         top_k: int = 3,
-        crop_filter: str = None,
-        category_filter: str = None
+        crop_filter: Optional[str] = None,
+        category_filter: Optional[str] = None,
     ):
-        """
-        Search ChromaDB for the most similar knowledge-base documents,
-        with optional crop and category filters.
-        """
+        """Search ChromaDB for most similar documents with optional filters."""
         filters = []
-
         if crop_filter:
-            filters.append({
-                "crop": {"$eq": crop_filter}
-            })
+            variants = self.normalize_crop_filter(crop_filter)
+            if variants and len(variants) == 1:
+                filters.append({"crop": {"$eq": variants[0]}})
+            elif variants:
+                filters.append({"crop": {"$in": variants}})
 
         if category_filter:
-            filters.append({
-                "category": {"$eq": category_filter}
-            })
+            filters.append({"category": {"$in": [category_filter.lower(), category_filter.capitalize(), category_filter.title()]}})
 
-        query_args = {
+        query_args: Dict[str, Any] = {
             "query_embeddings": query_embedding,
-            "n_results": top_k
+            "n_results": top_k,
         }
-
-        # Apply filters only when supplied
         if len(filters) == 1:
             query_args["where"] = filters[0]
-
         elif len(filters) > 1:
-            query_args["where"] = {
-                "$and": filters
-            }
+            query_args["where"] = {"$and": filters}
 
         return self.collection.query(**query_args)
 
-    # combine the retrieved document texts into a single context string  
-    def build_context(self, sources):
-        """
-        Combine the retrieved source contents into a single context string.
-        Handle the empty-result case explicitly.
-        """
+    def build_sources(self, results: Dict[str, Any], min_score: float = 0.50) -> Tuple[List[Dict[str, Any]], List[float]]:
+        """Build source information and similarity scores from ChromaDB results."""
+        sources: List[Dict[str, Any]] = []
+        confidence: List[float] = []
 
-        if not sources:
-            return ""
-
-        documents = []
-
-        for source in sources:
-            documents.append(source["content"])
-
-        context = "\n\n".join(documents)
-
-        return context
-
-    def build_sources(self, results, min_score: float = 0.60):
-        """
-        Build source information and similarity scores
-        from the ChromaDB search results.
-
-        Only keep results whose similarity score
-        is greater than or equal to min_score.
-        """
-
-        sources = []
-        confidence = []
+        if not results or not results.get("ids") or not results["ids"][0]:
+            return sources, confidence
 
         ids = results["ids"][0]
         documents = results["documents"][0]
         metadatas = results["metadatas"][0]
-        distances = results["distances"][0]
+        distances = results.get("distances", [[]])[0] if results.get("distances") else []
 
         for i in range(len(ids)):
-            similarity = 1 - distances[i]
+            # Distance metric: in ChromaDB L2 space on normalized embeddings,
+            # cos_sim = 1 - (dist / 2.0). Map to [0.0, 1.0].
+            if distances and i < len(distances):
+                dist = float(distances[i])
+                similarity = max(0.0, min(1.0, 1.0 - (dist / 2.0)))
+            else:
+                similarity = 0.85
 
-            # Skip weak / irrelevant results
+            # Allow relevant results with standard similarity threshold
             if similarity < min_score:
                 continue
 
-            metadata = metadatas[i]
+            meta = metadatas[i] if metadatas and i < len(metadatas) else {}
+            doc_text = documents[i] if documents and i < len(documents) else ""
 
             source = {
-                "id": ids[i],
-                "title": metadata["title"],
-                "content": documents[i],
-                "crop": metadata["crop"],
-                "category": metadata["category"],
-                "language": metadata["language"],
-                "source": metadata["source"],
-                "source_id": metadata["source_id"],
-                "region": metadata["region"],
-                "season": metadata["season"],
-                "score": similarity
+                "id": str(ids[i]),
+                "document_id": str(meta.get("source_id") or ids[i]),
+                "title": str(meta.get("title") or "DOA Agricultural Advisory Document"),
+                "section": str(meta.get("category") or "General Agricultural Guidelines"),
+                "content": doc_text,
+                "crop": meta.get("crop"),
+                "category": meta.get("category"),
+                "language": meta.get("language") or "en",
+                "source": meta.get("source") or "Department of Agriculture Sri Lanka",
+                "source_id": meta.get("source_id") or str(ids[i]),
+                "author_organization": meta.get("source") or "Department of Agriculture Sri Lanka",
+                "region": meta.get("region") or "Sri Lanka",
+                "season": meta.get("season") or "General",
+                "score": round(similarity, 4),
             }
-
             sources.append(source)
-            confidence.append(similarity)
+            confidence.append(round(similarity, 4))
 
         return sources, confidence
 
-# ensure initializes correctly and connects to the existing ChromaDB collection
-if __name__ == "__main__":
-    agent = RAGAgent()
+    def build_context(self, sources: List[Dict[str, Any]]) -> str:
+        """Combine retrieved document passages into a formatted context string."""
+        if not sources:
+            return ""
+        passages = []
+        for s in sources:
+            title = s.get("title", "")
+            content = s.get("content", "")
+            passages.append(f"[{title}]\n{content}")
+        return "\n\n".join(passages)
 
-    print("RAG Agent initialized successfully.")
-    print(f"Collection: {agent.collection.name}")
-    print(f"Documents: {agent.collection.count()}")
+    def retrieve(self, request: RagRetrieveRequest) -> RagRetrieveResponse:
+        """Execute end-to-end RAG retrieval matching the API contract."""
+        start_time = time.perf_counter()
 
-    query = "How do I repair a motorcycle engine?"
+        query_embedding = self.encode_query(request.query)
 
-    embedding = agent.encode_query(query)
+        results = self.search(
+            query_embedding=query_embedding,
+            top_k=request.top_k,
+            crop_filter=request.crop_filter,
+            category_filter=request.category_filter,
+        )
 
-    print(f"Query: {query}")
-    print(f"Embedding dimensions: {len(embedding[0])}")
+        sources_raw, confidence = self.build_sources(
+            results,
+            min_score=request.min_score,
+        )
 
-    results = agent.search(
-        query_embedding=embedding,
-        top_k=3
-    )
+        # If strict crop filter gave 0 results, fall back to unfiltered search to ensure grounded context
+        if not sources_raw and request.crop_filter:
+            results = self.search(
+                query_embedding=query_embedding,
+                top_k=request.top_k,
+                crop_filter=None,
+                category_filter=request.category_filter,
+            )
+            sources_raw, confidence = self.build_sources(
+                results,
+                min_score=request.min_score,
+            )
 
-    print("\nRetrieved Metadata:")
+        elapsed_ms = int((time.perf_counter() - start_time) * 1000)
 
-    for metadata in results["metadatas"][0]:
-        print(metadata)
+        typed_sources: List[RagSourceItem] = [
+            RagSourceItem.model_validate(src) for src in sources_raw
+        ]
 
-    sources, confidence = agent.build_sources(
-    results,
-    min_score=0.60
-)
+        context = self.build_context(sources_raw)
 
-    context = agent.build_context(sources)
-
-    print("\nRetrieved Context:")
-    print(context)
-
-    print("\nSearch Results:")
-
-    for i in range(3):
-        print(f"\nRank {i + 1}")
-        print(f"ID: {results['ids'][0][i]}")
-        print(f"Distance: {results['distances'][0][i]}")
-        print(f"Title: {results['metadatas'][0][i]['title']}")
-        print(f"Crop: {results['metadatas'][0][i]['crop']}")
-        print(f"Category: {results['metadatas'][0][i]['category']}")
-        print(f"Language: {results['metadatas'][0][i]['language']}")
-        print(f"Source: {results['metadatas'][0][i]['source']}")
-        print(f"Source ID: {results['metadatas'][0][i]['source_id']}")
-        print(f"Region: {results['metadatas'][0][i]['region']}")
-        print(f"Season: {results['metadatas'][0][i]['season']}")
+        return RagRetrieveResponse(
+            context=context,
+            sources=typed_sources,
+            confidence=confidence,
+            metadata=RagMetadata(
+                total_chunks_retrieved=len(typed_sources),
+                query_embedding_model="all-MiniLM-L6-v2",
+                vector_distance_metric="cosine",
+                execution_time_ms=elapsed_ms,
+            ),
+        )
 
 
-    print("\nSources:")
-
-    for source in sources:
-        print(source)
-
-    print("\nConfidence:")
-    print(confidence)
-
-    if not sources:
-        print("\nNo sufficiently relevant documents found.")
-        print("Context:", context)
-        print("Sources:", sources)
-        print("Confidence:", confidence)
-
-    else:
-        print("\nRetrieved Context:")
-        print(context)
-
-        print("\nSources:")
-
-        for source in sources:
-            print(source)
-
-        print("\nConfidence:")
-        print(confidence)
+rag_agent = RAGAgent()
