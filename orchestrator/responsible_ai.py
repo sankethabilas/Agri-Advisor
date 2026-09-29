@@ -42,11 +42,16 @@ PHONE_PATTERNS = [
 ]
 
 NAME_PATTERNS = [
-    re.compile(r"(?:Farmer|Mr\.|Mrs\.|Ms\.|Dr\.|Officer|Contact:?)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)", re.IGNORECASE),
+    re.compile(r"\b(?:(?:[Ff]ield\s+)?[Oo]fficer|[Ff]armer|[Cc]ontact:?|[Mm]r\.?|[Mm]rs\.?|[Mm]s\.?|[Dd]r\.?)\s*(?:[Mm]r\.?|[Mm]rs\.?|[Mm]s\.?|[Dd]r\.?)?\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)"),
+    re.compile(r"\b(?:[Mm]r\.?|[Mm]rs\.?|[Mm]s\.?|[Dd]r\.?)\s+([A-Z][a-z]+)\b"),
 ]
 
 ADDRESS_PATTERNS = [
-    re.compile(r"(?:No\.?\s*\d+[/A-Za-z0-9]*,?\s+)?(?:[A-Za-z0-9\s]+(?:Road|Mawatha|Lane|Street|Place|Avenue|Grama Niladhari Division|Plot No\.?\s*\d+))", re.IGNORECASE),
+    re.compile(
+        r"(?:No\.?\s*\d+[/A-Za-z0-9]*,?\s+)?\b[A-Z][a-z0-9]+(?:\s+[A-Z][a-z0-9]+)*\s+(?:Road|Mawatha|Lane|Street|Place|Avenue)\b"
+        r"|(?:Plot\s*(?:No\.?)?\s*\d+)"
+        r"|(?:Grama\s+Niladhari\s+Division\s*(?:No\.?)?\s*\d+)"
+    ),
 ]
 
 # Bias detection cues (T-26.2)
@@ -259,10 +264,9 @@ class ResponsibleAIChecker:
         sanitized = text
 
         # 1. Phone number detection & redaction
-        # Mask official helplines temporarily to avoid accidental redaction
-        helpline_token = "__GOV_HELPLINE_1920__"
-        for hl in ["1920 (Department of Agriculture Toll-Free)", "1920", "1920 (Extension Helpline)"]:
-            sanitized = sanitized.replace(hl, helpline_token)
+        # Mask official extension helpline 1920 temporarily to avoid accidental redaction
+        helpline_token = "@@OFFICIAL_AGRI_HELPLINE_TOKEN@@"
+        sanitized = re.sub(r"\b1920\b", helpline_token, sanitized)
 
         for pat in PHONE_PATTERNS:
             matches = list(pat.finditer(sanitized))
@@ -272,7 +276,7 @@ class ResponsibleAIChecker:
                 sanitized = pat.sub("[PHONE REDACTED]", sanitized)
 
         # Restore official helpline
-        sanitized = sanitized.replace(helpline_token, "1920 (Department of Agriculture Toll-Free)")
+        sanitized = sanitized.replace(helpline_token, "1920")
 
         # 2. Personal name detection & redaction (e.g. "Farmer Nimal Silva", "Contact: John Doe")
         for pat in NAME_PATTERNS:
