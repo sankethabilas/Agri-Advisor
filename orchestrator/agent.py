@@ -35,6 +35,7 @@ from orchestrator.stubs import AgentStubService, stub_service as default_stub_se
 
 from orchestrator.router import AgentRouter, RoutingResult, agent_router as default_agent_router
 from orchestrator.synthesis import ResponseSynthesizer, synthesizer as default_synthesizer
+from orchestrator.responsible_ai import ResponsibleAIChecker, responsible_ai_checker as default_responsible_ai_checker
 
 
 class OrchestratorAgent:
@@ -54,6 +55,7 @@ class OrchestratorAgent:
                                       CropAdviceResponse]] = None,
         router: Optional[AgentRouter] = None,
         synthesizer: Optional[ResponseSynthesizer] = None,
+        responsible_ai: Optional[ResponsibleAIChecker] = None,
     ) -> None:
         self.session_manager = session_mgr or default_session_manager
         self.stubs = stubs or default_stub_service
@@ -66,6 +68,7 @@ class OrchestratorAgent:
             crop_agent=crop_agent,
         )
         self.synthesizer = synthesizer or default_synthesizer
+        self.responsible_ai = responsible_ai or default_responsible_ai_checker
         self.nlp = nlp_analyzer
 
     def analyze_query(self, query: str) -> NLPResult:
@@ -190,7 +193,20 @@ class OrchestratorAgent:
                 valid_until=datetime.now(timezone.utc).isoformat(),
             )
 
-        # 10. Record conversation turn
+        # 10. Execute Responsible AI mechanically (Fairness, PII Redaction, Explainability) - Task T-26
+        rai_res = self.responsible_ai.check(
+            response_text=answer_text,
+            sources=sources,
+            confidence=confidence,
+            crop=crop,
+            district=request.location.district or "General",
+            intent=intent,
+            agents_consulted=agents_consulted,
+        )
+        answer_text = rai_res.sanitized_response
+        why_explanation = rai_res.explanation
+
+        # 11. Record conversation turn
         self.session_manager.add_turn(
             user_id=request.user_id,
             query=request.query,
@@ -263,12 +279,7 @@ class OrchestratorAgent:
                 ),
                 "helpline": "Agriculture Extension Office: 1920",
             },
-            why_explanation={
-                "summary": f"The advisory was selected for {crop} using the routed specialist agents and verified knowledge sources.",
-                "model_reasoning": f"The orchestrator consulted: {', '.join(agents_consulted) or 'the general advisory path'}.",
-                "agents_used": agents_consulted,
-                "confidence_breakdown": {"orchestrator": round(confidence, 2)},
-            },
+            why_explanation=why_explanation,
             metadata=metadata,
         )
 
