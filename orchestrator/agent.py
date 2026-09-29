@@ -184,6 +184,14 @@ class OrchestratorAgent:
                 impact_warning=first_alert.recommended_action,
                 valid_until=first_alert.valid_to,
             )
+        elif routing_res.agent_failures.get("weather_agent"):
+            weather_alert = WeatherAlert(
+                severity="none",
+                title="Weather information unavailable",
+                message="Current weather and forecast information could not be retrieved.",
+                impact_warning="Check an official local forecast before weather-sensitive field work.",
+                valid_until=datetime.now(timezone.utc).isoformat(),
+            )
         else:
             weather_alert = WeatherAlert(
                 severity="none",

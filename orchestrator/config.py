@@ -17,6 +17,10 @@ class Settings:
     openai_model: str = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
     llm_provider: str = os.getenv("LLM_PROVIDER", "groq")
     jwt_secret_key: str = os.getenv("JWT_SECRET_KEY", "")
+    disease_agent_timeout_seconds: float = float(os.getenv("DISEASE_AGENT_TIMEOUT_SECONDS", "2.0"))
+    weather_agent_timeout_seconds: float = float(os.getenv("WEATHER_AGENT_TIMEOUT_SECONDS", "1.5"))
+    rag_agent_timeout_seconds: float = float(os.getenv("RAG_AGENT_TIMEOUT_SECONDS", "1.0"))
+    crop_agent_timeout_seconds: float = float(os.getenv("CROP_AGENT_TIMEOUT_SECONDS", "2.0"))
 
     def require_api_key(self) -> None:
         missing = []

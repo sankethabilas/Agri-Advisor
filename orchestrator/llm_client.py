@@ -12,6 +12,7 @@ from typing import Any, Dict, List, Literal, Optional
 import requests
 
 from orchestrator.config import settings
+from orchestrator.resilience import request_with_retry
 
 logger = logging.getLogger("agri_advisor.llm_client")
 
@@ -39,11 +40,13 @@ class LLMClient:
         self.timeout_seconds = timeout_seconds
 
         if self.provider == "openai":
-            self.api_key = api_key or getattr(settings, "openai_api_key", "") or os.getenv("OPENAI_API_KEY", "")
+            configured_key = getattr(settings, "openai_api_key", "") or os.getenv("OPENAI_API_KEY", "")
+            self.api_key = api_key if api_key is not None else configured_key
             self.model = model or getattr(settings, "openai_model", "gpt-3.5-turbo") or "gpt-3.5-turbo"
         else:
             self.provider = "groq"
-            self.api_key = api_key or getattr(settings, "groq_api_key", "") or os.getenv("GROQ_API_KEY", "")
+            configured_key = getattr(settings, "groq_api_key", "") or os.getenv("GROQ_API_KEY", "")
+            self.api_key = api_key if api_key is not None else configured_key
             self.model = model or getattr(settings, "groq_model", "llama-3.1-8b-instant") or "llama-3.1-8b-instant"
 
         self._groq_sdk_client = None
@@ -119,13 +122,15 @@ class LLMClient:
         }
 
         try:
-            resp = requests.post(
-                self.GROQ_API_URL,
-                headers=headers,
-                json=payload,
-                timeout=self.timeout_seconds,
+            resp = request_with_retry(
+                lambda: requests.post(
+                    self.GROQ_API_URL,
+                    headers=headers,
+                    json=payload,
+                    timeout=self.timeout_seconds,
+                ),
+                service="groq_llm",
             )
-            resp.raise_for_status()
             data = resp.json()
             return data["choices"][0]["message"]["content"]
         except (requests.RequestException, KeyError, IndexError, ValueError) as exc:
@@ -150,13 +155,15 @@ class LLMClient:
         }
 
         try:
-            resp = requests.post(
-                self.OPENAI_API_URL,
-                headers=headers,
-                json=payload,
-                timeout=self.timeout_seconds,
+            resp = request_with_retry(
+                lambda: requests.post(
+                    self.OPENAI_API_URL,
+                    headers=headers,
+                    json=payload,
+                    timeout=self.timeout_seconds,
+                ),
+                service="openai_llm",
             )
-            resp.raise_for_status()
             data = resp.json()
             return data["choices"][0]["message"]["content"]
         except (requests.RequestException, KeyError, IndexError, ValueError) as exc:

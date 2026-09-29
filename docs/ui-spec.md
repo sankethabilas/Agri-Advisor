@@ -225,6 +225,8 @@ Color is never the only signal — every badge carries a text label as well.
 | `500 / 502 / 503` | Generic "Something went wrong on our end, please try again shortly" — never expose `request_id` or stack traces in the primary message |
 | `504 AGENT_TIMEOUT` | Not treated as an error — the Orchestrator returns a best-effort `answer`; rendered normally |
 
+When an advisory is returned with a degraded service, render its `Service update` in the answer. It identifies omitted weather, diagnosis, crop, or knowledge information in plain language; do not replace it with a generic failure screen.
+
 `error.request_id` is logged to the browser console / debug panel only, never shown as the primary user-facing message, for support/debugging purposes.
 
 ---
