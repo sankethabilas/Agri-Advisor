@@ -20,6 +20,8 @@ from typing import Any
 
 import streamlit as st
 
+from ui.api_client import _ApiError, submit_feedback
+from ui.auth import clear_auth, get_auth_headers
 from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE
 from ui.advisory_renderer import render_eight_block_advisory  # T-12
 
@@ -73,15 +75,16 @@ def render_weather_alert(weather_alert: dict[str, Any]) -> None:
         return
 
     s = SEVERITY_STYLE.get(severity, SEVERITY_STYLE["none"])
-    border_color = s["bg"] if severity in ("none", "low", "moderate") else s["color"]
+    border_color = s["bg"] if severity in (
+        "none", "low", "moderate") else s["color"]
 
     st.markdown("---")
     st.markdown("#### 🌦 Weather Advisory")
 
     badge_html = _severity_badge(severity)
-    title      = weather_alert.get("title", "Weather Alert")
-    message    = weather_alert.get("message", "")
-    impact     = weather_alert.get("impact_warning", "")
+    title = weather_alert.get("title", "Weather Alert")
+    message = weather_alert.get("message", "")
+    impact = weather_alert.get("impact_warning", "")
     valid_until_raw = weather_alert.get("valid_until", "")
     valid_until = _format_datetime(valid_until_raw) if valid_until_raw else ""
 
@@ -125,10 +128,10 @@ def render_sources(sources: list[dict[str, Any]]) -> None:
     st.markdown("---")
     with st.expander("📚 Knowledge Sources", expanded=False):
         for i, src in enumerate(sorted_sources, 1):
-            title   = src.get("title", "Unknown Source")
-            org     = src.get("author_organization", "")
+            title = src.get("title", "Unknown Source")
+            org = src.get("author_organization", "")
             section = src.get("section", "")
-            url     = src.get("reference_url")
+            url = src.get("reference_url")
 
             title_html = (
                 f'<a href="{url}" target="_blank" style="color:#1d4ed8;text-decoration:none;">{title}</a>'
@@ -177,10 +180,28 @@ def render_followup(session_id: str | None = None) -> None:
     col_yes, col_no, _ = st.columns([1, 1, 5])
     with col_yes:
         if st.button("👍 Yes", key=f"helpful_yes_{session_id}"):
-            st.toast("Thank you for your feedback!", icon="✅")
+            _send_feedback(session_id, True)
     with col_no:
         if st.button("👎 No", key=f"helpful_no_{session_id}"):
-            st.toast("Sorry to hear that. We'll keep improving!", icon="🙏")
+            _send_feedback(session_id, False)
+
+
+def _send_feedback(session_id: str | None, helpful: bool) -> None:
+    """Submit feedback for the legacy flat-response rendering path."""
+    if not session_id:
+        st.error("This advisory has no session ID, so feedback cannot be submitted.")
+        return
+    try:
+        submit_feedback(session_id, helpful, get_auth_headers())
+        st.toast(
+            "Thank you for your feedback!" if helpful else "Sorry to hear that. We'll keep improving!",
+            icon="✅" if helpful else "🙏",
+        )
+    except _ApiError as exc:
+        if exc.status_code == 401:
+            clear_auth()
+            st.rerun()
+        st.error("Feedback could not be submitted. Please try again later.")
 
 
 # ============================================================================
@@ -220,7 +241,8 @@ def render_advisory_response(
     if has_structured:
         # T-12 path: fully structured 8-block renderer
         # T-17: pass lang so output blocks are translated before rendering
-        render_eight_block_advisory(response, is_fallback=is_fallback, lang=lang)
+        render_eight_block_advisory(
+            response, is_fallback=is_fallback, lang=lang)
         return
 
     # ── Legacy path: flat markdown answer (pre-T-12 responses) ────────────
@@ -231,12 +253,12 @@ def render_advisory_response(
             icon="🔌",
         )
 
-    answer        = response.get("answer", "")
-    sources       = response.get("sources", [])
+    answer = response.get("answer", "")
+    sources = response.get("sources", [])
     weather_alert = response.get("weather_alert", {})
-    metadata      = response.get("metadata", {})
-    language      = metadata.get("language", "en")
-    session_id    = metadata.get("session_id")
+    metadata = response.get("metadata", {})
+    language = metadata.get("language", "en")
+    session_id = metadata.get("session_id")
 
     if answer:
         st.markdown("### 📋 Advisory Response")
@@ -254,7 +276,7 @@ def render_advisory_response(
         )
         st.markdown(badged_answer, unsafe_allow_html=True)
 
-    agents  = metadata.get("agents_consulted", [])
+    agents = metadata.get("agents_consulted", [])
     latency = metadata.get("latency_ms")
     if agents or latency:
         with st.expander("🔍 Response details", expanded=False):
@@ -296,8 +318,10 @@ def render_error(status_code: int, body: dict[str, Any]) -> None:
         500: "Something went wrong on our end. Please try again shortly.",
         502: "Something went wrong on our end. Please try again shortly.",
         503: "The advisory service is temporarily unavailable. Please try again shortly.",
+        504: "The advisory is taking too long to respond. Please try again in a moment.",
     }
-    message = friendly.get(status_code, "An unexpected error occurred. Please try again.")
+    message = friendly.get(
+        status_code, "An unexpected error occurred. Please try again.")
     st.error(f"❌ {message}")
 
     # Debug details hidden in an expander (for devs, never primary text)

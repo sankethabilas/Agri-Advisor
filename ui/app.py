@@ -24,6 +24,31 @@ T-20 additions:
     - Authenticated user_id and saved district in query payload  (T-20.7)
 """
 from __future__ import annotations
+from utils.i18n import SUPPORTED_LANGUAGES, get_string
+from ui.styles import GLOBAL_CSS
+from ui.config import (
+    APP_ICON,
+    APP_SUBTITLE,
+    APP_TITLE,
+    CROP_CONTEXTS,
+    DISTRICTS,
+    LANGUAGES,
+)
+from ui.components import (
+    render_advisory_response,
+    render_conversation_history,
+    render_error,
+)
+from ui.auth_pages import render_auth_screen
+from ui.auth import (
+    clear_auth,
+    get_auth_headers,
+    init_auth_session,
+    is_authenticated,
+    mark_token_expired,
+    token_just_expired,
+)
+from ui.api_client import _ApiError, build_payload, call_orchestrator
 
 import sys
 import uuid
@@ -35,33 +60,8 @@ import streamlit as st
 # Allow `ui.*` and `utils.*` imports when launched from the project root
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from ui.api_client import _ApiError, build_payload, call_orchestrator
-from ui.auth import (
-    clear_auth,
-    get_auth_headers,
-    init_auth_session,
-    is_authenticated,
-    mark_token_expired,
-    token_just_expired,
-)
-from ui.auth_pages import render_auth_screen
-from ui.components import (
-    render_advisory_response,
-    render_conversation_history,
-    render_error,
-)
-from ui.config import (
-    APP_ICON,
-    APP_SUBTITLE,
-    APP_TITLE,
-    CROP_CONTEXTS,
-    DISTRICTS,
-    LANGUAGES,
-)
-from ui.styles import GLOBAL_CSS
 
 # T-17: i18n helpers
-from utils.i18n import SUPPORTED_LANGUAGES, get_string
 
 
 # ============================================================================
@@ -192,7 +192,7 @@ def _render_header() -> None:
 
         # T-17.1: language selector
         lang_options = list(SUPPORTED_LANGUAGES.keys())
-        current_code  = st.session_state.get("selected_language", "en")
+        current_code = st.session_state.get("selected_language", "en")
         current_label = next(
             (lbl for lbl, code in SUPPORTED_LANGUAGES.items() if code == current_code),
             lang_options[0],
@@ -210,7 +210,7 @@ def _render_header() -> None:
 
         # Persist in BOTH keys for backward compatibility
         st.session_state.selected_language = selected_code
-        st.session_state.language          = selected_code
+        st.session_state.language = selected_code
 
 
 _render_header()
@@ -265,7 +265,8 @@ with st.form(key="query_form", clear_on_submit=False):
     char_count = len(query_text)
     if char_count > 800:
         css_class = "error" if char_count >= 1000 else "warn"
-        counter_label = get_string("lbl_char_counter", _lang).format(count=char_count)
+        counter_label = get_string(
+            "lbl_char_counter", _lang).format(count=char_count)
         st.markdown(
             f'<div class="char-counter {css_class}">{counter_label}</div>',
             unsafe_allow_html=True,
@@ -290,7 +291,8 @@ if submitted:
         st.stop()
 
     # T-20.7: use the authenticated user_id; fall back gracefully
-    auth_user_id = st.session_state.get("user_id") or f"farmer_{uuid.uuid4().hex[:8]}"
+    auth_user_id = st.session_state.get(
+        "user_id") or f"farmer_{uuid.uuid4().hex[:8]}"
 
     payload = build_payload(
         query=query_text.strip(),
@@ -301,12 +303,15 @@ if submitted:
         session_id=st.session_state.session_id,
     )
 
+    progress = st.progress(0, text="Preparing your advisory request…")
     with st.spinner("🌿 Analysing your crop problem — this usually takes a few seconds…"):
         try:
+            progress.progress(15, text="Contacting the advisory service…")
             response, is_fallback = call_orchestrator(
                 payload,
                 auth_headers=get_auth_headers(),      # T-20.4: JWT attached
             )
+            progress.progress(100, text="Advisory ready")
             st.session_state.last_error = None
 
             # Persist session_id for multi-turn continuity
@@ -315,12 +320,13 @@ if submitted:
                 st.session_state.session_id = session_id
 
             # Store result
-            st.session_state.last_response    = response
+            st.session_state.last_response = response
             st.session_state.last_is_fallback = is_fallback
 
             # Append to conversation history
             answer_full = response.get("answer", "")
-            answer_summary = answer_full[:200].rstrip() + ("…" if len(answer_full) > 200 else "")
+            answer_summary = answer_full[:200].rstrip(
+            ) + ("…" if len(answer_full) > 200 else "")
             st.session_state.conversation_history.append({
                 "query":          query_text.strip(),
                 "district":       district,
@@ -331,9 +337,10 @@ if submitted:
             })
 
         except _ApiError as exc:
-            st.session_state.last_response    = None
+            progress.empty()
+            st.session_state.last_response = None
             st.session_state.last_is_fallback = False
-            st.session_state.last_error       = (exc.status_code, exc.body)
+            st.session_state.last_error = (exc.status_code, exc.body)
 
             # T-20.6: token-expiry redirect
             if exc.status_code == 401:
@@ -345,9 +352,10 @@ if submitted:
                 st.rerun()
 
         except Exception as exc:  # noqa: BLE001
-            st.session_state.last_response    = None
+            progress.empty()
+            st.session_state.last_response = None
             st.session_state.last_is_fallback = False
-            st.session_state.last_error       = (0, {"detail": str(exc)})
+            st.session_state.last_error = (0, {"detail": str(exc)})
 
 
 # ============================================================================
@@ -410,9 +418,11 @@ with st.sidebar:
     )
 
     if st.session_state.session_id:
-        st.markdown(f"{get_string('lbl_session_id', _slang)} `{st.session_state.session_id}`")
+        st.markdown(
+            f"{get_string('lbl_session_id', _slang)} `{st.session_state.session_id}`")
     st.markdown(f"{get_string('lbl_language_code', _slang)} `{_slang}`")
-    st.markdown(f"{get_string('lbl_turns', _slang)} {len(st.session_state.conversation_history)}")
+    st.markdown(
+        f"{get_string('lbl_turns', _slang)} {len(st.session_state.conversation_history)}")
 
     st.markdown("---")
 

@@ -1,7 +1,6 @@
 """
 ui/api_client.py
 Handles all communication with the FastAPI Orchestrator backend.
-Falls back gracefully to fixture data when the API is unreachable.
 
 T-20 additions:
     - call_orchestrator() now attaches the JWT Bearer token from
@@ -13,15 +12,13 @@ T-20 additions:
 """
 from __future__ import annotations
 
-import json
 import logging
-import uuid
 from typing import Any
 
 import requests
 
 from ui.config import (
-    FALLBACK_FIXTURE,
+    FEEDBACK_URL,
     ORCHESTRATOR_URL,
     API_TIMEOUT_SEC,
 )
@@ -61,7 +58,7 @@ def build_payload(
 
 
 # ---------------------------------------------------------------------------
-# API call + fallback
+# API calls
 # ---------------------------------------------------------------------------
 
 def call_orchestrator(
@@ -74,9 +71,8 @@ def call_orchestrator(
     T-20.4: auth_headers ({"Authorization": "Bearer <token>"}) are merged
     into every outgoing request.
 
-    Returns:
-        (response_dict, is_fallback)
-        is_fallback=True when fixture data was returned instead of a live response.
+    Returns the live response and a false fallback flag. Fixtures are reserved
+    for an explicit demo mode and must not hide a broken backend integration.
 
     Raises:
         _ApiError: for HTTP 4xx / 5xx that should be surfaced in the UI.
@@ -93,16 +89,13 @@ def call_orchestrator(
         resp.raise_for_status()
         return resp.json(), False
 
-    except requests.exceptions.ConnectionError:
-        logger.warning("Orchestrator API unreachable — loading fixture data.")
-        return _load_fallback(), True
+    except requests.exceptions.ConnectionError as exc:
+        raise _ApiError(
+            503, {"detail": "The advisory service is unavailable."}) from exc
 
     except requests.exceptions.Timeout:
-        logger.warning(
-            "Orchestrator API timed out after %s s — loading fixture data.",
-            API_TIMEOUT_SEC,
-        )
-        return _load_fallback(), True
+        raise _ApiError(504, {
+                        "detail": f"The advisory service timed out after {API_TIMEOUT_SEC} seconds."}) from exc
 
     except requests.exceptions.HTTPError as exc:
         status_code = exc.response.status_code if exc.response is not None else 0
@@ -120,13 +113,33 @@ def call_orchestrator(
 
     except Exception as exc:
         logger.exception("Unexpected error calling orchestrator: %s", exc)
-        return _load_fallback(), True
+        raise _ApiError(
+            503, {"detail": "The advisory service returned an invalid response."}) from exc
 
 
-def _load_fallback() -> dict[str, Any]:
-    """Load and return the fixture JSON response."""
-    with FALLBACK_FIXTURE.open(encoding="utf-8") as fh:
-        return json.load(fh)
+def submit_feedback(
+    session_id: str,
+    helpful: bool,
+    auth_headers: dict[str, str] | None = None,
+) -> None:
+    """Submit FR-50 feedback using the same authenticated session."""
+    try:
+        resp = requests.post(
+            FEEDBACK_URL,
+            json={"session_id": session_id, "helpful": helpful},
+            headers=auth_headers or {},
+            timeout=API_TIMEOUT_SEC,
+        )
+        resp.raise_for_status()
+    except requests.exceptions.HTTPError as exc:
+        status_code = exc.response.status_code if exc.response is not None else 0
+        if status_code == 401:
+            _flag_token_expired()
+        raise _ApiError(
+            status_code, {"detail": "Feedback could not be submitted."}) from exc
+    except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as exc:
+        raise _ApiError(
+            503, {"detail": "Feedback service is unavailable."}) from exc
 
 
 def _flag_token_expired() -> None:

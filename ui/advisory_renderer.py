@@ -31,6 +31,9 @@ Fixture wire-up:
     /tests/fixtures/orchestrator_response.json
 """
 from __future__ import annotations
+from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE
+from ui.auth import clear_auth, get_auth_headers
+from ui.api_client import _ApiError, submit_feedback
 
 import math
 import sys
@@ -43,7 +46,6 @@ import streamlit as st
 # Allow utils.* imports when this module is loaded from any entry point
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE
 
 # T-17: translation helpers (imported lazily in _translate_advisory_block)
 # to avoid hard-failing when the utils package is not yet on sys.path in tests
@@ -56,6 +58,7 @@ except ImportError:
 # ============================================================================
 # T-17 Translation helper
 # ============================================================================
+
 
 def _translate_block_text(
     text: str,
@@ -92,6 +95,13 @@ def _safe_str(value: Any, default: str = "") -> str:
         return default
     s = str(value).strip()
     return s if s else default
+
+
+def _translate_value(value: Any, lang: str, technical_terms: list[str]) -> tuple[Any, bool]:
+    """Translate one narrative value without changing structural fields."""
+    if not isinstance(value, str) or not value.strip() or lang == "en":
+        return value, False
+    return _translate_block_text(value, lang, technical_terms)
 
 
 def _format_iso(iso_str: str) -> str:
@@ -211,13 +221,13 @@ def render_block1_diagnosis(diagnosis: dict[str, Any]) -> None:
     if not diagnosis:
         return
 
-    disease_name   = _safe_str(diagnosis.get("disease_name"), "Unknown Disease")
+    disease_name = _safe_str(diagnosis.get("disease_name"), "Unknown Disease")
     scientific_name = _safe_str(diagnosis.get("scientific_name"))
-    severity       = _safe_str(diagnosis.get("severity"), "Unknown")
-    confidence     = float(diagnosis.get("confidence") or 0.0)
-    conf_label     = _safe_str(diagnosis.get("confidence_label"), "")
-    symptoms       = diagnosis.get("symptoms_confirmed") or []
-    differentials  = diagnosis.get("differential_diagnoses") or []
+    severity = _safe_str(diagnosis.get("severity"), "Unknown")
+    confidence = float(diagnosis.get("confidence") or 0.0)
+    conf_label = _safe_str(diagnosis.get("confidence_label"), "")
+    symptoms = diagnosis.get("symptoms_confirmed") or []
+    differentials = diagnosis.get("differential_diagnoses") or []
 
     _block_header("🔬", "Block 1 — Disease Diagnosis")
 
@@ -263,8 +273,8 @@ def render_block1_diagnosis(diagnosis: dict[str, Any]) -> None:
     if differentials:
         with st.expander("🔍 Differential Diagnoses Considered", expanded=False):
             for diff in differentials:
-                d_name  = _safe_str(diff.get("disease"), "Unknown")
-                d_conf  = float(diff.get("confidence") or 0.0)
+                d_name = _safe_str(diff.get("disease"), "Unknown")
+                d_conf = float(diff.get("confidence") or 0.0)
                 d_factor = _safe_str(diff.get("distinguishing_factor"))
                 d_pct = round(d_conf * 100)
                 st.markdown(
@@ -291,9 +301,9 @@ def render_block2_immediate_treatment(immediate_treatment: dict[str, Any]) -> No
     if not immediate_treatment:
         return
 
-    steps       = immediate_treatment.get("steps") or []
-    urgency     = _safe_str(immediate_treatment.get("urgency"), "")
-    action_win  = _safe_str(immediate_treatment.get("action_window"), "")
+    steps = immediate_treatment.get("steps") or []
+    urgency = _safe_str(immediate_treatment.get("urgency"), "")
+    action_win = _safe_str(immediate_treatment.get("action_window"), "")
 
     if not steps:
         return
@@ -302,9 +312,9 @@ def render_block2_immediate_treatment(immediate_treatment: dict[str, Any]) -> No
     _block_header("💊", "Block 2 — Immediate Treatment", subtitle)
 
     for step in steps:
-        priority    = step.get("priority", "—")
-        action      = _safe_str(step.get("action"), "Action")
-        detail      = _safe_str(step.get("detail"))
+        priority = step.get("priority", "—")
+        action = _safe_str(step.get("action"), "Action")
+        detail = _safe_str(step.get("detail"))
         urgency_tag = _safe_str(step.get("urgency_tag"), "")
 
         badge_html = _urgency_badge_html(urgency_tag) if urgency_tag else ""
@@ -392,14 +402,14 @@ def render_block4_weather_advisory(weather_alert: dict[str, Any]) -> None:
         return
 
     s = SEVERITY_STYLE.get(severity, SEVERITY_STYLE["none"])
-    title          = _safe_str(weather_alert.get("title"), "Weather Alert")
-    message        = _safe_str(weather_alert.get("message"))
+    title = _safe_str(weather_alert.get("title"), "Weather Alert")
+    message = _safe_str(weather_alert.get("message"))
     impact_warning = _safe_str(weather_alert.get("impact_warning"))
-    action_window  = _safe_str(weather_alert.get("action_window"))
-    risk_level     = _safe_str(weather_alert.get("risk_level"))
+    action_window = _safe_str(weather_alert.get("action_window"))
+    risk_level = _safe_str(weather_alert.get("risk_level"))
     risk_score_raw = weather_alert.get("disease_risk_score")
     valid_until_raw = _safe_str(weather_alert.get("valid_until"))
-    valid_until    = _format_iso(valid_until_raw) if valid_until_raw else ""
+    valid_until = _format_iso(valid_until_raw) if valid_until_raw else ""
 
     _block_header("🌦️", "Block 4 — Weather Advisory")
 
@@ -484,11 +494,11 @@ def render_block5_sources(sources: list[dict[str, Any]]) -> None:
 
     with st.expander("View Sources", expanded=False):
         for i, src in enumerate(sorted_sources, 1):
-            title    = _safe_str(src.get("title"), "Unknown Source")
-            org      = _safe_str(src.get("author_organization"))
-            section  = _safe_str(src.get("section"))
-            url      = src.get("reference_url")
-            score    = float(src.get("confidence_score") or 0.0)
+            title = _safe_str(src.get("title"), "Unknown Source")
+            org = _safe_str(src.get("author_organization"))
+            section = _safe_str(src.get("section"))
+            url = src.get("reference_url")
+            score = float(src.get("confidence_score") or 0.0)
             score_pct = round(score * 100)
 
             title_html = (
@@ -546,13 +556,14 @@ def render_block6_disclaimer(
     _block_header("ℹ️", "Block 6 — Disclaimer & Helpline")
 
     if disclaimer:
-        text     = _safe_str(disclaimer.get("text"), DISCLAIMERS.get(language, DISCLAIMERS["en"]))
+        text = _safe_str(disclaimer.get("text"),
+                         DISCLAIMERS.get(language, DISCLAIMERS["en"]))
         helpline = _safe_str(disclaimer.get("helpline"), "")
-        website  = _safe_str(disclaimer.get("website"), "")
+        website = _safe_str(disclaimer.get("website"), "")
     else:
-        text     = DISCLAIMERS.get(language, DISCLAIMERS["en"])
+        text = DISCLAIMERS.get(language, DISCLAIMERS["en"])
         helpline = ""
-        website  = ""
+        website = ""
 
     helpline_html = (
         f'<div style="margin-top:10px;font-size:0.9rem;color:#374151;">'
@@ -593,10 +604,10 @@ def render_block7_why_explanation(why_explanation: dict[str, Any]) -> None:
     _block_header("🤔", "Block 7 — Why This Advisory?",
                   "AI reasoning & confidence breakdown")
 
-    summary          = _safe_str(why_explanation.get("summary"))
-    model_reasoning  = _safe_str(why_explanation.get("model_reasoning"))
-    agents_used      = why_explanation.get("agents_used") or []
-    conf_breakdown   = why_explanation.get("confidence_breakdown") or {}
+    summary = _safe_str(why_explanation.get("summary"))
+    model_reasoning = _safe_str(why_explanation.get("model_reasoning"))
+    agents_used = why_explanation.get("agents_used") or []
+    conf_breakdown = why_explanation.get("confidence_breakdown") or {}
 
     friendly_agents: dict[str, str] = {
         "disease_agent": "🔬 Disease Identification",
@@ -625,7 +636,8 @@ def render_block7_why_explanation(why_explanation: dict[str, Any]) -> None:
         if conf_breakdown:
             st.markdown("**📊 Confidence by Agent:**")
             for agent_key, score in conf_breakdown.items():
-                label = friendly_agents.get(agent_key, agent_key.replace("_", " ").title())
+                label = friendly_agents.get(
+                    agent_key, agent_key.replace("_", " ").title())
                 _confidence_bar(float(score), label)
 
         if agents_used:
@@ -662,9 +674,9 @@ def render_block8_raw_answer_fallback(answer: str) -> None:
 
 def _render_metadata_ribbon(metadata: dict[str, Any]) -> None:
     """Collapsed ribbon showing agents consulted and response latency."""
-    agents  = metadata.get("agents_consulted") or []
+    agents = metadata.get("agents_consulted") or []
     latency = metadata.get("latency_ms")
-    intent  = _safe_str(metadata.get("intent"))
+    intent = _safe_str(metadata.get("intent"))
 
     if not (agents or latency or intent):
         return
@@ -719,24 +731,28 @@ def render_eight_block_advisory(
             icon="🔌",
         )
 
+    if not response.get("diagnosis") and not response.get("immediate_treatment"):
+        st.warning(
+            "Some specialist agents did not return details. The available advisory "
+            "information is shown below; ask a follow-up question for more detail.",
+            icon="ℹ️",
+        )
+
     # ── Extract top-level keys defensively (Block 8 guard) ───────────────────
-    answer              = _safe_str(response.get("answer"))
-    diagnosis           = response.get("diagnosis") or {}
+    answer = _safe_str(response.get("answer"))
+    diagnosis = response.get("diagnosis") or {}
     immediate_treatment = response.get("immediate_treatment") or {}
-    prevention          = response.get("prevention") or []
-    weather_alert       = response.get("weather_alert") or {}
-    sources             = response.get("sources") or []
-    disclaimer          = response.get("disclaimer")          # may be None
-    why_explanation     = response.get("why_explanation") or {}
-    metadata            = response.get("metadata") or {}
-    language            = _safe_str(metadata.get("language"), "en")
-    session_id          = metadata.get("session_id")
+    prevention = response.get("prevention") or []
+    weather_alert = response.get("weather_alert") or {}
+    sources = response.get("sources") or []
+    disclaimer = response.get("disclaimer")          # may be None
+    why_explanation = response.get("why_explanation") or {}
+    metadata = response.get("metadata") or {}
+    language = _safe_str(metadata.get("language"), "en")
+    session_id = metadata.get("session_id")
 
     # Detect whether the response is "structured" (has any Block 1–7 data)
-    has_structured_blocks = any([
-        diagnosis, immediate_treatment, prevention,
-        why_explanation,
-    ])
+    has_structured_blocks = any([diagnosis, immediate_treatment, prevention])
 
     # ── T-17: Build technical-term protection list ────────────────────────────
     _tech_terms: list[str] = []
@@ -769,7 +785,8 @@ def render_eight_block_advisory(
                 (k for k in ("tip", "text", "description") if item.get(k)), None
             )
             if tip_key:
-                t, w = _translate_block_text(str(item[tip_key]), lang, _tech_terms)
+                t, w = _translate_block_text(
+                    str(item[tip_key]), lang, _tech_terms)
                 _translation_warning = _translation_warning or w
                 new_item = {**item, tip_key: t}
                 _translated_prevention.append(new_item)
@@ -777,6 +794,46 @@ def render_eight_block_advisory(
                 _translated_prevention.append(item)
         else:
             _translated_prevention.append(item)
+
+    # T-24.7: translate narrative fields from the live treatment and weather
+    # blocks while leaving labels, scores, units, and severity values intact.
+    _translated_diagnosis = dict(diagnosis)
+    for key in ("symptoms_confirmed",):
+        translated_items = []
+        for item in diagnosis.get(key) or []:
+            translated_item, warning = _translate_value(
+                item, lang, _tech_terms)
+            _translation_warning = _translation_warning or warning
+            translated_items.append(translated_item)
+        if translated_items:
+            _translated_diagnosis[key] = translated_items
+
+    _translated_treatment = dict(immediate_treatment)
+    translated_steps = []
+    for step in immediate_treatment.get("steps") or []:
+        translated_step = dict(step)
+        for key in ("action", "detail"):
+            translated_value, warning = _translate_value(
+                step.get(key), lang, _tech_terms)
+            _translation_warning = _translation_warning or warning
+            translated_step[key] = translated_value
+        translated_steps.append(translated_step)
+    if translated_steps:
+        _translated_treatment["steps"] = translated_steps
+    translated_window, warning = _translate_value(
+        immediate_treatment.get("action_window"), lang, _tech_terms
+    )
+    _translation_warning = _translation_warning or warning
+    if translated_window:
+        _translated_treatment["action_window"] = translated_window
+
+    _translated_weather = dict(weather_alert)
+    for key in ("title", "message", "impact_warning", "action_window"):
+        translated_value, warning = _translate_value(
+            weather_alert.get(key), lang, _tech_terms)
+        _translation_warning = _translation_warning or warning
+        if translated_value:
+            _translated_weather[key] = translated_value
 
     # B7 Why explanation: translate narrative keys
     _translated_why: dict = dict(why_explanation)
@@ -791,7 +848,8 @@ def render_eight_block_advisory(
     # B8 Raw answer: translate if no structured blocks
     _translated_answer = answer
     if not has_structured_blocks and answer:
-        _translated_answer, w = _translate_block_text(answer, lang, _tech_terms)
+        _translated_answer, w = _translate_block_text(
+            answer, lang, _tech_terms)
         _translation_warning = _translation_warning or w
 
     # Disclaimer: prefer pre-translated static string; fall back to dynamic
@@ -817,16 +875,16 @@ def render_eight_block_advisory(
     st.markdown("---")
 
     # ── Block 1: Diagnosis ───────────────────────────────────────────────────
-    render_block1_diagnosis(diagnosis)
+    render_block1_diagnosis(_translated_diagnosis)
 
     # ── Block 2: Immediate Treatment ─────────────────────────────────────────
-    render_block2_immediate_treatment(immediate_treatment)
+    render_block2_immediate_treatment(_translated_treatment)
 
     # ── Block 3: Prevention ──────────────────────────────────────────────────
     render_block3_prevention(_translated_prevention)
 
     # ── Block 4: Weather Advisory ────────────────────────────────────────────
-    render_block4_weather_advisory(weather_alert)
+    render_block4_weather_advisory(_translated_weather)
 
     # ── Block 5: Sources ─────────────────────────────────────────────────────
     render_block5_sources(sources)
@@ -856,8 +914,25 @@ def render_eight_block_advisory(
     col_yes, col_no, _ = st.columns([1, 1, 5])
     with col_yes:
         if st.button("👍 Yes", key=f"helpful_yes_{session_id}"):
-            st.toast("Thank you for your feedback!", icon="✅")
+            _submit_feedback(session_id, True)
     with col_no:
         if st.button("👎 No", key=f"helpful_no_{session_id}"):
-            st.toast("Sorry to hear that. We'll keep improving!", icon="🙏")
+            _submit_feedback(session_id, False)
 
+
+def _submit_feedback(session_id: str | None, helpful: bool) -> None:
+    """Send FR-50 feedback once the live advisory has a session identity."""
+    if not session_id:
+        st.error("This advisory has no session ID, so feedback cannot be submitted.")
+        return
+    try:
+        submit_feedback(session_id, helpful, get_auth_headers())
+        st.toast(
+            "Thank you for your feedback!" if helpful else "Sorry to hear that. We'll keep improving!",
+            icon="✅" if helpful else "🙏",
+        )
+    except _ApiError as exc:
+        if exc.status_code == 401:
+            clear_auth()
+            st.rerun()
+        st.error("Feedback could not be submitted. Please try again later.")
