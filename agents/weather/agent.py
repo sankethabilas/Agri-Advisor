@@ -8,10 +8,101 @@ from typing import Any, Dict, List, Optional, Tuple
 import requests
 
 from orchestrator.schemas import Location, WeatherAdviceResponse
+from agents.weather import disease_predictor, pest_predictor
 
 
 class WeatherServiceError(RuntimeError):
     """Raised when the upstream weather service cannot provide valid data."""
+
+
+def check_alerts(forecast: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Create forecast alerts for heavy rain, flooding, high wind, and heat."""
+    if not forecast:
+        return []
+
+    now = datetime.now(timezone.utc)
+    alerts: List[Dict[str, Any]] = []
+    first_three_days = forecast[:3]
+    rain_total = sum(float(day["rainfall_mm"]) for day in first_three_days)
+
+    def add_alert(alert_type: str, severity: str, title: str, description: str, action: str) -> None:
+        alerts.append({
+            "id": f"ALT-WEATHER-{now:%Y%m%d}-{alert_type}-{len(alerts) + 1}",
+            "alert_type": alert_type,
+            "severity": severity,
+            "title": title,
+            "description": description,
+            "valid_from": now.isoformat(),
+            "valid_to": (now + timedelta(days=3)).isoformat(),
+            "recommended_action": action,
+        })
+
+    if rain_total >= 25:
+        add_alert(
+            "heavy_rain",
+            "warning" if rain_total >= 50 else "watch",
+            "Heavy rain alert",
+            f"Approximately {rain_total:.1f} mm of rain is forecast over the next three days.",
+            "Clear field drainage and postpone pesticide applications until rain has passed and crops are dry.",
+        )
+    if max(float(day["rainfall_mm"]) for day in first_three_days) >= 50:
+        add_alert(
+            "flood", "emergency", "Flooding conditions possible",
+            "At least 50 mm of rain is forecast in a single day.",
+            "Protect people and livestock first; keep drainage routes clear and move equipment from flood-prone areas.",
+        )
+    if max(float(day["wind_speed_kmh"]) for day in first_three_days) >= 40:
+        add_alert(
+            "high_wind", "warning", "High wind alert",
+            "Forecast winds may damage crops and make field operations unsafe.",
+            "Secure supports and postpone spraying during strong winds.",
+        )
+    if max(float(day["temp_max_c"]) for day in first_three_days) >= 38:
+        add_alert(
+            "extreme_heat", "warning", "Extreme heat alert",
+            "Forecast temperatures reach at least 38 C.",
+            "Schedule field work for cooler hours and monitor crop water stress.",
+        )
+    return alerts
+
+
+def generate_advisory(
+    current: Dict[str, Any],
+    forecast: List[Dict[str, Any]],
+    disease_risk: Dict[str, Any],
+    pest_risk: Dict[str, Any],
+    alerts: List[Dict[str, Any]],
+    crop: Optional[str] = None,
+) -> str:
+    """Summarize weather and risk with pesticide guidance constrained by forecast."""
+    heavy_rain = any(alert["alert_type"] == "heavy_rain" for alert in alerts)
+    subject = crop or "the crop"
+    if heavy_rain:
+        disease_risk["recommendation"] = (
+            "High rainfall-related disease pressure: inspect crops within 24 hours, "
+            "clear drainage, and remove infected material. Defer pesticide applications "
+            "until rain has passed and foliage is dry."
+            if disease_risk["level"] in {"High", "Critical"}
+            else "Heavy rain is forecast: clear drainage, monitor crops after the rain, "
+            "and defer pesticide applications until foliage is dry."
+        )
+        return (
+            f"For {subject}, current conditions are {current['temperature_c']:.1f} C and "
+            f"{current['humidity_pct']}% humidity. Heavy rain is forecast; postpone pesticide "
+            f"applications. Disease risk is {disease_risk['level'].lower()} and pest risk is "
+            f"{pest_risk['level'].lower()}. {disease_risk['recommendation']} "
+            f"{pest_risk['recommendation']}"
+        )
+
+    high_risk = disease_risk["level"] in {"High", "Critical"} or pest_risk["level"] in {"High", "Critical"}
+    forecast_summary = "Warm or humid conditions are forecast." if forecast else "No forecast is available."
+    timing = "Prioritize field inspection within 24 hours." if high_risk else "Continue routine scouting."
+    return (
+        f"For {subject}, current conditions are {current['temperature_c']:.1f} C and "
+        f"{current['humidity_pct']}% humidity. {forecast_summary} Disease risk is "
+        f"{disease_risk['level'].lower()} and pest risk is {pest_risk['level'].lower()}. "
+        f"{timing} {disease_risk['recommendation']} {pest_risk['recommendation']}"
+    )
 
 
 SRI_LANKAN_LOCATIONS: Dict[str, Tuple[float, float]] = {
@@ -136,12 +227,15 @@ class WeatherAgent:
     def get_weather_advice(self, location: Location, crop: Optional[str] = None) -> WeatherAdviceResponse:
         current = self.get_current(location)
         forecast = self.get_forecast(location)
-        alerts = self._alerts(forecast, location.district)
+        alerts = check_alerts(forecast)
+        disease_risk = disease_predictor.predict(current)
+        pest_risk = pest_predictor.predict(current)
+        advisory = generate_advisory(current, forecast, disease_risk, pest_risk, alerts, crop)
         return WeatherAdviceResponse.model_validate({
             "current": current, "forecast": forecast,
-            "disease_risk": self._risk(forecast, current, crop, disease=True),
-            "pest_risk": self._risk(forecast, current, crop, disease=False),
-            "advisory": self._advisory(forecast, alerts, crop), "alerts": alerts,
+            "disease_risk": disease_risk,
+            "pest_risk": pest_risk,
+            "advisory": advisory, "alerts": alerts,
         })
 
     @staticmethod
@@ -155,38 +249,5 @@ class WeatherAgent:
         if parsed.tzinfo is None:
             parsed = parsed.replace(tzinfo=timezone.utc)
         return parsed.isoformat()
-
-    @staticmethod
-    def _risk(forecast: List[Dict[str, Any]], current: Dict[str, Any], crop: Optional[str], disease: bool) -> Dict[str, Any]:
-        wet_days = sum(day["rainfall_mm"] >= 5 or day["humidity_pct"] >= 85 for day in forecast)
-        score = min(1.0, (wet_days / max(1, len(forecast))) * (0.8 if disease else 0.55) + (0.2 if current["humidity_pct"] >= 80 else 0))
-        level = "Critical" if score >= 0.85 else "High" if score >= 0.65 else "Moderate" if score >= 0.35 else "Low"
-        subject = crop or "crops"
-        return {
-            "level": level, "score": round(score, 2),
-            "susceptible_diseases" if disease else "susceptible_pests": ([f"Fungal diseases in {subject}"] if disease else [f"Sap-sucking pests in {subject}"]),
-            "contributing_factors": ["High humidity or rainfall is expected" if wet_days else "Mostly dry conditions are expected"],
-        }
-
-    def _alerts(self, forecast: List[Dict[str, Any]], district: str) -> List[Dict[str, Any]]:
-        rain_total = sum(day["rainfall_mm"] for day in forecast[:3])
-        if rain_total < 25:
-            return []
-        now = datetime.now(timezone.utc)
-        return [{
-            "id": f"ALT-WEATHER-{now:%Y%m%d}-{district.lower().replace(' ', '-')}",
-            "alert_type": "heavy_rain", "severity": "warning" if rain_total >= 50 else "watch",
-            "title": "Heavy rain alert",
-            "description": f"Approximately {rain_total:.1f} mm of rain is forecast in {district} over the next three days.",
-            "valid_from": now.isoformat(), "valid_to": (now + timedelta(days=3)).isoformat(),
-            "recommended_action": "Keep drainage channels clear and postpone spraying before rainfall.",
-        }]
-
-    @staticmethod
-    def _advisory(forecast: List[Dict[str, Any]], alerts: List[Dict[str, Any]], crop: Optional[str]) -> str:
-        if alerts:
-            return "Postpone pesticide spraying and fertilizer application before rain; inspect and clear field drainage."
-        return f"Conditions are suitable for routine field work on {crop or 'the crop'}; monitor soil moisture and local showers."
-
 
 weather_agent = WeatherAgent()

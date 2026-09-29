@@ -167,6 +167,7 @@ class DiseaseRisk(BaseModel):
     score: float = Field(..., ge=0.0, le=1.0)
     susceptible_diseases: List[str]
     contributing_factors: List[str]
+    recommendation: Optional[str] = None
 
 
 class PestRisk(BaseModel):
@@ -174,11 +175,12 @@ class PestRisk(BaseModel):
     score: float = Field(..., ge=0.0, le=1.0)
     susceptible_pests: List[str]
     contributing_factors: List[str]
+    recommendation: Optional[str] = None
 
 
 class WeatherAlertItem(BaseModel):
     id: str
-    alert_type: Literal["heavy_rain", "flood", "drought", "high_wind", "pest_outbreak"]
+    alert_type: Literal["heavy_rain", "flood", "drought", "high_wind", "pest_outbreak", "extreme_heat"]
     severity: Literal["advisory", "watch", "warning", "emergency"]
     title: str
     description: str
