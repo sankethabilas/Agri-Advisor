@@ -349,6 +349,10 @@ class ResponsibleAIChecker:
             intent=intent,
             agents_consulted=agents_consulted,
         )
+        explanation["bias_score"] = bias_score
+        explanation["bias_detected"] = bias_detected
+        explanation["bias_corrected"] = bias_corrected
+        explanation["privacy_compliant"] = privacy_compliant
 
         return ResponsibleAIResult(
             sanitized_response=sanitized_text,
