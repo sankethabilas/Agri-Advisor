@@ -99,6 +99,14 @@ For local development and integration testing, services bind to the following st
 
 ---
 
+### 4.0 Authentication: `POST /api/auth/register` and `POST /api/auth/login` (T-21)
+
+Both endpoints accept `username` (3–254 characters; letters, digits, `.`, `_`, `@`, `+`, or `-`) and `password` (12–128 characters). Passwords are stored as salted PBKDF2 hashes. Registration returns `user_id`; login returns a signed HS256 bearer token and its lifetime in seconds. Duplicate usernames return `409`; invalid credentials return `401`.
+
+The bearer token is required for `POST /api/orchestrator/process` in every environment. Its subject must equal the request's `user_id`. Tokens expire after `JWT_EXPIRY_MINUTES` (default 30). Input is length-limited and sanitized; detected prompt-injection instructions are rejected with `400` and logged without recording the submitted text. Per-user request limits return `429` and a `Retry-After` header. Production deployments must use HTTPS; see [Security and Deployment](security.md).
+
+---
+
 ### 4.1 Orchestrator Service: `POST /api/orchestrator/process` (Subtasks T-02.1 & T-02.6)
 
 The primary entry point connecting the user interface to the multi-agent backend. It analyzes intent, queries necessary specialist agents in parallel, grounds facts against retrieved sources, checks weather risks, and returns the final synthesized advisory object.
@@ -107,7 +115,7 @@ The primary entry point connecting the user interface to the multi-agent backend
 - **Method**: `POST`
 - **Headers**:
   - `Content-Type: application/json`
-  - `Authorization: Bearer <JWT_TOKEN>` *(Optional in local dev, required in prod)*
+  - `Authorization: Bearer <JWT_TOKEN>` *(Required in all environments)*
 
 #### Request JSON Schema (T-02.1)
 ```json
@@ -774,7 +782,7 @@ All endpoints in the Agri-Advisor ecosystem implement a **standardized, uniform 
 | **`403 Forbidden`** | `FORBIDDEN` | Valid token but caller lacks required role or permission. | Display access denied message. |
 | **`404 Not Found`** | `RESOURCE_NOT_FOUND` | Specified crop, disease, or document ID does not exist in KB. | Suggest supported alternatives (e.g. Paddy, Chilli). |
 | **`422 Unprocessable`** | `UNPROCESSABLE_ENTITY` | Semantic validation error (e.g. negative dosage or invalid coordinate). | Highlight specific field in UI. |
-| **`429 Too Many Req`** | `RATE_LIMIT_EXCEEDED` | Upstream LLM or OpenWeatherMap rate limit exceeded. | Exponential backoff (retry after 3s). |
+| **`429 Too Many Req`** | `RATE_LIMIT_EXCEEDED` | Per-user orchestrator request limit exceeded. | Retry after the `Retry-After` response header. |
 | **`500 Internal Error`** | `INTERNAL_SERVER_ERROR` | Unhandled exception in agent backend logic. | Log request_id and show graceful fallback. |
 | **`502 Bad Gateway`** | `UPSTREAM_AGENT_ERROR` | Upstream agent or third-party API failed or returned bad payload. | Orchestrator invokes cached fallback. |
 | **`503 Service Unavail`**| `SERVICE_UNAVAILABLE` | ChromaDB vector store or Agent service is offline. | Show maintenance notice in UI. |

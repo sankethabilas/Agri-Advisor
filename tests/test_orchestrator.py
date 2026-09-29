@@ -9,10 +9,15 @@ import pytest
 from starlette.testclient import TestClient
 
 from orchestrator.main import app
+from orchestrator.security import create_access_token
 from orchestrator.session_context import session_manager
 
 client = TestClient(app)
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
+
+
+def auth_headers(user_id: str) -> dict:
+    return {"Authorization": f"Bearer {create_access_token(user_id)}"}
 
 
 def load_fixture(name: str) -> dict:
@@ -53,7 +58,7 @@ def test_health_check_endpoint():
 def test_orchestrator_process_full_chain_t06_2_and_t06_7():
     """Test full process request matches frozen T-02.1 & T-02.6 contracts."""
     req_payload = load_fixture("orchestrator_process_request.json")
-    response = client.post("/api/orchestrator/process", json=req_payload)
+    response = client.post("/api/orchestrator/process", json=req_payload, headers=auth_headers(req_payload["user_id"]))
 
     assert response.status_code == 200
     data = response.json()
@@ -89,7 +94,7 @@ def test_session_context_persistence_across_turns_t06_5():
         "location": {"district": "Anuradhapura", "agro_ecological_zone": "DL1b"},
         "language": "en",
     }
-    res_1 = client.post("/api/orchestrator/process", json=req_1)
+    res_1 = client.post("/api/orchestrator/process", json=req_1, headers=auth_headers(user_id))
     assert res_1.status_code == 200
     data_1 = res_1.json()
     session_id = data_1["metadata"]["session_id"]
@@ -110,7 +115,7 @@ def test_session_context_persistence_across_turns_t06_5():
         "location": {"district": "Anuradhapura", "agro_ecological_zone": "DL1b"},
         "language": "en",
     }
-    res_2 = client.post("/api/orchestrator/process", json=req_2)
+    res_2 = client.post("/api/orchestrator/process", json=req_2, headers=auth_headers(user_id))
     assert res_2.status_code == 200
     data_2 = res_2.json()
     assert data_2["metadata"]["session_id"] == session_id
@@ -182,7 +187,11 @@ def test_validation_error_envelope_t02_7():
         "user_id": "test-user",
         # Missing required location field
     }
-    response = client.post("/api/orchestrator/process", json=invalid_req)
+    response = client.post(
+        "/api/orchestrator/process",
+        json=invalid_req,
+        headers=auth_headers(invalid_req["user_id"]),
+    )
     assert response.status_code in [400, 422]
     data = response.json()
     assert "error" in data

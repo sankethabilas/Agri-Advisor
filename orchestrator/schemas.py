@@ -77,6 +77,11 @@ class OrchestratorProcessResponse(BaseModel):
     metadata: ResponseMetadata
 
 
+class AuthCredentials(BaseModel):
+    username: str = Field(..., min_length=3, max_length=254, pattern=r"^[A-Za-z0-9][A-Za-z0-9_.@+-]{2,253}$")
+    password: str = Field(..., min_length=12, max_length=128)
+
+
 # ==============================================================================
 # Disease Diagnosis Models (T-02.2)
 # ==============================================================================

@@ -5,13 +5,15 @@ FastAPI application exposing multi-agent orchestration, session management, and 
 
 from datetime import datetime, timezone
 import logging
+import os
 from typing import Any, Dict, Optional
 import uuid
 
-from fastapi import FastAPI, HTTPException, Request, status
+from fastapi import Depends, FastAPI, HTTPException, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from starlette.middleware.httpsredirect import HTTPSRedirectMiddleware
 
 from orchestrator.agent import orchestrator_agent
 from orchestrator.logging_middleware import RequestLoggingMiddleware, logger
@@ -35,6 +37,16 @@ from orchestrator.session_context import session_manager
 from orchestrator.stubs import stub_service
 from agents.weather.agent import WeatherServiceError, weather_agent
 from agents.disease.agent import disease_agent
+from orchestrator.schemas import AuthCredentials
+from orchestrator.security import (
+    create_access_token,
+    filter_generated_output,
+    find_prompt_injection,
+    get_current_user,
+    sanitize_text,
+    user_rate_limiter,
+    user_store,
+)
 
 app = FastAPI(
     title="Agri-Advisor Orchestrator Hub",
@@ -48,11 +60,39 @@ app = FastAPI(
 app.add_middleware(RequestLoggingMiddleware)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        origin.strip()
+        for origin in os.getenv(
+            "CORS_ALLOWED_ORIGINS",
+            "http://localhost:8501,https://localhost:8501",
+        ).split(",")
+        if origin.strip()
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+if os.getenv("APP_ENV", "development").lower() == "production":
+    app.add_middleware(HTTPSRedirectMiddleware)
+
+
+@app.post("/api/auth/register", status_code=status.HTTP_201_CREATED, tags=["Authentication"])
+async def register_user(credentials: AuthCredentials) -> Dict[str, str]:
+    if not user_store.create_user(credentials.username, credentials.password):
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="An account with that username already exists.")
+    return {"user_id": credentials.username, "message": "Account created successfully."}
+
+
+@app.post("/api/auth/login", tags=["Authentication"])
+async def login_user(credentials: AuthCredentials) -> Dict[str, Any]:
+    if not user_store.authenticate(credentials.username, credentials.password):
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid username or password.")
+    return {
+        "access_token": create_access_token(credentials.username),
+        "token_type": "bearer",
+        "expires_in": int(os.getenv("JWT_EXPIRY_MINUTES", "30")) * 60,
+        "user_id": credentials.username,
+    }
 
 
 # ==============================================================================
@@ -108,6 +148,7 @@ async def http_exception_handler(request: Request, exc: HTTPException) -> JSONRe
     return JSONResponse(
         status_code=exc.status_code,
         content=ErrorEnvelope(error=payload).model_dump(),
+        headers=exc.headers,
     )
 
 
@@ -141,9 +182,45 @@ async def generic_exception_handler(request: Request, exc: Exception) -> JSONRes
     description="Analyzes farmer intent, routes to specialist agents, grounds citations, and returns synthesized advisory.",
     tags=["Orchestrator"],
 )
-async def process_farmer_query(request: OrchestratorProcessRequest) -> OrchestratorProcessResponse:
+async def process_farmer_query(
+    request: OrchestratorProcessRequest,
+    current_user: str = Depends(get_current_user),
+) -> OrchestratorProcessResponse:
+    if request.user_id != current_user:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Token identity must match request user_id.")
+
+    retry_after = user_rate_limiter.check(current_user)
+    if retry_after:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Rate limit exceeded. Please retry later.",
+            headers={"Retry-After": str(retry_after)},
+        )
+
+    safe_query = sanitize_text(request.query, max_length=1000)
+    if not safe_query:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Query is empty after sanitization.")
+    injection = find_prompt_injection(safe_query)
+    if injection:
+        logger.warning("Blocked prompt-injection pattern in orchestrator query.")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Request contains a prohibited instruction pattern.")
+
+    safe_crop_context = sanitize_text(request.crop_context, max_length=100) if request.crop_context else None
+    safe_district = sanitize_text(request.location.district, max_length=100)
+    safe_zone = sanitize_text(request.location.agro_ecological_zone, max_length=32) if request.location.agro_ecological_zone else None
+    for contextual_text in (safe_crop_context, safe_district, safe_zone):
+        if contextual_text and find_prompt_injection(contextual_text):
+            logger.warning("Blocked prompt-injection pattern in orchestrator request context.")
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Request contains a prohibited instruction pattern.")
+
+    safe_request = request.model_copy(update={
+        "query": safe_query,
+        "crop_context": safe_crop_context,
+        "location": request.location.model_copy(update={"district": safe_district, "agro_ecological_zone": safe_zone}),
+    })
     try:
-        return orchestrator_agent.process(request)
+        response = orchestrator_agent.process(safe_request)
+        return response.model_copy(update={"answer": filter_generated_output(response.answer)})
     except Exception as error:
         logger.error(f"Orchestration pipeline failure: {error}", exc_info=True)
         raise HTTPException(

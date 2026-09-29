@@ -40,8 +40,13 @@ from orchestrator.schemas import (
     WeatherAdviceResponse,
 )
 from orchestrator.session_context import SessionManager, session_manager
+from orchestrator.security import create_access_token
 
 client = TestClient(app)
+
+
+def auth_headers(user_id: str) -> dict:
+    return {"Authorization": f"Bearer {create_access_token(user_id)}"}
 
 
 @pytest.fixture(autouse=True)
@@ -447,7 +452,7 @@ def test_end_to_end_orchestrator_with_real_router():
         "crop_context": "Paddy",
         "language": "en"
     }
-    response = client.post("/api/orchestrator/process", json=payload)
+    response = client.post("/api/orchestrator/process", json=payload, headers=auth_headers(payload["user_id"]))
     assert response.status_code == 200
     data = response.json()
 

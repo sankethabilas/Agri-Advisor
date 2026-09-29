@@ -72,7 +72,7 @@ This document specifies every screen in the Agri-Advisor Streamlit frontend and 
 
 ## 3. Authentication Screens
 
-> **Open item:** `/docs/api-contract.md` v1.0.0 does not yet define `/api/auth/register` or `/api/auth/login` — these were scoped under T-20/T-21 but are not in the frozen contract above. The layout below is specified against the fields agreed in the Day 1 UI plan (T-04.2) and should be reconciled with Pathum's auth endpoint contracts before T-20 begins on Day 5. See Section 8.
+The auth endpoints are defined in `/docs/api-contract.md` Section 4.0. The API currently accepts a username (phone or email) and password; display name, district, and preferred language remain UI profile fields and are not persisted by the T-21 auth store.
 
 ### 3.1 Registration
 
@@ -92,7 +92,7 @@ This document specifies every screen in the Agri-Advisor Streamlit frontend and 
 └───────────────────────────────┘
 ```
 
-Fields: Name, Phone or Email, Password, District, Preferred Language (T-20.1). District here pre-fills `location.district` and Preferred Language pre-fills `language` on the query screen after login.
+The phone or email value is sent as `username`, alongside `password`. Name, district, and preferred language are not part of the current registration endpoint. District and language can still pre-fill the query form when held by the UI.
 
 ### 3.2 Login
 
@@ -108,7 +108,7 @@ Fields: Name, Phone or Email, Password, District, Preferred Language (T-20.1). D
 └───────────────────────────────┘
 ```
 
-On success, the returned JWT is stored in Streamlit session state and sent as `Authorization: Bearer <JWT_TOKEN>` on every `/api/orchestrator/process` call, per Section 4.1 of the contract (optional in local dev, required in prod). A `401 UNAUTHORIZED` response at any point redirects to this screen. The query screen is gated behind a valid session, with a visible Logout control.
+On success, the returned JWT is stored in Streamlit session state and sent as `Authorization: Bearer <JWT_TOKEN>` on every `/api/orchestrator/process` call, per Section 4.1 of the contract. Authentication is required in development and production. A `401 UNAUTHORIZED` response at any point redirects to this screen. The query screen is gated behind a valid session, with a visible Logout control.
 
 ---
 
