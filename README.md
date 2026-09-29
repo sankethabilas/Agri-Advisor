@@ -100,7 +100,13 @@ cp .env.example .env
 Key environment variables required:
 - `GROQ_API_KEY` (or `OPENAI_API_KEY`)
 - `OPENWEATHER_API_KEY`
-- `JWT_SECRET_KEY`
+- `JWT_SECRET_KEY` (set a unique random value; required in production)
+- `APP_ENV=production` to enable HTTPS redirects and production secret checks
+- `AUTH_DATABASE_PATH` (persistent SQLite path; defaults to `data/users.sqlite3`)
+- `RATE_LIMIT_REQUESTS` and `RATE_LIMIT_WINDOW_SECONDS` (defaults: 30 and 60)
+- `CORS_ALLOWED_ORIGINS` (comma-separated trusted frontend origins)
+
+Authentication, request sanitization, rate limiting, and production TLS requirements are documented in [docs/security.md](docs/security.md).
 
 ---
 

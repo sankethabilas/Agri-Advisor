@@ -101,3 +101,6 @@ Thumbs.db
 
 # ChromaDB persistent vector store
 chroma_store/
+
+# Authentication user database
+data/users.sqlite3*

@@ -22,6 +22,7 @@ from orchestrator.main import app
 from orchestrator.router import AgentRouter
 from orchestrator.schemas import Location, OrchestratorProcessRequest
 from orchestrator.session_context import session_manager
+from orchestrator.security import create_access_token
 from orchestrator.synthesis import (
     ADVISORY_DISCLAIMER,
     AGRICULTURE_HELPLINE,
@@ -32,6 +33,10 @@ from orchestrator.synthesis import (
 
 client = TestClient(app)
 FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
+
+
+def auth_headers(user_id: str) -> dict:
+    return {"Authorization": f"Bearer {create_access_token(user_id)}"}
 
 
 @pytest.fixture(autouse=True)
@@ -297,7 +302,7 @@ def test_end_to_end_process_endpoint_synthesis():
         "crop_context": "Paddy",
         "language": "en"
     }
-    response = client.post("/api/orchestrator/process", json=payload)
+    response = client.post("/api/orchestrator/process", json=payload, headers=auth_headers(payload["user_id"]))
     assert response.status_code == 200
     data = response.json()
 
