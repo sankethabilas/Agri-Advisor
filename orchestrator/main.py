@@ -35,9 +35,9 @@ from orchestrator.schemas import (
 )
 from orchestrator.session_context import session_manager
 from orchestrator.stubs import stub_service
+from orchestrator.resilience import log_structured
 from agents.weather.agent import WeatherServiceError, weather_agent
 from agents.disease.agent import disease_agent
-from agents.rag.agent import rag_agent
 from agents.crop.agent import crop_agent
 from orchestrator.schemas import (
     AuthCredentials,
@@ -186,14 +186,20 @@ async def http_exception_handler(request: Request, exc: HTTPException) -> JSONRe
 async def generic_exception_handler(request: Request, exc: Exception) -> JSONResponse:
     request_id = getattr(request.state, "request_id",
                          f"req-{uuid.uuid4().hex[:8]}")
-    logger.error(
-        f"Unhandled exception in request {request_id}: {exc}", exc_info=True)
+    log_structured(
+        logger,
+        logging.ERROR,
+        "unhandled_request_failure",
+        exc_info=True,
+        request_id=request_id,
+        exception_type=type(exc).__name__,
+    )
 
     payload = ErrorPayload(
         code="INTERNAL_SERVER_ERROR",
         message="An unexpected internal server error occurred.",
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        details=[ErrorDetail(field="server", issue=str(exc))],
+        details=None,
         timestamp=datetime.now(timezone.utc).isoformat(),
         request_id=request_id,
     )
@@ -262,10 +268,17 @@ async def process_farmer_query(
         response = orchestrator_agent.process(safe_request)
         return response.model_copy(update={"answer": filter_generated_output(response.answer)})
     except Exception as error:
-        logger.error(f"Orchestration pipeline failure: {error}", exc_info=True)
+        log_structured(
+            logger,
+            logging.ERROR,
+            "orchestration_pipeline_failure",
+            exc_info=True,
+            user_id=current_user,
+            exception_type=type(error).__name__,
+        )
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to process query through multi-agent pipeline: {error}",
+            detail="We could not prepare your advisory right now. Please try again shortly.",
         )
 
 
@@ -295,8 +308,16 @@ async def get_weather_advice(request: WeatherAdviceRequest) -> WeatherAdviceResp
     try:
         return weather_agent.get_weather_advice(request.location, request.crop)
     except WeatherServiceError as error:
+        log_structured(
+            logger,
+            logging.WARNING,
+            "weather_endpoint_degraded",
+            exception_type=type(error).__name__,
+        )
         raise HTTPException(
-            status_code=status.HTTP_502_BAD_GATEWAY, detail=str(error)) from error
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail="Weather information is temporarily unavailable. Please try again shortly.",
+        ) from error
 
 
 @app.post(
@@ -308,9 +329,17 @@ async def get_weather_advice(request: WeatherAdviceRequest) -> WeatherAdviceResp
 )
 async def retrieve_rag_knowledge(request: RagRetrieveRequest) -> RagRetrieveResponse:
     try:
+        from agents.rag.agent import rag_agent
         return rag_agent.retrieve(request)
     except Exception as error:
-        logger.warning(f"Live RAGAgent retrieval failed ({error}). Falling back to stub.")
+        logger.warning(
+            "rag_endpoint_degraded",
+            extra={
+                "event": "rag_endpoint_degraded",
+                "exception_type": type(error).__name__,
+            },
+            exc_info=True,
+        )
         return stub_service.get_rag_retrieve(request)
 
 
@@ -389,6 +418,7 @@ async def health_check() -> HealthCheckResponse:
     # 4. RAG Agent
     t0 = time.perf_counter()
     try:
+        from agents.rag.agent import rag_agent
         count = rag_agent.collection.count()
         services["rag_agent"] = ServiceHealth(
             status="healthy",

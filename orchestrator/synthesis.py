@@ -6,12 +6,16 @@ eight-block farmer advisory with strict anti-hallucination grounding (BR-9) and 
 
 from __future__ import annotations
 
+from collections import OrderedDict
 from datetime import datetime, timezone
 import json
 import logging
+from threading import Lock
+import time
 from typing import Any, Dict, List, Optional
 
-from orchestrator.llm_client import LLMClient, LLMClientError, llm_client as default_llm_client
+from orchestrator.llm_client import LLMClient, llm_client as default_llm_client
+from orchestrator.resilience import log_structured
 from orchestrator.router import RoutingResult
 from orchestrator.schemas import (
     CropAdviceResponse,
@@ -312,6 +316,39 @@ class RuleBasedFallbackSynthesizer:
         return "\n\n".join(blocks).strip()
 
 
+class KeywordFallbackSynthesizer:
+    """Return a minimal safe answer if both generated and rule-based synthesis fail."""
+
+    @staticmethod
+    def synthesize(request: OrchestratorProcessRequest) -> str:
+        query = request.query.casefold()
+        if any(word in query for word in ("rain", "weather", "forecast", "temperature")):
+            guidance = (
+                "I cannot retrieve current weather information right now. Please check an official "
+                "weather update before spraying or making a weather-sensitive field decision."
+            )
+        elif any(word in query for word in ("spot", "wilt", "disease", "blast", "blight", "pest")):
+            guidance = (
+                "I cannot complete a reliable crop diagnosis right now. Avoid applying a chemical "
+                "treatment until the problem is confirmed by an agricultural extension officer."
+            )
+        elif any(word in query for word in ("fertilizer", "fertiliser", "plant", "seed", "crop", "harvest")):
+            guidance = (
+                "I cannot prepare crop-specific growing guidance right now. Please follow current "
+                "Department of Agriculture recommendations for your crop and season."
+            )
+        else:
+            guidance = (
+                "I cannot prepare a complete advisory right now. Please describe the crop and the "
+                "problem you are seeing, or contact an agricultural extension officer."
+            )
+        return (
+            f"### Advisory temporarily limited\n{guidance}\n\n"
+            f"> {ADVISORY_DISCLAIMER}\n\n"
+            f"Agriculture Extension Helpline: {AGRICULTURE_HELPLINE}"
+        )
+
+
 # ==============================================================================
 # Response Synthesizer Coordinator
 # ==============================================================================
@@ -325,6 +362,76 @@ class ResponseSynthesizer:
         self.llm = llm or default_llm_client
         self.prompt_builder = PromptBuilder()
         self.fallback_synthesizer = RuleBasedFallbackSynthesizer()
+        self.keyword_fallback = KeywordFallbackSynthesizer()
+        self._answer_cache: OrderedDict[str, tuple[float, str]] = OrderedDict()
+        self._cache_lock = Lock()
+        self._cache_size = 128
+        self._cache_ttl_seconds = 900
+
+    @staticmethod
+    def _append_status(
+        answer: str,
+        routing_res: RoutingResult,
+        *,
+        synthesis_mode: Optional[str] = None,
+    ) -> str:
+        notices: List[str] = []
+        labels = {
+            "disease_agent": "Disease diagnosis",
+            "weather_agent": "Weather information",
+            "crop_agent": "Crop cultivation advice",
+            "rag_agent": "Verified knowledge lookup",
+        }
+        for agent_name, failure_mode in routing_res.agent_failures.items():
+            label = labels.get(agent_name, "One advisory service")
+            if agent_name == "weather_agent":
+                notices.append(
+                    "Current weather details are temporarily unavailable, so they are not included in this advisory."
+                )
+            elif agent_name == "rag_agent":
+                notices.append(
+                    "Verified knowledge lookup is temporarily unavailable; confirm recommendations with the Department of Agriculture."
+                )
+            else:
+                state = "taking too long" if failure_mode == "timeout" else "temporarily unavailable"
+                notices.append(f"{label} is {state}, so it is not included in this advisory.")
+
+        if synthesis_mode == "cached":
+            notices.append(
+                "A recent saved advisory is being shown because the response service is unavailable. Check time-sensitive details, especially weather, before acting."
+            )
+        elif synthesis_mode == "rules":
+            notices.append(
+                "The response service is temporarily unavailable; this answer uses rule-based guidance."
+            )
+        elif synthesis_mode == "keywords":
+            notices.append(
+                "The full advisory could not be prepared, so only basic guidance is shown."
+            )
+
+        if not notices:
+            return answer
+        return f"{answer.rstrip()}\n\n### Service update\n" + "\n".join(f"- {notice}" for notice in notices)
+
+    def _cached_answer(self, key: str) -> Optional[str]:
+        with self._cache_lock:
+            cached = self._answer_cache.get(key)
+            if cached is None:
+                return None
+            cached_at, answer = cached
+            if time.monotonic() - cached_at > self._cache_ttl_seconds:
+                del self._answer_cache[key]
+                return None
+            if answer is not None:
+                self._answer_cache.move_to_end(key)
+            return answer
+
+    def _remember_answer(self, key: str, answer: str) -> None:
+        with self._cache_lock:
+            self._answer_cache[key] = (time.monotonic(), answer)
+            self._answer_cache.move_to_end(key)
+            while len(self._answer_cache) > self._cache_size:
+                self._answer_cache.popitem(last=False)
 
     def synthesize(
         self,
@@ -335,27 +442,65 @@ class ResponseSynthesizer:
         Synthesize farmer advisory. Attempts LLM generation first,
         falling back to rule-based generation if LLM is unavailable or errors.
         """
-        if self.llm.is_available():
-            try:
-                system_prompt = self.prompt_builder.SYSTEM_PROMPT
-                user_prompt = self.prompt_builder.build_user_prompt(request, routing_res)
-                logger.info(f"Synthesizing advisory with LLM provider '{self.llm.provider}' ({self.llm.model})...")
+        cache_key: Optional[str] = None
+        llm_failed = not self.llm.is_available()
+        try:
+            user_prompt = self.prompt_builder.build_user_prompt(request, routing_res)
+            cache_key = user_prompt
+            if not llm_failed:
                 generated_answer = self.llm.generate(
                     prompt=user_prompt,
-                    system_prompt=system_prompt,
+                    system_prompt=self.prompt_builder.SYSTEM_PROMPT,
                     max_tokens=1200,
                     temperature=0.2,
                 )
                 if generated_answer and len(generated_answer.strip()) > 50:
-                    return generated_answer.strip()
-            except LLMClientError as exc:
-                logger.warning(f"LLM synthesis error ({exc}). Triggering Rule FR-47 fallback.")
-            except Exception as exc:
-                logger.error(f"Unexpected error in LLM synthesis: {exc}. Triggering Rule FR-47 fallback.", exc_info=True)
+                    answer = generated_answer.strip()
+                    self._remember_answer(user_prompt, answer)
+                    return self._append_status(answer, routing_res)
+                llm_failed = True
+                log_structured(
+                    logger,
+                    logging.ERROR,
+                    "llm_synthesis_failed",
+                    failure_mode="invalid_response",
+                )
+        except Exception as exc:
+            llm_failed = True
+            log_structured(
+                logger,
+                logging.ERROR,
+                "llm_synthesis_failed",
+                exc_info=True,
+                failure_mode="unavailable",
+                exception_type=type(exc).__name__,
+            )
+        if llm_failed:
+            log_structured(
+                logger,
+                logging.WARNING,
+                "llm_synthesis_degraded",
+                failure_mode="disabled" if not self.llm.is_available() else "unavailable",
+            )
 
-        # Rule FR-47: Fallback to structured rule-based response
-        logger.info("Generating advisory using Rule FR-47 rule-based synthesizer.")
-        return self.fallback_synthesizer.synthesize(request, routing_res)
+        if cache_key is not None:
+            cached_answer = self._cached_answer(cache_key)
+            if cached_answer:
+                return self._append_status(cached_answer, routing_res, synthesis_mode="cached")
+
+        try:
+            answer = self.fallback_synthesizer.synthesize(request, routing_res)
+            return self._append_status(answer, routing_res, synthesis_mode="rules")
+        except Exception as exc:
+            log_structured(
+                logger,
+                logging.ERROR,
+                "rule_based_synthesis_failed",
+                exc_info=True,
+                exception_type=type(exc).__name__,
+            )
+            answer = self.keyword_fallback.synthesize(request)
+            return self._append_status(answer, routing_res, synthesis_mode="keywords")
 
 
 # Global singleton instance

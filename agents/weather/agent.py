@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import requests
 
 from orchestrator.schemas import Location, WeatherAdviceResponse
+from orchestrator.resilience import request_with_retry
 from agents.weather import disease_predictor, pest_predictor
 
 
@@ -174,8 +175,10 @@ class WeatherAgent:
             "forecast_days": days, "timezone": "UTC",
         }
         try:
-            response = requests.get(self.API_URL, params=params, timeout=self.timeout_seconds)
-            response.raise_for_status()
+            response = request_with_retry(
+                lambda: requests.get(self.API_URL, params=params, timeout=self.timeout_seconds),
+                service="weather_api",
+            )
             data = response.json()
         except (requests.RequestException, ValueError) as exc:
             raise WeatherServiceError(f"Weather service request failed: {exc}") from exc

@@ -788,6 +788,8 @@ All endpoints in the Agri-Advisor ecosystem implement a **standardized, uniform 
 | **`503 Service Unavail`**| `SERVICE_UNAVAILABLE` | ChromaDB vector store or Agent service is offline. | Show maintenance notice in UI. |
 | **`504 Timeout`** | `AGENT_TIMEOUT` | Agent took longer than SLA (Disease: 2.0s, Weather: 1.5s, RAG: 1.0s). | Return synthesized answer with available agents. |
 
+Agent calls are isolated by their configured timeout (`DISEASE_AGENT_TIMEOUT_SECONDS`, `WEATHER_AGENT_TIMEOUT_SECONDS`, `RAG_AGENT_TIMEOUT_SECONDS`, and `CROP_AGENT_TIMEOUT_SECONDS`). A failed or timed-out agent is omitted; the response is synthesized from available results and includes a plain-language service update. Weather failure is represented as unavailable, never as normal conditions. Weather and LLM HTTP requests retry transient failures up to three times with exponential backoff. If LLM synthesis is unavailable, the service uses a recent context-matched answer when available, then rule-based synthesis, then a keyword-matched safety response. Internal exception details are logged but are not returned to the user.
+
 ---
 
 ## 6. Test Fixtures & Stub Index (Subtask T-02.8)

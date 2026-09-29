@@ -6,12 +6,16 @@ unconditional RAG knowledge retrieval (BR-4), and disease finding query expansio
 
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
+from contextvars import ContextVar
 from datetime import datetime, timezone
 import logging
 import time
 from typing import Any, Callable, Dict, List, Optional
 
 from orchestrator.nlp import NLPResult, nlp_analyzer
+from orchestrator.config import settings
+from orchestrator.resilience import log_structured
 from orchestrator.schemas import (
     CropAdviceRequest,
     CropAdviceResponse,
@@ -30,6 +34,10 @@ from orchestrator.stubs import AgentStubService, stub_service as default_stub_se
 from pydantic import BaseModel, Field
 
 logger = logging.getLogger("agri_advisor.router")
+_AGENT_EXECUTORS = {
+    agent_name: ThreadPoolExecutor(max_workers=4, thread_name_prefix=agent_name)
+    for agent_name in ("disease_agent", "weather_agent", "rag_agent", "crop_agent")
+}
 
 
 # ==============================================================================
@@ -61,6 +69,7 @@ class RoutingResult(BaseModel):
     routing_decision: Dict[str, Any] = Field(default_factory=dict)
     latencies_ms: Dict[str, int] = Field(default_factory=dict)
     total_latency_ms: int = 0
+    agent_failures: Dict[str, str] = Field(default_factory=dict)
 
 
 # ==============================================================================
@@ -84,6 +93,7 @@ class AgentRouter:
         weather_agent: Optional[Callable[[WeatherAdviceRequest], WeatherAdviceResponse]] = None,
         rag_agent: Optional[Callable[[RagRetrieveRequest], RagRetrieveResponse]] = None,
         crop_agent: Optional[Callable[[CropAdviceRequest], CropAdviceResponse]] = None,
+        agent_timeouts: Optional[Dict[str, float]] = None,
     ) -> None:
         self.session_manager = session_mgr or default_session_manager
         self.stubs = stubs or default_stub_service
@@ -91,78 +101,103 @@ class AgentRouter:
         self._weather_agent = weather_agent
         self._rag_agent = rag_agent
         self._crop_agent = crop_agent
+        self.agent_timeouts = {
+            "disease_agent": settings.disease_agent_timeout_seconds,
+            "weather_agent": settings.weather_agent_timeout_seconds,
+            "rag_agent": settings.rag_agent_timeout_seconds,
+            "crop_agent": settings.crop_agent_timeout_seconds,
+        }
+        if agent_timeouts:
+            self.agent_timeouts.update(agent_timeouts)
+        self._active_failures: ContextVar[Optional[List[Dict[str, str]]]] = ContextVar(
+            f"router_failures_{id(self)}", default=None
+        )
+
+    def _invoke_agent(self, agent_name: str, operation: Callable[[], Any]) -> Any:
+        """Run one specialist call with an independent timeout and failure boundary."""
+        timeout_seconds = self.agent_timeouts[agent_name]
+        executor = _AGENT_EXECUTORS[agent_name]
+        future = executor.submit(operation)
+        try:
+            return future.result(timeout=timeout_seconds)
+        except FutureTimeoutError:
+            future.cancel()
+            failure_mode = "timeout"
+            log_structured(
+                logger,
+                logging.ERROR,
+                "agent_call_failed",
+                agent=agent_name,
+                failure_mode=failure_mode,
+                timeout_seconds=timeout_seconds,
+            )
+        except Exception as exc:
+            failure_mode = "unavailable"
+            log_structured(
+                logger,
+                logging.ERROR,
+                "agent_call_failed",
+                exc_info=True,
+                agent=agent_name,
+                failure_mode=failure_mode,
+                exception_type=type(exc).__name__,
+            )
+        failures = self._active_failures.get()
+        if failures is not None:
+            failures.append({"agent": agent_name, "failure_mode": failure_mode})
+        return None
 
     # --------------------------------------------------------------------------
     # Agent Invocation Helpers with Fallback Protection
     # --------------------------------------------------------------------------
 
-    def call_disease_agent(self, req: DiseaseDiagnoseRequest) -> DiseaseDiagnoseResponse:
-        """Execute disease diagnosis request with stub fallback."""
-        if self._disease_agent is not None:
-            try:
+    def call_disease_agent(self, req: DiseaseDiagnoseRequest) -> Optional[DiseaseDiagnoseResponse]:
+        """Execute disease diagnosis without allowing its failure to abort routing."""
+        def operation() -> DiseaseDiagnoseResponse:
+            if self._disease_agent is not None:
                 if hasattr(self._disease_agent, "diagnose"):
                     return self._disease_agent.diagnose(req)
                 return self._disease_agent(req)
-            except Exception as e:
-                logger.warning(f"Disease agent execution failed ({e}). Falling back to stub.")
-        else:
-            try:
-                from agents.disease.agent import disease_agent
-                return disease_agent.diagnose(req)
-            except Exception as e:
-                logger.warning(f"Live DiseaseAgent import/call failed ({e}). Falling back to stub.")
-        return self.stubs.get_disease_diagnosis(req)
+            from agents.disease.agent import disease_agent
+            return disease_agent.diagnose(req)
 
-    def call_weather_agent(self, req: WeatherAdviceRequest) -> WeatherAdviceResponse:
-        """Execute weather advice request with stub fallback."""
-        if self._weather_agent is not None:
-            try:
+        return self._invoke_agent("disease_agent", operation)
+
+    def call_weather_agent(self, req: WeatherAdviceRequest) -> Optional[WeatherAdviceResponse]:
+        """Execute weather advice without allowing its failure to abort routing."""
+        def operation() -> WeatherAdviceResponse:
+            if self._weather_agent is not None:
                 if hasattr(self._weather_agent, "get_weather_advice"):
                     return self._weather_agent.get_weather_advice(req.location, req.crop)
                 return self._weather_agent(req)
-            except Exception as e:
-                logger.warning(f"Weather agent execution failed ({e}). Falling back to stub.")
-        else:
-            try:
-                from agents.weather.agent import weather_agent
-                return weather_agent.get_weather_advice(req.location, req.crop)
-            except Exception as e:
-                logger.warning(f"Live WeatherAgent import/call failed ({e}). Falling back to stub.")
-        return self.stubs.get_weather_advice(req)
+            from agents.weather.agent import weather_agent
+            return weather_agent.get_weather_advice(req.location, req.crop)
 
-    def call_crop_agent(self, req: CropAdviceRequest) -> CropAdviceResponse:
-        """Execute crop advisory request with stub fallback."""
-        if self._crop_agent is not None:
-            try:
+        return self._invoke_agent("weather_agent", operation)
+
+    def call_crop_agent(self, req: CropAdviceRequest) -> Optional[CropAdviceResponse]:
+        """Execute crop advice without allowing its failure to abort routing."""
+        def operation() -> CropAdviceResponse:
+            if self._crop_agent is not None:
                 if hasattr(self._crop_agent, "get_crop_advice"):
                     return self._crop_agent.get_crop_advice(req)
                 return self._crop_agent(req)
-            except Exception as e:
-                logger.warning(f"Crop agent execution failed ({e}). Falling back to stub.")
-        else:
-            try:
-                from agents.crop.agent import crop_agent
-                return crop_agent.get_crop_advice(req)
-            except Exception as e:
-                logger.warning(f"Live CropAgent import/call failed ({e}). Falling back to stub.")
-        return self.stubs.get_crop_advice(req)
+            from agents.crop.agent import crop_agent
+            return crop_agent.get_crop_advice(req)
 
-    def call_rag_agent(self, req: RagRetrieveRequest) -> RagRetrieveResponse:
-        """Execute RAG knowledge retrieval request with stub fallback."""
-        if self._rag_agent is not None:
-            try:
+        return self._invoke_agent("crop_agent", operation)
+
+    def call_rag_agent(self, req: RagRetrieveRequest) -> Optional[RagRetrieveResponse]:
+        """Execute grounded retrieval without allowing its failure to abort routing."""
+        def operation() -> RagRetrieveResponse:
+            if self._rag_agent is not None:
                 if hasattr(self._rag_agent, "retrieve"):
                     return self._rag_agent.retrieve(req)
                 return self._rag_agent(req)
-            except Exception as e:
-                logger.warning(f"RAG agent execution failed ({e}). Falling back to stub.")
-        else:
-            try:
-                from agents.rag.agent import rag_agent
-                return rag_agent.retrieve(req)
-            except Exception as e:
-                logger.warning(f"Live RAGAgent import/call failed ({e}). Falling back to stub.")
-        return self.stubs.get_rag_retrieve(req)
+            from agents.rag.agent import rag_agent
+            return rag_agent.retrieve(req)
+
+        return self._invoke_agent("rag_agent", operation)
 
     # --------------------------------------------------------------------------
     # Subtask T-14.1: Route to Disease
@@ -419,6 +454,19 @@ class AgentRouter:
         nlp_res: Optional[NLPResult] = None,
         session: Optional[UserSession] = None,
     ) -> RoutingResult:
+        failures: List[Dict[str, str]] = []
+        token = self._active_failures.set(failures)
+        try:
+            return self._dispatch(request, nlp_res, session)
+        finally:
+            self._active_failures.reset(token)
+
+    def _dispatch(
+        self,
+        request: OrchestratorProcessRequest,
+        nlp_res: Optional[NLPResult] = None,
+        session: Optional[UserSession] = None,
+    ) -> RoutingResult:
         """
         Execute end-to-end routing decision, specialist agent dispatch,
         IR-4 query expansion, and unconditional BR-4 RAG retrieval.
@@ -541,6 +589,7 @@ class AgentRouter:
             routing_decision=routing_decision,
             latencies_ms=latencies,
             total_latency_ms=max(total_latency_ms, 1),
+            agent_failures={failure["agent"]: failure["failure_mode"] for failure in (self._active_failures.get() or [])},
         )
 
 
