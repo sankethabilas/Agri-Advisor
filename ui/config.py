@@ -8,7 +8,7 @@ from pathlib import Path
 # Paths
 # ---------------------------------------------------------------------------
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-FIXTURE_DIR  = PROJECT_ROOT / "tests" / "fixtures"
+FIXTURE_DIR = PROJECT_ROOT / "tests" / "fixtures"
 
 # Path to the mock response used when the API is unreachable.
 # T-12: use the richer orchestrator_response.json when present so that
@@ -20,17 +20,18 @@ FALLBACK_FIXTURE = _RICH_FIXTURE if _RICH_FIXTURE.exists() else _LEAN_FIXTURE
 # ---------------------------------------------------------------------------
 # API
 # ---------------------------------------------------------------------------
-API_BASE_URL       = "http://localhost:8000"
-ORCHESTRATOR_PATH  = "/api/orchestrator/process"
-ORCHESTRATOR_URL   = f"{API_BASE_URL}{ORCHESTRATOR_PATH}"
-API_TIMEOUT_SEC    = 30  # seconds before we fall back to fixture data
+API_BASE_URL = "http://localhost:8000"
+ORCHESTRATOR_PATH = "/api/orchestrator/process"
+ORCHESTRATOR_URL = f"{API_BASE_URL}{ORCHESTRATOR_PATH}"
+FEEDBACK_URL = f"{API_BASE_URL}/api/feedback"
+API_TIMEOUT_SEC = 30
 
 # ---------------------------------------------------------------------------
 # UI Copy
 # ---------------------------------------------------------------------------
-APP_TITLE    = "Agri-Advisor"
+APP_TITLE = "Agri-Advisor"
 APP_SUBTITLE = "Smart Farming Assistant"
-APP_ICON     = "🌾"
+APP_ICON = "🌾"
 
 # ---------------------------------------------------------------------------
 # Language options (display label → locale code)

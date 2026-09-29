@@ -43,10 +43,14 @@ class OrchestratorAgent:
         self,
         session_mgr: Optional[SessionManager] = None,
         stubs: Optional[AgentStubService] = None,
-        disease_agent: Optional[Callable[[DiseaseDiagnoseRequest], DiseaseDiagnoseResponse]] = None,
-        weather_agent: Optional[Callable[[WeatherAdviceRequest], WeatherAdviceResponse]] = None,
-        rag_agent: Optional[Callable[[RagRetrieveRequest], RagRetrieveResponse]] = None,
-        crop_agent: Optional[Callable[[CropAdviceRequest], CropAdviceResponse]] = None,
+        disease_agent: Optional[Callable[[
+            DiseaseDiagnoseRequest], DiseaseDiagnoseResponse]] = None,
+        weather_agent: Optional[Callable[[
+            WeatherAdviceRequest], WeatherAdviceResponse]] = None,
+        rag_agent: Optional[Callable[[RagRetrieveRequest],
+                                     RagRetrieveResponse]] = None,
+        crop_agent: Optional[Callable[[CropAdviceRequest],
+                                      CropAdviceResponse]] = None,
         router: Optional[AgentRouter] = None,
     ) -> None:
         self.session_manager = session_mgr or default_session_manager
@@ -148,15 +152,20 @@ class OrchestratorAgent:
         sources: List[SourceItem] = []
         if rag_res and rag_res.sources:
             for i, src in enumerate(rag_res.sources):
-                score = rag_res.confidence[i] if (rag_res.confidence and i < len(rag_res.confidence)) else getattr(src, "score", 0.85)
+                score = rag_res.confidence[i] if (rag_res.confidence and i < len(
+                    rag_res.confidence)) else getattr(src, "score", 0.85)
                 sources.append(
                     SourceItem(
                         title=src.title,
-                        author_organization=getattr(src, "author_organization", None) or getattr(src, "source", "DOA Sri Lanka") or "DOA Sri Lanka",
-                        document_id=getattr(src, "document_id", None) or getattr(src, "source_id", "DOA-REF-01") or "DOA-REF-01",
-                        section=getattr(src, "section", "") or "General Agricultural Guidelines",
+                        author_organization=getattr(src, "author_organization", None) or getattr(
+                            src, "source", "DOA Sri Lanka") or "DOA Sri Lanka",
+                        document_id=getattr(src, "document_id", None) or getattr(
+                            src, "source_id", "DOA-REF-01") or "DOA-REF-01",
+                        section=getattr(
+                            src, "section", "") or "General Agricultural Guidelines",
                         confidence_score=round(score, 2),
-                        reference_url=getattr(src, "url", None) or getattr(src, "reference_url", None),
+                        reference_url=getattr(src, "url", None) or getattr(
+                            src, "reference_url", None),
                     )
                 )
 
@@ -164,7 +173,8 @@ class OrchestratorAgent:
         if weather_res and weather_res.alerts:
             first_alert = weather_res.alerts[0]
             weather_alert = WeatherAlert(
-                severity="moderate" if first_alert.severity in ["watch", "advisory"] else "high",
+                severity="moderate" if first_alert.severity in [
+                    "watch", "advisory"] else "high",
                 title=first_alert.title,
                 message=first_alert.description,
                 impact_warning=first_alert.recommended_action,
@@ -205,8 +215,59 @@ class OrchestratorAgent:
 
         return OrchestratorProcessResponse(
             answer=answer_text,
+            diagnosis=(
+                {
+                    "disease_name": disease_res.disease,
+                    "severity": disease_res.severity,
+                    "confidence": disease_res.confidence,
+                    "confidence_label": (
+                        "High" if disease_res.confidence >= 0.8
+                        else "Medium" if disease_res.confidence >= 0.6 else "Low"
+                    ),
+                    "symptoms_confirmed": disease_res.symptoms_confirmed,
+                    "differential_diagnoses": [
+                        item.model_dump() for item in (disease_res.differential_diagnoses or [])
+                    ],
+                }
+                if disease_res else None
+            ),
+            immediate_treatment=(
+                {
+                    "urgency": "High Priority",
+                    "action_window": "Apply according to the treatment guidance below.",
+                    "steps": [
+                        {
+                            "priority": index,
+                            "action": treatment.name if hasattr(treatment, "name") else treatment.practice,
+                            "detail": treatment.instructions if hasattr(treatment, "instructions") else treatment.description,
+                            "urgency_tag": "Recommended",
+                        }
+                        for index, treatment in enumerate(
+                            list(disease_res.treatment.chemical)
+                            + list(disease_res.treatment.organic)
+                            + list(disease_res.treatment.cultural),
+                            1,
+                        )
+                    ],
+                }
+                if disease_res else None
+            ),
+            prevention=disease_res.prevention if disease_res else [],
             sources=sources,
             weather_alert=weather_alert,
+            disclaimer={
+                "text": (
+                    "This advisory is generated by an AI system to support your decision-making. "
+                    "It does not replace professional agricultural extension advice."
+                ),
+                "helpline": "Agriculture Extension Office: 1920",
+            },
+            why_explanation={
+                "summary": f"The advisory was selected for {crop} using the routed specialist agents and verified knowledge sources.",
+                "model_reasoning": f"The orchestrator consulted: {', '.join(agents_consulted) or 'the general advisory path'}.",
+                "agents_used": agents_consulted,
+                "confidence_breakdown": {"orchestrator": round(confidence, 2)},
+            },
             metadata=metadata,
         )
 

@@ -12,11 +12,14 @@ from pydantic import BaseModel, Field
 # ==============================================================================
 
 class Location(BaseModel):
-    district: str = Field(..., description="e.g. Anuradhapura, Kurunegala, Polonnaruwa, Badulla")
-    province: Optional[str] = Field(None, description="e.g. North Central, North Western")
+    district: str = Field(...,
+                          description="e.g. Anuradhapura, Kurunegala, Polonnaruwa, Badulla")
+    province: Optional[str] = Field(
+        None, description="e.g. North Central, North Western")
     latitude: Optional[float] = Field(None, ge=5.0, le=10.0)
     longitude: Optional[float] = Field(None, ge=79.0, le=82.0)
-    agro_ecological_zone: Optional[str] = Field(None, description="e.g. DL1b, IL1a, WU2")
+    agro_ecological_zone: Optional[str] = Field(
+        None, description="e.g. DL1b, IL1a, WU2")
 
 
 # ==============================================================================
@@ -24,12 +27,17 @@ class Location(BaseModel):
 # ==============================================================================
 
 class OrchestratorProcessRequest(BaseModel):
-    query: str = Field(..., min_length=1, max_length=1000, description="Natural language query from farmer")
-    user_id: str = Field(..., description="Unique farmer or session identifier")
+    query: str = Field(..., min_length=1, max_length=1000,
+                       description="Natural language query from farmer")
+    user_id: str = Field(...,
+                         description="Unique farmer or session identifier")
     location: Location
-    session_id: Optional[str] = Field(None, description="Optional session UUID for multi-turn state")
-    language: Literal["en", "si", "ta"] = Field("en", description="Target language for synthesized response")
-    crop_context: Optional[str] = Field(None, description="Optional active crop context e.g. Paddy, Tomato")
+    session_id: Optional[str] = Field(
+        None, description="Optional session UUID for multi-turn state")
+    language: Literal["en", "si", "ta"] = Field(
+        "en", description="Target language for synthesized response")
+    crop_context: Optional[str] = Field(
+        None, description="Optional active crop context e.g. Paddy, Tomato")
 
 
 class SourceItem(BaseModel):
@@ -72,13 +80,29 @@ class ResponseMetadata(BaseModel):
 
 class OrchestratorProcessResponse(BaseModel):
     answer: str
+    diagnosis: Optional[Dict[str, Any]] = None
+    immediate_treatment: Optional[Dict[str, Any]] = None
+    prevention: List[Any] = Field(default_factory=list)
     sources: List[SourceItem]
     weather_alert: WeatherAlert
+    disclaimer: Optional[Dict[str, Any]] = None
+    why_explanation: Optional[Dict[str, Any]] = None
     metadata: ResponseMetadata
 
 
+class FeedbackRequest(BaseModel):
+    session_id: str = Field(..., min_length=1, max_length=128)
+    helpful: bool
+
+
+class FeedbackResponse(BaseModel):
+    accepted: bool
+    message: str
+
+
 class AuthCredentials(BaseModel):
-    username: str = Field(..., min_length=3, max_length=254, pattern=r"^[A-Za-z0-9][A-Za-z0-9_.@+-]{2,253}$")
+    username: str = Field(..., min_length=3, max_length=254,
+                          pattern=r"^[A-Za-z0-9][A-Za-z0-9_.@+-]{2,253}$")
     password: str = Field(..., min_length=12, max_length=128)
 
 
@@ -185,7 +209,8 @@ class PestRisk(BaseModel):
 
 class WeatherAlertItem(BaseModel):
     id: str
-    alert_type: Literal["heavy_rain", "flood", "drought", "high_wind", "pest_outbreak", "extreme_heat"]
+    alert_type: Literal["heavy_rain", "flood", "drought",
+                        "high_wind", "pest_outbreak", "extreme_heat"]
     severity: Literal["advisory", "watch", "warning", "emergency"]
     title: str
     description: str
@@ -259,7 +284,8 @@ class CropAdviceRequest(BaseModel):
     season: Literal["Maha", "Yala"]
     soil_type: Optional[str] = None
     land_extent_acres: Optional[float] = 1.0
-    irrigation_type: Optional[Literal["Major Irrigation", "Minor Irrigation", "Rainfed"]] = None
+    irrigation_type: Optional[Literal["Major Irrigation",
+                                      "Minor Irrigation", "Rainfed"]] = None
 
 
 class CropAdviceResponse(BaseModel):
