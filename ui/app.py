@@ -31,7 +31,6 @@ from ui.auth import (
     get_auth_headers,
     init_auth_session,
     is_authenticated,
-    mark_token_expired,
     token_just_expired,
 )
 from ui.auth_pages import render_auth_screen
@@ -46,15 +45,14 @@ from ui.config import (
     APP_TITLE,
     CROP_CONTEXTS,
     DISTRICTS,
-    LANGUAGES,
 )
-from ui.styles import DARK_MODE_CSS, GLOBAL_CSS
+from ui.history_store import load_history, save_history
+from ui.styles import DARK_MODE_CSS, GLOBAL_CSS, LIGHT_MODE_CSS
 from utils.i18n import SUPPORTED_LANGUAGES, get_string
 
 import sys
 import uuid
 from pathlib import Path
-from typing import Any
 
 # Make project-local packages importable when Streamlit launches this file
 # directly (for example: `streamlit run ui/app.py`).
@@ -73,11 +71,11 @@ st.set_page_config(
     page_title=f"{APP_TITLE} — {APP_SUBTITLE}",
     page_icon=APP_ICON,
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
     menu_items={
         "Get help":     "https://doa.gov.lk",
         "Report a bug": None,
-        "About":        f"**{APP_TITLE}** · Smart Farming Assistant for Sri Lanka · v0.1.0",
+        "About":        f"**{get_string('app_title', 'en')}** · {get_string('app_subtitle', 'en')} · v0.1.0",
     },
 )
 
@@ -110,23 +108,66 @@ def _init_session() -> None:
         st.session_state.selected_language = "en"
     if "theme_mode" not in st.session_state:
         st.session_state.theme_mode = "System"
+    if "show_nav_menu" not in st.session_state:
+        st.session_state.show_nav_menu = False
+
+    user_id = st.session_state.get("user_id")
+    if user_id and st.session_state.get("history_owner") != user_id:
+        st.session_state.conversation_history = load_history(user_id)
+        st.session_state.history_owner = user_id
 
 
 _init_session()
 
 
-def _render_navigation() -> None:
-    """Render shared navigation and the user-controlled display theme."""
-    with st.sidebar:
-        st.markdown("### Navigation")
-        if is_authenticated():
-            st.markdown("**🌱 Ask for advice**")
-            st.caption("Your current advisory workspace")
-        else:
-            st.markdown("**🔐 Sign in or create an account**")
-            st.caption("Start here to ask about your crops")
+def _render_top_nav() -> None:
+    """Render the brand, account identity, language, and theme controls."""
+    _lang = st.session_state.get("selected_language", "en")
+    nav_brand, nav_user, nav_language, nav_theme = st.columns(
+        [4.8, 1.4, 1.7, 1.5],
+        vertical_alignment="center",
+    )
 
-        st.markdown("---")
+    with nav_brand:
+        st.markdown(
+            f"""
+            <div class="top-nav-brand">
+                <span class="top-nav-mark">{APP_ICON}</span>
+                <span>
+                    <strong>{get_string('app_title', _lang)}</strong>
+                    <small>{get_string('app_tagline', _lang)}</small>
+                </span>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    with nav_user:
+        user_id = st.session_state.get("user_id")
+        if user_id:
+            st.markdown(
+                f'<div class="top-nav-user">👤 <strong>{user_id}</strong></div>',
+                unsafe_allow_html=True,
+            )
+
+    with nav_language:
+        lang_options = list(SUPPORTED_LANGUAGES.keys())
+        current_label = next(
+            (label for label, code in SUPPORTED_LANGUAGES.items() if code == _lang),
+            lang_options[0],
+        )
+        selected_label = st.selectbox(
+            get_string("lbl_language", _lang),
+            options=lang_options,
+            index=lang_options.index(current_label),
+            key="lang_selector",
+            label_visibility="visible",
+        )
+        selected_code = SUPPORTED_LANGUAGES[selected_label]
+        st.session_state.selected_language = selected_code
+        st.session_state.language = selected_code
+
+    with nav_theme:
         theme_mode = st.selectbox(
             "Display mode",
             options=("System", "Light", "Dark"),
@@ -134,18 +175,36 @@ def _render_navigation() -> None:
                 st.session_state.get("theme_mode", "System")
             ),
             key="theme_mode_selector",
-            help="Choose Light or Dark, or follow your device setting.",
+            label_visibility="collapsed",
         )
         st.session_state.theme_mode = theme_mode
 
 
-_render_navigation()
+_render_top_nav()
+
+if st.button("☰ Navigation", key="navbar_navigation_toggle"):
+    st.session_state.show_nav_menu = not st.session_state.show_nav_menu
+    st.rerun()
+
+if st.session_state.show_nav_menu:
+    st.markdown(
+        """
+        <div class="navbar-menu-panel">
+            <strong>Navigation</strong>
+            <span>🌱 Ask for advice</span>
+            <span>🗂 Conversation history</span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 # Inject global CSS after the display mode is known. Streamlit reruns the
 # script when the selector changes, so the theme updates without JavaScript.
 st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
 if st.session_state.theme_mode == "Dark":
     st.markdown(DARK_MODE_CSS, unsafe_allow_html=True)
+elif st.session_state.theme_mode == "Light":
+    st.markdown(LIGHT_MODE_CSS, unsafe_allow_html=True)
 
 
 # ============================================================================
@@ -157,8 +216,8 @@ if not is_authenticated():
     st.markdown(
         f"""
         <div class="auth-hero">
-            <h1>{APP_ICON} {APP_TITLE}</h1>
-            <p>Smart Farming Assistant for Sri Lanka</p>
+                <h1>{APP_ICON} {get_string('app_title', st.session_state.get('selected_language', 'en'))}</h1>
+                <p>{get_string('app_subtitle', st.session_state.get('selected_language', 'en'))}</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -174,80 +233,12 @@ if not is_authenticated():
 # T-20.6 — surface token-expiry banner on re-entry
 if token_just_expired():
     st.error(
-        "⏱️ **Your session has expired.** Please sign in again.",
+        get_string("err_auth_expired", st.session_state.get(
+            "selected_language", "en")),
         icon="🔒",
     )
     clear_auth()
     st.rerun()
-
-
-# ============================================================================
-# Header
-# ============================================================================
-
-def _render_header() -> None:
-    """
-    Render the green gradient header with language selector and user chip.
-
-    T-17.1 -- The selectbox persists the chosen locale code in
-    both ``st.session_state.selected_language`` (T-17 canonical key)
-    and ``st.session_state.language`` (legacy key used by the API payload).
-
-    T-20 -- Shows a user chip with the authenticated username.
-    """
-    header_col, user_col, lang_col = st.columns([4, 1.5, 1])
-
-    _lang = st.session_state.get("selected_language", "en")
-
-    with header_col:
-        tagline = get_string("app_tagline", _lang)
-        st.markdown(
-            f"""
-            <div class="agri-header">
-                <h1>{APP_ICON} {APP_TITLE}</h1>
-                <p>{tagline}</p>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-    # T-20: authenticated user chip
-    with user_col:
-        st.markdown("<br><br>", unsafe_allow_html=True)
-        user_id = st.session_state.get("user_id", "")
-        if user_id:
-            st.markdown(
-                f'<div class="user-chip">👤 {user_id}</div>',
-                unsafe_allow_html=True,
-            )
-
-    with lang_col:
-        st.markdown("<br><br>", unsafe_allow_html=True)
-
-        # T-17.1: language selector
-        lang_options = list(SUPPORTED_LANGUAGES.keys())
-        current_code = st.session_state.get("selected_language", "en")
-        current_label = next(
-            (lbl for lbl, code in SUPPORTED_LANGUAGES.items() if code == current_code),
-            lang_options[0],
-        )
-        default_index = lang_options.index(current_label)
-
-        selected_lang_label = st.selectbox(
-            get_string("lbl_language", current_code),
-            options=lang_options,
-            index=default_index,
-            key="lang_selector",
-            label_visibility="visible",
-        )
-        selected_code = SUPPORTED_LANGUAGES[selected_lang_label]
-
-        # Persist in BOTH keys for backward compatibility
-        st.session_state.selected_language = selected_code
-        st.session_state.language = selected_code
-
-
-_render_header()
 
 
 # ============================================================================
@@ -369,6 +360,10 @@ if submitted:
                 "answer_summary": answer_summary,
                 "session_id":     session_id,
             })
+            save_history(
+                auth_user_id,
+                st.session_state.conversation_history,
+            )
 
         except _ApiError as exc:
             progress.empty()
@@ -426,6 +421,15 @@ elif st.session_state.last_response is not None:
 with st.sidebar:
     _slang = st.session_state.get("selected_language", "en")
 
+    st.markdown("### Navigation")
+    if is_authenticated():
+        st.markdown("**🌱 Ask for advice**")
+        st.caption("Your current advisory workspace")
+    else:
+        st.markdown("**🔐 Sign in or create an account**")
+        st.caption("Start here to ask about your crops")
+    st.markdown("---")
+
     # ── Authenticated user panel ──────────────────────────────────────────
     auth_user = st.session_state.get("user_id", "")
     saved_district = st.session_state.get("saved_district", "—")
@@ -466,13 +470,15 @@ with st.sidebar:
                     "last_error", "session_id"):
             if key in st.session_state:
                 del st.session_state[key]
+        st.session_state.history_owner = st.session_state.get("user_id")
+        save_history(st.session_state.get("user_id"), [])
         st.rerun()
 
     st.markdown("---")
 
     # T-20.5: Logout control
     st.markdown('<div class="logout-btn">', unsafe_allow_html=True)
-    if st.button("🚪 Sign Out", use_container_width=True, key="btn_logout"):
+    if st.button(get_string("btn_logout", _slang), use_container_width=True, key="btn_logout"):
         clear_auth()
         st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)

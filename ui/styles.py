@@ -19,6 +19,43 @@ html, body, [class*="css"] {
     font-family: 'Inter', sans-serif !important;
 }
 
+/* Replace Streamlit's Deploy toolbar with the application navbar. */
+[data-testid="stHeader"] {
+    height: 0 !important;
+    min-height: 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+    pointer-events: none !important;
+}
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+/* Keep Streamlit's native sidebar toggle, but place it on our navbar. */
+[data-testid="stSidebarCollapseButton"],
+[data-testid="stSidebarCollapsedControl"] {
+    display: flex !important;
+    position: fixed !important;
+    top: 12px !important;
+    left: 14px !important;
+    z-index: 100000 !important;
+    pointer-events: auto !important;
+}
+[data-testid="stSidebarCollapseButton"] button,
+[data-testid="stSidebarCollapsedControl"] button {
+    width: 38px !important;
+    height: 38px !important;
+    border: 1px solid #86EFAC !important;
+    border-radius: 8px !important;
+    background: #FFFFFF !important;
+    color: #14532D !important;
+    box-shadow: 0 2px 8px rgba(20, 83, 45, 0.16) !important;
+}
+
+section[data-testid="stMain"] > div.block-container {
+    padding-top: 0.25rem !important;
+}
+
 /* Increase base body text to satisfy the ≥16 px rule */
 .stApp p, .stApp li, .stApp label,
 .stApp .stTextInput > label,
@@ -29,26 +66,55 @@ html, body, [class*="css"] {
     color: #1F2937 !important;
 }
 
-/* ── Header banner ───────────────────────────────────────────────────────── */
-.agri-header {
-    background: linear-gradient(135deg, #14532D 0%, #166534 50%, #15803D 100%);
+/* ── Top navigation ──────────────────────────────────────────────────────── */
+.top-nav-brand {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px 10px 58px;
+    background: linear-gradient(135deg, #14532D, #15803D);
     border-radius: 12px;
-    padding: 20px 28px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 16px rgba(21, 128, 61, 0.3);
+    box-shadow: 0 4px 16px rgba(21, 128, 61, 0.22);
 }
-.agri-header h1 {
-    color: #FFFFFF !important;
-    font-size: 1.9rem !important;
-    font-weight: 700 !important;
-    margin: 0 !important;
-    letter-spacing: -0.5px;
+.top-nav-mark { font-size: 2rem; line-height: 1; }
+.top-nav-brand strong {
+    display: block;
+    color: #FFFFFF;
+    font-size: 1.35rem;
+    line-height: 1.2;
 }
-.agri-header p {
-    color: #BBF7D0 !important;
-    font-size: 1rem !important;
-    margin: 4px 0 0 0 !important;
+.top-nav-brand small {
+    display: block;
+    color: #BBF7D0;
+    font-size: 0.78rem;
+    margin-top: 3px;
 }
+.top-nav-user {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    color: #14532D;
+    background: #ECFDF5;
+    border: 1px solid #86EFAC;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.navbar-menu-panel {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 6px 0 14px;
+    padding: 10px 16px;
+    color: #14532D;
+    background: #ECFDF5;
+    border: 1px solid #BBF7D0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+.navbar-menu-panel span { color: #166534; }
 
 /* ── Input labels ────────────────────────────────────────────────────────── */
 .stTextArea textarea {
@@ -426,7 +492,7 @@ hr {
 
 /* ── Theme-aware Streamlit surfaces ─────────────────────────────────────── */
 :root {
-    color-scheme: light dark;
+    color-scheme: light;
     --ui-page: #F8FAFC;
     --ui-surface: #FFFFFF;
     --ui-surface-muted: #F0FDF4;
@@ -437,13 +503,13 @@ hr {
 }
 
 .stApp {
-    background: var(--ui-page) !important;
-    color: var(--ui-text) !important;
+    background: transparent !important;
+    color: inherit !important;
 }
 .stApp p, .stApp li, .stApp label,
 .stApp [data-testid="stMarkdownContainer"],
 .stApp .stCaption {
-    color: var(--ui-text) !important;
+    color: inherit !important;
 }
 .stTextInput input, .stTextArea textarea,
 .stSelectbox div[data-baseweb="select"] > div {
@@ -465,47 +531,48 @@ hr {
     color: var(--ui-text) !important;
 }
 
-/* Follow the operating-system theme when System is selected. */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --ui-page: #111827;
-        --ui-surface: #1F2937;
-        --ui-surface-muted: #17251D;
-        --ui-text: #F3F4F6;
-        --ui-text-muted: #D1D5DB;
-        --ui-border: #4B5563;
-        --ui-input-border: #15803D;
-    }
-    .stAppHeader, header[data-testid="stHeader"] {
-        background: #111827 !important;
-    }
-    .stTextInput input, .stTextArea textarea,
-    .stSelectbox div[data-baseweb="select"] > div,
-    [data-baseweb="popover"] {
-        background: #1F2937 !important;
-        color: #F9FAFB !important;
-    }
-    .auth-card {
-        background: rgba(31, 41, 55, 0.98) !important;
-        border-color: #4B5563 !important;
-    }
-    .auth-title, .advisory-container h3, .advisory-container h4,
-    .advisory-block-header h3 {
-        color: #BBF7D0 !important;
-    }
-    .auth-subtitle, .auth-switch-text, .char-counter {
-        color: #D1D5DB !important;
-    }
-    .diagnosis-card, .prevention-list {
-        background: #163A27 !important;
-        border-color: #166534 !important;
-    }
-    hr { border-top-color: #4B5563 !important; }
-}
+</style>
+"""
 
-/* Explicit Dark mode selected in the sidebar. */
-html:has(.theme-dark),
-body:has(.theme-dark) { color-scheme: dark; }
+# Explicit Light mode is injected after GLOBAL_CSS so it wins over browser and
+# operating-system defaults. Keep the colors in variables for consistent
+# contrast across Streamlit surfaces and HTML advisory cards.
+LIGHT_MODE_CSS = """
+<style>
+:root {
+    color-scheme: light;
+    --ui-page: #F8FAFC;
+    --ui-surface: #FFFFFF;
+    --ui-surface-muted: #F0FDF4;
+    --ui-text: #1F2937;
+    --ui-text-muted: #6B7280;
+    --ui-border: #D1D5DB;
+    --ui-input-border: #A7F3D0;
+}
+.stApp, .stAppHeader, header[data-testid="stHeader"] {
+    background: var(--ui-page) !important;
+    color: var(--ui-text) !important;
+}
+.stApp p, .stApp li, .stApp label,
+.stApp [data-testid="stMarkdownContainer"], .stApp .stCaption,
+.streamlit-expanderHeader, .stSpinner p {
+    color: var(--ui-text) !important;
+}
+.stTextInput input, .stTextArea textarea,
+.stSelectbox div[data-baseweb="select"] > div,
+[data-baseweb="popover"] {
+    background: var(--ui-surface) !important;
+    color: var(--ui-text) !important;
+    border-color: var(--ui-input-border) !important;
+}
+.advisory-container, .treatment-step, .source-card,
+[data-testid="stMetric"], .auth-card {
+    background: var(--ui-surface) !important;
+    color: var(--ui-text) !important;
+    border-color: var(--ui-border) !important;
+}
+[data-testid="stSidebar"] { background: var(--ui-surface-muted) !important; }
+hr { border-top-color: var(--ui-border) !important; }
 </style>
 """
 
@@ -514,6 +581,7 @@ body:has(.theme-dark) { color-scheme: dark; }
 DARK_MODE_CSS = """
 <style>
 :root {
+    color-scheme: dark;
     --ui-page: #111827;
     --ui-surface: #1F2937;
     --ui-surface-muted: #17251D;
@@ -539,6 +607,38 @@ DARK_MODE_CSS = """
     background: #1F2937 !important;
     color: #F3F4F6 !important;
     border-color: #4B5563 !important;
+}
+[data-testid="stMarkdownContainer"] div[style*="background:#FFFFFF"],
+[data-testid="stMarkdownContainer"] div[style*="background: #FFFFFF"],
+[data-testid="stMarkdownContainer"] div[style*="background:#FAFAFA"],
+[data-testid="stMarkdownContainer"] div[style*="background: #FAFAFA"] {
+    background: #263445 !important;
+    border-color: #4B5563 !important;
+}
+[data-testid="stMarkdownContainer"] div[style*="background:#F0FDF4"],
+[data-testid="stMarkdownContainer"] div[style*="background: #F0FDF4"],
+[data-testid="stMarkdownContainer"] div[style*="background:#EFF6FF"],
+[data-testid="stMarkdownContainer"] div[style*="background: #EFF6FF"],
+[data-testid="stMarkdownContainer"] div[style*="background:#F9FAFB"],
+[data-testid="stMarkdownContainer"] div[style*="background: #F9FAFB"] {
+    background: #1F2937 !important;
+    border-color: #4B5563 !important;
+}
+[data-testid="stMarkdownContainer"] [style*="color:#1F2937"],
+[data-testid="stMarkdownContainer"] [style*="color: #1F2937"],
+[data-testid="stMarkdownContainer"] [style*="color:#374151"],
+[data-testid="stMarkdownContainer"] [style*="color: #374151"] {
+    color: #E5E7EB !important;
+}
+[data-testid="stMarkdownContainer"] [style*="color:#14532D"],
+[data-testid="stMarkdownContainer"] [style*="color: #14532D"],
+[data-testid="stMarkdownContainer"] [style*="color:#166534"],
+[data-testid="stMarkdownContainer"] [style*="color: #166534"] {
+    color: #BBF7D0 !important;
+}
+[data-testid="stMarkdownContainer"] [style*="color:#6B7280"],
+[data-testid="stMarkdownContainer"] [style*="color: #6B7280"] {
+    color: #CBD5E1 !important;
 }
 .auth-title, .advisory-container h3, .advisory-container h4,
 .advisory-block-header h3 { color: #BBF7D0 !important; }
