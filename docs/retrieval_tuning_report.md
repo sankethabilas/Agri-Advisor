@@ -100,3 +100,42 @@ Therefore:
 - Retrieval quality will be improved through ranking and fallback rather than globally increasing the number of retrieved documents.
 
 This keeps retrieval concise while preserving the existing API behaviour.
+
+## 6. Chunking and Metadata Tuning
+
+### Existing Chunking Structure
+
+The knowledge base currently contains curated topic-level records. Each record normally represents one focused agricultural subject, such as a disease, crop management practice, variety recommendation, pest, or cultivation guideline.
+
+During T-23, additional automatic splitting of every record was considered.
+
+### Decision
+
+The existing topic-level record boundaries will be retained.
+
+The corpus will not be blindly divided into smaller fixed-size chunks because many records already represent a coherent agricultural topic. Further splitting could separate related symptoms, management recommendations, treatment information, or cultivation instructions.
+
+Instead, retrieval quality is improved by enriching the text used to generate each document embedding.
+
+### Metadata-Enriched Embeddings
+
+Previously, embeddings were generated only from the document `text`.
+
+The T-23 indexing pipeline now embeds:
+
+- title
+- crop
+- category
+- region
+- season
+- document text
+
+The original document text is still stored as the ChromaDB document and returned to the RAG agent.
+
+This allows metadata such as `Tomato Late Blight`, `tomato`, and `disease` to influence semantic ranking without adding artificial metadata text to the final RAG context.
+
+### Expected Benefit
+
+This tuning is particularly useful for documents whose body text is highly semantically similar, such as Tomato Early Blight and Tomato Late Blight.
+
+The document title and crop/category metadata provide additional discriminative information during vector retrieval.
