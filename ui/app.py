@@ -24,22 +24,8 @@ T-20 additions:
     - Authenticated user_id and saved district in query payload  (T-20.7)
 """
 from __future__ import annotations
-from utils.i18n import SUPPORTED_LANGUAGES, get_string
-from ui.styles import GLOBAL_CSS
-from ui.config import (
-    APP_ICON,
-    APP_SUBTITLE,
-    APP_TITLE,
-    CROP_CONTEXTS,
-    DISTRICTS,
-    LANGUAGES,
-)
-from ui.components import (
-    render_advisory_response,
-    render_conversation_history,
-    render_error,
-)
-from ui.auth_pages import render_auth_screen
+import streamlit as st
+from ui.api_client import _ApiError, build_payload, call_orchestrator
 from ui.auth import (
     clear_auth,
     get_auth_headers,
@@ -48,17 +34,33 @@ from ui.auth import (
     mark_token_expired,
     token_just_expired,
 )
-from ui.api_client import _ApiError, build_payload, call_orchestrator
+from ui.auth_pages import render_auth_screen
+from ui.components import (
+    render_advisory_response,
+    render_conversation_history,
+    render_error,
+)
+from ui.config import (
+    APP_ICON,
+    APP_SUBTITLE,
+    APP_TITLE,
+    CROP_CONTEXTS,
+    DISTRICTS,
+    LANGUAGES,
+)
+from ui.styles import DARK_MODE_CSS, GLOBAL_CSS
+from utils.i18n import SUPPORTED_LANGUAGES, get_string
 
 import sys
 import uuid
 from pathlib import Path
 from typing import Any
 
-import streamlit as st
-
-# Allow `ui.*` and `utils.*` imports when launched from the project root
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+# Make project-local packages importable when Streamlit launches this file
+# directly (for example: `streamlit run ui/app.py`).
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 
 # T-17: i18n helpers
@@ -78,9 +80,6 @@ st.set_page_config(
         "About":        f"**{APP_TITLE}** · Smart Farming Assistant for Sri Lanka · v0.1.0",
     },
 )
-
-# Inject global CSS (includes T-20 auth card styles)
-st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
 
 
 # ============================================================================
@@ -109,9 +108,44 @@ def _init_session() -> None:
         st.session_state.language = "en"
     if "selected_language" not in st.session_state:
         st.session_state.selected_language = "en"
+    if "theme_mode" not in st.session_state:
+        st.session_state.theme_mode = "System"
 
 
 _init_session()
+
+
+def _render_navigation() -> None:
+    """Render shared navigation and the user-controlled display theme."""
+    with st.sidebar:
+        st.markdown("### Navigation")
+        if is_authenticated():
+            st.markdown("**🌱 Ask for advice**")
+            st.caption("Your current advisory workspace")
+        else:
+            st.markdown("**🔐 Sign in or create an account**")
+            st.caption("Start here to ask about your crops")
+
+        st.markdown("---")
+        theme_mode = st.selectbox(
+            "Display mode",
+            options=("System", "Light", "Dark"),
+            index=("System", "Light", "Dark").index(
+                st.session_state.get("theme_mode", "System")
+            ),
+            key="theme_mode_selector",
+            help="Choose Light or Dark, or follow your device setting.",
+        )
+        st.session_state.theme_mode = theme_mode
+
+
+_render_navigation()
+
+# Inject global CSS after the display mode is known. Streamlit reruns the
+# script when the selector changes, so the theme updates without JavaScript.
+st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
+if st.session_state.theme_mode == "Dark":
+    st.markdown(DARK_MODE_CSS, unsafe_allow_html=True)
 
 
 # ============================================================================
