@@ -173,6 +173,61 @@ print(
 )
 
 
+# Test 3 - High-confidence title rescue
+
+rescue_agent = RAGAgent(
+    fallback_threshold=0.60
+)
+
+rescue_request = RagRetrieveRequest(
+    query="How do I manage tomato late blight?",
+    top_k=3,
+    min_score=0.60,
+)
+
+rescue_response = rescue_agent.retrieve(rescue_request)
+
+print("\n--- Exact Title Rescue Test ---")
+
+print(
+    "Semantic top similarity:",
+    round(
+        rescue_agent.last_top_similarity,
+        4,
+    ),
+)
+
+print(
+    "Retrieval method:",
+    rescue_agent.last_retrieval_method,
+)
+
+print("\nReturned sources:")
+
+for index, source in enumerate(
+    rescue_response.sources,
+    start=1,
+):
+    print(
+        f"{index}. "
+        f"{source.title} "
+        f"({source.source_id})"
+    )
+
+
+assert rescue_agent.last_retrieval_method == "keyword_title_rescue", (
+    "Exact-title rescue did not trigger"
+)
+
+assert rescue_response.sources
+assert rescue_response.sources[0].source_id == "T-D-003", (
+    "Expected Tomato Late Blight T-D-003 as the rescued top result"
+)
+
+print("\n✓ Exact-title rescue triggered")
+print("✓ Tomato Late Blight ranked first")
+
+
 print("\n" + "=" * 70)
 print("T-23 KEYWORD FALLBACK TEST PASSED")
 print("=" * 70)

@@ -8,7 +8,11 @@ from typing import Any, Dict, List, Optional, Tuple
 import chromadb
 from chromadb.utils import embedding_functions
 
-from agents.rag.keyword_search import KeywordSearcher
+from agents.rag.keyword_search import (
+    KeywordSearcher,
+    normalize_text,
+)
+
 from orchestrator.schemas import (
     RagMetadata,
     RagRetrieveRequest,
@@ -255,6 +259,60 @@ class RAGAgent:
 
         return self.build_keyword_sources(keyword_results, query_embedding)
 
+    def keyword_title_rescue(
+        self,
+        query: str,
+        query_embedding,
+        top_k: int,
+        crop_filter: Optional[str],
+        category_filter: Optional[str],
+    ) -> Tuple[
+        List[Dict[str, Any]],
+        List[float],
+        Optional[str],
+    ]:
+        """
+        Rescue a high-confidence semantic misranking when the
+        farmer explicitly mentions a document/disease title.
+        """
+
+        keyword_results = self.keyword_searcher.search(
+            query=query,
+            top_k=top_k,
+            crop_filter=crop_filter,
+            category_filter=category_filter,
+        )
+
+        if not keyword_results:
+            return [], [], None
+
+        top_keyword_result = keyword_results[0]
+        query_normalized = normalize_text(query)
+        title_normalized = normalize_text(str(top_keyword_result.get("title", "")))
+        crop_normalized = normalize_text(str(top_keyword_result.get("crop", "")))
+        candidate_phrases = []
+
+        if title_normalized:
+            candidate_phrases.append(title_normalized)
+
+        if crop_normalized and title_normalized.startswith(crop_normalized + " "):
+            shorter_title = title_normalized[len(crop_normalized):].strip()
+            if len(shorter_title.split()) >= 2:
+                candidate_phrases.append(shorter_title)
+
+        matched_phrase = None
+
+        for phrase in candidate_phrases:
+            if len(phrase.split()) >= 2 and phrase in query_normalized:
+                matched_phrase = phrase
+                break
+
+        if not matched_phrase:
+            return [], [], None
+
+        sources, confidence = self.build_keyword_sources(keyword_results, query_embedding)
+        return sources, confidence, matched_phrase
+
     def retrieve(self, request: RagRetrieveRequest) -> RagRetrieveResponse:
         """Execute end-to-end RAG retrieval matching the API contract."""
         start_time = time.perf_counter()
@@ -294,6 +352,37 @@ class RAGAgent:
                 sources_raw = keyword_sources
                 confidence = keyword_confidence
                 self.last_retrieval_method = "keyword_fallback"
+
+        # --------------------------------------------------
+        # High-confidence exact-title rescue
+        #
+        # Only run this when semantic retrieval was confident
+        # enough NOT to trigger the normal keyword fallback.
+        # --------------------------------------------------
+        if not fallback_required and sources_raw:
+            rescue_sources, rescue_confidence, matched_phrase = self.keyword_title_rescue(
+                query=request.query,
+                query_embedding=query_embedding,
+                top_k=request.top_k,
+                crop_filter=request.crop_filter,
+                category_filter=request.category_filter,
+            )
+
+            if rescue_sources:
+                semantic_top_id = str(sources_raw[0].get("id", ""))
+                rescue_top_id = str(rescue_sources[0].get("id", ""))
+
+                if rescue_top_id and rescue_top_id != semantic_top_id:
+                    print(
+                        "[RAG] Exact-title rescue triggered | "
+                        f"phrase='{matched_phrase}' | "
+                        f"semantic_top={semantic_top_id} | "
+                        f"rescued_top={rescue_top_id}"
+                    )
+
+                    sources_raw = rescue_sources
+                    confidence = rescue_confidence
+                    self.last_retrieval_method = "keyword_title_rescue"
 
         # If strict crop filter gave 0 results, fall back to unfiltered search to ensure grounded context
         if not sources_raw and request.crop_filter:

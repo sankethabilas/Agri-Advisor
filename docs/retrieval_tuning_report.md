@@ -139,3 +139,63 @@ This allows metadata such as `Tomato Late Blight`, `tomato`, and `disease` to in
 This tuning is particularly useful for documents whose body text is highly semantically similar, such as Tomato Early Blight and Tomato Late Blight.
 
 The document title and crop/category metadata provide additional discriminative information during vector retrieval.
+
+## Final T-23 Retrieval Evaluation
+
+### T-11 Baseline
+
+- Test queries: 15
+- Correct top-ranked results: 14
+- Incorrect top-ranked results: 1
+- Top-1 retrieval accuracy: 93.33%
+
+The main failure was:
+
+`How do I manage tomato late blight?`
+
+Semantic retrieval incorrectly ranked `Tomato Early Blight (T-D-002)`
+above `Tomato Late Blight (T-D-003)`.
+
+### T-23 Improvements
+
+T-23 introduced:
+
+- metadata-enriched embeddings using title, crop, category, region and season
+- preservation of topic-level knowledge-base records as retrieval units
+- low-similarity keyword fallback
+- title and phrase-weighted keyword ranking
+- exact-title rescue for high-confidence semantic misranking
+- stale-record cleanup during re-indexing
+- retention of default `top_k = 3`
+
+No missing knowledge-base document was identified for the known failure.
+`Tomato Late Blight (T-D-003)` was already present, so the issue was
+classified as a retrieval-ranking problem rather than a knowledge-coverage
+problem.
+
+### T-23 Final Result
+
+- Test queries: 15
+- Correct top-ranked results: 15
+- Incorrect top-ranked results: 0
+- Top-1 retrieval accuracy: 100.00%
+
+### Improvement
+
+Retrieval accuracy improved from 93.33% to 100.00%.
+
+- Additional correct queries: 1
+- Accuracy improvement: 6.67 percentage points
+
+The previously failed tomato late-blight query now returns:
+
+- `Tomato Late Blight`
+- Source ID: `T-D-003`
+- Retrieval method: `keyword_title_rescue`
+
+A separate forced-threshold test also demonstrated that low-similarity
+semantic retrieval correctly triggers the keyword fallback.
+
+Therefore, both T-23 completion criteria were satisfied:
+retrieval quality improved over the T-11 baseline, and keyword fallback
+was demonstrably triggered for a forced low-similarity case.
