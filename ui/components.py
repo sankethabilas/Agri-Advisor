@@ -25,6 +25,11 @@ from ui.auth import clear_auth, get_auth_headers
 from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE
 from ui.advisory_renderer import render_eight_block_advisory  # T-12
 
+try:
+    from utils.translator import translate_advisory_text
+except ImportError:
+    translate_advisory_text = None
+
 
 # ============================================================================
 # § Utility helpers
@@ -257,10 +262,12 @@ def render_advisory_response(
     sources = response.get("sources", [])
     weather_alert = response.get("weather_alert", {})
     metadata = response.get("metadata", {})
-    language = metadata.get("language", "en")
+    language = lang
     session_id = metadata.get("session_id")
 
     if answer:
+        if language != "en" and translate_advisory_text is not None:
+            answer = translate_advisory_text(answer, language).text
         st.markdown("### 📋 Advisory Response")
 
         def _badge_replace(m: re.Match) -> str:  # type: ignore[type-arg]

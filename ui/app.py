@@ -198,6 +198,9 @@ def _render_header() -> None:
     header_col, user_col, lang_col = st.columns([4, 1.5, 1])
 
     _lang = st.session_state.get("selected_language", "en")
+    widget_label = st.session_state.get("lang_selector")
+    if widget_label in SUPPORTED_LANGUAGES:
+        _lang = SUPPORTED_LANGUAGES[widget_label]
 
     with header_col:
         tagline = get_string("app_tagline", _lang)
@@ -226,7 +229,7 @@ def _render_header() -> None:
 
         # T-17.1: language selector
         lang_options = list(SUPPORTED_LANGUAGES.keys())
-        current_code = st.session_state.get("selected_language", "en")
+        current_code = _lang
         current_label = next(
             (lbl for lbl, code in SUPPORTED_LANGUAGES.items() if code == current_code),
             lang_options[0],
