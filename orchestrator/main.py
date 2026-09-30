@@ -131,21 +131,39 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     request_id = getattr(request.state, "request_id",
                          f"req-{uuid.uuid4().hex[:8]}")
     details = []
-    for err in exc.errors():
+    errors = exc.errors()
+    shape_error_types = {
+        "bool_type", "bytes_type", "dict_type", "float_type", "int_type",
+        "json_invalid", "list_type", "mapping_type", "missing", "model_type",
+        "model_attributes_type", "string_type", "tuple_type",
+    }
+    is_bad_request = any(
+        err.get("type") in shape_error_types
+        or (
+            err.get("type") == "literal_error"
+            and not isinstance(err.get("input"), str)
+        )
+        for err in errors
+    )
+    response_status = (
+        status.HTTP_400_BAD_REQUEST if is_bad_request
+        else status.HTTP_422_UNPROCESSABLE_CONTENT
+    )
+    for err in errors:
         field_path = " -> ".join(str(loc) for loc in err.get("loc", []))
         details.append(ErrorDetail(field=field_path,
                        issue=err.get("msg", "Invalid parameter")))
 
     payload = ErrorPayload(
-        code="VALIDATION_ERROR",
+        code="VALIDATION_ERROR" if is_bad_request else "UNPROCESSABLE_ENTITY",
         message="Request failed validation against API contract.",
-        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        status_code=response_status,
         details=details,
         timestamp=datetime.now(timezone.utc).isoformat(),
         request_id=request_id,
     )
     return JSONResponse(
-        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        status_code=response_status,
         content=ErrorEnvelope(error=payload).model_dump(),
     )
 
