@@ -12,14 +12,14 @@ from pydantic import BaseModel, Field
 # ==============================================================================
 
 class Location(BaseModel):
-    district: str = Field(...,
+    district: str = Field(..., min_length=1, max_length=100,
                           description="e.g. Anuradhapura, Kurunegala, Polonnaruwa, Badulla")
     province: Optional[str] = Field(
-        None, description="e.g. North Central, North Western")
+        None, max_length=100, description="e.g. North Central, North Western")
     latitude: Optional[float] = Field(None, ge=5.0, le=10.0)
     longitude: Optional[float] = Field(None, ge=79.0, le=82.0)
     agro_ecological_zone: Optional[str] = Field(
-        None, description="e.g. DL1b, IL1a, WU2")
+        None, max_length=32, description="e.g. DL1b, IL1a, WU2")
 
 
 # ==============================================================================
@@ -29,15 +29,15 @@ class Location(BaseModel):
 class OrchestratorProcessRequest(BaseModel):
     query: str = Field(..., min_length=1, max_length=1000,
                        description="Natural language query from farmer")
-    user_id: str = Field(...,
+    user_id: str = Field(..., min_length=1, max_length=254,
                          description="Unique farmer or session identifier")
     location: Location
     session_id: Optional[str] = Field(
-        None, description="Optional session UUID for multi-turn state")
+        None, max_length=128, description="Optional session UUID for multi-turn state")
     language: Literal["en", "si", "ta"] = Field(
         "en", description="Target language for synthesized response")
     crop_context: Optional[str] = Field(
-        None, description="Optional active crop context e.g. Paddy, Tomato")
+        None, max_length=100, description="Optional active crop context e.g. Paddy, Tomato")
 
 
 class SourceItem(BaseModel):

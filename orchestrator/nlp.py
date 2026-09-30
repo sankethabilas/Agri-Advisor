@@ -22,8 +22,11 @@ def get_spacy_nlp():
         try:
             import spacy
             _spacy_nlp = spacy.load("en_core_web_sm")
-        except Exception as e:
-            logger.warning(f"Could not load spaCy en_core_web_sm ({e}). Falling back to regex-only tokenization.")
+        except Exception as error:
+            logger.warning(
+                "Could not load spaCy en_core_web_sm (%s). Falling back to regex-only tokenization.",
+                type(error).__name__,
+            )
             _spacy_nlp = False
     return _spacy_nlp if _spacy_nlp is not False else None
 

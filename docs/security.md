@@ -8,7 +8,7 @@ The orchestrator process endpoint requires a bearer token. The token subject mus
 
 ## Input and Output Controls
 
-Query text is limited to 1,000 characters. Control sequences and control/format characters are removed from query and prompt context fields. Known prompt-injection instructions are rejected with `400`; the security log records the event without copying the submitted instruction. Generated answer text is checked for unsafe prompt instructions and secret-like strings before delivery.
+Query text is limited to 1,000 characters; orchestrator identity, session, crop-context, and location fields are also bounded. Control sequences and control/format characters are removed from query and prompt context fields. Known prompt-injection instructions are rejected with `400`; the security log records the event without copying the submitted instruction. Generated answer text is checked for unsafe prompt instructions and secret-like strings before delivery. This is not a semantic off-topic classifier; see the T-33 audit report for the accepted residual limitation.
 
 The orchestrator endpoint uses a per-user sliding-window limit configured by `RATE_LIMIT_REQUESTS` and `RATE_LIMIT_WINDOW_SECONDS` (30 requests per 60 seconds by default). A limit response is `429 RATE_LIMIT_EXCEEDED` and includes `Retry-After`.
 

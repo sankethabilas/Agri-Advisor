@@ -54,7 +54,6 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
         except Exception as exc:
             duration_ms = round((time.perf_counter() - start_time) * 1000, 2)
             logger.error(
-                f"<-- [{request_id}] {request.method} {request.url.path} | ERROR: {exc} | latency={duration_ms}ms",
-                exc_info=True,
+                f"<-- [{request_id}] {request.method} {request.url.path} | ERROR: {type(exc).__name__} | latency={duration_ms}ms"
             )
             raise

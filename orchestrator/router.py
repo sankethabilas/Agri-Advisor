@@ -137,7 +137,6 @@ class AgentRouter:
                 logger,
                 logging.ERROR,
                 "agent_call_failed",
-                exc_info=True,
                 agent=agent_name,
                 failure_mode=failure_mode,
                 exception_type=type(exc).__name__,

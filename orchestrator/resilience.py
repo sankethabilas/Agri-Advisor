@@ -15,8 +15,6 @@ def log_structured(
     target: logging.Logger,
     level: int,
     event: str,
-    *,
-    exc_info: bool = False,
     **fields: object,
 ) -> None:
     """Write JSON event data and retain fields on the LogRecord for test tooling."""
@@ -25,7 +23,6 @@ def log_structured(
         level,
         json.dumps(record, sort_keys=True, default=str),
         extra=record,
-        exc_info=exc_info,
     )
 
 
