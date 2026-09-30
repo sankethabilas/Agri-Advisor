@@ -269,7 +269,8 @@ def render_register_page() -> None:
                         login_data = call_login(username.strip(), password)
                         store_token(
                             token=login_data["access_token"],
-                            user_id=login_data.get("user_id", username.strip()),
+                            user_id=login_data.get(
+                                "user_id", username.strip()),
                             district=district,
                         )
                         # Also save preferred language
@@ -336,7 +337,8 @@ def _validate_registration(
     if not password:
         errors.append("Password is required.")
     elif len(password) < _MIN_PASSWORD_LEN:
-        errors.append(f"Password must be at least {_MIN_PASSWORD_LEN} characters long.")
+        errors.append(
+            f"Password must be at least {_MIN_PASSWORD_LEN} characters long.")
 
     if password and password != password_confirm:
         errors.append("Passwords do not match. Please re-enter.")
