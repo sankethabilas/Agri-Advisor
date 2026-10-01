@@ -120,11 +120,40 @@ def _init_session() -> None:
 _init_session()
 
 
+def toggle_navigation() -> None:
+    """Toggle the display of the navigation menu in session state."""
+    st.session_state.show_nav_menu = not st.session_state.get("show_nav_menu", False)
+
+
+def _render_navigation() -> None:
+    """Render shared navigation and the user-controlled display theme."""
+    with st.sidebar:
+        st.markdown("### Navigation")
+        if is_authenticated():
+            st.markdown("**🌱 Ask for advice**")
+            st.caption("Your current advisory workspace")
+        else:
+            st.markdown("**🔐 Sign in or create an account**")
+            st.caption("Start here to ask about your crops")
+
+        st.markdown("---")
+        theme_mode = st.selectbox(
+            "Display mode",
+            options=("System", "Light", "Dark"),
+            index=("System", "Light", "Dark").index(
+                st.session_state.get("theme_mode", "System")
+            ),
+            key="theme_mode_selector",
+            help="Choose Light or Dark, or follow your device setting.",
+        )
+        st.session_state.theme_mode = theme_mode
+
+
 def _render_top_nav() -> None:
-    """Render the brand, account identity, language, and theme controls."""
+    """Render the brand, account identity, and language controls."""
     _lang = st.session_state.get("selected_language", "en")
-    nav_brand, nav_user, nav_language, nav_theme = st.columns(
-        [4.8, 1.4, 1.7, 1.5],
+    nav_brand, nav_user, nav_language = st.columns(
+        [5.8, 1.8, 2.4],
         vertical_alignment="center",
     )
 
@@ -167,33 +196,44 @@ def _render_top_nav() -> None:
         st.session_state.selected_language = selected_code
         st.session_state.language = selected_code
 
-    with nav_theme:
-        theme_mode = st.selectbox(
-            "Display mode",
-            options=("System", "Light", "Dark"),
-            index=("System", "Light", "Dark").index(
-                st.session_state.get("theme_mode", "System")
-            ),
-            key="theme_mode_selector",
-            label_visibility="collapsed",
-        )
-        st.session_state.theme_mode = theme_mode
-
 
 _render_top_nav()
 
-if st.button("☰ Navigation", key="navbar_navigation_toggle"):
-    st.session_state.show_nav_menu = not st.session_state.show_nav_menu
-    st.rerun()
+st.button("Navigation", key="navbar_navigation_toggle", on_click=toggle_navigation)
 
-if st.session_state.show_nav_menu:
+if st.session_state.get("show_nav_menu", False):
     st.markdown(
         """
-        <div class="navbar-menu-panel">
-            <strong>Navigation</strong>
-            <span>🌱 Ask for advice</span>
-            <span>🗂 Conversation history</span>
-        </div>
+        <style>
+        section[data-testid="stSidebar"] {
+            display: block !important;
+            transform: none !important;
+            visibility: visible !important;
+            width: 21rem !important;
+            min-width: 21rem !important;
+            margin-left: 0 !important;
+            left: 0 !important;
+            z-index: 99999 !important;
+            box-shadow: 2px 0 16px rgba(0,0,0,0.15) !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    _render_navigation()
+else:
+    st.markdown(
+        """
+        <style>
+        section[data-testid="stSidebar"] {
+            display: none !important;
+            transform: translateX(-100%) !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            min-width: 0 !important;
+            margin-left: -25rem !important;
+        }
+        </style>
         """,
         unsafe_allow_html=True,
     )
@@ -420,15 +460,6 @@ elif st.session_state.last_response is not None:
 
 with st.sidebar:
     _slang = st.session_state.get("selected_language", "en")
-
-    st.markdown("### Navigation")
-    if is_authenticated():
-        st.markdown("**🌱 Ask for advice**")
-        st.caption("Your current advisory workspace")
-    else:
-        st.markdown("**🔐 Sign in or create an account**")
-        st.caption("Start here to ask about your crops")
-    st.markdown("---")
 
     # ── Authenticated user panel ──────────────────────────────────────────
     auth_user = st.session_state.get("user_id", "")

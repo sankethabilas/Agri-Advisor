@@ -33,7 +33,7 @@ Fixture wire-up:
 from __future__ import annotations
 from utils.i18n import get_string
 from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE
-from ui.auth import clear_auth, get_auth_headers
+from ui.auth import clear_auth, get_auth_headers, is_authenticated
 from ui.api_client import _ApiError, submit_feedback
 
 import math
@@ -43,6 +43,30 @@ from pathlib import Path
 from typing import Any
 
 import streamlit as st
+
+
+def _render_navigation() -> None:
+    """Render shared navigation and the user-controlled display theme."""
+    with st.sidebar:
+        st.markdown("### Navigation")
+        if is_authenticated():
+            st.markdown("**🌱 Ask for advice**")
+            st.caption("Your current advisory workspace")
+        else:
+            st.markdown("**🔐 Sign in or create an account**")
+            st.caption("Start here to ask about your crops")
+
+        st.markdown("---")
+        theme_mode = st.selectbox(
+            "Display mode",
+            options=("System", "Light", "Dark"),
+            index=("System", "Light", "Dark").index(
+                st.session_state.get("theme_mode", "System")
+            ),
+            key="theme_mode_selector",
+            help="Choose Light or Dark, or follow your device setting.",
+        )
+        st.session_state.theme_mode = theme_mode
 
 # Allow utils.* imports when this module is loaded from any entry point
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -878,7 +902,14 @@ def render_eight_block_advisory(
 
     # ── Report heading (T-17.6: st.markdown with UTF-8 str) ──────────────────
     st.markdown("---")
-    st.markdown(f"## {_t('report_heading', lang)}")
+    col_report_heading, col_nav_btn = st.columns([5, 1])
+    with col_report_heading:
+        st.markdown(f"## {_t('report_heading', lang)}")
+    with col_nav_btn:
+        def _toggle_advisory_navigation() -> None:
+            st.session_state.show_nav_menu = not st.session_state.get("show_nav_menu", False)
+
+        st.button("Navigation", key="advisory_navigation_toggle", on_click=_toggle_advisory_navigation)
 
     # ── Metadata ribbon ──────────────────────────────────────────────────────
     if metadata:
