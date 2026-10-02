@@ -4,9 +4,14 @@ Performs semantic search over the verified Department of Agriculture knowledge c
 """
 
 from datetime import datetime, timezone
+import os
 from pathlib import Path
 import time
 from typing import Any, Dict, List, Optional, Tuple
+
+os.environ.setdefault("TRANSFORMERS_NO_TF", "1")
+os.environ.setdefault("USE_TF", "0")
+os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
 
 import chromadb
 from chromadb.utils import embedding_functions

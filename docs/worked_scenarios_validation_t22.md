@@ -2,7 +2,7 @@
 
 | **Document Version** | `1.0.0` |
 | :--- | :--- |
-| **Execution Date** | 2026-09-29 19:42:04Z |
+| **Execution Date** | 2026-09-30 09:57:39Z |
 | **Lead Engineer** | **Sanketh** (Team Lead & Orchestrator Engineer) |
 | **Status** | **VERIFIED LIVE ON DEVELOPMENT BRANCH** |
 
@@ -14,8 +14,8 @@
 - **Intent**: `disease_diagnosis`
 - **Diagnosed Disease**: **Bacterial Leaf Blight (Xanthomonas oryzae pv. oryzae)** (High Severity, High Confidence)
 - **Consulted Agents**: `disease_agent, weather_agent, rag_agent`
-- **Execution Time**: **3052.88 ms**
-- **Citations**: 3 verified Department of Agriculture sources
+- **Execution Time**: **2568.66 ms**
+- **Citations**: 1 verified Department of Agriculture sources
 - **Helpline**: `Agriculture Extension Office: 1920`
 
 ---
@@ -25,8 +25,8 @@
 - **Location**: Anuradhapura (`DL1b`)
 - **Intent**: `crop_advice`
 - **Consulted Agents**: `crop_agent, rag_agent`
-- **Execution Time**: **42.72 ms**
-- **Citations**: 3 verified Department of Agriculture sources
+- **Execution Time**: **1029.51 ms**
+- **Citations**: 1 verified Department of Agriculture sources
 - **Helpline**: `Agriculture Extension Office: 1920`
 
 ---
