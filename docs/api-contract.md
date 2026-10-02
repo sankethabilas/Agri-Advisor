@@ -24,74 +24,85 @@ Freezing this contract allows all four team members to build, stub, unit test, a
 
 ## 2. Multi-Agent System Architecture & Data Flow
 
-Agri-Advisor uses a hub-and-spoke multi-agent microservice architecture coordinated by the central Orchestrator.
+The following diagram replaces the Day 1 planned topology with the final implemented interaction flow. The detailed as-built endpoint reference, request/response examples, error behavior, security controls, and deviations are in [api-documentation.md](api-documentation.md). This application currently runs as one FastAPI process; the specialist agents are in-process components rather than separately deployed HTTP services.
 
 ```mermaid
 sequenceDiagram
     autonumber
     actor Farmer as Farmer / Extension Officer
     participant UI as Streamlit UI (/ui)
-    participant Orch as Central Orchestrator (/orchestrator)
-    participant RAG as RAG / IR Agent (/agents/rag)
-    participant Disease as Disease Agent (/agents/disease)
-    participant Weather as Weather Agent (/agents/weather)
-    participant Crop as Crop Agent (/agents/crop)
-    participant VectorDB as ChromaDB (DOA/IRRI Corpus)
-    participant WeatherAPI as OpenWeatherMap API
+  participant API as FastAPI application (port 8000)
+  participant Auth as SQLite account store
+  participant Session as In-memory session manager
+  participant Router as NLP classifier and agent router
+  participant Disease as Disease agent (in-process)
+  participant Weather as Weather/risk agent (in-process)
+  participant Crop as Crop advisory agent (in-process)
+  participant RAG as RAG agent (in-process)
+  participant VectorDB as ChromaDB or RAG stub fallback
+  participant WeatherAPI as Weather provider
+  participant LLM as Optional LLM provider / rule-based synthesis
 
-    Farmer->>UI: Submits query (Voice / Text in Sinhala, Tamil, English)
-    UI->>Orch: POST /api/orchestrator/process {query, user_id, location}
-    
-    rect rgb(240, 248, 255)
-        Note over Orch: NLP Intent Classification & NER Entity Extraction
-    end
+  Farmer->>UI: Register or log in
+  UI->>API: POST /api/auth/register or /api/auth/login
+  API->>Auth: Store/check salted password hash
+  API-->>UI: 201 account or 200 HS256 bearer token
+  Farmer->>UI: Submit advisory query
+  UI->>API: POST /api/orchestrator/process + Bearer JWT
+  API->>API: Validate token subject, rate limit, sanitize and inspect input
+  API->>Session: Get/create session context
+  API->>Router: Classify intent and dispatch
+  alt Disease intent
+    Router->>Disease: Diagnose symptoms
+    Router->>Weather: Assess disease/weather risk
+  else Weather intent
+    Router->>Weather: Get weather and risk advice
+  else Crop intent
+    Router->>Crop: Build cultivation advice
+  else Mixed intent
+    Router->>Disease: Call when disease signal meets selection rule
+    Router->>Weather: Call when weather signal meets selection rule
+    Router->>Crop: Call when crop signal meets selection rule
+  else General intent
+    Router->>Router: No disease/weather/crop call
+  end
+  Note over Router,RAG: RAG retrieval is attempted for every orchestrated query.
+  Router->>RAG: Retrieve query context (top_k 3)
+  RAG->>VectorDB: Semantic search
+  alt Vector store unavailable
+    RAG->>RAG: Return stub fallback response
+  else Vector store available
+    VectorDB-->>RAG: Ranked chunks and metadata
+  end
+  RAG-->>Router: Context, sources, confidence
+  Router-->>API: Selected agent results and failures
+  API->>LLM: Synthesize with retrieved context when available
+  LLM-->>API: Answer (rule-based fallback when unavailable)
+  API->>API: Responsible-AI checks and output filtering
+  API->>Session: Record conversation turn
+  API-->>UI: 200 response with answer, sources, weather alert, metadata
+  UI-->>Farmer: Render advisory
 
-    alt Intent includes Disease Symptoms
-        Orch->>Disease: POST /api/disease/diagnose {crop, symptoms, location}
-        Disease-->>Orch: {disease, confidence, severity, treatment, prevention, symptoms_confirmed}
-    end
-
-    alt Intent requires Cultivation Plan / Agronomy
-        Orch->>Crop: POST /api/crop/advice {crop, location, season, soil_type}
-        Crop-->>Orch: {8 documented advisory sections}
-    end
-
-    critical Weather & Risk Evaluation
-        Orch->>Weather: POST /api/weather/advice {location, crop}
-        Weather->>WeatherAPI: Fetch live microclimate & 7-day forecast
-        WeatherAPI-->>Weather: Weather JSON
-        Weather-->>Orch: {current, forecast, disease_risk, pest_risk, advisory, alerts}
-    end
-
-    critical Grounded Knowledge Retrieval
-        Orch->>RAG: POST /api/rag/retrieve {query, top_k: 3}
-        RAG->>VectorDB: Semantic search (all-MiniLM-L6-v2)
-        VectorDB-->>RAG: Top-k matched chunks & citations
-        RAG-->>Orch: {context, sources, confidence}
-    end
-
-    rect rgb(254, 249, 231)
-        Note over Orch: LLM Synthesis with Anti-Hallucination Grounding & Multi-Lingual Formatting
-    end
-
-    Orch-->>UI: POST Response {answer, sources, weather_alert, metadata}
-    UI-->>Farmer: Render structured advisory cards with voice/audio playback
+  opt Weather provider request
+    Weather->>WeatherAPI: Fetch weather observations and forecast
+    WeatherAPI-->>Weather: Weather data or service error
+  end
 ```
 
 ---
 
 ## 3. Base URLs & Port Assignments
 
-For local development and integration testing, services bind to the following standardized ports:
+The shipped local deployment uses one API process. Agent directories identify code ownership/components, not separately required listening services.
 
-| Service | Directory | Local Base URL | Responsibility | Owner |
-| :--- | :--- | :--- | :--- | :--- |
-| **Streamlit UI** | `/ui` | `http://localhost:8501` | Front-end web & mobile app | Ishira |
-| **Central Orchestrator** | `/orchestrator` | `http://localhost:8000` | Hub, Routing & LLM synthesis | Sanketh |
-| **Disease Diagnosis Agent** | `/agents/disease` | `http://localhost:8001` | Diagnostic & treatment rules | Pathum |
-| **Weather & Risk Agent** | `/agents/weather` | `http://localhost:8002` | OpenWeather & Risk forecasting | Pathum |
-| **RAG / IR Agent** | `/agents/rag` | `http://localhost:8003` | ChromaDB vector search | Danindu |
-| **Crop Advisory Agent** | `/agents/crop` | `http://localhost:8004` | 8-stage cultivation planning | Danindu |
+| Component | Local address / runtime | Responsibility |
+| :--- | :--- | :--- |
+| **Streamlit UI** | `http://localhost:8501` | User interface; calls the API and stores the bearer token in session state. |
+| **FastAPI application** | `http://127.0.0.1:8000` | Authentication, orchestration, specialist routes, feedback, sessions, and health. |
+| **Disease, weather, crop, and RAG agents** | In-process Python components | Invoked by route handlers and the orchestrator router; no separate local ports required. |
+| **SQLite** | `data/users.sqlite3` by default | Persistent account records and salted password hashes. |
+| **Session/feedback stores** | In-process memory | Conversational state and feedback; not shared across workers and lost on restart. |
+| **Weather, LLM, and vector store** | Optional external/local dependencies | Weather provider, optional synthesis provider, and ChromaDB; fallback/degraded behavior is described in [api-documentation.md](api-documentation.md). |
 
 ---
 
