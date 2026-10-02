@@ -212,7 +212,6 @@ async def generic_exception_handler(request: Request, exc: Exception) -> JSONRes
         logger,
         logging.ERROR,
         "unhandled_request_failure",
-        exc_info=True,
         request_id=request_id,
         exception_type=type(exc).__name__,
     )
@@ -294,7 +293,6 @@ async def process_farmer_query(
             logger,
             logging.ERROR,
             "orchestration_pipeline_failure",
-            exc_info=True,
             user_id=current_user,
             exception_type=type(error).__name__,
         )
@@ -360,7 +358,6 @@ async def retrieve_rag_knowledge(request: RagRetrieveRequest) -> RagRetrieveResp
                 "event": "rag_endpoint_degraded",
                 "exception_type": type(error).__name__,
             },
-            exc_info=True,
         )
         return stub_service.get_rag_retrieve(request)
 
@@ -376,7 +373,10 @@ async def get_crop_cultivation_advice(request: CropAdviceRequest) -> CropAdviceR
     try:
         return crop_agent.get_crop_advice(request)
     except Exception as error:
-        logger.warning(f"Live CropAgent execution failed ({error}). Falling back to stub.")
+        logger.warning(
+            "Live CropAgent execution failed (%s). Falling back to stub.",
+            type(error).__name__,
+        )
         return stub_service.get_crop_advice(request)
 
 

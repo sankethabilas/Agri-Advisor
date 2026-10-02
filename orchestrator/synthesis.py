@@ -471,7 +471,6 @@ class ResponseSynthesizer:
                 logger,
                 logging.ERROR,
                 "llm_synthesis_failed",
-                exc_info=True,
                 failure_mode="unavailable",
                 exception_type=type(exc).__name__,
             )
@@ -496,7 +495,6 @@ class ResponseSynthesizer:
                 logger,
                 logging.ERROR,
                 "rule_based_synthesis_failed",
-                exc_info=True,
                 exception_type=type(exc).__name__,
             )
             answer = self.keyword_fallback.synthesize(request)

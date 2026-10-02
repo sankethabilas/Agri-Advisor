@@ -423,5 +423,131 @@ hr {
     color: #14532D;
     white-space: nowrap;
 }
+
+/* ── Theme-aware Streamlit surfaces ─────────────────────────────────────── */
+:root {
+    color-scheme: light dark;
+    --ui-page: #F8FAFC;
+    --ui-surface: #FFFFFF;
+    --ui-surface-muted: #F0FDF4;
+    --ui-text: #1F2937;
+    --ui-text-muted: #6B7280;
+    --ui-border: #D1D5DB;
+    --ui-input-border: #A7F3D0;
+}
+
+.stApp {
+    background: var(--ui-page) !important;
+    color: var(--ui-text) !important;
+}
+.stApp p, .stApp li, .stApp label,
+.stApp [data-testid="stMarkdownContainer"],
+.stApp .stCaption {
+    color: var(--ui-text) !important;
+}
+.stTextInput input, .stTextArea textarea,
+.stSelectbox div[data-baseweb="select"] > div {
+    background: var(--ui-surface) !important;
+    color: var(--ui-text) !important;
+    border-color: var(--ui-input-border) !important;
+}
+.advisory-container, .treatment-step, .source-card,
+[data-testid="stMetric"] {
+    background: var(--ui-surface) !important;
+    color: var(--ui-text) !important;
+    border-color: var(--ui-border) !important;
+}
+[data-testid="stSidebar"] {
+    background: var(--ui-surface-muted) !important;
+    border-right: 1px solid var(--ui-border);
+}
+.streamlit-expanderHeader, .stSpinner p {
+    color: var(--ui-text) !important;
+}
+
+/* Follow the operating-system theme when System is selected. */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ui-page: #111827;
+        --ui-surface: #1F2937;
+        --ui-surface-muted: #17251D;
+        --ui-text: #F3F4F6;
+        --ui-text-muted: #D1D5DB;
+        --ui-border: #4B5563;
+        --ui-input-border: #15803D;
+    }
+    .stAppHeader, header[data-testid="stHeader"] {
+        background: #111827 !important;
+    }
+    .stTextInput input, .stTextArea textarea,
+    .stSelectbox div[data-baseweb="select"] > div,
+    [data-baseweb="popover"] {
+        background: #1F2937 !important;
+        color: #F9FAFB !important;
+    }
+    .auth-card {
+        background: rgba(31, 41, 55, 0.98) !important;
+        border-color: #4B5563 !important;
+    }
+    .auth-title, .advisory-container h3, .advisory-container h4,
+    .advisory-block-header h3 {
+        color: #BBF7D0 !important;
+    }
+    .auth-subtitle, .auth-switch-text, .char-counter {
+        color: #D1D5DB !important;
+    }
+    .diagnosis-card, .prevention-list {
+        background: #163A27 !important;
+        border-color: #166534 !important;
+    }
+    hr { border-top-color: #4B5563 !important; }
+}
+
+/* Explicit Dark mode selected in the sidebar. */
+html:has(.theme-dark),
+body:has(.theme-dark) { color-scheme: dark; }
+</style>
+"""
+
+# Applied as a separate style block so the sidebar selector can force dark mode
+# even when the operating system is configured for light mode.
+DARK_MODE_CSS = """
+<style>
+:root {
+    --ui-page: #111827;
+    --ui-surface: #1F2937;
+    --ui-surface-muted: #17251D;
+    --ui-text: #F3F4F6;
+    --ui-text-muted: #D1D5DB;
+    --ui-border: #4B5563;
+    --ui-input-border: #15803D;
+}
+.stApp, .stAppHeader, header[data-testid="stHeader"] {
+    background: #111827 !important;
+    color: #F3F4F6 !important;
+}
+[data-testid="stSidebar"] { background: #17251D !important; }
+.stTextInput input, .stTextArea textarea,
+.stSelectbox div[data-baseweb="select"] > div,
+[data-baseweb="popover"] {
+    background: #1F2937 !important;
+    color: #F9FAFB !important;
+    border-color: #15803D !important;
+}
+.auth-card, .advisory-container, .treatment-step, .source-card,
+[data-testid="stMetric"] {
+    background: #1F2937 !important;
+    color: #F3F4F6 !important;
+    border-color: #4B5563 !important;
+}
+.auth-title, .advisory-container h3, .advisory-container h4,
+.advisory-block-header h3 { color: #BBF7D0 !important; }
+.auth-subtitle, .auth-switch-text, .char-counter,
+.streamlit-expanderHeader, .stSpinner p { color: #D1D5DB !important; }
+.diagnosis-card, .prevention-list {
+    background: #163A27 !important;
+    border-color: #166534 !important;
+}
+hr { border-top-color: #4B5563 !important; }
 </style>
 """

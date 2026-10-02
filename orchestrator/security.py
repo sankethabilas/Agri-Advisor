@@ -39,7 +39,11 @@ _INJECTION_PATTERNS = tuple(re.compile(pattern, re.IGNORECASE) for pattern in (
     r"\bdisregard\s+(?:all\s+)?(?:previous|prior|the)\s+instructions\b",
     r"\b(?:reveal|print|show|repeat|output)\s+(?:the\s+)?(?:system|developer)\s+prompt\b",
     r"\b(?:act|respond|behave)\s+as\s+(?:an?\s+)?(?:system|developer|unrestricted)\b",
-    r"\b(?:bypass|override|disable)\s+(?:all\s+)?(?:safety|security|guardrails|restrictions)\b",
+    r"\b(?:bypass|override|disable)\s+(?:all\s+)?(?:safety|security)(?:\s+(?:guardrails|controls|restrictions))?\b",
+    r"\bforget\s+(?:all\s+)?(?:your\s+)?(?:rules|instructions|guidelines)\b",
+    r"\b(?:system|developer)\s*:\s*(?:new\s+)?(?:policy|instructions?)\b",
+    r"\b(?:as\s+)?dan\b",
+    r"\bdo\s+not\s+follow\s+(?:the\s+)?(?:previous|prior|earlier)\s+instructions\b",
     r"\bdo\s+anything\s+now\b",
 ))
 _ANSI_ESCAPE = re.compile(r"\x1B(?:\[[0-?]*[ -/]*[@-~]|\][^\x07]*(?:\x07|\x1B\\))")
