@@ -26,7 +26,7 @@
   {
     "id": "R-D-003",
     "title": "Brown Spot",
-    "text": "Brown spot is a fungal disease of rice caused by Cochliobolus miyabeanus (Bipolaris oryzae). It is a seed-borne disease that can affect coleoptiles, leaves, leaf sheaths, immature florets, panicle branches, glumes, and grains. The disease may be present from plant emergence but becomes more prevalent as plants approach maturity and leaves begin to senesce. Symptoms include brown circular to oval spots on coleoptiles, which can cause seedling blight and result in sparse stands and weak plants. Leaf spots range from small dark brown or reddish-brown spots to larger oval or circular spots with dark brown margins and light reddish-brown or grey centers. Similar spots may occur on leaf sheaths and hulls. Infection of glumes can cause black discoloration, while infection of immature florets can hinder grain development and result in lightweight or chalky kernels. Economic losses are more significant when the fungus attacks panicles and grains. Disease development is favoured by temperatures of 16–36°C, high humidity of 86–100%, soils with low nutrient levels or problem soils such as saline or iron-toxic soils, and drought. Management includes applying urea at recommended dosages or according to the leaf colour chart and practising weed management. For the following season, recommended practices include improving soil quality with organic fertilizer, using certified disease-free seed paddy, adding burnt paddy husk at 250 kg per acre during land preparation, avoiding infected straw, treating seed paddy with hot water at 53–54°C for 10–12 minutes, treating seeds with a seed-protectant fungicide, crop rotation, and proper land levelling.",
+    "text": "Brown spot is a fungal disease of rice caused by Cochliobolus miyabeanus (Bipolaris oryzae). It is a seed-borne disease that can affect coleoptiles, leaves, leaf sheaths, immature florets, panicle branches, glumes, and grains. The disease may be present from plant emergence but becomes more prevalent as plants approach maturity and leaves begin to senesce. Symptoms include brown circular to oval spots on coleoptiles, which can cause seedling blight and result in sparse stands and weak plants. Leaf spots range from small dark brown or reddish-brown spots to larger oval or circular spots with dark brown margins and light reddish-brown or grey centers. Similar spots may occur on leaf sheaths and hulls. Infection of glumes can cause black discoloration, while infection of immature florets can hinder grain development and result in lightweight or chalky kernels. Economic losses are more significant when the fungus attacks panicles and grains. Disease development is favoured by temperatures of 16–36°C, high humidity of 86–100%, soils with low nutrient levels or problem soils such as saline or iron-toxic soils, and drought. Management includes applying urea at recommended dosages or according to the leaf colour chart and practising weed management. For the following season, recommended practices include improving soil quality with organic fertilizer, using certified disease-free seed paddy, adding burnt paddy husk at 250 kg per acre during land preparation, avoiding infected straw, treating seed paddy with hot water at 53–54°C for 10–12 minutes, treating seeds with a seed-protectant fungicide, crop rotation, and proper land levelling.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "rice",
     "category": "disease",
     "language": "en",
@@ -98,7 +98,7 @@
   {
     "id": "R-D-009",
     "title": "Bakanae",
-    "text": "Bakanae is a rice disease caused by Fusarium fujikuroi. The pathogen is primarily seed-borne, and infected or infested seed is an important source of inoculum. A characteristic symptom is abnormal elongation of seedlings after germination. Infected seedlings become unusually tall, thin, and yellowish-green and may become weak or die before transplanting. In mature plants, infected tillers may have pale-green flag leaves, produce adventitious roots at lower stem nodes, and develop leaves that dry from the lower part of the plant. Severely affected plants may die before maturity, while plants that reach maturity may produce few tillers and sterile or infected grains. Infected grains may show reddish discoloration. The disease can also persist through soil-borne inoculum and infected crop residues, while weeds around fields may contribute to pathogen survival. Disease severity is associated with the amount of infected seed-borne inoculum. Management focuses mainly on seed health, including the use of high-quality seed from fields free of Bakanae and appropriate seed treatment. Proper disposal of infected rice residues and weeds can also help reduce disease incidence. Prevention through healthy seed and suitable seed treatment is particularly important because resistant cultivars are not a well-established primary control strategy for Bakanae.",
+    "text": "Bakanae is a rice disease caused by Fusarium fujikuroi. The pathogen is primarily seed-borne, and infected or infested seed is an important source of inoculum. A characteristic symptom is abnormal elongation of seedlings after germination. Infected seedlings become unusually tall, thin, and yellowish-green and may become weak or die before transplanting. In mature plants, infected tillers may have pale-green flag leaves, produce adventitious roots at lower stem nodes, and develop leaves that dry from the lower part of the plant. Severely affected plants may die before maturity, while plants that reach maturity may produce few tillers and sterile or infected grains. Infected grains may show reddish discoloration. The disease can also persist through soil-borne inoculum and infected crop residues, while weeds around fields may contribute to pathogen survival. Disease severity is associated with the amount of infected seed-borne inoculum. Management focuses mainly on seed health, including the use of high-quality seed from fields free of Bakanae and appropriate seed treatment. Proper disposal of infected rice residues and weeds can also help reduce disease incidence. Prevention through healthy seed and suitable seed treatment is particularly important because resistant cultivars are not a well-established primary control strategy for Bakanae.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "rice",
     "category": "disease",
     "language": "en",
@@ -158,7 +158,7 @@
   {
     "id": "T-D-001",
     "title": "Tomato Damping-off",
-    "text": "Damping-off is a disease of tomato seedlings that causes seedling death due to root infection. The causal pathogens listed by the Sri Lanka Department of Agriculture are Pythium spp., Phytophthora spp., Fusarium spp., Rhizoctonia spp., Sclerotium spp., and Colletotrichum spp. Disease management includes preparing nursery beds on suitable land, heat sterilization, and appropriate seed and soil treatments. Recommended seed treatments include Thiram 80 WP at 5 g/kg of seed or Homai at 4 g/kg of seed. Recommended soil treatments include Thiram 80 WP at 7 g/5 L/m² or Homai at 5 g/5 L/m².",
+    "text": "Damping-off is a disease of tomato seedlings that causes seedling death due to root infection. The causal pathogens listed by the Sri Lanka Department of Agriculture are Pythium spp., Phytophthora spp., Fusarium spp., Rhizoctonia spp., Sclerotium spp., and Colletotrichum spp. Disease management includes preparing nursery beds on suitable land, heat sterilization, and appropriate seed and soil treatments. Recommended seed treatments include Thiram 80 WP at 5 g/kg of seed or Homai at 4 g/kg of seed. Recommended soil treatments include Thiram 80 WP at 7 g/5 L/m² or Homai at 5 g/5 L/m².\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "tomato",
     "category": "disease",
     "language": "en",
@@ -170,7 +170,7 @@
   {
     "id": "T-D-002",
     "title": "Tomato Early Blight",
-    "text": "Early blight of tomato is a fungal disease caused by Alternaria solani. Symptoms include dark patches with concentric rings on leaves, fruits, and stems. Disease management involves using recommended fungicides at the initial stage of disease development according to Department of Agriculture recommendations. The source lists Mancozeb 80% WP at 20 g/10 L of water, Metalaxyl 8% + Mancozeb 64% WP at 12.5 g/10 L of water, and Metiram 55% + Pyraclostrobin 5% WG at 8 ml/10 L of water.",
+    "text": "Early blight of tomato is a fungal disease caused by Alternaria solani. Symptoms include dark patches with concentric rings on leaves, fruits, and stems. Disease management involves using recommended fungicides at the initial stage of disease development according to Department of Agriculture recommendations. The source lists Mancozeb 80% WP at 20 g/10 L of water, Metalaxyl 8% + Mancozeb 64% WP at 12.5 g/10 L of water, and Metiram 55% + Pyraclostrobin 5% WG at 8 ml/10 L of water.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "tomato",
     "category": "disease",
     "language": "en",
@@ -182,7 +182,7 @@
   {
     "id": "T-D-003",
     "title": "Tomato Late Blight",
-    "text": "Late blight of tomato is a disease caused by Phytophthora infestans. Symptoms first appear on lower, older leaves as water-soaked grey-green spots. The spots later darken and white fungal growth develops on the underside of affected leaves. Disease management involves using recommended fungicides at the initial stage of disease development according to Department of Agriculture recommendations. The source lists Mancozeb 80% WP at 20 g/10 L of water, Metalaxyl 8% + Mancozeb 64% WP at 12.5 g/10 L of water, and Metiram 55% + Pyraclostrobin 5% WG at 8 ml/10 L of water.",
+    "text": "Late blight of tomato is a disease caused by Phytophthora infestans. Symptoms first appear on lower, older leaves as water-soaked grey-green spots. The spots later darken and white fungal growth develops on the underside of affected leaves. Disease management involves using recommended fungicides at the initial stage of disease development according to Department of Agriculture recommendations. The source lists Mancozeb 80% WP at 20 g/10 L of water, Metalaxyl 8% + Mancozeb 64% WP at 12.5 g/10 L of water, and Metiram 55% + Pyraclostrobin 5% WG at 8 ml/10 L of water.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "tomato",
     "category": "disease",
     "language": "en",
@@ -206,7 +206,7 @@
   {
     "id": "T-D-005",
     "title": "Tomato Powdery Mildew",
-    "text": "Powdery mildew of tomato is a fungal disease caused by Oidium lycopersicum. Symptoms include light-green to bright-yellow lesions on the upper surface of leaves. White powdery patches develop on the lower leaf surface when the fungus produces spores. Severe infection can result in leaf defoliation. Disease management involves applying recommended fungicides at the initial stage of disease development. The source lists sulfur 80% WG at 50 g/10 L of water, chlorothalonil 500 g/L SC at 30 ml/10 L of water, and carbendazim 50% WP at 7 g/10 L of water.",
+    "text": "Powdery mildew of tomato is a fungal disease caused by Oidium lycopersicum. Symptoms include light-green to bright-yellow lesions on the upper surface of leaves. White powdery patches develop on the lower leaf surface when the fungus produces spores. Severe infection can result in leaf defoliation. Disease management involves applying recommended fungicides at the initial stage of disease development. The source lists sulfur 80% WG at 50 g/10 L of water, chlorothalonil 500 g/L SC at 30 ml/10 L of water, and carbendazim 50% WP at 7 g/10 L of water.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "tomato",
     "category": "disease",
     "language": "en",
@@ -218,7 +218,7 @@
   {
     "id": "T-D-006",
     "title": "Tomato Anthracnose",
-    "text": "Anthracnose of tomato is a fungal disease caused by Colletotrichum coccodes. Symptoms include die-back from apical buds, flower dropping, and black, sunken lesions on leaves, stems, and fruits. Fruit infection can result in fruit rot. Management includes treating seeds with recommended fungicides before sowing and applying recommended fungicides at the initial stage of disease development according to Department of Agriculture recommendations.",
+    "text": "Anthracnose of tomato is a fungal disease caused by Colletotrichum coccodes. Symptoms include die-back from apical buds, flower dropping, and black, sunken lesions on leaves, stems, and fruits. Fruit infection can result in fruit rot. Management includes treating seeds with recommended fungicides before sowing and applying recommended fungicides at the initial stage of disease development according to Department of Agriculture recommendations.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "tomato",
     "category": "disease",
     "language": "en",
@@ -230,7 +230,7 @@
   {
     "id": "T-D-007",
     "title": "Tomato Septoria Leaf Spot",
-    "text": "Septoria leaf spot of tomato is a fungal disease caused by Septoria lycopersici. Symptoms begin as water-soaked areas on affected leaves that develop into circular lesions with brown to gray centers. Disease management involves using recommended fungicides according to Department of Agriculture recommendations. The source lists Daconil at 15–30 ml/10 L of water, Mancozeb at 20 ml/10 L, Topsin at 6 g/10 L, and Carbendazim at 7 g/10 L.",
+    "text": "Septoria leaf spot of tomato is a fungal disease caused by Septoria lycopersici. Symptoms begin as water-soaked areas on affected leaves that develop into circular lesions with brown to gray centers. Disease management involves using recommended fungicides according to Department of Agriculture recommendations. The source lists Daconil at 15–30 ml/10 L of water, Mancozeb at 20 ml/10 L, Topsin at 6 g/10 L, and Carbendazim at 7 g/10 L.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "tomato",
     "category": "disease",
     "language": "en",
@@ -338,7 +338,7 @@
   {
     "id": "CH-P-001-EN",
     "title": "Chilli Leaf Curl Complex - Thrips",
-    "text": "Thrips (Scirtothrips dorsalis Hood) are small light-brown insects about 1 mm long. Adults and nymphs suck sap from young leaves and shoots, causing the leaf margins to curl upward. Brown coloration may appear along the veins of mature leaves and severe damage can cause leaf drop. Feeding on pods causes white scratches, deformation and discoloration. Management includes using high-quality seed and healthy plants, timely cultivation, avoiding excessive urea, using recommended fertilizer, establishing wind barriers such as maize or finger millet, mulching, water spraying, removing alternate hosts and weeds, and using yellow sticky traps. Chemical control information in the source includes imidacloprid 20 SL at 10 ml/10 L, fipronil 5 SC at 10 ml/10 L, lufenuron 5 EC at 20 ml/10 L, carbosulfan 20 SC at 30 ml/10 L, profenofos 50 EC at 20 ml/10 L, phosalone 35 EC at 30 ml/10 L, abamectin 1.8 EC at 6 ml/10 L and thiamethoxam 25 WG at 10 g/16 L.",
+    "text": "Thrips (Scirtothrips dorsalis Hood) are small light-brown insects about 1 mm long. Adults and nymphs suck sap from young leaves and shoots, causing the leaf margins to curl upward. Brown coloration may appear along the veins of mature leaves and severe damage can cause leaf drop. Feeding on pods causes white scratches, deformation and discoloration. Management includes using high-quality seed and healthy plants, timely cultivation, avoiding excessive urea, using recommended fertilizer, establishing wind barriers such as maize or finger millet, mulching, water spraying, removing alternate hosts and weeds, and using yellow sticky traps. Chemical control information in the source includes imidacloprid 20 SL at 10 ml/10 L, fipronil 5 SC at 10 ml/10 L, lufenuron 5 EC at 20 ml/10 L, carbosulfan 20 SC at 30 ml/10 L, profenofos 50 EC at 20 ml/10 L, phosalone 35 EC at 30 ml/10 L, abamectin 1.8 EC at 6 ml/10 L and thiamethoxam 25 WG at 10 g/16 L.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "pest",
     "language": "en",
@@ -362,7 +362,7 @@
   {
     "id": "CH-P-002-EN",
     "title": "Chilli Leaf Curl Complex - Mites",
-    "text": "Mites (Hemitarsonemus latus) are small oval light-brown organisms that are difficult to see with the naked eye. They suck sap from the underside of chilli leaves and cause the leaves to curl downward. The source lists sulfur 80% powder at 80 g/10 L and abamectin 1.8 EC at 6 ml/10 L as chemical control information.",
+    "text": "Mites (Hemitarsonemus latus) are small oval light-brown organisms that are difficult to see with the naked eye. They suck sap from the underside of chilli leaves and cause the leaves to curl downward. The source lists sulfur 80% powder at 80 g/10 L and abamectin 1.8 EC at 6 ml/10 L as chemical control information.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "pest",
     "language": "en",
@@ -386,7 +386,7 @@
   {
     "id": "CH-P-003-EN",
     "title": "Chilli Leaf Curl Complex - Aphids",
-    "text": "Aphids (Aphis gossypii Glover and Myzus persicae) are soft-bodied insects that suck sap from chilli leaves and stems. Damage causes leaves to become cup-shaped and yellow, reduces plant growth and can deform pods. Honeydew secreted by aphids can support secondary growth of black sooty fungi. The source provides chemical control information for aphids together with thrips and whiteflies.",
+    "text": "Aphids (Aphis gossypii Glover and Myzus persicae) are soft-bodied insects that suck sap from chilli leaves and stems. Damage causes leaves to become cup-shaped and yellow, reduces plant growth and can deform pods. Honeydew secreted by aphids can support secondary growth of black sooty fungi. The source provides chemical control information for aphids together with thrips and whiteflies.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "pest",
     "language": "en",
@@ -422,7 +422,7 @@
   {
     "id": "CH-M-001-SI",
     "title": "මිරිස් කොළ කොඩවීමේ සංකීර්ණය - පාලන ක්‍රම",
-    "text": "උසස් ගුණාත්මයෙන් යුත් බීජ භාවිතාකර නිරෝගී පැළ ලබා ගැනීම, නියමිත කාලයට වගාව ආරම්භ කිරීම, වියළි කලාපයේ යල කන්නයේ මාර්තු මුල තවාන් දමා අප්‍රේල් මස ක්ෂේත්‍රයේ සිටුවීම, යූරියා අධික ලෙස නොයොදා නිර්දේශිත පොහොර භාවිතය, බඩ ඉරිඟු හෝ කුරක්කන් වැනි සුළං බාධක යෙදීම, වසුන් යෙදීම, ජලය ඉසීම, විකල්ප ධාරක හා වල් පැළෑටි විනාශ කිරීම සහ ඇලෙන සුළු කහ උගුල් භාවිතය නිර්දේශ කර ඇත. රසායනික පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL මි.ලී. 10/ලීටර 10, ෆිප්රොනිල් 5 SC මි.ලී. 10/ලීටර 10, ලුෆනියුරෝන් 5 EC මි.ලී. 20/ලීටර 10, කාබොසල්ෆාන් 20 SC මි.ලී. 30/ලීටර 10, ප්‍රොතියොෆොස් 50 EC මි.ලී. 20/ලීටර 10, ෆොසලෝන් 35 EC මි.ලී. 30/ලීටර 10, ඇබමෙක්ටින් 1.8 EC මි.ලී. 6/ලීටර 10 සහ තයමෙතොක්සාම් 25 WG ග්‍රෑම් 10/ලීටර 16 ලෙස මූලාශ්‍රයේ දක්වා ඇත. මයිටාවන් සඳහා සල්ෆර් 80% කුඩු ග්‍රෑම් 80/ලීටර 10 සහ ඇබමෙක්ටින් 1.8 EC මි.ලී. 6/ලීටර 10 ලෙස දක්වා ඇත.",
+    "text": "උසස් ගුණාත්මයෙන් යුත් බීජ භාවිතාකර නිරෝගී පැළ ලබා ගැනීම, නියමිත කාලයට වගාව ආරම්භ කිරීම, වියළි කලාපයේ යල කන්නයේ මාර්තු මුල තවාන් දමා අප්‍රේල් මස ක්ෂේත්‍රයේ සිටුවීම, යූරියා අධික ලෙස නොයොදා නිර්දේශිත පොහොර භාවිතය, බඩ ඉරිඟු හෝ කුරක්කන් වැනි සුළං බාධක යෙදීම, වසුන් යෙදීම, ජලය ඉසීම, විකල්ප ධාරක හා වල් පැළෑටි විනාශ කිරීම සහ ඇලෙන සුළු කහ උගුල් භාවිතය නිර්දේශ කර ඇත. රසායනික පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL මි.ලී. 10/ලීටර 10, ෆිප්රොනිල් 5 SC මි.ලී. 10/ලීටර 10, ලුෆනියුරෝන් 5 EC මි.ලී. 20/ලීටර 10, කාබොසල්ෆාන් 20 SC මි.ලී. 30/ලීටර 10, ප්‍රොතියොෆොස් 50 EC මි.ලී. 20/ලීටර 10, ෆොසලෝන් 35 EC මි.ලී. 30/ලීටර 10, ඇබමෙක්ටින් 1.8 EC මි.ලී. 6/ලීටර 10 සහ තයමෙතොක්සාම් 25 WG ග්‍රෑම් 10/ලීටර 16 ලෙස මූලාශ්‍රයේ දක්වා ඇත. මයිටාවන් සඳහා සල්ෆර් 80% කුඩු ග්‍රෑම් 80/ලීටර 10 සහ ඇබමෙක්ටින් 1.8 EC මි.ලී. 6/ලීටර 10 ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "මිරිස්",
     "category": "management",
     "language": "si",
@@ -446,7 +446,7 @@
   {
     "id": "CH-P-005-SI",
     "title": "මිරිස් කරල් විදින දළඹුවන්",
-    "text": "කරල් විදින දළඹුවන් සඳහා ප්‍රධාන හේතු කාරක වන්නේ Spodoptera litura සහ Helicoverpa armigera ය. Spodoptera litura සුහුඹුලාගේ පූර්ව පියාපත් දුඹුරු ලප සහිත වන අතර අපර පියාපත් සුදු පාටය. කීටයින් අඳුරු අළු පැහැති වන අතර මි.මී. 40-50 පමණ දිගය. Helicoverpa armigera සුහුඹුලා දුඹුරු පැහැති සළඹයෙකි. කීටයා මි.මී. 40-50 දිගැති අතර පාර්ශ්විකව ලා සහ තද පැහැති ඉරි වලින් සමන්විතය. දළඹුවන් පත්‍ර, අංකුර, මල් හා කරල් ආහාරයට ගනී. හානි වූ කරල් වල රවුම් සිදුරු දක්නට ලැබෙන අතර සම්පූර්ණ කරලම ආහාරයට ගත හැක. පාලනය සඳහා කීටයින් හා හානි වූ කොටස් විනාශ කිරීම, පස පෙරලීමෙන් පිලා අවස්ථා විනාශ කිරීම, නියමිත පැල පරතරය සහ පොහොර භාවිතය හා වල් පැලෑටි ඉවත් කිරීම නිර්දේශ කර ඇත. රසායනික පාලනය සඳහා ක්ලෝෆ්ලුඑසියුරෝන් 5 EC මි.ලී. 15, තයෝඩිකාබ් 375 SC මි.ලී. 15 සහ මෙතොමිල් 40% SP මි.ලී. 20, ජලය ලීටර 10කට යෙදිය යුතු බව මූලාශ්‍රයේ දක්වා ඇත.",
+    "text": "කරල් විදින දළඹුවන් සඳහා ප්‍රධාන හේතු කාරක වන්නේ Spodoptera litura සහ Helicoverpa armigera ය. Spodoptera litura සුහුඹුලාගේ පූර්ව පියාපත් දුඹුරු ලප සහිත වන අතර අපර පියාපත් සුදු පාටය. කීටයින් අඳුරු අළු පැහැති වන අතර මි.මී. 40-50 පමණ දිගය. Helicoverpa armigera සුහුඹුලා දුඹුරු පැහැති සළඹයෙකි. කීටයා මි.මී. 40-50 දිගැති අතර පාර්ශ්විකව ලා සහ තද පැහැති ඉරි වලින් සමන්විතය. දළඹුවන් පත්‍ර, අංකුර, මල් හා කරල් ආහාරයට ගනී. හානි වූ කරල් වල රවුම් සිදුරු දක්නට ලැබෙන අතර සම්පූර්ණ කරලම ආහාරයට ගත හැක. පාලනය සඳහා කීටයින් හා හානි වූ කොටස් විනාශ කිරීම, පස පෙරලීමෙන් පිලා අවස්ථා විනාශ කිරීම, නියමිත පැල පරතරය සහ පොහොර භාවිතය හා වල් පැලෑටි ඉවත් කිරීම නිර්දේශ කර ඇත. රසායනික පාලනය සඳහා ක්ලෝෆ්ලුඑසියුරෝන් 5 EC මි.ලී. 15, තයෝඩිකාබ් 375 SC මි.ලී. 15 සහ මෙතොමිල් 40% SP මි.ලී. 20, ජලය ලීටර 10කට යෙදිය යුතු බව මූලාශ්‍රයේ දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "මිරිස්",
     "category": "pest",
     "language": "si",
@@ -458,7 +458,7 @@
   {
     "id": "CH-P-005-EN",
     "title": "Chilli Pod Borers",
-    "text": "Chilli pod borers include Spodoptera litura and Helicoverpa armigera. Larvae feed on leaves, shoots, flowers and pods. Circular holes may appear in damaged pods and severe feeding can consume much of the pod. Management includes collecting and destroying larvae and damaged plant parts, turning the soil to destroy pupae, maintaining recommended plant spacing and fertilizer use, and removing weeds. The source lists chlorfluazuron 5 EC at 15 ml/10 L, thiodicarb 375 SC at 15 ml/10 L and methomyl 40% SP at 20 ml/10 L.",
+    "text": "Chilli pod borers include Spodoptera litura and Helicoverpa armigera. Larvae feed on leaves, shoots, flowers and pods. Circular holes may appear in damaged pods and severe feeding can consume much of the pod. Management includes collecting and destroying larvae and damaged plant parts, turning the soil to destroy pupae, maintaining recommended plant spacing and fertilizer use, and removing weeds. The source lists chlorfluazuron 5 EC at 15 ml/10 L, thiodicarb 375 SC at 15 ml/10 L and methomyl 40% SP at 20 ml/10 L.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "pest",
     "language": "en",
@@ -470,7 +470,7 @@
   {
     "id": "CH-D-001-SI",
     "title": "මිරිස් තවාන් දියමලන්කාමේ රෝගය",
-    "text": "තවාන් දියමලන්කාමේ රෝගයට Fusarium, Pythium, Sclerotium, Phytophthora සහ Rhizoctonia යන දිලීර හේතු වේ. පූර්ව දියමලන් කෑමේදී බීජ පැල පස් මට්ටමින් එළියට ඒමට පෙර මැරෙයි. පශ්චිම දියමලන් කෑමේදී තවානේ තැනින් තැන පැල මැල වී ඇද වැටීම හා පොළවට ආසන්න පටක තෙත් කුණුවීම සිදු වේ. පාලනය සඳහා තවාන් ජීවානුහරණය කිරීම, බීජ ප්‍රතිකාර කිරීම, නියමිත පැල ගහනය පවත්වා ගැනීම සහ ජල සම්පාදනයට ප්‍රථම රෝගී ශාක පස් සමග විනාශ කිරීම නිර්දේශ කර ඇත. බීජ ප්‍රතිකාර සඳහා කැප්ටාන් 50% WP ග්‍රෑම් 6/kg බීජ, කැප්ටාන් 80% WP ග්‍රෑම් 4/kg, තිරාම් 80% WP ග්‍රෑම් 5/kg සහ තයෝෆනේට් මීතයිල් 50% + තිරාම් 30% WP ග්‍රෑම් 4/kg ලෙස දක්වා ඇත. පසට යෙදීම සඳහා තිරාම් 80% WP ග්‍රෑම් 70, තයෝෆනේට් මීතයිල් 50% + තිරාම් 30% WP ග්‍රෑම් 50 හෝ තයෝෆනේට් මීතයිල් 70% WP ග්‍රෑම් 30 ජලය ලීටර 50ක දියකර වර්ග මීටර 10කට යෙදිය යුතු බව දක්වා ඇත.",
+    "text": "තවාන් දියමලන්කාමේ රෝගයට Fusarium, Pythium, Sclerotium, Phytophthora සහ Rhizoctonia යන දිලීර හේතු වේ. පූර්ව දියමලන් කෑමේදී බීජ පැල පස් මට්ටමින් එළියට ඒමට පෙර මැරෙයි. පශ්චිම දියමලන් කෑමේදී තවානේ තැනින් තැන පැල මැල වී ඇද වැටීම හා පොළවට ආසන්න පටක තෙත් කුණුවීම සිදු වේ. පාලනය සඳහා තවාන් ජීවානුහරණය කිරීම, බීජ ප්‍රතිකාර කිරීම, නියමිත පැල ගහනය පවත්වා ගැනීම සහ ජල සම්පාදනයට ප්‍රථම රෝගී ශාක පස් සමග විනාශ කිරීම නිර්දේශ කර ඇත. බීජ ප්‍රතිකාර සඳහා කැප්ටාන් 50% WP ග්‍රෑම් 6/kg බීජ, කැප්ටාන් 80% WP ග්‍රෑම් 4/kg, තිරාම් 80% WP ග්‍රෑම් 5/kg සහ තයෝෆනේට් මීතයිල් 50% + තිරාම් 30% WP ග්‍රෑම් 4/kg ලෙස දක්වා ඇත. පසට යෙදීම සඳහා තිරාම් 80% WP ග්‍රෑම් 70, තයෝෆනේට් මීතයිල් 50% + තිරාම් 30% WP ග්‍රෑම් 50 හෝ තයෝෆනේට් මීතයිල් 70% WP ග්‍රෑම් 30 ජලය ලීටර 50ක දියකර වර්ග මීටර 10කට යෙදිය යුතු බව දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "මිරිස්",
     "category": "disease",
     "language": "si",
@@ -482,7 +482,7 @@
   {
     "id": "CH-D-001-EN",
     "title": "Chilli Damping-off",
-    "text": "Chilli damping-off is associated with Fusarium, Pythium, Sclerotium, Phytophthora and Rhizoctonia. Pre-emergence damping-off causes seedlings to die before emerging from the soil. Post-emergence damping-off causes scattered seedlings in the nursery to wilt and collapse, with wet rotting tissue near the soil surface. Management includes nursery sterilization, seed treatment, maintaining appropriate plant density and removing diseased plants with surrounding soil before irrigation. The source lists captan, thiram and thiophanate methyl plus thiram treatments.",
+    "text": "Chilli damping-off is associated with Fusarium, Pythium, Sclerotium, Phytophthora and Rhizoctonia. Pre-emergence damping-off causes seedlings to die before emerging from the soil. Post-emergence damping-off causes scattered seedlings in the nursery to wilt and collapse, with wet rotting tissue near the soil surface. Management includes nursery sterilization, seed treatment, maintaining appropriate plant density and removing diseased plants with surrounding soil before irrigation. The source lists captan, thiram and thiophanate methyl plus thiram treatments.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "disease",
     "language": "en",
@@ -494,7 +494,7 @@
   {
     "id": "CH-D-002-SI",
     "title": "මිරිස් ඇන්ත්‍රැග්නෝස් රෝගය",
-    "text": "ඇන්ත්‍රැග්නෝස් රෝගයට Colletotrichum capsici හේතු වේ. රිකිලි අග්‍රස්ථය දුඹුරු කළු පැහැ ගැන්වී මැරී යයි. ඉදුණු කරල්වල ලා අළුවන් සිට දුඹුරු පැහැති කුඩා වටකුරු ගිලුණු ලප ඇතිවේ. කල් ගත වූ ලප වල කළු පැහැ තිත් වලින් සෑදුණු කේන්ද්‍රික වල ඇති වේ. ආසාදිත කරල් පිදුරු පැහැ වන අතර බීජ මලකඩ පැහැයක් ගනී. බීජ, බෝග අවශේෂ හා සුළඟ මඟින් රෝගය පැතිරේ. රෝගී කරල් හා ශාක ඉවත් කිරීම, නිරෝගී බීජ භාවිතය, බීජ ප්‍රතිකාර කිරීම සහ බෝග මාරුව නිර්දේශ කර ඇත. රසායනික පාලනය සඳහා මැන්කොසෙබ් 80 WP ග්‍රෑම් 20, මැනෙබ් 80 WP ග්‍රෑම් 20, තයෝෆනේට් මීතයිල් 70 WP ග්‍රෑම් 6, කාබන්ඩසීම් 50 WP ග්‍රෑම් 7, ක්ලෝරොතැලොනිල් 500 g/L SC මි.ලී. 30, ප්‍රොපිකොනසෝල් 250 g/L EC මි.ලී. 10 සහ කොපර් 37.5 WP ග්‍රෑම් 40 ජලය ලීටර 10කට යෙදිය යුතු බව මූලාශ්‍රයේ දක්වා ඇත.",
+    "text": "ඇන්ත්‍රැග්නෝස් රෝගයට Colletotrichum capsici හේතු වේ. රිකිලි අග්‍රස්ථය දුඹුරු කළු පැහැ ගැන්වී මැරී යයි. ඉදුණු කරල්වල ලා අළුවන් සිට දුඹුරු පැහැති කුඩා වටකුරු ගිලුණු ලප ඇතිවේ. කල් ගත වූ ලප වල කළු පැහැ තිත් වලින් සෑදුණු කේන්ද්‍රික වල ඇති වේ. ආසාදිත කරල් පිදුරු පැහැ වන අතර බීජ මලකඩ පැහැයක් ගනී. බීජ, බෝග අවශේෂ හා සුළඟ මඟින් රෝගය පැතිරේ. රෝගී කරල් හා ශාක ඉවත් කිරීම, නිරෝගී බීජ භාවිතය, බීජ ප්‍රතිකාර කිරීම සහ බෝග මාරුව නිර්දේශ කර ඇත. රසායනික පාලනය සඳහා මැන්කොසෙබ් 80 WP ග්‍රෑම් 20, මැනෙබ් 80 WP ග්‍රෑම් 20, තයෝෆනේට් මීතයිල් 70 WP ග්‍රෑම් 6, කාබන්ඩසීම් 50 WP ග්‍රෑම් 7, ක්ලෝරොතැලොනිල් 500 g/L SC මි.ලී. 30, ප්‍රොපිකොනසෝල් 250 g/L EC මි.ලී. 10 සහ කොපර් 37.5 WP ග්‍රෑම් 40 ජලය ලීටර 10කට යෙදිය යුතු බව මූලාශ්‍රයේ දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "මිරිස්",
     "category": "disease",
     "language": "si",
@@ -506,7 +506,7 @@
   {
     "id": "CH-D-002-EN",
     "title": "Chilli Anthracnose",
-    "text": "Chilli anthracnose is associated with Colletotrichum capsici. Symptoms include browning and death of shoot tips and small circular sunken spots ranging from light grey to brown on mature pods. Older lesions develop concentric areas containing black spots. Infected pods become straw-coloured and seeds may become rust-coloured. The disease can spread through seed, crop residues and wind. Management includes removing diseased pods and plants, using healthy seed, seed treatment and crop rotation. The source lists several fungicide options including mancozeb, maneb, thiophanate methyl, carbendazim, chlorothalonil, propiconazole and copper products.",
+    "text": "Chilli anthracnose is associated with Colletotrichum capsici. Symptoms include browning and death of shoot tips and small circular sunken spots ranging from light grey to brown on mature pods. Older lesions develop concentric areas containing black spots. Infected pods become straw-coloured and seeds may become rust-coloured. The disease can spread through seed, crop residues and wind. Management includes removing diseased pods and plants, using healthy seed, seed treatment and crop rotation. The source lists several fungicide options including mancozeb, maneb, thiophanate methyl, carbendazim, chlorothalonil, propiconazole and copper products.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "disease",
     "language": "en",
@@ -518,7 +518,7 @@
   {
     "id": "CH-M-002-SI",
     "title": "මිරිස් ඇන්ත්‍රැග්නෝස් රෝගය - පාලනය",
-    "text": "ඇන්ත්‍රැක්නෝස් රෝගය පාලනය සඳහා රෝගී කරල් හා ශාක ඉවත් කිරීම, නිරෝගී බීජ භාවිතය, බීජ ප්‍රතිකාර කිරීම සහ බෝග මාරුව සිදු කළ යුතුය. මැන්කොසෙබ් 80 WP ග්‍රෑම් 20, මැනෙබ් 80 WP ග්‍රෑම් 20, තයෝෆනේට් මීතයිල් 70 WP ග්‍රෑම් 6, කාබන්ඩසීම් 50 WP ග්‍රෑම් 7, ක්ලෝරොතැලොනිල් 500 g/L SC මි.ලී. 30, ප්‍රොපිකොනසෝල් 250 g/L EC මි.ලී. 10 සහ කොපර් 37.5 WP ග්‍රෑම් 40 ජලය ලීටර 10කට යෙදිය හැකි බව මූලාශ්‍රයේ දක්වා ඇත.",
+    "text": "ඇන්ත්‍රැක්නෝස් රෝගය පාලනය සඳහා රෝගී කරල් හා ශාක ඉවත් කිරීම, නිරෝගී බීජ භාවිතය, බීජ ප්‍රතිකාර කිරීම සහ බෝග මාරුව සිදු කළ යුතුය. මැන්කොසෙබ් 80 WP ග්‍රෑම් 20, මැනෙබ් 80 WP ග්‍රෑම් 20, තයෝෆනේට් මීතයිල් 70 WP ග්‍රෑම් 6, කාබන්ඩසීම් 50 WP ග්‍රෑම් 7, ක්ලෝරොතැලොනිල් 500 g/L SC මි.ලී. 30, ප්‍රොපිකොනසෝල් 250 g/L EC මි.ලී. 10 සහ කොපර් 37.5 WP ග්‍රෑම් 40 ජලය ලීටර 10කට යෙදිය හැකි බව මූලාශ්‍රයේ දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "මිරිස්",
     "category": "management",
     "language": "si",
@@ -530,7 +530,7 @@
   {
     "id": "CH-M-002-EN",
     "title": "Chilli Anthracnose Management",
-    "text": "Management of chilli anthracnose includes removing diseased pods and plants, using healthy seed, treating seed before planting and practicing crop rotation. The source lists mancozeb 80 WP at 20 g/10 L, maneb 80 WP at 20 g/10 L, thiophanate methyl 70 WP at 6 g/10 L, carbendazim 50 WP at 7 g/10 L, chlorothalonil 500 g/L SC at 30 ml/10 L, propiconazole 250 g/L EC at 10 ml/10 L and copper 37.5 WP at 40 g/10 L.",
+    "text": "Management of chilli anthracnose includes removing diseased pods and plants, using healthy seed, treating seed before planting and practicing crop rotation. The source lists mancozeb 80 WP at 20 g/10 L, maneb 80 WP at 20 g/10 L, thiophanate methyl 70 WP at 6 g/10 L, carbendazim 50 WP at 7 g/10 L, chlorothalonil 500 g/L SC at 30 ml/10 L, propiconazole 250 g/L EC at 10 ml/10 L and copper 37.5 WP at 40 g/10 L.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "management",
     "language": "en",
@@ -566,7 +566,7 @@
   {
     "id": "CH-D-004-SI",
     "title": "මිරිස් රිකිලි කුණුවීමේ රෝගය",
-    "text": "රිකිලි කුණුවීමේ රෝගයට Choanephora spp. හේතු වේ. මල් පොහොට්ටු හා අග්‍රස්ථ අංකුර පටක කළු දුඹුරු පැහැ වී තෙත් කුණුවීමකට ලක් වේ. රිකිලි ඉහළ සිට පහළට මැරී යයි. කූරු වැනි රිදී පැහැයකට හුරු දිලීර ජාල දැකගත හැක. පාලනය සඳහා නිර්දේශිත පරතරය පවත්වා ගැනීම සහ රෝගී කොටස් විනාශ කිරීම සිදු කළ යුතුය. කොපර් 50 WP ග්‍රෑම් 40, කොපර් 37.5% WP ග්‍රෑම් 50, මැන්කොසෙබ් 80 WP ග්‍රෑම් 20, මැනෙබ් 80% WP ග්‍රෑම් 20, ප්‍රොපිනෙබ් 70% WP ග්‍රෑම් 20 සහ ක්ලෝරොතැලොනිල් මි.ලී. 8/30 වැනි දිලීර නාශක මූලාශ්‍රයේ දක්වා ඇත.",
+    "text": "රිකිලි කුණුවීමේ රෝගයට Choanephora spp. හේතු වේ. මල් පොහොට්ටු හා අග්‍රස්ථ අංකුර පටක කළු දුඹුරු පැහැ වී තෙත් කුණුවීමකට ලක් වේ. රිකිලි ඉහළ සිට පහළට මැරී යයි. කූරු වැනි රිදී පැහැයකට හුරු දිලීර ජාල දැකගත හැක. පාලනය සඳහා නිර්දේශිත පරතරය පවත්වා ගැනීම සහ රෝගී කොටස් විනාශ කිරීම සිදු කළ යුතුය. කොපර් 50 WP ග්‍රෑම් 40, කොපර් 37.5% WP ග්‍රෑම් 50, මැන්කොසෙබ් 80 WP ග්‍රෑම් 20, මැනෙබ් 80% WP ග්‍රෑම් 20, ප්‍රොපිනෙබ් 70% WP ග්‍රෑම් 20 සහ ක්ලෝරොතැලොනිල් මි.ලී. 8/30 වැනි දිලීර නාශක මූලාශ්‍රයේ දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "මිරිස්",
     "category": "disease",
     "language": "si",
@@ -614,7 +614,7 @@
   {
     "id": "CH-D-006-SI",
     "title": "මිරිස් පිටිපුස් රෝගය",
-    "text": "පිටිපුස් රෝගයට Oidiopsis sicula හේතු වේ. කහ පැහැති ලප පත්‍ර මතුපිට දක්නට ලැබෙන අතර යටි පැත්තේ සුදු පැහැති පුස් දක්නට ලැබේ. ආසාදනය අධික විට පත්‍ර කහ වී හැළි යයි. පාලනය සඳහා ජල කළමනාකරණය සහ බෝග මාරුව සිදු කළ යුතුය. තයෝෆනේට් මීතයිල් 70 WP ග්‍රෑම් 10, සල්ෆර් 80 WP ග්‍රෑම් 50 සහ ක්ලෝරොතැලොනිල් මි.ලී. 30 වැනි දිලීර නාශක දක්වා ඇත.",
+    "text": "පිටිපුස් රෝගයට Oidiopsis sicula හේතු වේ. කහ පැහැති ලප පත්‍ර මතුපිට දක්නට ලැබෙන අතර යටි පැත්තේ සුදු පැහැති පුස් දක්නට ලැබේ. ආසාදනය අධික විට පත්‍ර කහ වී හැළි යයි. පාලනය සඳහා ජල කළමනාකරණය සහ බෝග මාරුව සිදු කළ යුතුය. තයෝෆනේට් මීතයිල් 70 WP ග්‍රෑම් 10, සල්ෆර් 80 WP ග්‍රෑම් 50 සහ ක්ලෝරොතැලොනිල් මි.ලී. 30 වැනි දිලීර නාශක දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "මිරිස්",
     "category": "disease",
     "language": "si",
@@ -674,7 +674,7 @@
   {
     "id": "CH-D-008-EN",
     "title": "Chilli Leaf Curl Virus",
-    "text": "Chilli leaf curl virus causes yellowing and reduction in leaf size, upward curling into a boat-like shape, shortened internodes and plant stunting. Whitefly acts as the vector. Chemical control of the virus itself is not available. Management focuses on controlling the vector and removing diseased plants and weeds.",
+    "text": "Chilli leaf curl virus causes yellowing and reduction in leaf size, upward curling into a boat-like shape, shortened internodes and plant stunting. Whitefly acts as the vector. Chemical control of the virus itself is not available. Management focuses on controlling the vector and removing diseased plants and weeds.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "disease",
     "language": "en",
@@ -698,7 +698,7 @@
   {
     "id": "CH-D-009-EN",
     "title": "Chilli Cucumber Mosaic Virus",
-    "text": "Cucumber mosaic virus causes light-green or yellow mosaic patterns on young leaves. Leaves may become narrow and thin and develop abnormal growth. The virus can be transmitted by aphids, plant sap and farm equipment. Chemical control is not available. Management includes controlling vectors, removing diseased plants and weeds and avoiding cultivation with listed alternate host crops such as banana, cucumber and tomato.",
+    "text": "Cucumber mosaic virus causes light-green or yellow mosaic patterns on young leaves. Leaves may become narrow and thin and develop abnormal growth. The virus can be transmitted by aphids, plant sap and farm equipment. Chemical control is not available. Management includes controlling vectors, removing diseased plants and weeds and avoiding cultivation with listed alternate host crops such as banana, cucumber and tomato.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "disease",
     "language": "en",
@@ -710,7 +710,7 @@
   {
     "id": "O-P-001-SI",
     "title": "ලොකු ලූනු පැලමැක්කා",
-    "text": "ලොකු ලූනු පැලමැක්කා (Thrips - Thrips tabaci L.) ලූනු පත්‍රයේ යුෂ උරා බීම නිසා පත්‍රය මත සුදු පැහැති සලකුණු ඇති කරයි. හානිය උග්‍ර වූ විට පත්‍ර ඇඹරී වියලී යයි, බල්බ කුඩා වේ. බීජ වගාවන්හි මල් වලටද හානි සිදු කරයි. ගුණාත්මක බීජ භාවිතය, නියමිත කාලයට වගා කිරීම, යූරියා අධික ලෙස නොයෙදීම, විසිරුම් ජල සම්පාදනය, වල් පැළෑටි විනාශ කිරීම සහ ඇලෙන සුළු කහ උගුල් භාවිතය නිර්දේශ කර ඇත. රසායනික මර්දනය සඳහා තයක් ලොප්‍රිඩ් 24 SC 10ml, ඉමිඩක් ලොප්‍රිඩ් 20 LL 10ml, ෆිප්රොනිල් 5 SC 10ml සහ ප්‍රොතියෝෆොස් 50 EC 30ml ලෙස දක්වා ඇත.",
+    "text": "ලොකු ලූනු පැලමැක්කා (Thrips - Thrips tabaci L.) ලූනු පත්‍රයේ යුෂ උරා බීම නිසා පත්‍රය මත සුදු පැහැති සලකුණු ඇති කරයි. හානිය උග්‍ර වූ විට පත්‍ර ඇඹරී වියලී යයි, බල්බ කුඩා වේ. බීජ වගාවන්හි මල් වලටද හානි සිදු කරයි. ගුණාත්මක බීජ භාවිතය, නියමිත කාලයට වගා කිරීම, යූරියා අධික ලෙස නොයෙදීම, විසිරුම් ජල සම්පාදනය, වල් පැළෑටි විනාශ කිරීම සහ ඇලෙන සුළු කහ උගුල් භාවිතය නිර්දේශ කර ඇත. රසායනික මර්දනය සඳහා තයක් ලොප්‍රිඩ් 24 SC 10ml, ඉමිඩක් ලොප්‍රිඩ් 20 LL 10ml, ෆිප්රොනිල් 5 SC 10ml සහ ප්‍රොතියෝෆොස් 50 EC 30ml ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "ලොකු ලූනු",
     "category": "pest",
     "language": "si",
@@ -734,7 +734,7 @@
   {
     "id": "O-P-002-SI",
     "title": "ලොකු ලූනු දළඹුවන්",
-    "text": "ලූනු දළඹුවන් සඳහා Spodoptera litura සහ Spodoptera exigua හේතු වේ. කීටයින් ලූනු පත්‍ර කොපුව තුලට වී කොළ පැහැති කොටස් කා දමයි. S. exigua බල්බ වලට සහ මල් වලටද හානි කරයි. බිත්තර හා දළඹුවන් විනාශ කිරීම, බෝග අවශේෂ විනාශ කිරීම සහ ක්ෂේත්‍රය ජලයෙන් යට කර තැබීම නිර්දේශ කර ඇත. රසායනික පාලනය සඳහා ඉමමෙක්ටින් බෙන්සොඒට් 5 SP 4g, ක්ලෝෆ්ලුඑසියුරෝන් 5 EC 10ml, ඩයසිනෝන් 50 EC 50ml, ඩෙල්ටාමෙත්‍රින් 2.5 EC 6ml සහ එස්ෆෙන්වලරේට් 7.5 EC 3ml ලෙස දක්වා ඇත.",
+    "text": "ලූනු දළඹුවන් සඳහා Spodoptera litura සහ Spodoptera exigua හේතු වේ. කීටයින් ලූනු පත්‍ර කොපුව තුලට වී කොළ පැහැති කොටස් කා දමයි. S. exigua බල්බ වලට සහ මල් වලටද හානි කරයි. බිත්තර හා දළඹුවන් විනාශ කිරීම, බෝග අවශේෂ විනාශ කිරීම සහ ක්ෂේත්‍රය ජලයෙන් යට කර තැබීම නිර්දේශ කර ඇත. රසායනික පාලනය සඳහා ඉමමෙක්ටින් බෙන්සොඒට් 5 SP 4g, ක්ලෝෆ්ලුඑසියුරෝන් 5 EC 10ml, ඩයසිනෝන් 50 EC 50ml, ඩෙල්ටාමෙත්‍රින් 2.5 EC 6ml සහ එස්ෆෙන්වලරේට් 7.5 EC 3ml ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "ලොකු ලූනු",
     "category": "pest",
     "language": "si",
@@ -782,7 +782,7 @@
   {
     "id": "O-D-001-SI",
     "title": "ලොකු ලූනු දිලීර මගින් ඇතිවන බල්බ කුණුවීම",
-    "text": "දිලීර මගින් ඇතිවන බල්බ කුණුවීමට Fusarium, Pythium, Sclerotium, Phytophthora සහ Rhizoctonia හේතු වේ. මේරූ පත්‍ර ඉහළ සිට පහළට කහ පාට වේ, මුල් මැරී යයි, බල්බය කුණු වේ. සත්‍ය කඳෙහි සුදු පැහැති දිලීර ජාලයක් දක්නට ලැබේ. නිරෝගී බල්බ භාවිතා කිරීම සහ සිටුවීමට පෙර විනාඩි 30ක් දිලීරනාශක ද්‍රාවණයක ගිල්වීම නිර්දේශ කර ඇත. තයෝෆනේට් මීතයිල් 50% + තිරාම් 30% 18g, තයෝෆනේට් මීතයිල් 70% 20g සහ තිරාම් 80% 15g ලෙස දක්වා ඇත. රෝගී ශාක ඉවත් කර පසට දිලීර නාශක යෙදිය යුතුය.",
+    "text": "දිලීර මගින් ඇතිවන බල්බ කුණුවීමට Fusarium, Pythium, Sclerotium, Phytophthora සහ Rhizoctonia හේතු වේ. මේරූ පත්‍ර ඉහළ සිට පහළට කහ පාට වේ, මුල් මැරී යයි, බල්බය කුණු වේ. සත්‍ය කඳෙහි සුදු පැහැති දිලීර ජාලයක් දක්නට ලැබේ. නිරෝගී බල්බ භාවිතා කිරීම සහ සිටුවීමට පෙර විනාඩි 30ක් දිලීරනාශක ද්‍රාවණයක ගිල්වීම නිර්දේශ කර ඇත. තයෝෆනේට් මීතයිල් 50% + තිරාම් 30% 18g, තයෝෆනේට් මීතයිල් 70% 20g සහ තිරාම් 80% 15g ලෙස දක්වා ඇත. රෝගී ශාක ඉවත් කර පසට දිලීර නාශක යෙදිය යුතුය.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "ලොකු ලූනු",
     "category": "disease",
     "language": "si",
@@ -794,7 +794,7 @@
   {
     "id": "O-D-001-EN",
     "title": "Big Onion Fungal Bulb Rot",
-    "text": "Fungal bulb rot is associated with Fusarium, Pythium, Sclerotium, Phytophthora and Rhizoctonia. Mature leaves turn yellow from the top downward, roots die and bulbs rot. White fungal growth may appear around the true stem. Management includes using healthy bulbs, pre-planting treatment, removing diseased plants and applying soil fungicide treatments.",
+    "text": "Fungal bulb rot is associated with Fusarium, Pythium, Sclerotium, Phytophthora and Rhizoctonia. Mature leaves turn yellow from the top downward, roots die and bulbs rot. White fungal growth may appear around the true stem. Management includes using healthy bulbs, pre-planting treatment, removing diseased plants and applying soil fungicide treatments.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Big Onion",
     "category": "disease",
     "language": "en",
@@ -830,7 +830,7 @@
   {
     "id": "O-D-003-SI",
     "title": "ලොකු ලූනු දම් පැහැති පුල්ලි රෝගය",
-    "text": "දම් පැහැති පුල්ලි රෝගයට Alternaria porii හේතු වේ. පත්‍ර හා මල් නටුව මත සුදු පැහැති ලප ඇති වී ක්‍රමයෙන් දුඹුරු හෝ දම් පැහැවේ. තෙතමනය අධික විට කළු බීජානු දක්නට ලැබේ. මල් හැකිලී යන අතර බල්බයද කුණුවේ. බෝග අවශේෂ ඉවත් කිරීම, නිරෝගී බීජ භාවිතය සහ බීජ ප්‍රතිකාර කිරීම නිර්දේශ කර ඇත. ෆ්ලුසිනාම් 500 SC 10ml, පයිරක්ලොස්ස්ටොබින් + මෙටිරාම් 60 WG 20g, ක්ලෝරොතැලොනිල් 500 SC 30ml, මැන්කොසෙබ් 80 WP 20g, ප්‍රොපිනෙබ් 70 WP 20g, පයිරක්ලොස්ට්‍රොබින් 250 EC 8ml සහ ටෙබුකොනසෝල් 250 EW 3.5ml වැනි දිලීර නාශක සහ පොලිතීන් ආවරණ යෙදීම දක්වා ඇත.",
+    "text": "දම් පැහැති පුල්ලි රෝගයට Alternaria porii හේතු වේ. පත්‍ර හා මල් නටුව මත සුදු පැහැති ලප ඇති වී ක්‍රමයෙන් දුඹුරු හෝ දම් පැහැවේ. තෙතමනය අධික විට කළු බීජානු දක්නට ලැබේ. මල් හැකිලී යන අතර බල්බයද කුණුවේ. බෝග අවශේෂ ඉවත් කිරීම, නිරෝගී බීජ භාවිතය සහ බීජ ප්‍රතිකාර කිරීම නිර්දේශ කර ඇත. ෆ්ලුසිනාම් 500 SC 10ml, පයිරක්ලොස්ස්ටොබින් + මෙටිරාම් 60 WG 20g, ක්ලෝරොතැලොනිල් 500 SC 30ml, මැන්කොසෙබ් 80 WP 20g, ප්‍රොපිනෙබ් 70 WP 20g, පයිරක්ලොස්ට්‍රොබින් 250 EC 8ml සහ ටෙබුකොනසෝල් 250 EW 3.5ml වැනි දිලීර නාශක සහ පොලිතීන් ආවරණ යෙදීම දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "ලොකු ලූනු",
     "category": "disease",
     "language": "si",
@@ -842,7 +842,7 @@
   {
     "id": "O-D-003-EN",
     "title": "Big Onion Purple Blotch",
-    "text": "Purple blotch is associated with Alternaria porii. White spots develop on leaves and flower stalks and gradually become brown or purple. Under high moisture, black spores may be visible. Flowers may collapse and bulbs can also rot. Management includes removing crop residues, using healthy seed, seed treatment and fungicide applications listed in the source.",
+    "text": "Purple blotch is associated with Alternaria porii. White spots develop on leaves and flower stalks and gradually become brown or purple. Under high moisture, black spores may be visible. Flowers may collapse and bulbs can also rot. Management includes removing crop residues, using healthy seed, seed treatment and fungicide applications listed in the source.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Big Onion",
     "category": "disease",
     "language": "en",
@@ -854,7 +854,7 @@
   {
     "id": "O-D-004-SI",
     "title": "ලොකු ලූනු ඇන්ත්‍රැග්නෝස් රෝගය",
-    "text": "ඇන්ත්‍රැග්නෝස් රෝගයට Colletotrichum gloeosporioides හේතු වේ. පත්‍ර මත සුදු කහ පැහැති ගිලුණු ලප ඇති වේ, පත්‍ර කහ වී දඟර ගැසී ගෙල ප්‍රදේශයෙන් කඩා වැටේ. මල් නටුව කැඩී යයි, බල්බ කුඩා වී කුණු වීම සිදුවේ. අවුරුදු 2-3ක් රනිල හෝ ධාන්‍ය සමඟ බෝග මාරුව සහ නිරෝගී මව් බල්බ තෝරා ගැනීම නිර්දේශ කර ඇත. තයෝෆනේට් මීතයිල් 500 SC 8ml, තයෝෆනේට් මීතයිල් 70% 6g, ෆ්ලුසිනාම් 500 SC 10ml, පයිරක්ලොස්ස්ටොබින් + මෙටිරාම් 60 WG 20g, ක්ලෝරොතැලොනිල් 500 SC 30ml සහ මැන්කොසෙබ් 80 WP 20g වැනි දිලීර නාශක භාවිතය සහ සංස්ථානික හා ස්පර්ශක දිලීර නාශක මාරුවෙන් මාරුවට යෙදීම දක්වා ඇත.",
+    "text": "ඇන්ත්‍රැග්නෝස් රෝගයට Colletotrichum gloeosporioides හේතු වේ. පත්‍ර මත සුදු කහ පැහැති ගිලුණු ලප ඇති වේ, පත්‍ර කහ වී දඟර ගැසී ගෙල ප්‍රදේශයෙන් කඩා වැටේ. මල් නටුව කැඩී යයි, බල්බ කුඩා වී කුණු වීම සිදුවේ. අවුරුදු 2-3ක් රනිල හෝ ධාන්‍ය සමඟ බෝග මාරුව සහ නිරෝගී මව් බල්බ තෝරා ගැනීම නිර්දේශ කර ඇත. තයෝෆනේට් මීතයිල් 500 SC 8ml, තයෝෆනේට් මීතයිල් 70% 6g, ෆ්ලුසිනාම් 500 SC 10ml, පයිරක්ලොස්ස්ටොබින් + මෙටිරාම් 60 WG 20g, ක්ලෝරොතැලොනිල් 500 SC 30ml සහ මැන්කොසෙබ් 80 WP 20g වැනි දිලීර නාශක භාවිතය සහ සංස්ථානික හා ස්පර්ශක දිලීර නාශක මාරුවෙන් මාරුවට යෙදීම දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "ලොකු ලූනු",
     "category": "disease",
     "language": "si",
@@ -878,7 +878,7 @@
   {
     "id": "MZ-P-001-SI",
     "title": "බඩඉරිඟු පුරුක් පණුවා",
-    "text": "පුරුක් පණුවා (Stem borer - Chilo partellus) සුහුඹුලා පිදුරු පැහැති සලබයෙකි. ළපටි පැළවල පත්‍ර මත පේලියට පිහිටා ඇති කුඩා සිදුරු දක්නට ලැබේ. ගොබය මැරී ගොස් 'මල හදවත' තත්වය ඇති වන අතර කරල් වලටද හානි කරයි. මහ කන්නයේ වර්ෂාවත් සමඟ සිටුවීම සහ ඉපනැල්ල විනාශ කිරීම නිර්දේශ කර ඇත. සිටුවා සති 3-5දී ඩයසිනෝන් 5% GR 10-15 kg/ha සහ ෆිප්රොනිල් 0.3% GR 12 kg/ha යෙදිය හැකි බවත්, දින 25-35 හා 45-55දී නොවල්යුරෝන් 10 EC 10ml, එතොෆෙන්ප්‍රොක්ස් 10 EC 15ml සහ තයෝඩිකාබ් 375 SC 20ml යෙදිය හැකි බවත් මූලාශ්‍රයේ දක්වා ඇත.",
+    "text": "පුරුක් පණුවා (Stem borer - Chilo partellus) සුහුඹුලා පිදුරු පැහැති සලබයෙකි. ළපටි පැළවල පත්‍ර මත පේලියට පිහිටා ඇති කුඩා සිදුරු දක්නට ලැබේ. ගොබය මැරී ගොස් 'මල හදවත' තත්වය ඇති වන අතර කරල් වලටද හානි කරයි. මහ කන්නයේ වර්ෂාවත් සමඟ සිටුවීම සහ ඉපනැල්ල විනාශ කිරීම නිර්දේශ කර ඇත. සිටුවා සති 3-5දී ඩයසිනෝන් 5% GR 10-15 kg/ha සහ ෆිප්රොනිල් 0.3% GR 12 kg/ha යෙදිය හැකි බවත්, දින 25-35 හා 45-55දී නොවල්යුරෝන් 10 EC 10ml, එතොෆෙන්ප්‍රොක්ස් 10 EC 15ml සහ තයෝඩිකාබ් 375 SC 20ml යෙදිය හැකි බවත් මූලාශ්‍රයේ දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "බඩඉරිඟු",
     "category": "pest",
     "language": "si",
@@ -926,7 +926,7 @@
   {
     "id": "MZ-P-003-SI",
     "title": "බඩඉරිඟු කුඩිත්තා",
-    "text": "කුඩිත්තා (Aphid - Rhopalosiphum maidis) පත්‍ර වලින් යුෂ උරා බීම නිසා පත්‍ර කහ පැහැ වේ. දිලීර වර්ධනය වී කළු පැහැයට හැරේ. පුමංගී මල් වලට හානි කිරීමෙන් පරාග විසිරීමට බාධා වේ. පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL 10ml, ඉමිඩක්ලොප්‍රිඩ් 70% WG 1.25g සහ තයමෙතොක්සාම් 25% WG 3g ලෙස දක්වා ඇත.",
+    "text": "කුඩිත්තා (Aphid - Rhopalosiphum maidis) පත්‍ර වලින් යුෂ උරා බීම නිසා පත්‍ර කහ පැහැ වේ. දිලීර වර්ධනය වී කළු පැහැයට හැරේ. පුමංගී මල් වලට හානි කිරීමෙන් පරාග විසිරීමට බාධා වේ. පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL 10ml, ඉමිඩක්ලොප්‍රිඩ් 70% WG 1.25g සහ තයමෙතොක්සාම් 25% WG 3g ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "බඩඉරිඟු",
     "category": "pest",
     "language": "si",
@@ -938,7 +938,7 @@
   {
     "id": "MZ-P-003-EN",
     "title": "Maize Aphid",
-    "text": "Maize aphid (Rhopalosiphum maidis) sucks sap from leaves, causing yellowing. Sooty fungal growth can develop on honeydew. Feeding on male flowers can interfere with pollen dispersal. The source lists imidacloprid 20 SL, imidacloprid 70 WG and thiamethoxam 25 WG as chemical control options.",
+    "text": "Maize aphid (Rhopalosiphum maidis) sucks sap from leaves, causing yellowing. Sooty fungal growth can develop on honeydew. Feeding on male flowers can interfere with pollen dispersal. The source lists imidacloprid 20 SL, imidacloprid 70 WG and thiamethoxam 25 WG as chemical control options.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Maize",
     "category": "pest",
     "language": "en",
@@ -950,7 +950,7 @@
   {
     "id": "MZ-P-004-SI",
     "title": "බඩඉරිඟු ගුල්ලා",
-    "text": "බඩඉරිඟු ගුල්ලා (Maize weevil - Sitophilus zeamais) මි.මී. 3-4 දිගැති දුඹුරු සුහුඹුලා සහ කීටයා බීජ තුළ ගත කරයි. බීජ වල අක්‍රමවත් සිදුරු දක්නට ලැබේ. බීජ වියළා පොලිතීන් මලුවල ගබඩා කිරීම, කොහොඹ, ගම්මිරිස්, මී තෙල් හෝ පත්‍ර බීජ සමඟ මිශ්‍ර කිරීම සහ අළු මිශ්‍ර කිරීම නිර්දේශ කර ඇත. මූලාශ්‍රයේ පිරිමි ෆොස් මීතයිල් 50 EC 25ml/10L සහ ෆොස්ටොක්සීන් ධූමායනයද සඳහන් කර ඇත.",
+    "text": "බඩඉරිඟු ගුල්ලා (Maize weevil - Sitophilus zeamais) මි.මී. 3-4 දිගැති දුඹුරු සුහුඹුලා සහ කීටයා බීජ තුළ ගත කරයි. බීජ වල අක්‍රමවත් සිදුරු දක්නට ලැබේ. බීජ වියළා පොලිතීන් මලුවල ගබඩා කිරීම, කොහොඹ, ගම්මිරිස්, මී තෙල් හෝ පත්‍ර බීජ සමඟ මිශ්‍ර කිරීම සහ අළු මිශ්‍ර කිරීම නිර්දේශ කර ඇත. මූලාශ්‍රයේ පිරිමි ෆොස් මීතයිල් 50 EC 25ml/10L සහ ෆොස්ටොක්සීන් ධූමායනයද සඳහන් කර ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "බඩඉරිඟු",
     "category": "pest",
     "language": "si",
@@ -1034,7 +1034,7 @@
   {
     "id": "MZ-D-003-EN",
     "title": "Maize Southern Rust",
-    "text": "Southern rust is caused by Puccinia polysora. Orange-coloured pustules develop and release spores. Severe infection can contribute to plant decline and death. The source states that chemical control may not be economically advantageous and recommends considering disease management in relation to crop conditions.",
+    "text": "Southern rust is caused by Puccinia polysora. Orange-coloured pustules develop and release spores. Severe infection can contribute to plant decline and death. The source states that chemical control may not be economically advantageous and recommends considering disease management in relation to crop conditions.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Maize",
     "category": "disease",
     "language": "en",
@@ -1118,7 +1118,7 @@
   {
     "id": "FM-P-001-SI",
     "title": "කුරක්කන් පුරුක් පණුවා",
-    "text": "පුරුක් පණුවා (Stem borer - Chilo partellus) කඳට හානි කිරීම නිසා ගොබය මැරී 'මල හදවත' ඇති වේ. සුදු කරල් ඇති වීමෙන් බීජ හට නොගනී. රනිල බෝග සමඟ බෝග මාරුව, නයිට්‍රජන් පොහොර නිර්දේශිත ප්‍රමාණයට භාවිතය, අස්වනු නෙලීමේදී පසට ආසන්නයෙන් කැපීම හා පස පෙරලීම පාලන ක්‍රම වේ. රසායනික පාලනය සඳහා නොවල්යුරෝන් 10 EC 10ml, එතොෆෙන්ප්‍රොක්ස් 10 EC 15ml සහ තයෝඩිකාබ් 375 SC 20ml ලෙස දක්වා ඇත.",
+    "text": "පුරුක් පණුවා (Stem borer - Chilo partellus) කඳට හානි කිරීම නිසා ගොබය මැරී 'මල හදවත' ඇති වේ. සුදු කරල් ඇති වීමෙන් බීජ හට නොගනී. රනිල බෝග සමඟ බෝග මාරුව, නයිට්‍රජන් පොහොර නිර්දේශිත ප්‍රමාණයට භාවිතය, අස්වනු නෙලීමේදී පසට ආසන්නයෙන් කැපීම හා පස පෙරලීම පාලන ක්‍රම වේ. රසායනික පාලනය සඳහා නොවල්යුරෝන් 10 EC 10ml, එතොෆෙන්ප්‍රොක්ස් 10 EC 15ml සහ තයෝඩිකාබ් 375 SC 20ml ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "කුරක්කන්",
     "category": "pest",
     "language": "si",
@@ -1142,7 +1142,7 @@
   {
     "id": "FM-P-002-SI",
     "title": "කුරක්කන් කුඩිත්තා",
-    "text": "කුඩිත්තා (Aphid - Rhopalosiphum maidis) පත්‍ර හා කරල්වලින් යුෂ උරා බීමෙන් පත්‍ර කහ පැහැ වේ සහ වර්ධනය බාල වේ. පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL 10ml, ඉමිඩක්ලොප්‍රිඩ් 70% WG 1.25g සහ තයමෙතොක්සාම් 25% WG 3g ලෙස දක්වා ඇත.",
+    "text": "කුඩිත්තා (Aphid - Rhopalosiphum maidis) පත්‍ර හා කරල්වලින් යුෂ උරා බීමෙන් පත්‍ර කහ පැහැ වේ සහ වර්ධනය බාල වේ. පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL 10ml, ඉමිඩක්ලොප්‍රිඩ් 70% WG 1.25g සහ තයමෙතොක්සාම් 25% WG 3g ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "කුරක්කන්",
     "category": "pest",
     "language": "si",
@@ -1154,7 +1154,7 @@
   {
     "id": "FM-P-002-EN",
     "title": "Finger Millet Aphid",
-    "text": "Aphid (Rhopalosiphum maidis) feeds on leaves and ears by sucking sap, causing yellowing and reduced growth. The source lists imidacloprid 20 SL, imidacloprid 70 WG and thiamethoxam 25 WG as chemical control options.",
+    "text": "Aphid (Rhopalosiphum maidis) feeds on leaves and ears by sucking sap, causing yellowing and reduced growth. The source lists imidacloprid 20 SL, imidacloprid 70 WG and thiamethoxam 25 WG as chemical control options.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Finger Millet",
     "category": "pest",
     "language": "en",
@@ -1190,7 +1190,7 @@
   {
     "id": "LG-P-001-SI",
     "title": "රනිල බෝග බෝංච් මැස්සා",
-    "text": "බෝංච් මැස්සා (Bean fly - Ophiomyia phaseoli) කඳේ සනාල පටක වලට හානි කිරීමෙන් ශාකය මැල වී කහපාට වී මැරී යයි. පාදස්ථයේ ඉදිමුම් දක්නට ලැබේ. අප්‍රේල් මුල වගාව පිහිටුවීම නිර්දේශ කර ඇත. බීජ ප්‍රතිකාර සඳහා තයමෙතොක්සාම් 70% WS 15g ජලය මි.ලී. 20-30ක දියකර බීජ කි.ග්‍රෑ. 10කට යෙදිය යුතු බවත්, ඩයසිනෝන් 50 EC 40ml සහ කාබොසල්ෆාන් 20 SC 30ml වැනි කෘමිනාශක දක්වා ඇති බවත් මූලාශ්‍රයේ සඳහන් වේ.",
+    "text": "බෝංච් මැස්සා (Bean fly - Ophiomyia phaseoli) කඳේ සනාල පටක වලට හානි කිරීමෙන් ශාකය මැල වී කහපාට වී මැරී යයි. පාදස්ථයේ ඉදිමුම් දක්නට ලැබේ. අප්‍රේල් මුල වගාව පිහිටුවීම නිර්දේශ කර ඇත. බීජ ප්‍රතිකාර සඳහා තයමෙතොක්සාම් 70% WS 15g ජලය මි.ලී. 20-30ක දියකර බීජ කි.ග්‍රෑ. 10කට යෙදිය යුතු බවත්, ඩයසිනෝන් 50 EC 40ml සහ කාබොසල්ෆාන් 20 SC 30ml වැනි කෘමිනාශක දක්වා ඇති බවත් මූලාශ්‍රයේ සඳහන් වේ.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "pest",
     "language": "si",
@@ -1202,7 +1202,7 @@
   {
     "id": "LG-P-001-EN",
     "title": "Legume Bean Fly",
-    "text": "Bean fly (Ophiomyia phaseoli) damages vascular tissues in young legume plants, causing wilting, yellowing and death. Swelling may occur near the base of the plant. Management includes establishing the crop in early April and treating seed with thiamethoxam 70% WS according to the source. Diazinon and carbosulfan are also listed as insecticide options.",
+    "text": "Bean fly (Ophiomyia phaseoli) damages vascular tissues in young legume plants, causing wilting, yellowing and death. Swelling may occur near the base of the plant. Management includes establishing the crop in early April and treating seed with thiamethoxam 70% WS according to the source. Diazinon and carbosulfan are also listed as insecticide options.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Legumes",
     "category": "pest",
     "language": "en",
@@ -1214,7 +1214,7 @@
   {
     "id": "LG-P-002-SI",
     "title": "රනිල බෝග කුඩිත්තා",
-    "text": "කුඩිත්තා (Aphid - Aphis craccivora) කළු පැහැති කෘමියෙකු වන අතර යුෂ උරා බීමෙන් ශාක මැලවී කහපාට වේ. කව්පි පත්‍ර විචිත්‍ර වෛරස් රෝගයේ වාහකයෙකි. පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL 10ml සහ තයමෙතොක්සාම් 25% WG 3g ලෙස දක්වා ඇත.",
+    "text": "කුඩිත්තා (Aphid - Aphis craccivora) කළු පැහැති කෘමියෙකු වන අතර යුෂ උරා බීමෙන් ශාක මැලවී කහපාට වේ. කව්පි පත්‍ර විචිත්‍ර වෛරස් රෝගයේ වාහකයෙකි. පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL 10ml සහ තයමෙතොක්සාම් 25% WG 3g ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "pest",
     "language": "si",
@@ -1226,7 +1226,7 @@
   {
     "id": "LG-P-002-EN",
     "title": "Legume Aphid",
-    "text": "Aphid (Aphis craccivora) feeds on plants by sucking sap, causing wilting and yellowing. It can act as a vector of cowpea mosaic virus. The source lists imidacloprid 20 SL and thiamethoxam 25 WG as chemical control options.",
+    "text": "Aphid (Aphis craccivora) feeds on plants by sucking sap, causing wilting and yellowing. It can act as a vector of cowpea mosaic virus. The source lists imidacloprid 20 SL and thiamethoxam 25 WG as chemical control options.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Legumes",
     "category": "pest",
     "language": "en",
@@ -1238,7 +1238,7 @@
   {
     "id": "LG-P-003-SI",
     "title": "රනිල බෝග සුදු මැස්සා",
-    "text": "සුදු මැස්සා (Whitefly - Bemisia tabaci) කහ විචිත්‍ර වෛරස් රෝගයේ වාහකයෙකි. පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL 10ml සහ ඇසිටැමිප්‍රිඩ් 20% SP 10g ලෙස දක්වා ඇත.",
+    "text": "සුදු මැස්සා (Whitefly - Bemisia tabaci) කහ විචිත්‍ර වෛරස් රෝගයේ වාහකයෙකි. පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL 10ml සහ ඇසිටැමිප්‍රිඩ් 20% SP 10g ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "pest",
     "language": "si",
@@ -1250,7 +1250,7 @@
   {
     "id": "LG-P-003-EN",
     "title": "Legume Whitefly",
-    "text": "Whitefly (Bemisia tabaci) is described as a vector of yellow mosaic virus in legumes. The source lists imidacloprid 20 SL and acetamiprid 20% SP as control options.",
+    "text": "Whitefly (Bemisia tabaci) is described as a vector of yellow mosaic virus in legumes. The source lists imidacloprid 20 SL and acetamiprid 20% SP as control options.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Legumes",
     "category": "pest",
     "language": "en",
@@ -1262,7 +1262,7 @@
   {
     "id": "LG-P-004-SI",
     "title": "රනිල බෝග පත්‍ර කීඩෑවා",
-    "text": "පත්‍ර කීඩෑවා (Leaf hopper - Amrasca devastans) ලා කොළ පැහැති කෘමියෙකු වන අතර යුෂ උරා බීමෙන් පත්‍ර කහ පැහැ වී මැලවී යයි. මුං පත්‍ර විචිත්‍ර වෛරස් රෝගයේ වාහකයෙකි. පාලනය සඳහා ඇසිටැමිප්‍රිඩ් 20% SP 10g සහ ඇසිෆේට් 75% SP 10g ලෙස දක්වා ඇත.",
+    "text": "පත්‍ර කීඩෑවා (Leaf hopper - Amrasca devastans) ලා කොළ පැහැති කෘමියෙකු වන අතර යුෂ උරා බීමෙන් පත්‍ර කහ පැහැ වී මැලවී යයි. මුං පත්‍ර විචිත්‍ර වෛරස් රෝගයේ වාහකයෙකි. පාලනය සඳහා ඇසිටැමිප්‍රිඩ් 20% SP 10g සහ ඇසිෆේට් 75% SP 10g ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "pest",
     "language": "si",
@@ -1286,7 +1286,7 @@
   {
     "id": "LG-P-005-SI",
     "title": "රනිල බෝග රතු මයිටාවා",
-    "text": "රතු මයිටාවා (Red mites - Tetranychus spp.) නිසා පත්‍ර දාර කහ පැහැ වී, රැලි වී, පිළිස්සී වියලී යයි. පාලනය සඳහා සල්ෆර් 80% WP 80g, හෙසිතයොසොක්ස් 10% WP 5g සහ ඇබමෙක්ටින් 1.8 EC 6ml ලෙස දක්වා ඇත.",
+    "text": "රතු මයිටාවා (Red mites - Tetranychus spp.) නිසා පත්‍ර දාර කහ පැහැ වී, රැලි වී, පිළිස්සී වියලී යයි. පාලනය සඳහා සල්ෆර් 80% WP 80g, හෙසිතයොසොක්ස් 10% WP 5g සහ ඇබමෙක්ටින් 1.8 EC 6ml ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "pest",
     "language": "si",
@@ -1298,7 +1298,7 @@
   {
     "id": "LG-P-005-EN",
     "title": "Legume Red Mites",
-    "text": "Red mites (Tetranychus spp.) cause yellowing, curling, scorching and drying of leaf margins. The source lists sulfur 80% WP, hexythiazox 10% WP and abamectin 1.8 EC as control options.",
+    "text": "Red mites (Tetranychus spp.) cause yellowing, curling, scorching and drying of leaf margins. The source lists sulfur 80% WP, hexythiazox 10% WP and abamectin 1.8 EC as control options.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Legumes",
     "category": "pest",
     "language": "en",
@@ -1310,7 +1310,7 @@
   {
     "id": "LG-P-006-SI",
     "title": "රනිල බෝග පත්‍ර කනින්නා",
-    "text": "පත්‍ර කනින්නා (Leaf miner - Liriomyza spp.) ගේ කීටයා පත්‍රයේ සර්පිලාකාර කැණීම් සාදයි. පත්‍ර හැලී යයි. පාලනය සඳහා කහ ඇලෙන උගුල්, ඇබමෙක්ටින් 1.8 EC 6ml, සයිරොමයිසීන් 75% WP 30g සහ ඇසඩිරැක්ටින් 5 SL 20ml ලෙස දක්වා ඇත.",
+    "text": "පත්‍ර කනින්නා (Leaf miner - Liriomyza spp.) ගේ කීටයා පත්‍රයේ සර්පිලාකාර කැණීම් සාදයි. පත්‍ර හැලී යයි. පාලනය සඳහා කහ ඇලෙන උගුල්, ඇබමෙක්ටින් 1.8 EC 6ml, සයිරොමයිසීන් 75% WP 30g සහ ඇසඩිරැක්ටින් 5 SL 20ml ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "pest",
     "language": "si",
@@ -1334,7 +1334,7 @@
   {
     "id": "LG-P-007-SI",
     "title": "රනිල බෝග පැල මැක්කන්",
-    "text": "පැල මැක්කන් (Thrips - Megalurothrips sjostedti සහ Frankiniella schultzei) නිසා පත්‍ර මත ලා දුඹුරු ලප ඇති වේ. පුෂ්ප අංකුර දුඹුරු වී වැටී යයි. පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL 10ml, තයමෙතොක්සාම් 25% WG 5g සහ ෆිප්රොනිල් 50 SC 10ml ලෙස දක්වා ඇත.",
+    "text": "පැල මැක්කන් (Thrips - Megalurothrips sjostedti සහ Frankiniella schultzei) නිසා පත්‍ර මත ලා දුඹුරු ලප ඇති වේ. පුෂ්ප අංකුර දුඹුරු වී වැටී යයි. පාලනය සඳහා ඉමිඩක්ලොප්‍රිඩ් 20 SL 10ml, තයමෙතොක්සාම් 25% WG 5g සහ ෆිප්රොනිල් 50 SC 10ml ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "pest",
     "language": "si",
@@ -1406,7 +1406,7 @@
   {
     "id": "LG-P-010-SI",
     "title": "රනිල බෝග කරල් විදින දළඹුවන්",
-    "text": "කරල් විදින දළඹුවන් ලෙස Maruca vitrata, Helicoverpa armigera සහ Lampides boeticus සඳහන් වේ. පත්‍ර, අංකුර, මල් හා කරල් දැලක් මෙන් සාදා කා දමයි. පාලනය සඳහා ක්ලෝෆ්ලුඑසියුරෝන් 5 EC 10ml, තයෝඩිකාබ් 375 SC 20ml සහ එතොෆෙන්ප්‍රොක්ස් 10 EC 15ml ලෙස දක්වා ඇත.",
+    "text": "කරල් විදින දළඹුවන් ලෙස Maruca vitrata, Helicoverpa armigera සහ Lampides boeticus සඳහන් වේ. පත්‍ර, අංකුර, මල් හා කරල් දැලක් මෙන් සාදා කා දමයි. පාලනය සඳහා ක්ලෝෆ්ලුඑසියුරෝන් 5 EC 10ml, තයෝඩිකාබ් 375 SC 20ml සහ එතොෆෙන්ප්‍රොක්ස් 10 EC 15ml ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "pest",
     "language": "si",
@@ -1430,7 +1430,7 @@
   {
     "id": "LG-P-011-SI",
     "title": "කව්පි ගුල්ලා",
-    "text": "රනිල ගුල්ලා හෙවත් Cowpea weevil (Callosobruchus spp.) ගේ සුදු බිත්තර දක්නට ලැබෙන අතර බීජ වල රවුම් සිදුරු සාදා බීජ ඇතුළත ආහාරයට ගනී. පාලනය සඳහා කොහොඹ, ගම්මිරිස්, මී තෙල් හෝ අළු මිශ්‍ර කිරීම, පිරිමි ෆොස් මීතයිල් 50 EC ඉසීම සහ ෆොස්ටොක්සීන් ධූමායනය මූලාශ්‍රයේ දක්වා ඇත.",
+    "text": "රනිල ගුල්ලා හෙවත් Cowpea weevil (Callosobruchus spp.) ගේ සුදු බිත්තර දක්නට ලැබෙන අතර බීජ වල රවුම් සිදුරු සාදා බීජ ඇතුළත ආහාරයට ගනී. පාලනය සඳහා කොහොඹ, ගම්මිරිස්, මී තෙල් හෝ අළු මිශ්‍ර කිරීම, පිරිමි ෆොස් මීතයිල් 50 EC ඉසීම සහ ෆොස්ටොක්සීන් ධූමායනය මූලාශ්‍රයේ දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "කව්පි",
     "category": "pest",
     "language": "si",
@@ -1454,7 +1454,7 @@
   {
     "id": "LG-D-001-SI",
     "title": "රනිල බෝග පත්‍ර පුල්ලි රෝගය",
-    "text": "රනිල බෝග පත්‍ර පුල්ලි රෝගයට C. canescens සහ C. cruenta හේතු වේ. C. canescens මගින් රතු පැහැ ලප සහ C. cruenta මගින් දුඹුරු ලප ඇති වේ. පාලනය සඳහා කොපර් 50 WP 40g, මැන්කොසෙබ් 80 WP 20g සහ ක්ලෝරොතැලොනිල් 8ml ලෙස දක්වා ඇත.",
+    "text": "රනිල බෝග පත්‍ර පුල්ලි රෝගයට C. canescens සහ C. cruenta හේතු වේ. C. canescens මගින් රතු පැහැ ලප සහ C. cruenta මගින් දුඹුරු ලප ඇති වේ. පාලනය සඳහා කොපර් 50 WP 40g, මැන්කොසෙබ් 80 WP 20g සහ ක්ලෝරොතැලොනිල් 8ml ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "disease",
     "language": "si",
@@ -1478,7 +1478,7 @@
   {
     "id": "LG-D-002-SI",
     "title": "රනිල බෝග පිටිපුස් රෝගය",
-    "text": "පිටිපුස් රෝගයේදී පත්‍ර මත සුදු පැල්ලම් ඇති වී අළු පැහැයට හැරේ. පාලනය සඳහා තයෝෆනේට් මීතයිල් 70% WP 10g සහ සල්ෆර් 80% WP 50g ලෙස දක්වා ඇත.",
+    "text": "පිටිපුස් රෝගයේදී පත්‍ර මත සුදු පැල්ලම් ඇති වී අළු පැහැයට හැරේ. පාලනය සඳහා තයෝෆනේට් මීතයිල් 70% WP 10g සහ සල්ෆර් 80% WP 50g ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "disease",
     "language": "si",
@@ -1502,7 +1502,7 @@
   {
     "id": "LG-D-003-SI",
     "title": "රනිල බෝග ඇන්ත්‍රැග්නෝස් රෝගය",
-    "text": "ඇන්ත්‍රැග්නෝස් රෝගයේදී දම් පැහැයට හුරු දුඹුරු පැල්ලම් කඳ හා කරල් මත ඇති වේ. පාලනය සඳහා මැන්කොසෙබ් 80% WP 20g සහ කාබන්ඩසීම් 50% WP 7g ලෙස දක්වා ඇත.",
+    "text": "ඇන්ත්‍රැග්නෝස් රෝගයේදී දම් පැහැයට හුරු දුඹුරු පැල්ලම් කඳ හා කරල් මත ඇති වේ. පාලනය සඳහා මැන්කොසෙබ් 80% WP 20g සහ කාබන්ඩසීම් 50% WP 7g ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "disease",
     "language": "si",
@@ -1526,7 +1526,7 @@
   {
     "id": "LG-D-004-SI",
     "title": "රනිල බෝග පාදස්ථ කුණුවීම",
-    "text": "පාදස්ථ කුණුවීම සඳහා තිරාම් 80% WP 70g ජලය ලීටර 50ක දියකර යෙදීම පාලන ක්‍රමයක් ලෙස දක්වා ඇත.",
+    "text": "පාදස්ථ කුණුවීම සඳහා තිරාම් 80% WP 70g ජලය ලීටර 50ක දියකර යෙදීම පාලන ක්‍රමයක් ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රනිල බෝග",
     "category": "disease",
     "language": "si",
@@ -1622,7 +1622,7 @@
   {
     "id": "PN-P-001-SI",
     "title": "රටකජු කෘමි හානි",
-    "text": "රටකජු වගාවට රතු කේශර දළඹුවා, සමූහ පනුවා, කුඩිත්තා, පැලමැක්කන් සහ වේයන් හානි කරයි. පාලනය සඳහා කීටයින් එකතු කර විනාශ කිරීම සහ ඉමිඩක්ලොප්‍රිඩ් 20 SL 5ml යෙදීම මූලාශ්‍රයේ දක්වා ඇත.",
+    "text": "රටකජු වගාවට රතු කේශර දළඹුවා, සමූහ පනුවා, කුඩිත්තා, පැලමැක්කන් සහ වේයන් හානි කරයි. පාලනය සඳහා කීටයින් එකතු කර විනාශ කිරීම සහ ඉමිඩක්ලොප්‍රිඩ් 20 SL 5ml යෙදීම මූලාශ්‍රයේ දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රටකජු",
     "category": "pest",
     "language": "si",
@@ -1646,7 +1646,7 @@
   {
     "id": "PN-D-001-SI",
     "title": "රටකජු පූර්ව සහ පශ්චිම කොළ පුල්ලි රෝගය",
-    "text": "පූර්ව සහ පශ්චිම කොළ පුල්ලි රෝගයට Cercospora arachidicola සහ personata හේතු වේ. පත්‍ර තලයේ උඩ හා යට දුඹුරු පුල්ලි දක්නට ලැබේ. පාලනය සඳහා බිටර්ටනෝල් 300g/L EC 10ml, ප්‍රොපිනෙබ් 70% WP 20g සහ ක්ලෝරොතැලොනිල් 30ml ලෙස දක්වා ඇත.",
+    "text": "පූර්ව සහ පශ්චිම කොළ පුල්ලි රෝගයට Cercospora arachidicola සහ personata හේතු වේ. පත්‍ර තලයේ උඩ හා යට දුඹුරු පුල්ලි දක්නට ලැබේ. පාලනය සඳහා බිටර්ටනෝල් 300g/L EC 10ml, ප්‍රොපිනෙබ් 70% WP 20g සහ ක්ලෝරොතැලොනිල් 30ml ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "රටකජු",
     "category": "disease",
     "language": "si",
@@ -1742,7 +1742,7 @@
   {
     "id": "SS-P-001-SI",
     "title": "තල පත්‍ර දැල් බඳින්නා",
-    "text": "පත්‍ර දැල් බඳින්නා (Leaf webber - Antigastra catalaunalis) වර්ධක ස්ථානයේ පත්‍ර දැලක් මෙන් බඳියි. මල් හා අංකුර සිදුරු කරයි. පාලනය සඳහා ඇසිෆේට් 75% SP 20g, ටෙබුෆෙනොසයිඩ් 20 SC 15ml, ක්ලෝෆ්ලුඑසියුරෝන් 5 EC 30ml සහ කොහොඹ නිස්සාරකය 400g/10L ලෙස දක්වා ඇත.",
+    "text": "පත්‍ර දැල් බඳින්නා (Leaf webber - Antigastra catalaunalis) වර්ධක ස්ථානයේ පත්‍ර දැලක් මෙන් බඳියි. මල් හා අංකුර සිදුරු කරයි. පාලනය සඳහා ඇසිෆේට් 75% SP 20g, ටෙබුෆෙනොසයිඩ් 20 SC 15ml, ක්ලෝෆ්ලුඑසියුරෝන් 5 EC 30ml සහ කොහොඹ නිස්සාරකය 400g/10L ලෙස දක්වා ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "තල",
     "category": "pest",
     "language": "si",
@@ -1811,7 +1811,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-C-002-SI",
     "title": "මිරිස් වගාවේ දේශගුණික හා පාංශු අවශ්‍යතා",
@@ -1836,7 +1835,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-C-003-SI",
     "title": "මිරිස් වගා කළ යුතු කාලය",
@@ -1861,7 +1859,6 @@
     "region": "Sri Lanka",
     "season": "Maha/Yala"
   },
-
   {
     "id": "CH-C-004-SI",
     "title": "මිරිස් නිර්දේශිත ප්‍රභේද",
@@ -1886,11 +1883,10 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-C-005-SI",
     "title": "මිරිස් බීජ අවශ්‍යතාවය සහ තවාන් සැකසීම",
-    "text": "විවෘත පරාගික මිරිස් ප්‍රභේද සඳහා හෙක්ටයාරයකට බීජ කි.ග්‍රෑ. 1.0ක් සහ දෙමුහුම් ප්‍රභේද සඳහා හෙක්ටයාරයකට බීජ ග්‍රෑම් 500ක් අවශ්‍ය වේ. හොඳින් හිරු එළිය ලැබෙන ස්ථානයක, පෙර කන්නවල සොලනේසියේ කුලයට අයත් බෝග වගා නොකළ මීටර් 1ක් පළල සහ අවශ්‍ය තරමට දිග පාත්ති සකස් කර ජීවාණුහරණය කළ යුතුය. බීජ කි.ග්‍රෑ. 1කට 80% කැප්ටාන් ග්‍රෑම් 40ක් යොදා බීජ ප්‍රතිකාර කර තවානේ පේළි දිගේ විසුරුවා හැරිය යුතුය. මීටර් 1 පළල හා මීටර් 3 දිග පාත්තියකට බීජ ග්‍රෑම් 40ක් පමණ තවාන් කළ හැක.",
+    "text": "විවෘත පරාගික මිරිස් ප්‍රභේද සඳහා හෙක්ටයාරයකට බීජ කි.ග්‍රෑ. 1.0ක් සහ දෙමුහුම් ප්‍රභේද සඳහා හෙක්ටයාරයකට බීජ ග්‍රෑම් 500ක් අවශ්‍ය වේ. හොඳින් හිරු එළිය ලැබෙන ස්ථානයක, පෙර කන්නවල සොලනේසියේ කුලයට අයත් බෝග වගා නොකළ මීටර් 1ක් පළල සහ අවශ්‍ය තරමට දිග පාත්ති සකස් කර ජීවාණුහරණය කළ යුතුය. බීජ කි.ග්‍රෑ. 1කට 80% කැප්ටාන් ග්‍රෑම් 40ක් යොදා බීජ ප්‍රතිකාර කර තවානේ පේළි දිගේ විසුරුවා හැරිය යුතුය. මීටර් 1 පළල හා මීටර් 3 දිග පාත්තියකට බීජ ග්‍රෑම් 40ක් පමණ තවාන් කළ හැක.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "Chilli",
     "category": "Nursery Management",
     "language": "si",
@@ -1902,7 +1898,7 @@
   {
     "id": "CH-C-005-EN",
     "title": "Chilli Seed Requirement and Nursery Preparation",
-    "text": "For open-pollinated chilli varieties, 1.0 kg of seed per hectare is required, while hybrid varieties require 500 g of seed per hectare. Nursery beds should be prepared in a location receiving good sunlight, avoiding areas where crops belonging to the Solanaceae family were cultivated during the previous season. Beds should be about 1 m wide and of the required length and should be disinfected. Seeds should be treated using 40 g of 80% Captan per 1 kg of seed and then distributed in rows on the nursery bed. About 40 g of seed can be sown in a nursery bed measuring 1 m wide and 3 m long.",
+    "text": "For open-pollinated chilli varieties, 1.0 kg of seed per hectare is required, while hybrid varieties require 500 g of seed per hectare. Nursery beds should be prepared in a location receiving good sunlight, avoiding areas where crops belonging to the Solanaceae family were cultivated during the previous season. Beds should be about 1 m wide and of the required length and should be disinfected. Seeds should be treated using 40 g of 80% Captan per 1 kg of seed and then distributed in rows on the nursery bed. About 40 g of seed can be sown in a nursery bed measuring 1 m wide and 3 m long.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "Nursery Management",
     "language": "en",
@@ -1911,7 +1907,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-C-006-SI",
     "title": "මිරිස් ක්ෂේත්‍රයේ සිටුවීම හා පරතරය",
@@ -1936,7 +1931,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-C-007-SI",
     "title": "මිරිස් වගාවේ ජල සම්පාදනය",
@@ -1961,7 +1955,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-C-008-SI",
     "title": "මිරිස් වගාවේ පොහොර යෙදීම",
@@ -1986,7 +1979,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-C-009-SI",
     "title": "මිරිස් වගාවේ වල් පැළෑටි පාලනය",
@@ -2002,7 +1994,7 @@
   {
     "id": "CH-C-009-EN",
     "title": "Weed Management in Chilli",
-    "text": "The chilli field should be kept free of weeds as much as possible. The source states that applying Alachlor 480 g/L EC at 5 L per hectare after transplanting can control weeds during the first 3–4 weeks. Maintaining soil moisture helps improve the effectiveness of the herbicide.",
+    "text": "The chilli field should be kept free of weeds as much as possible. The source states that applying Alachlor 480 g/L EC at 5 L per hectare after transplanting can control weeds during the first 3–4 weeks. Maintaining soil moisture helps improve the effectiveness of the herbicide.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Chilli",
     "category": "Weed Management",
     "language": "en",
@@ -2011,11 +2003,10 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-D-010-SI",
     "title": "මිරිස් දිලීර රෝග - දියමලන්කෑම, ඇන්ත්‍රැක්නෝස් සහ කොළ පුල්ලි",
-    "text": "මිරිස්වල දියමලන්කෑම රෝගය Fusarium spp., Pythium spp., Rhizoctonia සහ Sclerotium spp. වැනි පසේ ජීවත් වන දිලීර නිසා ඇති විය හැක. බීජ ප්‍රරෝහණය දුර්වල වීම, බීජ පැළවල පාදස්ථ කොටස කළු වී කුණු වී කඩා වැටීම සහ මුල් කළු වී වියළි කුණුවීම මෙහි ලක්ෂණ වේ. හොඳින් ජලය බැස යන ස්ථානයක තවාන් දැමීම, සොලනේසියේ කුලයට අයත් බෝග පෙර වගා නොකළ ස්ථාන තෝරා ගැනීම, තවාන් ජීවාණුහරණය කිරීම සහ බීජ ප්‍රතිකාර කිරීම මඟින් රෝගය වළක්වා ගත හැක. ඇන්ත්‍රැක්නෝස් Colletotrichum capsici දිලීරය නිසා ඇති වන අතර මහ කන්නයේ හා වර්ෂාව බහුල අවස්ථාවල වැඩිපුර පැතිරේ. ආසාදිත කරල්වල ගිලුණු අළු-දුඹුරු කැළැල් ඇතිවී පසුව කළු දිලීර බීජාණු දැකිය හැක. කොළ පුල්ලි රෝගය Cercospora capsici දිලීරය නිසා ඇති වන අතර පත්‍රවල කහ පැහැති වලයක් සහිත රවුම් දුඹුරු පුල්ලි ඇතිවීම, පත්‍ර කහවීම සහ අකාලයේ හැලීම සිදුවිය හැක.",
+    "text": "මිරිස්වල දියමලන්කෑම රෝගය Fusarium spp., Pythium spp., Rhizoctonia සහ Sclerotium spp. වැනි පසේ ජීවත් වන දිලීර නිසා ඇති විය හැක. බීජ ප්‍රරෝහණය දුර්වල වීම, බීජ පැළවල පාදස්ථ කොටස කළු වී කුණු වී කඩා වැටීම සහ මුල් කළු වී වියළි කුණුවීම මෙහි ලක්ෂණ වේ. හොඳින් ජලය බැස යන ස්ථානයක තවාන් දැමීම, සොලනේසියේ කුලයට අයත් බෝග පෙර වගා නොකළ ස්ථාන තෝරා ගැනීම, තවාන් ජීවාණුහරණය කිරීම සහ බීජ ප්‍රතිකාර කිරීම මඟින් රෝගය වළක්වා ගත හැක. ඇන්ත්‍රැක්නෝස් Colletotrichum capsici දිලීරය නිසා ඇති වන අතර මහ කන්නයේ හා වර්ෂාව බහුල අවස්ථාවල වැඩිපුර පැතිරේ. ආසාදිත කරල්වල ගිලුණු අළු-දුඹුරු කැළැල් ඇතිවී පසුව කළු දිලීර බීජාණු දැකිය හැක. කොළ පුල්ලි රෝගය Cercospora capsici දිලීරය නිසා ඇති වන අතර පත්‍රවල කහ පැහැති වලයක් සහිත රවුම් දුඹුරු පුල්ලි ඇතිවීම, පත්‍ර කහවීම සහ අකාලයේ හැලීම සිදුවිය හැක.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "Chilli",
     "category": "disease",
     "language": "si",
@@ -2036,7 +2027,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-D-011-SI",
     "title": "මිරිස් පාමුල කුණුවීම සහ රිකිලි කුණුවීම",
@@ -2061,7 +2051,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-D-012-SI",
     "title": "මිරිස් පිටිපුස් සහ බැක්ටීරියා හිටුමැරීම",
@@ -2086,7 +2075,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-D-013-SI",
     "title": "මිරිස් වෛරස් රෝග",
@@ -2111,11 +2099,10 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-D-014-SI",
     "title": "මිරිස් කොළ කොඩවීමේ සංකීර්ණය සහ පාලනය",
-    "text": "මිරිස් කොළ කොඩවීම ප්‍රධාන ගැටළුවක් වන අතර තවාන් අවස්ථාවේ සිට වගාවේ ඕනෑම අවස්ථාවක ඇති විය හැක. පැළ මැක්කන්, කුඩිත්තන් හා මයිටාවන් ශාක යුෂ උරාබීමෙන් ද, සුදු මැස්සන් මඟින් කොළ කොඩවීමේ වෛරසය බෝ කිරීමෙන් ද කොළ කොඩවීම ඇති විය හැක. වෛරස් නිසා ඇති වන කොළ කොඩවීමේදී පත්‍ර ලා කහ පැහැයට හැරීම, නාරටි පැහැදිලි වීම, පර්ව කෙටි වීම, ශාක කුරු වීම, අධික රිකිළි ඇති වීම සහ පත්‍ර කුඩා, ඝන හා බෝට්ටුවක හැඩයට පත්වීම සිදුවිය හැක. කොළ කොඩවීම පාලනය සඳහා ඒකාබද්ධ පළිබෝධ පාලන ක්‍රම භාවිත කිරීම සුදුසුය. පෙර කන්නයේ මිරිස් වගා කළ ස්ථානවල වගා කිරීමෙන් වැළකීම, උසස් ගුණාත්මයෙන් යුත් බීජ භාවිතය, නිර්දේශිත තවාන් ක්‍රම අනුගමනය කිරීම, නිසි කාලයේ ක්ෂේත්‍රයේ සිටුවීම, නිර්දේශිත ප්‍රමාණයට පොහොර යෙදීම, වල් පැළ පාලනය, ආවරණ බෝග භාවිතය සහ අවශ්‍ය අවස්ථාවලදී පමණක් නිර්දේශිත කෘමිනාශක භාවිතය වැදගත් වේ. අධික නයිට්‍රජනීය පොහොර යෙදීමෙන් පටක මෘදු වී කෘමි හානියට හිතකර තත්ත්වයක් ඇති විය හැක.",
+    "text": "මිරිස් කොළ කොඩවීම ප්‍රධාන ගැටළුවක් වන අතර තවාන් අවස්ථාවේ සිට වගාවේ ඕනෑම අවස්ථාවක ඇති විය හැක. පැළ මැක්කන්, කුඩිත්තන් හා මයිටාවන් ශාක යුෂ උරාබීමෙන් ද, සුදු මැස්සන් මඟින් කොළ කොඩවීමේ වෛරසය බෝ කිරීමෙන් ද කොළ කොඩවීම ඇති විය හැක. වෛරස් නිසා ඇති වන කොළ කොඩවීමේදී පත්‍ර ලා කහ පැහැයට හැරීම, නාරටි පැහැදිලි වීම, පර්ව කෙටි වීම, ශාක කුරු වීම, අධික රිකිළි ඇති වීම සහ පත්‍ර කුඩා, ඝන හා බෝට්ටුවක හැඩයට පත්වීම සිදුවිය හැක. කොළ කොඩවීම පාලනය සඳහා ඒකාබද්ධ පළිබෝධ පාලන ක්‍රම භාවිත කිරීම සුදුසුය. පෙර කන්නයේ මිරිස් වගා කළ ස්ථානවල වගා කිරීමෙන් වැළකීම, උසස් ගුණාත්මයෙන් යුත් බීජ භාවිතය, නිර්දේශිත තවාන් ක්‍රම අනුගමනය කිරීම, නිසි කාලයේ ක්ෂේත්‍රයේ සිටුවීම, නිර්දේශිත ප්‍රමාණයට පොහොර යෙදීම, වල් පැළ පාලනය, ආවරණ බෝග භාවිතය සහ අවශ්‍ය අවස්ථාවලදී පමණක් නිර්දේශිත කෘමිනාශක භාවිතය වැදගත් වේ. අධික නයිට්‍රජනීය පොහොර යෙදීමෙන් පටක මෘදු වී කෘමි හානියට හිතකර තත්ත්වයක් ඇති විය හැක.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "Chilli",
     "category": "Pest and Disease Management",
     "language": "si",
@@ -2136,7 +2123,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-C-015-SI",
     "title": "මිරිස් පත්‍ර සිහින්වීමේ අසාමාන්‍යතාව",
@@ -2161,7 +2147,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "CH-C-016-SI",
     "title": "මිරිස් අස්වනු නෙලීම සහ වියළි මිරිස් නිෂ්පාදනය",
@@ -2210,7 +2195,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "O-C-002-SI",
     "title": "නිර්දේශිත බී ලූණු ප්‍රභේද",
@@ -2235,7 +2219,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "O-C-003-SI",
     "title": "වගා කාලය සහ බී ලූණු බීජ අවශ්‍යතාව",
@@ -2260,7 +2243,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "O-C-004-SI",
     "title": "බී ලූණු තවාන් කළමනාකරණය සහ පස විෂබීජහරණය",
@@ -2285,11 +2267,10 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "O-C-005-SI",
     "title": "බීජ ප්‍රතිකාර සහ බී ලූණු තවාන් වැපිරීම",
-    "text": "බී ලූණු බීජ වපුරීමට පෙර බීජ ප්‍රතිකාර කිරීම සඳහා Thiram 80% 4–4.5 g/kg බීජ හෝ Thiophanate methyl 50% + Thiram 30% WP 4 g/kg බීජ භාවිතා කරන බව මූලාශ්‍රයේ සඳහන් වේ. පේළි ක්‍රමයට වපුරන විට එක් තවාන් පාත්තියකට බීජ 35–40 g පමණ භාවිතා කර පේළි අතර සෙන්ටිමීටර් 10 ක පරතරයක් සහ සෙන්ටිමීටර් 1 ක් පමණ ගැඹුරු furrows සකස් කළ යුතුය. විසුරුවා වපුරන ක්‍රමයේදී එක් පාත්තියකට බීජ 70–80 g පමණ භාවිතා කළ හැක. බීජ වපුරා අවසන් වූ පසු පොලිතින් ආවරණයක් යෙදිය හැක. පැළ වර්ධනය දුර්වල නම් Urea 15 g, ජලය ලීටර් 4.5 ක දියකර පත්‍ර මත යෙදීමෙන් පසු පත්‍ර සෝදා හැරිය යුතු බව මූලාශ්‍රයේ සඳහන් වේ.",
+    "text": "බී ලූණු බීජ වපුරීමට පෙර බීජ ප්‍රතිකාර කිරීම සඳහා Thiram 80% 4–4.5 g/kg බීජ හෝ Thiophanate methyl 50% + Thiram 30% WP 4 g/kg බීජ භාවිතා කරන බව මූලාශ්‍රයේ සඳහන් වේ. පේළි ක්‍රමයට වපුරන විට එක් තවාන් පාත්තියකට බීජ 35–40 g පමණ භාවිතා කර පේළි අතර සෙන්ටිමීටර් 10 ක පරතරයක් සහ සෙන්ටිමීටර් 1 ක් පමණ ගැඹුරු furrows සකස් කළ යුතුය. විසුරුවා වපුරන ක්‍රමයේදී එක් පාත්තියකට බීජ 70–80 g පමණ භාවිතා කළ හැක. බීජ වපුරා අවසන් වූ පසු පොලිතින් ආවරණයක් යෙදිය හැක. පැළ වර්ධනය දුර්වල නම් Urea 15 g, ජලය ලීටර් 4.5 ක දියකර පත්‍ර මත යෙදීමෙන් පසු පත්‍ර සෝදා හැරිය යුතු බව මූලාශ්‍රයේ සඳහන් වේ.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "Big Onion",
     "category": "Seed Treatment",
     "language": "si",
@@ -2301,7 +2282,7 @@
   {
     "id": "O-C-005-EN",
     "title": "Big Onion Seed Treatment and Nursery Sowing",
-    "text": "The source recommends seed treatment before sowing using either Thiram 80% at 4–4.5 g per kg of seed or Thiophanate methyl 50% + Thiram 30% WP at 4 g per kg of seed. For row sowing, approximately 35–40 g of seed can be used per nursery bed, with 10 cm spacing between rows and furrows about 1 cm deep. For broadcasting, approximately 70–80 g of seed can be used per bed. After sowing, the nursery may be covered with polythene. If seedling growth is poor, the source states that 15 g of urea can be dissolved in 4.5 litres of water and applied to the leaves, followed by washing the leaves.",
+    "text": "The source recommends seed treatment before sowing using either Thiram 80% at 4–4.5 g per kg of seed or Thiophanate methyl 50% + Thiram 30% WP at 4 g per kg of seed. For row sowing, approximately 35–40 g of seed can be used per nursery bed, with 10 cm spacing between rows and furrows about 1 cm deep. For broadcasting, approximately 70–80 g of seed can be used per bed. After sowing, the nursery may be covered with polythene. If seedling growth is poor, the source states that 15 g of urea can be dissolved in 4.5 litres of water and applied to the leaves, followed by washing the leaves.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Big Onion",
     "category": "Seed Treatment",
     "language": "en",
@@ -2310,11 +2291,10 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "O-C-006-SI",
     "title": "බී ලූණු ක්ෂේත්‍ර සකස් කිරීම සහ පැළ සිටුවීම",
-    "text": "වී වගා කළ ඉඩම්වල උස් පාත්ති සහ වැලි සහිත පසක පහත් පාත්ති සකස් කළ හැක. දින 35 ක් පමණ වයසැති, නිරෝගී සහ අවම වශයෙන් පත්‍ර 3 ක් සහිත පැළ ක්ෂේත්‍රයේ සිටුවීමට තෝරා ගත යුතුය. පේළි අතර පරතරය සෙන්ටිමීටර් 10 ක්ද, පැළ අතර පරතරය සෙන්ටිමීටර් 10 ක්ද තබා, සෙන්ටිමීටර් 1–1.5 ක් පමණ ගැඹුරට පැළ සිටුවිය යුතුය. සිටුවීමට පෙර පැළවල මුල් නිර්දේශිත දිලීරනාශක ද්‍රාවණයක විනාඩි 30 ක් පමණ ගිල්වා ප්‍රතිකාර කිරීම සඳහන් කර ඇත.",
+    "text": "වී වගා කළ ඉඩම්වල උස් පාත්ති සහ වැලි සහිත පසක පහත් පාත්ති සකස් කළ හැක. දින 35 ක් පමණ වයසැති, නිරෝගී සහ අවම වශයෙන් පත්‍ර 3 ක් සහිත පැළ ක්ෂේත්‍රයේ සිටුවීමට තෝරා ගත යුතුය. පේළි අතර පරතරය සෙන්ටිමීටර් 10 ක්ද, පැළ අතර පරතරය සෙන්ටිමීටර් 10 ක්ද තබා, සෙන්ටිමීටර් 1–1.5 ක් පමණ ගැඹුරට පැළ සිටුවිය යුතුය. සිටුවීමට පෙර පැළවල මුල් නිර්දේශිත දිලීරනාශක ද්‍රාවණයක විනාඩි 30 ක් පමණ ගිල්වා ප්‍රතිකාර කිරීම සඳහන් කර ඇත.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "Big Onion",
     "category": "Field Establishment",
     "language": "si",
@@ -2335,7 +2315,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "O-F-001-SI",
     "title": "බී ලූණු තවාන් සහ ක්ෂේත්‍ර පොහොර කළමනාකරණය",
@@ -2360,7 +2339,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "O-C-007-SI",
     "title": "බී ලූණු ජල කළමනාකරණය සහ වල් පැළෑටි පාලනය",
@@ -2385,7 +2363,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "O-C-008-SI",
     "title": "බී ලූණු අස්වනු නෙළීම සහ ගබඩා කිරීම",
@@ -2401,7 +2378,7 @@
   {
     "id": "O-C-008-EN",
     "title": "Big Onion Harvesting and Storage",
-    "text": "Insecticide application should be stopped three weeks before harvesting, and irrigation should be stopped two weeks before harvesting. The leaves become yellow and the necks begin to fall over. When this condition occurs in more than 50% of the crop, the remaining plants can be pressed down using a plank. Harvesting can be carried out about two weeks later. The bulbs should be air-dried rather than exposed to strong sunlight. When the neck becomes brown, the leaves should be cut while leaving approximately one inch of the neck. For storage, bulbs can be placed on wooden slats or mesh, or stored in bunches by hanging them with dry leaves. The storage area should be protected from rain and dew, well ventilated, and adequately lighted. Rotten or sprouted bulbs should be regularly inspected and removed.",
+    "text": "Insecticide application should be stopped three weeks before harvesting, and irrigation should be stopped two weeks before harvesting. The leaves become yellow and the necks begin to fall over. When this condition occurs in more than 50% of the crop, the remaining plants can be pressed down using a plank. Harvesting can be carried out about two weeks later. The bulbs should be air-dried rather than exposed to strong sunlight. When the neck becomes brown, the leaves should be cut while leaving approximately one inch of the neck. For storage, bulbs can be placed on wooden slats or mesh, or stored in bunches by hanging them with dry leaves. The storage area should be protected from rain and dew, well ventilated, and adequately lighted. Rotten or sprouted bulbs should be regularly inspected and removed.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Big Onion",
     "category": "Harvest and Storage",
     "language": "en",
@@ -2410,7 +2387,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "O-C-009-SI",
     "title": "බී ලූණු වගාව සඳහා තාක්ෂණික හා ආයතනික තොරතුරු",
@@ -2459,7 +2435,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MZ-C-002-SI",
     "title": "බඩ ඉරිඟු වගාව සඳහා දේශගුණික අවශ්‍යතා සහ පස",
@@ -2484,7 +2459,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MZ-C-003-SI",
     "title": "බඩ ඉරිඟු බිම් සැකසීම සහ සිටුවීමේ කාලය",
@@ -2509,7 +2483,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MZ-C-004-SI",
     "title": "බඩ ඉරිඟු සඳහා නිර්දේශිත ප්‍රභේද",
@@ -2534,7 +2507,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MZ-C-005-SI",
     "title": "බඩ ඉරිඟු බීජ අවශ්‍යතාවය සහ පරතරය",
@@ -2559,7 +2531,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MZ-F-001-SI",
     "title": "බඩ ඉරිඟු පොහොර යෙදීම",
@@ -2584,7 +2555,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MZ-C-006-SI",
     "title": "බඩ ඉරිඟු ජල සම්පාදනය සහ වල් පැළෑටි මර්දනය",
@@ -2609,7 +2579,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MZ-C-007-SI",
     "title": "බඩ ඉරිඟු අස්වනු නෙලීම සහ පසු අස්වනු කටයුතු",
@@ -2634,7 +2603,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MZ-C-008-SI",
     "title": "බඩ ඉරිඟු වගාවේ ප්‍රධාන කළමනාකරණ කරුණු",
@@ -2659,7 +2627,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MZ-C-009-SI",
     "title": "බඩ ඉරිඟු වගාව සඳහා විමසීම් සහ වැඩිදුර තොරතුරු",
@@ -2708,11 +2675,10 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MG-C-002-SI",
     "title": "මුං බීජ ප්‍රතිකාර සහ සිටුවීම",
-    "text": "මුං බෝගය දිලීර රෝගවලින් ආරක්ෂා කර ගැනීම සඳහා සුදුසු දිලීරනාශකයකින් බීජ කිලෝග්‍රෑම් 1 කට ග්‍රෑම් 4 ක් මිශ්‍ර කර බීජ ප්‍රතිකාර කළ යුතුය. බීජ සිටුවීමේදී පේළි අතර සෙ.මී. 30 ක් සහ පැළ අතර සෙ.මී. 15 ක පරතරයක් පවත්වා ගත යුතුය. හෙක්ටයාරයකට බීජ කිලෝග්‍රෑම් 35–40 ක් පමණ අවශ්‍ය වේ.",
+    "text": "මුං බෝගය දිලීර රෝගවලින් ආරක්ෂා කර ගැනීම සඳහා සුදුසු දිලීරනාශකයකින් බීජ කිලෝග්‍රෑම් 1 කට ග්‍රෑම් 4 ක් මිශ්‍ර කර බීජ ප්‍රතිකාර කළ යුතුය. බීජ සිටුවීමේදී පේළි අතර සෙ.මී. 30 ක් සහ පැළ අතර සෙ.මී. 15 ක පරතරයක් පවත්වා ගත යුතුය. හෙක්ටයාරයකට බීජ කිලෝග්‍රෑම් 35–40 ක් පමණ අවශ්‍ය වේ.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "Mungbean",
     "category": "Seed Treatment and Planting",
     "language": "si",
@@ -2724,7 +2690,7 @@
   {
     "id": "MG-C-002-EN",
     "title": "Mungbean Seed Treatment and Planting",
-    "text": "To protect mungbean from fungal diseases, the seeds should be treated by mixing 4 g of a suitable fungicide with 1 kg of seed. During planting, a spacing of 30 cm between rows and 15 cm between plants should be maintained. Approximately 35–40 kg of seed is required per hectare.",
+    "text": "To protect mungbean from fungal diseases, the seeds should be treated by mixing 4 g of a suitable fungicide with 1 kg of seed. During planting, a spacing of 30 cm between rows and 15 cm between plants should be maintained. Approximately 35–40 kg of seed is required per hectare.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Mungbean",
     "category": "Seed Treatment and Planting",
     "language": "en",
@@ -2733,7 +2699,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MG-C-003-SI",
     "title": "මුං සඳහා නිර්දේශිත ප්‍රභේද",
@@ -2758,7 +2723,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MG-F-001-SI",
     "title": "මුං වගාව සඳහා පොහොර යෙදීම",
@@ -2783,7 +2747,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MG-C-004-SI",
     "title": "මුං වගා නඩත්තුව",
@@ -2808,7 +2771,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MG-C-005-SI",
     "title": "මුං අස්වනු නෙලීම සහ ගබඩා කිරීම",
@@ -2833,7 +2795,6 @@
     "region": "Sri Lanka",
     "season": "general"
   },
-
   {
     "id": "MG-C-006-SI",
     "title": "මැද කන්නයේ මුං වගාව",
@@ -2858,7 +2819,6 @@
     "region": "Sri Lanka",
     "season": "Mada Season"
   },
-
   {
     "id": "MG-C-007-SI",
     "title": "මුං වගාව සඳහා විමසීම් සහ වැඩිදුර තොරතුරු",
@@ -3006,7 +2966,7 @@
   {
     "id": "FM-C-006-SI",
     "title": "කුරක්කන් තවාන් පාලනය සහ පැළ සිටුවීම",
-    "text": "අක්කරයකට මීටර් 1 පළල සහ මීටර් 5 දිග පාත්ති 10 ක් පමණ ප්‍රමාණවත් වේ. එක් පාත්තියකට දිරූ ගොම පොහොර කිලෝග්‍රෑම් 5–6 ක් මිශ්‍ර කළ යුතු අතර පිදුරු සහ දහයියා දමා පුළුස්සා ලැබෙන අළු පසට මිශ්‍ර කළ හැකිය. බීජ කිලෝග්‍රෑම් 1 කට කැප්ටාන් ග්‍රෑම් 2 ක් මිශ්‍ර කර බීජ ප්‍රතිකාර කළ යුතු බව මූලාශ්‍රයේ සඳහන් වේ. එක් පාත්තියකට බීජ ග්‍රෑම් 120 ක් පමණ වන සේ වපුරා පස් ස්වල්පයකින් වසා පිදුරු යොදා ජලය දැමිය යුතුය. දින 3–4 කින් පිදුරු ඉවත් කර දින 2–3 කට වරක් ජලය යෙදිය යුතු අතර දින 18–21 කින් පැළ සිටුවීමට සුදුසු වේ. පැළ ගලවා ගැනීමට පෙර තවාන තෙත් කළ යුතුය. සිටුවීමට පෙර කොළ ඉහළ සිට අඟල් 3 ක් පමණ පහළින් කපා දමා කෙඳි මුල් අඟල් 1/2 ක් පමණ ඉතිරි වන සේ කපා ඉවත් කළ යුතුය. පේළි අතර පරතරය සෙන්ටිමීටර් 30 ක්ද, පැළ දෙකක් අතර පරතරය සෙන්ටිමීටර් 7.5–10 ක්ද විය යුතුය. එක් ස්ථානයක එක් පැළයක් අඟල් 1/2 ක් පමණ ගැඹුරට සිටුවිය යුතු අතර එක් පැළයකින් රිකිලි 5–6 ක් පමණ හටගනී.",
+    "text": "අක්කරයකට මීටර් 1 පළල සහ මීටර් 5 දිග පාත්ති 10 ක් පමණ ප්‍රමාණවත් වේ. එක් පාත්තියකට දිරූ ගොම පොහොර කිලෝග්‍රෑම් 5–6 ක් මිශ්‍ර කළ යුතු අතර පිදුරු සහ දහයියා දමා පුළුස්සා ලැබෙන අළු පසට මිශ්‍ර කළ හැකිය. බීජ කිලෝග්‍රෑම් 1 කට කැප්ටාන් ග්‍රෑම් 2 ක් මිශ්‍ර කර බීජ ප්‍රතිකාර කළ යුතු බව මූලාශ්‍රයේ සඳහන් වේ. එක් පාත්තියකට බීජ ග්‍රෑම් 120 ක් පමණ වන සේ වපුරා පස් ස්වල්පයකින් වසා පිදුරු යොදා ජලය දැමිය යුතුය. දින 3–4 කින් පිදුරු ඉවත් කර දින 2–3 කට වරක් ජලය යෙදිය යුතු අතර දින 18–21 කින් පැළ සිටුවීමට සුදුසු වේ. පැළ ගලවා ගැනීමට පෙර තවාන තෙත් කළ යුතුය. සිටුවීමට පෙර කොළ ඉහළ සිට අඟල් 3 ක් පමණ පහළින් කපා දමා කෙඳි මුල් අඟල් 1/2 ක් පමණ ඉතිරි වන සේ කපා ඉවත් කළ යුතුය. පේළි අතර පරතරය සෙන්ටිමීටර් 30 ක්ද, පැළ දෙකක් අතර පරතරය සෙන්ටිමීටර් 7.5–10 ක්ද විය යුතුය. එක් ස්ථානයක එක් පැළයක් අඟල් 1/2 ක් පමණ ගැඹුරට සිටුවිය යුතු අතර එක් පැළයකින් රිකිලි 5–6 ක් පමණ හටගනී.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "Finger Millet",
     "category": "Cultivation",
     "language": "si",
@@ -3018,7 +2978,7 @@
   {
     "id": "FM-C-006-EN",
     "title": "Finger Millet Nursery Management and Transplanting",
-    "text": "For one acre, approximately ten nursery beds measuring 1 metre in width and 5 metres in length are sufficient. About 5–6 kg of well-decomposed farmyard manure should be mixed into each bed. Straw and rice husks may be burned and the resulting ash incorporated into the soil. The source recommends treating seed with Captan at a rate of 2 g per kg of seed. Approximately 120 g of seed should be sown per nursery bed, lightly covered with soil, covered with straw and watered. The straw should be removed after 3–4 days, followed by watering every 2–3 days. Seedlings become suitable for transplanting after approximately 18–21 days. The nursery should be moistened before removing seedlings. Before transplanting, leaves should be trimmed from approximately 3 inches below the top, and fibrous roots should be trimmed while retaining about 1/2 inch. Row spacing should be 30 cm and spacing between seedlings should be 7.5–10 cm. One seedling should be planted per spot at a depth of approximately 1/2 inch. Each plant produces approximately 5–6 tillers.",
+    "text": "For one acre, approximately ten nursery beds measuring 1 metre in width and 5 metres in length are sufficient. About 5–6 kg of well-decomposed farmyard manure should be mixed into each bed. Straw and rice husks may be burned and the resulting ash incorporated into the soil. The source recommends treating seed with Captan at a rate of 2 g per kg of seed. Approximately 120 g of seed should be sown per nursery bed, lightly covered with soil, covered with straw and watered. The straw should be removed after 3–4 days, followed by watering every 2–3 days. Seedlings become suitable for transplanting after approximately 18–21 days. The nursery should be moistened before removing seedlings. Before transplanting, leaves should be trimmed from approximately 3 inches below the top, and fibrous roots should be trimmed while retaining about 1/2 inch. Row spacing should be 30 cm and spacing between seedlings should be 7.5–10 cm. One seedling should be planted per spot at a depth of approximately 1/2 inch. Each plant produces approximately 5–6 tillers.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Finger Millet",
     "category": "Cultivation",
     "language": "en",
@@ -3078,7 +3038,7 @@
   {
     "id": "FM-DP-001-SI",
     "title": "කුරක්කන් රෝග, කෘමි හානි, අස්වනු නෙලීම සහ සකස් කිරීම",
-    "text": "කොළ පාළු රෝගය මහ කන්නයේ කුරක්කන් වගාවේ ප්‍රධාන ගැටලුවක් ලෙස සඳහන් වේ. ඕෂධ ප්‍රභේදය භාවිතයෙන් සහ නිර්දේශිත පරතරයට පැළ සිටුවීමෙන් එය පාලනය කිරීමට හැකි බව මූලාශ්‍රයේ සඳහන් වේ. පුරුක් පණු හානිය ප්‍රධාන කෘමි හානියක් වන අතර වගාවේ 5%–10% දක්වා හානිය දක්නට ලැබුණහොත් හානි වූ ගස් කපා විනාශ කර නිර්දේශිත කෘමිනාශකයක් යෙදිය යුතු බව සඳහන් වේ. අස්වනු නෙලීමේදී පළමුව මව් ගසේ කරල දුඹුරු පැහැයට හැරෙන අතර එතැන් සිට දින 10 ක් ඇතුළත කරල් 85% ක් පමණ රන්වන් පැහැයට හැරුණු විට අස්වනු නෙලිය හැකිය. කරල් දින 2–3 ක් අව්වේ වියලා ට්‍රැක්ටරයකින් පාගා ඇට වෙන්කර පොලා පිරිසිදු කළ හැකිය. ගෘහස්ථ මට්ටමේදී ගෝනි පඩංගුවල දමා මෝල් ගස්වලින් කෙටීමෙන්ද බීජ වෙන් කළ හැකිය. වැලි හෝ ගල් මිශ්‍ර වීම වැළැක්වීමට ගෝනි පඩංගු හෝ කැන්වස් කාපට්/ටාපෝලින් භාවිතා කළ යුතුය. මහඉලුප්පල්ලම ගොවිපල යාන්ත්‍රික පර්යේෂණ මධ්‍යස්ථානය මගින් කුරක්කන් බීජ වෙන් කිරීමේ යන්ත්‍රයක් හඳුන්වා දී ඇති බවද මූලාශ්‍රයේ සඳහන් වේ.",
+    "text": "කොළ පාළු රෝගය මහ කන්නයේ කුරක්කන් වගාවේ ප්‍රධාන ගැටලුවක් ලෙස සඳහන් වේ. ඕෂධ ප්‍රභේදය භාවිතයෙන් සහ නිර්දේශිත පරතරයට පැළ සිටුවීමෙන් එය පාලනය කිරීමට හැකි බව මූලාශ්‍රයේ සඳහන් වේ. පුරුක් පණු හානිය ප්‍රධාන කෘමි හානියක් වන අතර වගාවේ 5%–10% දක්වා හානිය දක්නට ලැබුණහොත් හානි වූ ගස් කපා විනාශ කර නිර්දේශිත කෘමිනාශකයක් යෙදිය යුතු බව සඳහන් වේ. අස්වනු නෙලීමේදී පළමුව මව් ගසේ කරල දුඹුරු පැහැයට හැරෙන අතර එතැන් සිට දින 10 ක් ඇතුළත කරල් 85% ක් පමණ රන්වන් පැහැයට හැරුණු විට අස්වනු නෙලිය හැකිය. කරල් දින 2–3 ක් අව්වේ වියලා ට්‍රැක්ටරයකින් පාගා ඇට වෙන්කර පොලා පිරිසිදු කළ හැකිය. ගෘහස්ථ මට්ටමේදී ගෝනි පඩංගුවල දමා මෝල් ගස්වලින් කෙටීමෙන්ද බීජ වෙන් කළ හැකිය. වැලි හෝ ගල් මිශ්‍ර වීම වැළැක්වීමට ගෝනි පඩංගු හෝ කැන්වස් කාපට්/ටාපෝලින් භාවිතා කළ යුතුය. මහඉලුප්පල්ලම ගොවිපල යාන්ත්‍රික පර්යේෂණ මධ්‍යස්ථානය මගින් කුරක්කන් බීජ වෙන් කිරීමේ යන්ත්‍රයක් හඳුන්වා දී ඇති බවද මූලාශ්‍රයේ සඳහන් වේ.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "Finger Millet",
     "category": "Disease and Pest",
     "language": "si",
@@ -3126,7 +3086,7 @@
   {
     "id": "CP-C-002-SI",
     "title": "කව්පි බීජ ප්‍රතිකාර, සිටුවීම සහ පරතරය",
-    "text": "දිලීර රෝගවලින් බෝගය ආරක්ෂා කරගැනීම සඳහා බීජ කිලෝග්‍රෑම් 1 කට සුදුසු දිලීරනාශක ග්‍රෑම් 4 ක් යෙදිය යුතුය. පේළි අතර පරතරය සෙන්ටිමීටර් 30 ක් සහ පැළ අතර පරතරය සෙන්ටිමීටර් 15 ක් විය යුතුය. හෙක්ටයාරයකට බීජ කිලෝග්‍රෑම් 35–40 ක් පමණ අවශ්‍ය වේ. සිටුවා සති 3 කට පමණ පසු එක් ස්ථානයක එක් පැළයක් පමණක් ඉතිරි වන සේ අනෙක් පැළ ගලවා ඉවත් කළ යුතුය.",
+    "text": "දිලීර රෝගවලින් බෝගය ආරක්ෂා කරගැනීම සඳහා බීජ කිලෝග්‍රෑම් 1 කට සුදුසු දිලීරනාශක ග්‍රෑම් 4 ක් යෙදිය යුතුය. පේළි අතර පරතරය සෙන්ටිමීටර් 30 ක් සහ පැළ අතර පරතරය සෙන්ටිමීටර් 15 ක් විය යුතුය. හෙක්ටයාරයකට බීජ කිලෝග්‍රෑම් 35–40 ක් පමණ අවශ්‍ය වේ. සිටුවා සති 3 කට පමණ පසු එක් ස්ථානයක එක් පැළයක් පමණක් ඉතිරි වන සේ අනෙක් පැළ ගලවා ඉවත් කළ යුතුය.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "Cowpea",
     "category": "Cultivation",
     "language": "si",
@@ -3138,7 +3098,7 @@
   {
     "id": "CP-C-002-EN",
     "title": "Cowpea Seed Treatment, Planting and Spacing",
-    "text": "To protect the crop from fungal diseases, the source recommends applying 4 g of a suitable fungicide per kg of seed. Row spacing should be 30 cm and spacing between plants should be 15 cm. Approximately 35–40 kg of seed is required per hectare. About three weeks after planting, excess seedlings should be removed so that only one plant remains at each planting spot.",
+    "text": "To protect the crop from fungal diseases, the source recommends applying 4 g of a suitable fungicide per kg of seed. Row spacing should be 30 cm and spacing between plants should be 15 cm. Approximately 35–40 kg of seed is required per hectare. About three weeks after planting, excess seedlings should be removed so that only one plant remains at each planting spot.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Cowpea",
     "category": "Cultivation",
     "language": "en",
@@ -3390,7 +3350,7 @@
   {
     "id": "SB-C-006-SI",
     "title": "සෝයා බෝංචි බීජ ප්‍රතිකාර කිරීම සහ ආමුකූලනය",
-    "text": "දිලීර රෝගවලින් බීජ ආරක්ෂා කිරීම සඳහා බීජ කිලෝග්‍රෑම් 1 කට කැප්ටාන් හෝ තිරාමි දිලීරනාශක ග්‍රෑම් 4 ක් මිශ්‍ර කළ යුතුය. මීට පෙර රනිල බෝග වගා නොකළ බිම් සඳහා බීජ බැක්ටීරියා මඟින් ආමුකූලනය කිරීම අත්‍යවශ්‍ය බව සඳහන් වේ. එක් ක්‍රමයකදී හෙක්ටයාරයකට අවශ්‍ය බීජ කිලෝග්‍රෑම් 50 මත ජලය කෝප්ප 2 ක් ඉස බැක්ටීරියා මාධ්‍ය ග්‍රෑම් 250 ක් එකතු කර හොඳින් මිශ්‍ර කළ යුතුය. තවත් ක්‍රමයකදී බැක්ටීරියා මාධ්‍ය ග්‍රෑම් 250 ක් ජලය කෝප්ප 2 ක දියකර තලපයක් සාදා බීජ සමඟ මිශ්‍ර කළ යුතුය. බැක්ටීරියා මිශ්‍ර කළ බීජ හැකි ඉක්මනින් තෙත් පොළවෙහි සිටුවිය යුතු අතර ඒවා සූර්යාලෝකයට හෝ වියළීමට නිරාවරණය නොකළ යුතුය.",
+    "text": "දිලීර රෝගවලින් බීජ ආරක්ෂා කිරීම සඳහා බීජ කිලෝග්‍රෑම් 1 කට කැප්ටාන් හෝ තිරාමි දිලීරනාශක ග්‍රෑම් 4 ක් මිශ්‍ර කළ යුතුය. මීට පෙර රනිල බෝග වගා නොකළ බිම් සඳහා බීජ බැක්ටීරියා මඟින් ආමුකූලනය කිරීම අත්‍යවශ්‍ය බව සඳහන් වේ. එක් ක්‍රමයකදී හෙක්ටයාරයකට අවශ්‍ය බීජ කිලෝග්‍රෑම් 50 මත ජලය කෝප්ප 2 ක් ඉස බැක්ටීරියා මාධ්‍ය ග්‍රෑම් 250 ක් එකතු කර හොඳින් මිශ්‍ර කළ යුතුය. තවත් ක්‍රමයකදී බැක්ටීරියා මාධ්‍ය ග්‍රෑම් 250 ක් ජලය කෝප්ප 2 ක දියකර තලපයක් සාදා බීජ සමඟ මිශ්‍ර කළ යුතුය. බැක්ටීරියා මිශ්‍ර කළ බීජ හැකි ඉක්මනින් තෙත් පොළවෙහි සිටුවිය යුතු අතර ඒවා සූර්යාලෝකයට හෝ වියළීමට නිරාවරණය නොකළ යුතුය.\n\nආරක්ෂිත සටහන: මෙම බෝගය සහ අදාළ පළිබෝධ හෝ රෝගය සඳහා ශ්‍රී ලංකාවේ දැනට ලියාපදිංචි පළිබෝධනාශක පමණක් භාවිතා කරන්න. මාත්‍රාව, පුද්ගලික ආරක්ෂක උපකරණ (PPE), නැවත ඇතුළුවීමේ කාලය සහ අස්වනු නෙලීමට පෙර කාලය (PHI) සඳහා වත්මන් නිෂ්පාදන ලේබලය අනුගමනය කරන්න. මෙම ගබඩා කර ඇති නිර්දේශය වත්මන් නිෂ්පාදන ලේබලය හෝ කෘෂිකර්ම දෙපාර්තමේන්තුව / පළිබෝධනාශක රෙජිස්ට්‍රාර්ගේ වත්මන් මාර්ගෝපදේශ සමඟ නොගැලපේ නම් වත්මන් නිල මාර්ගෝපදේශය අනුගමනය කරන්න.",
     "crop": "Soybean",
     "category": "Seed Treatment",
     "language": "si",
@@ -3402,7 +3362,7 @@
   {
     "id": "SB-C-006-EN",
     "title": "Soybean Seed Treatment and Inoculation",
-    "text": "To protect the seeds from fungal diseases, 4 g of Captan or Thiram fungicide should be mixed with each kg of seed. The source states that bacterial inoculation is essential for land where a legume crop has not previously been cultivated. In one method, two cups of water are sprinkled over the 50 kg of seed required for one hectare and 250 g of bacterial culture is added and mixed thoroughly. In another method, 250 g of bacterial culture is dissolved in two cups of water to make a paste, which is then mixed with the seed. Inoculated seed should be planted in moist soil as soon as possible and should not be exposed to direct sunlight or allowed to dry.",
+    "text": "To protect the seeds from fungal diseases, 4 g of Captan or Thiram fungicide should be mixed with each kg of seed. The source states that bacterial inoculation is essential for land where a legume crop has not previously been cultivated. In one method, two cups of water are sprinkled over the 50 kg of seed required for one hectare and 250 g of bacterial culture is added and mixed thoroughly. In another method, 250 g of bacterial culture is dissolved in two cups of water to make a paste, which is then mixed with the seed. Inoculated seed should be planted in moist soil as soon as possible and should not be exposed to direct sunlight or allowed to dry.\n\nSafety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance.",
     "crop": "Soybean",
     "category": "Seed Treatment",
     "language": "en",
@@ -3532,4 +3492,3 @@
     "season": "general"
   }
 ]
-

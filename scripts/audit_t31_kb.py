@@ -209,6 +209,13 @@ def contains_safety_caveat(text):
         "consult an agricultural extension officer",
         "consult a local agricultural extension officer",
         "confirm with an agricultural extension officer",
+
+        # Sinhala
+        "ආරක්ෂිත සටහන",
+        "පුද්ගලික ආරක්ෂක උපකරණ",
+        "අස්වනු නෙලීමට පෙර කාලය",
+        "පළිබෝධනාශක රෙජිස්ට්‍රාර්",
+        "වත්මන් නිෂ්පාදන ලේබලය",
     ]
 
     return any(term in text for term in safety_terms)
