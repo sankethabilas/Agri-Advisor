@@ -786,41 +786,1483 @@ The RAG corpus contains more documents than the structured databases because it 
 
 # 5. ChromaDB Vector Store
 
-> This section will be completed after inspecting the current implementation in `scripts/index_knowledge_base.py`.
+The RAG component uses ChromaDB as a persistent local vector database for semantic retrieval.
 
-Topics to document:
+The indexing implementation is located at:
 
-- ChromaDB client type
-- persistent store path
-- collection name
-- embedding model
-- document IDs
-- stored metadata
-- embedding text construction
-- indexing behaviour
-- stale-document handling
-- idempotent re-indexing
+```text
+scripts/index_knowledge_base.py
+```
+
+## 5.1 Persistent Storage
+
+The project initializes ChromaDB using:
+
+```python
+chromadb.PersistentClient(...)
+```
+
+The vector database is stored locally under:
+
+```text
+<project-root>/chroma_store
+```
+
+The path is constructed as:
+
+```python
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+CHROMA_STORE_PATH = PROJECT_ROOT / "chroma_store"
+```
+
+Using `PersistentClient` means the indexed vector data remains available after the indexing process or application terminates.
+
+The main source corpus is loaded from:
+
+```text
+knowledge_base/documents.json
+```
+
+---
+
+## 5.2 ChromaDB Collection
+
+The knowledge-base collection is created or opened using:
+
+```python
+collection = chroma_client.get_or_create_collection(
+    name="agri_knowledge_base",
+    embedding_function=embedding_function
+)
+```
+
+Therefore, the collection name is:
+
+```text
+agri_knowledge_base
+```
+
+`get_or_create_collection()` allows the application to reuse the existing collection when it is already present.
+
+---
+
+## 5.3 Embedding Model
+
+The project uses the Sentence Transformers model:
+
+```text
+all-MiniLM-L6-v2
+```
+
+It is configured through ChromaDB using:
+
+```python
+embedding_functions.SentenceTransformerEmbeddingFunction(
+    model_name="all-MiniLM-L6-v2"
+)
+```
+
+The embedding model converts natural-language agricultural content into numerical vector representations.
+
+These vectors allow semantically related queries and documents to be compared even when they do not contain exactly the same words.
+
+---
+
+## 5.4 Embedding Text Construction
+
+The raw `text` field from `documents.json` is not embedded by itself.
+
+Before embedding, the indexer creates a metadata-enriched representation containing:
+
+```text
+Title
+Crop
+Category
+Region
+Season
+Content
+```
+
+The format is:
+
+```text
+Title: <title>
+Crop: <crop>
+Category: <category>
+Region: <region>
+Season: <season>
+Content: <document text>
+```
+
+This is produced by:
+
+```python
+build_embedding_text(document)
+```
+
+The purpose is to make crop, category, region and seasonal information available to the semantic representation instead of relying only on the body text.
+
+For example, conceptually:
+
+```text
+Title: Rice Blast
+Crop: rice
+Category: disease
+Region: Sri Lanka
+Season: general
+Content: Rice blast is a fungal disease...
+```
+
+The metadata-enriched text is used only to generate the embedding.
+
+The original `text` field from the source document is stored separately as the ChromaDB document and is what is returned to the RAG layer.
+
+---
+
+## 5.5 Stored ChromaDB Record Structure
+
+Each indexed knowledge-base document consists conceptually of:
+
+```text
+ChromaDB record
+├── id
+├── embedding
+├── document
+└── metadata
+```
+
+### ID
+
+The ChromaDB ID is taken directly from:
+
+```text
+documents.json → id
+```
+
+The indexer converts it to a string:
+
+```python
+ids.append(str(document["id"]))
+```
+
+Document IDs must therefore remain unique.
+
+### Document
+
+The stored document body is:
+
+```python
+document["text"]
+```
+
+This preserves the original agricultural knowledge text separately from the metadata-enriched text used to construct the embedding.
+
+### Embedding
+
+The embedding is generated from:
+
+```python
+build_embedding_text(document)
+```
+
+using:
+
+```text
+all-MiniLM-L6-v2
+```
+
+### Metadata
+
+Each ChromaDB record stores the following metadata:
+
+| Metadata Field | Source |
+|---|---|
+| `title` | `document["title"]` |
+| `crop` | `document["crop"]` |
+| `category` | `document["category"]` |
+| `language` | `document["language"]` |
+| `source` | `document["source"]` |
+| `source_id` | `document["source_id"]` |
+| `region` | `document["region"]` |
+| `season` | `document["season"]` |
+| `index_version` | Static index-version identifier |
+
+The current index version is:
+
+```text
+t23_metadata_enriched_v1
+```
+
+Default values are also provided by the indexer for selected metadata fields:
+
+```text
+language  → en
+source_id → document id if source_id is absent
+region    → Sri Lanka
+season    → general
+```
+
+---
+
+## 5.6 Indexing Process
+
+The indexing process follows these stages:
+
+```text
+knowledge_base/documents.json
+             ↓
+        Load JSON
+             ↓
+     Read each document
+             ↓
+Build metadata-enriched text
+             ↓
+Generate MiniLM embeddings
+             ↓
+Remove stale ChromaDB records
+             ↓
+     Upsert current records
+             ↓
+ Verify indexed document count
+```
+
+### Step 1 — Load the Corpus
+
+The indexer reads:
+
+```text
+knowledge_base/documents.json
+```
+
+using UTF-8:
+
+```python
+json.load(...)
+```
+
+UTF-8 is required because the corpus can contain multilingual content including Sinhala text.
+
+---
+
+### Step 2 — Prepare IDs, Documents and Metadata
+
+For every source document, the indexer prepares:
+
+```text
+ids
+texts
+embedding_texts
+metadatas
+```
+
+Where:
+
+```text
+ids             = unique document IDs
+texts           = original document text
+embedding_texts = metadata-enriched retrieval text
+metadatas       = structured metadata
+```
+
+---
+
+### Step 3 — Remove Stale Documents
+
+Before inserting the current corpus, the indexer retrieves the IDs already stored in ChromaDB:
+
+```python
+existing = collection.get()
+```
+
+It then compares them with the IDs currently present in `documents.json`.
+
+Conceptually:
+
+```text
+stale IDs =
+existing ChromaDB IDs
+-
+current documents.json IDs
+```
+
+Any stale records are deleted:
+
+```python
+collection.delete(ids=stale_ids)
+```
+
+This prevents deleted knowledge-base records from remaining searchable in the vector database.
+
+---
+
+### Step 4 — Generate Embeddings
+
+Embeddings are generated for all metadata-enriched document texts using:
+
+```python
+embeddings = embedding_function(embedding_texts)
+```
+
+The generated vectors correspond to the current contents of the JSON corpus.
+
+---
+
+### Step 5 — Upsert Documents
+
+Documents are written using:
+
+```python
+collection.upsert(...)
+```
+
+The indexer provides:
+
+```text
+ids
+embeddings
+documents
+metadatas
+```
+
+`upsert` means:
+
+```text
+ID does not exist → INSERT
+ID already exists → UPDATE
+```
+
+Therefore, re-running the indexer updates existing records rather than creating duplicate records with the same ID.
+
+---
+
+## 5.7 Index Synchronization
+
+The combination of:
+
+```text
+stale-record deletion
++
+upsert
+```
+
+keeps the persistent ChromaDB collection synchronized with the current `documents.json` corpus.
+
+This handles three common update cases:
+
+| Change in `documents.json` | Indexing Behaviour |
+|---|---|
+| New ID added | Inserted into ChromaDB |
+| Existing ID modified | Existing ChromaDB record updated |
+| Existing ID removed | Stale ChromaDB record deleted |
+
+---
+
+## 5.8 Index Integrity Check
+
+At the end of indexing, the script compares:
+
+```text
+number of documents in documents.json
+```
+
+with:
+
+```text
+collection.count()
+```
+
+If the counts differ, indexing fails with:
+
+```python
+ValueError(
+    "ChromaDB document count does not match documents.json."
+)
+```
+
+This provides a basic integrity check that every current source document is represented in the vector store.
+
+During the final T-31 re-indexing:
+
+```text
+Source document count   : 303
+ChromaDB document count : 303
+```
+
+Therefore, the source corpus and vector-store document counts were synchronized.
+
+---
+
+## 5.9 Running the Indexer
+
+From the project root, rebuild or update the vector index using:
+
+```bash
+python scripts/index_knowledge_base.py
+```
+
+The expected final output includes:
+
+```text
+Loaded 303 documents ...
+No stale indexed documents found.
+
+Indexing complete.
+Source document count : 303
+ChromaDB document count: 303
+```
+
+The exact stale-document message may differ if records were removed from `documents.json`.
 
 ---
 
 # 6. Retrieval Pipeline
 
-> This section will be completed after inspecting `agents/rag/agent.py` and `agents/rag/keyword_search.py`.
+The RAG retrieval implementation is primarily located in:
 
-Topics to document:
+```text
+agents/rag/agent.py
+agents/rag/keyword_search.py
+```
 
-- query preprocessing
-- query encoding
-- semantic search
-- top-K retrieval
-- metadata filtering
-- distance-to-similarity conversion
-- confidence ranking
-- unfiltered retry
-- keyword fallback
-- hybrid ranking
-- exact-title rescue
-- final context/source construction
+The retrieval layer combines semantic vector retrieval with metadata filtering, similarity thresholds, keyword fallback, hybrid re-ranking, exact-title rescue and an unfiltered semantic retry.
+
+The overall retrieval flow is:
+
+```text
+Farmer query
+      ↓
+Query encoding
+      ↓
+Semantic ChromaDB search
+      ↓
+Optional crop/category filters
+      ↓
+Top-K candidates
+      ↓
+L2 distance → similarity
+      ↓
+Minimum-score filtering
+      ↓
+Is semantic confidence sufficient?
+      │
+      ├── No
+      │    ↓
+      │ Keyword fallback
+      │    ↓
+      │ Hybrid keyword + semantic ranking
+      │
+      └── Yes
+           ↓
+        Exact-title rescue check
+              ↓
+If crop-filtered retrieval still has no source
+              ↓
+      Unfiltered semantic retry
+              ↓
+        Build source objects
+              ↓
+         Build RAG context
+              ↓
+       RagRetrieveResponse
+```
+
+---
+
+## 6.1 Query Encoding
+
+The retrieval process begins in:
+
+```python
+RAGAgent.retrieve(...)
+```
+
+The farmer's natural-language query is converted into an embedding by:
+
+```python
+query_embedding = self.encode_query(request.query)
+```
+
+`encode_query()` uses the same Sentence Transformer embedding function used during indexing:
+
+```text
+all-MiniLM-L6-v2
+```
+
+Conceptually:
+
+```text
+"My tomato plants have late blight"
+                ↓
+      all-MiniLM-L6-v2
+                ↓
+        numerical vector
+```
+
+Using the same embedding model for indexed documents and incoming queries allows ChromaDB to compare them in the same vector space.
+
+---
+
+## 6.2 Semantic Search
+
+The encoded query is passed to:
+
+```python
+self.search(...)
+```
+
+The semantic search receives:
+
+```text
+query embedding
+top_k
+optional crop filter
+optional category filter
+```
+
+The ChromaDB query uses:
+
+```python
+collection.query(
+    query_embeddings=query_embedding,
+    n_results=top_k,
+    ...
+)
+```
+
+The `search()` method has a default:
+
+```text
+top_k = 3
+```
+
+However, during API retrieval the actual value is taken from:
+
+```text
+request.top_k
+```
+
+Therefore, the API request controls the number of semantic candidates requested.
+
+---
+
+## 6.3 Crop Filtering
+
+Semantic retrieval supports optional crop filtering.
+
+The system first normalizes crop aliases using:
+
+```python
+normalize_crop_filter(...)
+```
+
+Current aliases include:
+
+```text
+paddy         → rice / Rice / paddy / Paddy
+rice          → rice / Rice / paddy / Paddy
+
+chilli        → chilli / Chilli / chili / Chili
+chili         → chilli / Chilli / chili / Chili
+
+tomato        → tomato / Tomato
+
+maize         → maize / Maize / corn / Corn
+corn          → maize / Maize / corn / Corn
+
+mungbean      → mungbean / Mungbean / mung bean / Mung Bean
+
+cowpea        → cowpea / Cowpea
+
+finger millet → finger millet / Finger Millet / finger_millet
+```
+
+For crops not explicitly listed in the alias map, the system generates several capitalization variants.
+
+When multiple variants exist, ChromaDB filtering uses:
+
+```text
+$in
+```
+
+For example, conceptually:
+
+```json
+{
+  "crop": {
+    "$in": [
+      "rice",
+      "Rice",
+      "paddy",
+      "Paddy"
+    ]
+  }
+}
+```
+
+This improves retrieval when farmers use crop synonyms such as `paddy` instead of `rice`.
+
+---
+
+## 6.4 Category Filtering
+
+An optional category filter may also be supplied.
+
+The system creates lowercase, capitalized and title-case variants.
+
+Conceptually:
+
+```text
+disease
+Disease
+```
+
+The filter is applied through ChromaDB metadata using `$in`.
+
+If both crop and category filters are supplied, they are combined using:
+
+```text
+$and
+```
+
+Therefore, a request such as:
+
+```text
+crop = tomato
+category = disease
+```
+
+restricts the semantic search to records matching both criteria.
+
+---
+
+## 6.5 Top-K Retrieval
+
+The number of candidates requested from ChromaDB is controlled by:
+
+```text
+request.top_k
+```
+
+The `search()` method defaults to:
+
+```text
+3
+```
+
+if called directly without another value.
+
+Conceptually:
+
+```text
+Query
+ ↓
+ChromaDB
+ ↓
+Top 3 candidates
+```
+
+The returned candidates include:
+
+```text
+IDs
+documents
+metadata
+distances
+```
+
+These results are then converted into source objects and confidence values.
+
+---
+
+## 6.6 L2 Distance to Similarity Conversion
+
+ChromaDB returns distance values.
+
+The RAG agent records its vector distance metric as:
+
+```text
+l2
+```
+
+The system converts the L2 distance into a normalized similarity value using:
+
+```python
+similarity = 1.0 - (distance / 2.0)
+```
+
+The result is clamped to:
+
+```text
+0.0 ≤ similarity ≤ 1.0
+```
+
+This is implemented by:
+
+```python
+distance_to_similarity(...)
+```
+
+Conceptually:
+
+```text
+lower L2 distance
+      ↓
+higher similarity
+```
+
+For example:
+
+```text
+distance = 0.30
+
+similarity =
+1 - (0.30 / 2)
+
+= 0.85
+```
+
+A higher similarity therefore represents a stronger semantic match.
+
+---
+
+## 6.7 Semantic Result Filtering
+
+Semantic results are converted into RAG source objects using:
+
+```python
+build_sources(...)
+```
+
+Each candidate must meet:
+
+```text
+request.min_score
+```
+
+Results below this minimum similarity are discarded.
+
+Conceptually:
+
+```text
+similarity >= min_score
+        ↓
+       keep
+
+similarity < min_score
+        ↓
+      discard
+```
+
+The method also creates a corresponding confidence list.
+
+---
+
+## 6.8 Semantic Source Structure
+
+Each accepted semantic result is converted into a source object containing fields including:
+
+```text
+id
+document_id
+title
+section
+content
+crop
+category
+language
+source
+source_id
+author_organization
+region
+season
+score
+```
+
+The score is the normalized semantic similarity rounded to four decimal places.
+
+The source attribution is taken primarily from the metadata stored in ChromaDB.
+
+---
+
+## 6.9 Top Semantic Similarity
+
+The system separately records the similarity of the highest-ranked semantic result using:
+
+```python
+get_top_similarity(...)
+```
+
+The value is stored in:
+
+```python
+self.last_top_similarity
+```
+
+This value is used to determine whether semantic retrieval is confident enough or whether keyword fallback should be triggered.
+
+---
+
+## 6.10 Semantic Fallback Threshold
+
+The RAG agent has a default fallback threshold of:
+
+```text
+0.60
+```
+
+configured as:
+
+```python
+fallback_threshold=0.60
+```
+
+However, the effective threshold also respects the request's minimum score:
+
+```python
+effective_fallback_threshold = max(
+    self.fallback_threshold,
+    request.min_score
+)
+```
+
+Therefore:
+
+```text
+effective fallback threshold
+=
+max(0.60, request.min_score)
+```
+
+For example:
+
+```text
+request.min_score = 0.50
+effective threshold = 0.60
+```
+
+while:
+
+```text
+request.min_score = 0.70
+effective threshold = 0.70
+```
+
+---
+
+## 6.11 When Keyword Fallback Is Triggered
+
+Keyword fallback is triggered when either:
+
+```text
+1. No acceptable semantic sources remain
+```
+
+or:
+
+```text
+2. Top semantic similarity
+   <
+   effective fallback threshold
+```
+
+This is implemented conceptually as:
+
+```text
+fallback_required =
+    no semantic sources
+    OR
+    semantic confidence too low
+```
+
+When triggered, retrieval changes from:
+
+```text
+semantic
+```
+
+to:
+
+```text
+keyword_fallback
+```
+
+if keyword results are available.
+
+The retrieval method is recorded in:
+
+```python
+self.last_retrieval_method
+```
+
+---
+
+## 6.12 Keyword Query Normalization
+
+Keyword search begins by normalizing text using:
+
+```python
+normalize_text(...)
+```
+
+The process:
+
+1. converts the string to lowercase,
+2. replaces non-alphanumeric characters with spaces,
+3. collapses repeated whitespace, and
+4. removes leading and trailing spaces.
+
+Conceptually:
+
+```text
+"Tomato Late-Blight!"
+        ↓
+"tomato late blight"
+```
+
+---
+
+## 6.13 Keyword Tokenization
+
+The normalized query is tokenized using:
+
+```python
+tokenize(...)
+```
+
+Common English stop words are removed.
+
+Examples include:
+
+```text
+a
+an
+the
+is
+are
+of
+to
+in
+for
+with
+and
+my
+how
+what
+```
+
+Tokens of one character or less are also discarded.
+
+Conceptually:
+
+```text
+"My tomato has late blight"
+              ↓
+["tomato", "late", "blight"]
+```
+
+---
+
+## 6.14 Keyword Scoring
+
+Each document receives a keyword relevance score.
+
+The scoring system uses several components.
+
+### Title Token Overlap
+
+Each matching query/title token contributes:
+
+```text
++4.0
+```
+
+This gives title matches the strongest basic token weight.
+
+Example:
+
+```text
+query tokens:
+tomato, late, blight
+
+title:
+Tomato Late Blight
+```
+
+produces strong title overlap.
+
+### Body-Text Token Overlap
+
+Each matching query/body token contributes:
+
+```text
++1.0
+```
+
+Body matches therefore matter, but title matches receive greater weight.
+
+### Exact Title Phrase Bonus
+
+If the normalized full document title appears inside the query:
+
+```text
++10.0
+```
+
+is added.
+
+For example:
+
+```text
+Query:
+"My tomato plants have tomato late blight"
+
+Title:
+"Tomato Late Blight"
+```
+
+receives the exact-title bonus.
+
+### Partial Title Phrase Bonus
+
+The searcher also detects multi-word portions of a title inside the query.
+
+When a matching title phrase is found, the bonus is based on phrase length:
+
+```text
+number of words × 3.0
+```
+
+This helps distinguish diseases with related names.
+
+For example:
+
+```text
+Late Blight
+```
+
+should favour:
+
+```text
+Tomato Late Blight
+```
+
+over:
+
+```text
+Tomato Early Blight
+```
+
+when the farmer explicitly mentions `late blight`.
+
+### Crop Presence Bonus
+
+If the crop name appears as a query token:
+
+```text
++2.0
+```
+
+### Category Presence Bonus
+
+If the category appears as a query token:
+
+```text
++1.0
+```
+
+---
+
+## 6.15 Keyword Result Selection
+
+Documents with:
+
+```text
+keyword score <= 0
+```
+
+are discarded.
+
+Remaining candidates are sorted by:
+
+```text
+keyword_score descending
+```
+
+and only:
+
+```text
+top_k
+```
+
+results are returned.
+
+---
+
+## 6.16 Keyword Metadata Filtering
+
+Keyword search also supports:
+
+```text
+crop_filter
+category_filter
+```
+
+The implementation performs case-insensitive exact-value comparison.
+
+For example:
+
+```text
+document crop = tomato
+crop filter   = Tomato
+```
+
+matches after both values are converted to lowercase.
+
+Unlike semantic search, the current keyword search implementation does not apply the semantic crop alias map.
+
+Therefore:
+
+```text
+semantic filter:
+paddy → rice
+```
+
+is supported, while keyword fallback expects the stored crop value to match the supplied crop filter directly.
+
+This is a known implementation limitation.
+
+---
+
+## 6.17 Hybrid Keyword + Semantic Re-Ranking
+
+Keyword fallback does not rely on the raw keyword score alone.
+
+After keyword candidates are found, the RAG agent generates an embedding for each candidate's document text.
+
+It then calculates cosine similarity between:
+
+```text
+query embedding
+```
+
+and:
+
+```text
+candidate document embedding
+```
+
+using:
+
+```python
+cosine_similarity(...)
+```
+
+The raw keyword score is first normalized relative to the highest keyword score:
+
+```text
+keyword relevance
+=
+candidate keyword score
+/
+maximum keyword score
+```
+
+A hybrid confidence score is then calculated:
+
+```text
+fallback confidence
+=
+0.70 × keyword relevance
++
+0.30 × semantic similarity
+```
+
+Therefore, fallback ranking gives:
+
+```text
+70% weight → keyword relevance
+30% weight → semantic similarity
+```
+
+The candidates are re-sorted by this final fallback confidence.
+
+This makes the fallback system hybrid rather than purely keyword-based.
+
+---
+
+## 6.18 Keyword Fallback Source Construction
+
+Keyword candidates are converted into the same general source structure used by semantic retrieval.
+
+Fields include:
+
+```text
+id
+document_id
+title
+section
+content
+crop
+category
+language
+source
+source_id
+author_organization
+region
+season
+score
+```
+
+The final `score` is the hybrid fallback confidence rather than the original keyword score.
+
+This allows semantic and keyword results to use a consistent response structure.
+
+---
+
+## 6.19 Exact-Title Rescue
+
+A second keyword mechanism is used when semantic retrieval is already confident enough that normal fallback was not triggered.
+
+This mechanism is:
+
+```python
+keyword_title_rescue(...)
+```
+
+Its purpose is to correct cases where semantic similarity returns a reasonable but incorrect top result even though the farmer explicitly mentions a known disease or document title.
+
+The rescue process:
+
+```text
+High-confidence semantic result
+           ↓
+Run keyword search
+           ↓
+Normalize farmer query
+           ↓
+Normalize top keyword title
+           ↓
+Check whether title phrase is explicitly in query
+           ↓
+Compare semantic top ID with keyword top ID
+           ↓
+If different, replace semantic ranking
+```
+
+---
+
+## 6.20 Title-Matching Rules
+
+The rescue mechanism first checks the full normalized document title.
+
+For example:
+
+```text
+Tomato Late Blight
+```
+
+It may also remove a crop prefix.
+
+For example:
+
+```text
+Tomato Late Blight
+        ↓
+Late Blight
+```
+
+The shortened phrase must contain at least two words.
+
+The rescue is only accepted when the multi-word phrase occurs directly in the normalized query.
+
+This reduces the chance that an unrelated keyword result replaces a valid semantic result.
+
+---
+
+## 6.21 Exact-Title Rescue Trigger
+
+Exact-title rescue runs only when:
+
+```text
+normal keyword fallback was NOT required
+```
+
+and:
+
+```text
+semantic sources exist
+```
+
+If the rescued top document differs from the semantic top document, the keyword ranking replaces the semantic ranking.
+
+The retrieval method is then recorded as:
+
+```text
+keyword_title_rescue
+```
+
+---
+
+## 6.22 Unfiltered Semantic Retry
+
+There is an additional recovery mechanism for strict crop filtering.
+
+If no sources remain after retrieval and a crop filter was supplied, the RAG agent performs another semantic search with:
+
+```text
+crop_filter = None
+```
+
+The category filter is retained.
+
+Conceptually:
+
+```text
+Filtered semantic search
+        ↓
+No usable source
+        ↓
+Remove crop restriction
+        ↓
+Retry semantic search
+```
+
+If this retry succeeds, the retrieval method is recorded as:
+
+```text
+semantic_unfiltered
+```
+
+The purpose is to return grounded agricultural information rather than an empty response when an overly strict crop filter prevents retrieval.
+
+---
+
+## 6.23 Retrieval Method Tracking
+
+The RAG agent records the retrieval strategy used for the most recent request through:
+
+```python
+self.last_retrieval_method
+```
+
+Possible values in the current implementation include:
+
+```text
+semantic
+keyword_fallback
+keyword_title_rescue
+semantic_unfiltered
+```
+
+It also records:
+
+```python
+self.last_top_similarity
+```
+
+which contains the top semantic similarity observed during retrieval.
+
+These values are useful for testing and diagnosing retrieval behaviour.
+
+---
+
+## 6.24 Context Construction
+
+After final sources have been selected, they are converted into an LLM-ready context using:
+
+```python
+build_context(...)
+```
+
+Each passage is formatted as:
+
+```text
+[Document Title]
+Document content
+```
+
+Multiple passages are separated by blank lines.
+
+Conceptually:
+
+```text
+[Rice Leaf Scald]
+<retrieved passage>
+
+[Rice Brown Spot]
+<retrieved passage>
+```
+
+This context can then be passed to the generation layer while retaining structured source information separately.
+
+---
+
+## 6.25 Retrieval Response
+
+The final result is returned as:
+
+```text
+RagRetrieveResponse
+```
+
+It contains:
+
+```text
+context
+sources
+confidence
+metadata
+```
+
+The response metadata includes:
+
+```text
+total_chunks_retrieved
+query_embedding_model
+vector_distance_metric
+execution_time_ms
+```
+
+The current values include:
+
+```text
+query_embedding_model  : all-MiniLM-L6-v2
+vector_distance_metric : l2
+```
+
+Execution time is measured using:
+
+```python
+time.perf_counter()
+```
+
+and returned in milliseconds.
+
+---
+
+## 6.26 Retrieval Pipeline Summary
+
+The complete current retrieval strategy can be summarized as:
+
+```text
+1. Receive farmer query
+2. Encode query with all-MiniLM-L6-v2
+3. Apply optional crop/category metadata filters
+4. Retrieve top-K candidates from ChromaDB
+5. Convert L2 distance to similarity
+6. Remove candidates below request.min_score
+7. Measure top semantic similarity
+8. Trigger keyword fallback if semantic confidence is insufficient
+9. Hybrid-rank keyword fallback results using:
+      70% keyword relevance
+      30% semantic similarity
+10. If semantic confidence was already high, check exact-title rescue
+11. If crop filtering still leaves no source, retry without crop filter
+12. Construct source objects
+13. Construct RAG context
+14. Return context, sources, confidence and retrieval metadata
+```
 
 ---
 
