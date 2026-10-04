@@ -781,11 +781,172 @@ DARK_MODE_CSS = """
 
 LIGHT_MODE_CSS = """
 <style>
-/* ── Explicit Light Theme Reinforcement ──────────────────────────────────── */
+/* ── High-Contrast Light Theme Reinforcement ────────────────────────────── */
 :root {
-    --bg-app: #f8faf9;
-    --bg-surface: #ffffff;
-    --text-primary: #0f172a;
+    --bg-app: #F4F7F5 !important;
+    --bg-surface: #FFFFFF !important;
+    --bg-surface-elevated: #FFFFFF !important;
+    --bg-glass: rgba(255, 255, 255, 0.95) !important;
+    --bg-subtle: #EDF4F0 !important;
+    --bg-sidebar: #E9F2EC !important;
+
+    --text-primary: #0F172A !important;
+    --text-secondary: #334155 !important;
+    --text-muted: #475569 !important;
+    --text-subtle: #64748B !important;
+
+    --border-subtle: rgba(16, 185, 129, 0.2) !important;
+    --border-default: rgba(16, 185, 129, 0.35) !important;
+    --border-strong: rgba(16, 185, 129, 0.55) !important;
+}
+
+/* Force light backgrounds and dark text across all Streamlit containers */
+.stApp {
+    background-color: #F4F7F5 !important;
+    color: #0F172A !important;
+}
+
+.stApp p, .stApp span, .stApp label, .stApp li,
+.stMarkdown, .stMarkdown p, .stMarkdown span, .stMarkdown li,
+div[data-testid="stMarkdownContainer"] p,
+div[data-testid="stMarkdownContainer"] span,
+div[data-testid="stMarkdownContainer"] li {
+    color: #0F172A !important;
+    font-size: 1rem !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #041D11 !important;
+}
+
+/* Topbar & Header */
+.topbar-container {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(16, 185, 129, 0.25) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+.brand-text-title { color: #041D11 !important; }
+.brand-text-subtitle { color: #059669 !important; }
+
+/* Bento Cards & Workspace Boxes */
+.bento-card, .workspace-box, .agent-node-card {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(16, 185, 129, 0.22) !important;
+    box-shadow: 0 4px 16px rgba(10, 45, 27, 0.05) !important;
+    color: #0F172A !important;
+}
+
+.bento-title, .workspace-title, .agent-node-title {
+    color: #041D11 !important;
+}
+
+.bento-stat-number {
+    color: #041D11 !important;
+}
+
+.bento-stat-label, .workspace-subtitle, .agent-node-role {
+    color: #475569 !important;
+}
+
+/* Action Step Cards */
+.action-step-card {
+    background-color: #F8FAF9 !important;
+    border: 1px solid #E2E8F0 !important;
+}
+.action-step-title { color: #041D11 !important; }
+.action-step-desc { color: #334155 !important; }
+
+/* Result Container & Badges */
+.result-container {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(16, 185, 129, 0.25) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+    color: #0F172A !important;
+}
+
+.result-badge-diagnosis {
+    background: linear-gradient(135deg, #ECFDF5, #D1FAE5) !important;
+    border: 1.5px solid #6EE7B7 !important;
+}
+
+.diagnosis-primary-name {
+    color: #041D11 !important;
+}
+.diagnosis-scientific-name {
+    color: #059669 !important;
+}
+
+/* Form Controls & Inputs */
+.stTextInput input, .stTextArea textarea, .stSelectbox div[data-baseweb="select"] > div {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+    border: 1.5px solid #CBD5E1 !important;
+}
+
+.stTextInput input:focus, .stTextArea textarea:focus {
+    border-color: #10B981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Sidebar Light Styling */
+[data-testid="stSidebar"] {
+    background-color: #E9F2EC !important;
+    border-right: 1px solid rgba(16, 185, 129, 0.2) !important;
+}
+
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] div {
+    color: #0F172A !important;
+}
+
+[data-testid="stSidebar"] .sidebar-section-label {
+    color: #044D2B !important;
+    font-weight: 800 !important;
+}
+
+/* Buttons */
+.stButton > button {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+    border: 1px solid #CBD5E1 !important;
+}
+
+.stButton > button:hover {
+    background-color: #ECFDF5 !important;
+    border-color: #10B981 !important;
+    color: #065F46 !important;
+}
+
+div[data-testid="stFormSubmitButton"] > button,
+button[kind="primaryFormSubmit"],
+.primary-ai-btn {
+    background: linear-gradient(135deg, #072D1B 0%, #0F623E 50%, #10B981 100%) !important;
+    color: #FFFFFF !important;
+}
+
+/* Hero card stays white on dark green */
+.hero-card h1, .hero-card p, .hero-card span {
+    color: #FFFFFF !important;
+}
+
+/* Tables */
+table, th, td {
+    color: #0F172A !important;
+}
+th {
+    background-color: #EDF3F0 !important;
+    color: #041D11 !important;
+}
+
+/* Expanders */
+.stExpander {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+}
+.stExpander summary, .stExpander summary * {
+    color: #0F172A !important;
 }
 </style>
 """

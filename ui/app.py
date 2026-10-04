@@ -118,9 +118,9 @@ if not is_authenticated():
 # ============================================================================
 # Sidebar Navigation Shell
 # ============================================================================
-user_id = st.session_state.get("user_id", "Farmer")
-saved_district = st.session_state.get("saved_district", "Kurunegala")
-current_lang = st.session_state.get("language", "en")
+user_id = str(st.session_state.get("user_id") or "Farmer")
+saved_district = str(st.session_state.get("saved_district") or "Kurunegala")
+current_lang = str(st.session_state.get("language") or "en")
 
 with st.sidebar:
     st.markdown(
