@@ -56,9 +56,9 @@ from ui.config import (
     APP_TITLE,
     CROP_CONTEXTS,
     DISTRICTS,
-    LANGUAGES,
 )
-from ui.styles import DARK_MODE_CSS, GLOBAL_CSS
+from ui.history_store import load_history, save_history
+from ui.styles import DARK_MODE_CSS, GLOBAL_CSS, LIGHT_MODE_CSS
 from utils.i18n import SUPPORTED_LANGUAGES, get_string
 
 import base64
@@ -74,8 +74,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-
-# T-17: i18n helpers
+# Optional branding assets.  If a file below exists it is used, otherwise the
+# built-in fallback (APP_ICON emoji / inline SVG illustration) is rendered.
+ASSETS_DIR = Path(__file__).resolve().parent / "assets"
 
 
 # ============================================================================
@@ -93,6 +94,20 @@ st.set_page_config(
     },
 )
 
+
+# ============================================================================
+# Constants
+# ============================================================================
+
+THEME_OPTIONS = ("System", "Light", "Dark")
+
+# (page id, i18n key, English fallback label, material icon)
+NAV_ITEMS = (
+    ("crop",    "nav_crop_management", "Crop Management", ":material/eco:"),
+    ("market",  "nav_market_prices",   "Market Prices",   ":material/trending_up:"),
+    ("weather", "nav_weather_updates", "Weather Updates", ":material/partly_cloudy_day:"),
+    ("forum",   "nav_community_forum", "Community Forum", ":material/forum:"),
+)
 
 # ============================================================================
 # Session-state initialisation
@@ -124,42 +139,38 @@ def _init_session() -> None:
     if "theme_mode" not in st.session_state:
         st.session_state.theme_mode = "System"
 
+    # T-21: sidebar is open by default; ☰ in the top bar flips this flag
+    if "show_nav_menu" not in st.session_state:
+        st.session_state.show_nav_menu = True
+    if "active_page" not in st.session_state:
+        st.session_state.active_page = "crop"
+
+    user_id = st.session_state.get("user_id")
+    if user_id and st.session_state.get("history_owner") != user_id:
+        st.session_state.conversation_history = load_history(user_id)
+        st.session_state.history_owner = user_id
+
+
+def _sync_widget_state() -> None:
+    """
+    Copy the latest sidebar widget values into the canonical session keys
+    *before* anything is rendered.  The sidebar widgets are rendered after the
+    top bar, so without this step the top bar would lag one rerun behind when
+    the language or display mode is changed.
+    """
+    lang_label = st.session_state.get("lang_selector")
+    if lang_label in SUPPORTED_LANGUAGES:
+        code = SUPPORTED_LANGUAGES[lang_label]
+        st.session_state.selected_language = code
+        st.session_state.language = code
+
+    mode = st.session_state.get("theme_mode_selector")
+    if mode in THEME_OPTIONS:
+        st.session_state.theme_mode = mode
+
 
 _init_session()
 _sync_widget_state()
-
-
-def _render_navigation() -> None:
-    """Render shared navigation and the user-controlled display theme."""
-    with st.sidebar:
-        st.markdown("### Navigation")
-        if is_authenticated():
-            st.markdown("**🌱 Ask for advice**")
-            st.caption("Your current advisory workspace")
-        else:
-            st.markdown("**🔐 Sign in or create an account**")
-            st.caption("Start here to ask about your crops")
-
-        st.markdown("---")
-        theme_mode = st.selectbox(
-            "Display mode",
-            options=("System", "Light", "Dark"),
-            index=("System", "Light", "Dark").index(
-                st.session_state.get("theme_mode", "System")
-            ),
-            key="theme_mode_selector",
-            help="Choose Light or Dark, or follow your device setting.",
-        )
-        st.session_state.theme_mode = theme_mode
-
-
-_render_navigation()
-
-# Inject global CSS after the display mode is known. Streamlit reruns the
-# script when the selector changes, so the theme updates without JavaScript.
-st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
-if st.session_state.theme_mode == "Dark":
-    st.markdown(DARK_MODE_CSS, unsafe_allow_html=True)
 
 
 # ============================================================================
