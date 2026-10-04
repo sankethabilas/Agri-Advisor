@@ -533,10 +533,10 @@ async def root_overview() -> Dict[str, Any]:
     }
 
 
-# Mount Sentinel Agent sub-app
+# Mount Outbreak Sentinel Agent routes directly onto Orchestrator Hub
 try:
-    from sentinel_agent.main import app as sentinel_subapp
-    app.mount("", sentinel_subapp)
+    from sentinel_agent.main import app as sentinel_app
+    app.include_router(sentinel_app.router)
 except Exception as _e:
     pass
 
