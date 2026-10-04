@@ -2268,82 +2268,1299 @@ The complete current retrieval strategy can be summarized as:
 
 # 7. Knowledge Base Source Publications
 
-> This section will be completed from the verified T-31 source registry and `source_tracking.md`.
-
-The final T-31 audit recorded:
+Knowledge-base provenance is maintained in:
 
 ```text
-Unique literal source names : 17
-Unique source IDs           : 90
-Missing source records      : 0
+knowledge_base/source_tracking.md
 ```
 
-Major verified source families include:
+The tracking table records:
 
-- Department of Agriculture, Sri Lanka
-- Horticultural Crops Research and Development Institute (HORDI)
-- Rice Research and Development Institute (RRDI)
-- Field Crops Research and Development Institute (FCRDI)
-- Office of the Registrar of Pesticides (ROP)
-- International Rice Research Institute (IRRI)
+```text
+Document ID
+Crop
+Category
+Topic
+Source
+Source URL
+Verification status
+Completion status
+Notes
+```
+
+The current source-tracking registry contains **17 distinct source-resource and URL combinations**.
+
+> Note: Some resources are individual web pages, while others are larger guides or crop-specific publications. For Google Drive sources, the tracking file records the source organization and document URL but does not provide a formal publication title. Descriptive crop-based names are therefore used below rather than inventing titles.
+
+---
+
+## 7.1 Sri Lanka Department of Agriculture — RRDI Rice Disease Resources
+
+The Rice Research and Development Institute (RRDI) pages are used for verified Sri Lankan rice-disease information.
+
+| No. | Resource | Organization | URL |
+|---:|---|---|---|
+| 1 | Rice Blast | Sri Lanka Department of Agriculture | `https://doa.gov.lk/rrdi_ricediseases_riceblast/` |
+| 2 | Sheath Blight | Sri Lanka Department of Agriculture | `https://doa.gov.lk/rrdi_ricediseases_sheathblight/` |
+| 3 | Brown Spot | Sri Lanka Department of Agriculture | `https://doa.gov.lk/rrdi_ricediseases_brownspot/` |
+| 4 | False Smut | Sri Lanka Department of Agriculture | `https://doa.gov.lk/rrdi_ricediseases_falsesmut/` |
+| 5 | Leaf Scald | Sri Lanka Department of Agriculture | `https://doa.gov.lk/rrdi_ricediseases_leafscald/` |
+| 6 | Sheath Rot | Sri Lanka Department of Agriculture | `https://doa.gov.lk/rrdi_ricediseases_sheathrot/` |
+| 7 | Narrow Brown Leaf Spot | Sri Lanka Department of Agriculture | `https://doa.gov.lk/rrdi_ricediseases_narrowbrownleafspot/` |
+| 8 | Bacterial Leaf Blight | Sri Lanka Department of Agriculture | `https://doa.gov.lk/rrdi_ricediseases_bacterialleafblight/` |
+
+These resources support source IDs including:
+
+```text
+R-D-001
+R-D-002
+R-D-003
+R-D-004
+R-D-005
+R-D-006
+R-D-007
+R-D-008
+```
+
+They contain disease symptoms, favourable conditions and management information.
+
+---
+
+## 7.2 IRRI Rice Diseases Online Resource
+
+| No. | Resource | Organization | URL |
+|---:|---|---|---|
+| 9 | Rice Diseases Online Resource | International Rice Research Institute (IRRI) | `https://rice-diseases.irri.org/` |
+
+This resource is used for rice disease records including:
+
+```text
+R-D-009  Bakanae
+R-D-010  Stem Rot
+R-D-011  Bacterial Leaf Streak
+R-D-012  Grassy Stunt
+R-D-013  Ragged Stunt
+```
+
+The source provides information such as:
+
+- disease symptoms,
+- transmission,
+- disease development,
+- vectors,
+- prevention, and
+- diagnosis.
+
+---
+
+## 7.3 HORDI Tomato Resource
+
+| No. | Resource | Organization | URL |
+|---:|---|---|---|
+| 10 | HORDI Tomato Crop Resource | Sri Lanka Department of Agriculture | `https://doa.gov.lk/hordi-crop-tomato/` |
+
+This resource supports tomato disease and cultivation records including:
+
+```text
+T-D-001 through T-D-013
+T-C-001
+```
+
+Topics include:
+
+- damping-off,
+- early blight,
+- late blight,
+- target spot,
+- powdery mildew,
+- anthracnose,
+- Septoria leaf spot,
+- collar and root rot,
+- bacterial wilt,
+- Yellow Leaf Curl Virus,
+- Curly Top Virus,
+- Spotted Wilt Virus,
+- Cucumber Mosaic Virus, and
+- tomato cultivation and management.
+
+---
+
+## 7.4 Field Crop Disease, Pest and Nutrient Identification Guide
+
+| No. | Resource | Organization | URL |
+|---:|---|---|---|
+| 11 | Field Crop Disease, Pest and Nutrient Identification Guide | Sri Lanka Department of Agriculture | `https://doa.gov.lk/wp-content/uploads/2021/01/Field-Crop-Disease-Pest-and-Nutrient-Identification-Guide.pdf` |
+
+This guide is one of the major multi-crop references used by the knowledge base.
+
+It supports disease, pest and management records for crops including:
+
+```text
+Chilli
+Big Onion
+Maize
+Finger Millet
+Legumes
+Peanut
+Sesame
+```
+
+Examples of topics sourced from the guide include:
+
+- chilli leaf curl complex,
+- chilli anthracnose,
+- chilli bacterial wilt,
+- big onion pests and diseases,
+- maize pests and diseases,
+- finger millet pests and disease,
+- legume pests and diseases,
+- peanut pests and diseases, and
+- sesame pests and diseases.
+
+---
+
+## 7.5 Big Onion Cultivation Publication
+
+| No. | Resource | Organization | URL |
+|---:|---|---|---|
+| 12 | Big Onion cultivation reference | Sri Lanka Department of Agriculture | `https://drive.google.com/file/d/1-hCIhB4W4b8dR5K2Its4rg9fpC59oKZk/view?usp=sharing` |
+
+This source supports Big Onion crop-management topics including:
+
+```text
+O-C-001  Climate and soil requirements
+O-C-002  Recommended varieties
+O-C-003  Season and seed requirement
+O-C-004  Nursery management
+O-C-005  Seed treatment and sowing
+O-C-006  Field preparation and planting
+O-F-001  Fertilizer management
+O-C-007  Water and weed management
+O-C-008  Harvest and storage
+```
+
+---
+
+## 7.6 Maize Cultivation Publication
+
+| No. | Resource | Organization | URL |
+|---:|---|---|---|
+| 13 | Maize cultivation reference | Sri Lanka Department of Agriculture | `https://drive.google.com/file/d/1ftv-3IiDLtZyVhrfcRqN14D6B6RDiT9y/view?usp=sharing` |
+
+This source supports Maize crop-management topics including:
+
+```text
+MZ-C-001  Introduction and general information
+MZ-C-002  Climate and soil requirements
+MZ-C-003  Land preparation and planting
+MZ-C-004  Recommended varieties
+MZ-C-005  Seed requirement and spacing
+MZ-F-001  Fertilizer management
+MZ-C-006  Water and weed management
+MZ-C-007  Harvesting
+MZ-C-008  Institutional and publication information
+```
+
+---
+
+## 7.7 Finger Millet Cultivation Publication
+
+| No. | Resource | Organization | URL |
+|---:|---|---|---|
+| 14 | Finger Millet cultivation reference | Sri Lanka Department of Agriculture | `https://drive.google.com/file/d/1WbiZaLpIaX4ZGtNboYCgttpBiKLAVpgv/view?usp=sharing` |
+
+This source supports Finger Millet topics including:
+
+```text
+FM-C-001  Publication and background
+FM-C-002  Climate and soil requirements
+FM-C-003  Land preparation
+FM-C-004  Recommended varieties
+FM-C-005  Cultivation method and timetable
+FM-C-006  Nursery management and transplanting
+FM-F-001  Fertilizer management
+FM-C-007  Irrigation
+FM-C-008  Weed management
+FM-C-009  Disease and pest management
+FM-C-010  Harvest and processing
+FM-C-011  Institutional information
+```
+
+---
+
+## 7.8 Cowpea Cultivation Publication
+
+| No. | Resource | Organization | URL |
+|---:|---|---|---|
+| 15 | Cowpea cultivation reference | Sri Lanka Department of Agriculture | `https://drive.google.com/file/d/1Pxq7yyStaQKbYRm-ajwC-dCVujCeINYQ/view?usp=sharing` |
+
+This source supports Cowpea topics including:
+
+```text
+CP-C-001  Cultivation method
+CP-C-002  Seed treatment, planting and spacing
+CP-F-001  Fertilizer, weed and irrigation management
+CP-C-003  Recommended varieties
+CP-C-004  Harvest and storage
+CP-C-005  Mid-season cultivation
+CP-C-006  Institutional and publication information
+```
+
+---
+
+## 7.9 Soybean Cultivation Publication
+
+| No. | Resource | Organization | URL |
+|---:|---|---|---|
+| 16 | Soybean cultivation reference | Sri Lanka Department of Agriculture | `https://drive.google.com/file/d/1sWeqHWADwovlon5V4nShZAvvdskiYzkv/view?usp=sharing` |
+
+This source supports Soybean topics including:
+
+```text
+SB-C-001  Climate and soil requirements
+SB-C-002  Cultivation season
+SB-C-003  Land preparation
+SB-C-004  Recommended varieties
+SB-C-005  Seed requirement and spacing
+SB-C-006  Seed treatment and inoculation
+SB-F-001  Thinning, weed control and fertilizer
+SB-C-007  Irrigation
+SB-C-008  Harvesting and processing
+SB-C-009  Storage
+SB-C-010  Institutional and publication information
+```
+
+---
+
+## 7.10 Chilli Cultivation Publication
+
+| No. | Resource | Organization | URL |
+|---:|---|---|---|
+| 17 | Chilli cultivation reference | Sri Lanka Department of Agriculture | `https://drive.google.com/file/d/1e0EU4b3Hr49K0UZV1xJh_mYv90gyoaAw/view` |
+
+The tracked Chilli cultivation material covers topics including:
+
+```text
+General introduction
+Climate and soil requirements
+Planting seasons
+Recommended varieties
+Seed requirement and nursery preparation
+Field planting and spacing
+Irrigation
+Fertilizer application
+Weed management
+Fungal diseases
+Collar rot and Choanephora blight
+Powdery mildew and bacterial wilt
+Viral diseases
+Leaf curl complex and management
+Narrow leaf disorder
+Harvesting and dried chilli production
+```
+
+---
+
+## 7.11 Source Attribution Strategy
+
+Source provenance is maintained at several levels.
+
+### Tracking Registry
+
+`source_tracking.md` records the human-readable source and source URL for curated knowledge records.
+
+### RAG Corpus
+
+Each `documents.json` entry contains:
+
+```text
+source_id
+source
+```
+
+These values are copied into ChromaDB metadata during indexing.
+
+### Structured Knowledge Bases
+
+Structured files such as:
+
+```text
+disease_kb.json
+treatment_db.json
+crop_db.json
+best_practices.json
+seasonal_calendar.json
+```
+
+also contain source references.
+
+This enables the system to preserve provenance from:
+
+```text
+original publication
+        ↓
+structured JSON
+        ↓
+RAG document
+        ↓
+ChromaDB metadata
+        ↓
+retrieved source
+        ↓
+agent response
+```
+
+---
+
+## 7.12 Source Verification
+
+Source verification was performed during T-31 Knowledge Base QA.
+
+The source-tracking records mark the referenced resources as verified and completed.
+
+The verified source families include:
+
+```text
+Sri Lanka Department of Agriculture
+├── RRDI
+├── HORDI
+├── field-crop publications
+└── crop-specific cultivation publications
+
+International Rice Research Institute
+└── Rice Diseases Online Resource
+```
+
+For pesticide-related information, current Sri Lankan pesticide registration and product-label guidance must take precedence over historical recommendations stored in the knowledge base because approved products and application instructions may change over time.
 
 ---
 
 # 8. Knowledge Base Update Procedure
 
-> This section will be completed after confirming the current indexing implementation.
+This section describes the recommended procedure for safely adding or modifying knowledge-base content.
 
-The intended update workflow is:
+A developer should not edit the ChromaDB files directly.
+
+The source of truth is the JSON data stored under:
 
 ```text
-Edit or add source-backed JSON data
-        ↓
-validate JSON structure
-        ↓
-run knowledge-base QA
-        ↓
-re-index ChromaDB
-        ↓
-run retrieval tests
-        ↓
-run regression tests
+knowledge_base/
 ```
+
+After changing the JSON files, the ChromaDB index must be regenerated using the indexing script.
+
+The general workflow is:
+
+```text
+Verify authoritative source
+        ↓
+Update structured JSON data
+        ↓
+Update documents.json
+        ↓
+Update source_tracking.md
+        ↓
+Run structured-data validators
+        ↓
+Run T-31 knowledge-base audit
+        ↓
+Re-index ChromaDB
+        ↓
+Run retrieval tests
+        ↓
+Run regression tests
+```
+
+---
+
+## 8.1 Verify the Source First
+
+New agricultural information should be based on a reliable source.
+
+Preferred sources currently used by the project include:
+
+```text
+Sri Lanka Department of Agriculture
+RRDI
+HORDI
+FCRDI
+Registrar of Pesticides
+IRRI
+```
+
+Before creating a new record:
+
+1. identify the source publication or official page,
+2. record its URL,
+3. verify the agricultural information,
+4. assign a source ID,
+5. preserve the source name in the relevant JSON files.
+
+For pesticide information, current Sri Lankan registration and product-label information should override historical recommendations.
+
+---
+
+## 8.2 Decide Which Data Files Must Change
+
+The required files depend on the type of knowledge being added.
+
+For a new disease, the normal update is:
+
+```text
+disease_kb.json
+treatment_db.json
+documents.json
+source_tracking.md
+```
+
+Crop advisory information may instead require updates to:
+
+```text
+crop_db.json
+best_practices.json
+seasonal_calendar.json
+documents.json
+source_tracking.md
+```
+
+`documents.json` must be updated whenever the new information needs to be retrievable through RAG.
+
+---
+
+## 8.3 Preserve Stable IDs
+
+Every RAG document requires a unique:
+
+```text
+id
+```
+
+The ID becomes the ChromaDB record ID during indexing.
+
+Example naming convention:
+
+```text
+R-D-001
+T-D-003
+CH-D-001
+MZ-C-004
+```
+
+Do not reuse an existing ID for a different document.
+
+Before re-indexing, the T-31 audit checks for duplicate document IDs.
+
+---
+
+## 8.4 Update `disease_kb.json`
+
+A new disease should use the same structure as existing disease records.
+
+Template:
+
+```json
+{
+  "<disease_key>": {
+    "id": "<unique-source-id>",
+    "name": "<disease name>",
+    "scientific_name": "<causal organism>",
+    "disease_type": "<fungal|bacterial|viral|other>",
+    "crop": "<crop>",
+    "symptoms": [
+      "<symptom 1>",
+      "<symptom 2>"
+    ],
+    "severity": {
+      "level": "<severity level>",
+      "basis": "<source-supported basis>"
+    },
+    "region": [
+      "<applicable region>"
+    ],
+    "source": {
+      "source_id": "<source-id>",
+      "name": "<source name>"
+    }
+  }
+}
+```
+
+The top-level `<disease_key>` is also used to connect the disease to its corresponding treatment record.
+
+Example key style:
+
+```text
+rice_blast
+tomato_late_blight
+chilli_anthracnose
+```
+
+---
+
+## 8.5 Update `treatment_db.json`
+
+Every disease in `disease_kb.json` must have a matching top-level key in `treatment_db.json`.
+
+Template:
+
+```json
+{
+  "<disease_key>": {
+    "disease": "<disease name>",
+    "chemical": [],
+    "organic": [],
+    "cultural": [],
+    "prevention": [],
+    "source": {
+      "source_id": "<source-id>",
+      "name": "<source name>"
+    }
+  }
+}
+```
+
+Treatment categories must remain arrays even when no verified recommendation is available.
+
+For example:
+
+```json
+"chemical": []
+```
+
+is valid.
+
+Do not invent treatments simply to avoid an empty list.
+
+---
+
+## 8.6 Chemical Treatment Safety
+
+If verified chemical recommendations are added, the record may require:
+
+```text
+safety_caveat
+```
+
+Example structure:
+
+```json
+{
+  "chemical": [
+    "<verified chemical recommendation>"
+  ],
+  "safety_caveat": "<current registration and label safety guidance>"
+}
+```
+
+Where pesticide dosages are stored, the safety guidance should remind users to verify current:
+
+```text
+Sri Lankan pesticide registration
+product label
+application rate
+personal protective equipment
+re-entry interval
+pre-harvest interval
+Registrar of Pesticides / Department of Agriculture guidance
+```
+
+The T-31 audit specifically checks numeric pesticide dosage records for missing safety guidance.
+
+---
+
+## 8.7 Add the RAG Document to `documents.json`
+
+To make the new information available through semantic retrieval, add a corresponding document to:
+
+```text
+knowledge_base/documents.json
+```
+
+Current document schema:
+
+```json
+{
+  "id": "<unique-id>",
+  "title": "<document title>",
+  "text": "<verified knowledge text>",
+  "crop": "<crop>",
+  "category": "<category>",
+  "language": "<language code>",
+  "source_id": "<source-id>",
+  "source": "<source name>",
+  "region": "<region>",
+  "season": "<season>"
+}
+```
+
+All current records use the ten fields above.
+
+Typical English language value:
+
+```text
+en
+```
+
+A general season may be represented as:
+
+```text
+general
+```
+
+The document ID must be unique because it is used directly as the ChromaDB ID.
+
+---
+
+## 8.8 Add Bilingual Documents Where Appropriate
+
+Where both English and Sinhala source-backed content is maintained, separate RAG records may be created.
+
+For example:
+
+```text
+SS-C-001-EN
+SS-C-001-SI
+```
+
+Each language-specific record must have its own unique document ID.
+
+The `language` metadata must correctly identify the document language.
+
+---
+
+## 8.9 Update Source Tracking
+
+Add the new source-backed record to:
+
+```text
+knowledge_base/source_tracking.md
+```
+
+The tracking table contains:
+
+```text
+ID
+Crop
+Category
+Topic
+Source
+Source URL
+Verified
+Status
+Notes
+```
+
+Example structure:
+
+```markdown
+| ID | Crop | Category | Topic | Source | Source URL | Verified | Status | Notes |
+|---|---|---|---|---|---|---|---|---|
+| <ID> | <Crop> | <Category> | <Topic> | <Source> | <URL> | ✅ | Completed | <verification notes> |
+```
+
+This file is the human-readable provenance registry for the curated knowledge base.
+
+---
+
+## 8.10 Validate Disease Coverage
+
+Run:
+
+```bash
+python scripts/validate_disease_kb.py
+```
+
+The script checks:
+
+```text
+disease record count >= 50
+crop count >= 5
+```
+
+A successful run ends with:
+
+```text
+T-15.1 disease coverage passed.
+```
+
+This script checks coverage rather than every individual disease field, so developers must still follow the documented disease schema.
+
+---
+
+## 8.11 Validate Disease/Treatment Consistency
+
+Run:
+
+```bash
+python scripts/validate_treatment_db.py
+```
+
+This validator checks:
+
+```text
+disease and treatment record counts
+matching disease/treatment keys
+required treatment fields
+treatment arrays
+missing treatment records
+orphan treatment records
+```
+
+The following treatment fields must be lists:
+
+```text
+chemical
+organic
+cultural
+prevention
+```
+
+Successful validation ends with:
+
+```text
+T-15.2 and T-15.3 treatment database validation passed.
+```
+
+---
+
+## 8.12 Run the Full Knowledge-Base Audit
+
+Run:
+
+```bash
+python scripts/audit_t31_kb.py
+```
+
+The audit reports:
+
+```text
+database counts
+document schema problems
+duplicate document IDs
+crop coverage
+category coverage
+region coverage
+agroclimatic-zone references
+source attribution
+disease/treatment key consistency
+chemical-treatment safety
+corpus pesticide dosage safety
+under-represented crops
+```
+
+Important results to review include:
+
+```text
+Schema issues
+Duplicate IDs
+Missing source records
+Diseases without treatment record
+Treatments without disease record
+Numeric dosage without safety caveat
+Dosage documents without safety caveat
+```
+
+For a clean update, these issue counts should normally remain:
+
+```text
+0
+```
+
+### Important Audit Limitation
+
+`audit_t31_kb.py` is primarily a reporting tool.
+
+A successful process exit alone does not mean that every reported issue count is zero.
+
+The developer must review its printed results.
+
+The current audit checks these required `documents.json` fields:
+
+```text
+id
+title
+text
+crop
+category
+source
+source_id
+region
+season
+```
+
+The current corpus schema also requires:
+
+```text
+language
+```
+
+even though the T-31 audit does not currently include `language` in its required-field check.
+
+Therefore, every new document should still contain all ten fields documented in Section 3.1.
 
 ---
 
 # 9. Re-indexing Procedure
 
-The final re-indexing command will be documented from the current indexing implementation.
+After updating `documents.json`, the ChromaDB index must be synchronized.
 
-The command currently used during T-31 was:
+Do not manually modify files inside:
+
+```text
+chroma_store/
+```
+
+Use the project indexer instead.
+
+---
+
+## 9.1 Run the Indexer
+
+From the repository root:
 
 ```bash
 python scripts/index_knowledge_base.py
 ```
 
-The final T-31 indexing result was:
+The indexer:
 
 ```text
-Source document count  : 303
-ChromaDB document count: 303
+1. loads documents.json,
+2. builds metadata-enriched embedding text,
+3. creates all-MiniLM-L6-v2 embeddings,
+4. detects stale ChromaDB IDs,
+5. deletes stale records,
+6. upserts current records,
+7. checks the final document count.
 ```
 
 ---
 
-# 10. Adding a New Disease
+## 9.2 Expected Re-index Behaviour
 
-> A complete worked developer procedure will be added after documenting the final indexing and retrieval implementation.
+If a new document is added:
 
-The completed guide will cover:
+```text
+documents.json count increases
+        ↓
+new ChromaDB record inserted
+```
 
-1. adding the disease to `disease_kb.json`,
-2. adding management recommendations to `treatment_db.json`,
-3. adding source-attributed RAG documents to `documents.json`,
-4. adding pesticide safety guidance when applicable,
-5. validating the data,
-6. re-indexing ChromaDB,
-7. testing retrieval, and
-8. running the full regression suite.
+If an existing document is edited while retaining the same ID:
+
+```text
+existing ChromaDB ID
+        ↓
+upsert
+        ↓
+record updated
+```
+
+If a document is deleted:
+
+```text
+ID exists in ChromaDB
+but not documents.json
+        ↓
+stale-record detection
+        ↓
+ChromaDB record deleted
+```
+
+---
+
+## 9.3 Verify Index Counts
+
+The indexer prints:
+
+```text
+Source document count
+ChromaDB document count
+```
+
+These values must match.
+
+The final T-31 baseline was:
+
+```text
+Source document count   : 303
+ChromaDB document count : 303
+```
+
+After adding new documents, the expected count depends on the number of documents added.
+
+For example:
+
+```text
+303 existing documents
++ 1 new RAG document
+------------------------
+304 expected documents
+```
+
+or:
+
+```text
+303 existing documents
++ 2 bilingual records
+------------------------
+305 expected documents
+```
+
+The indexer automatically raises an error when:
+
+```text
+ChromaDB count != documents.json count
+```
+
+---
+
+## 9.4 Test Basic Retrieval
+
+After indexing, run:
+
+```bash
+python scripts/test_retrieval.py
+```
+
+This verifies that semantic retrieval can return relevant ChromaDB documents.
+
+For a newly added disease, developers should also manually query terminology associated with that disease and confirm that the expected document appears among the returned results.
+
+---
+
+## 9.5 Test Retrieval Quality
+
+Run:
+
+```bash
+python scripts/test_rag_quality.py
+```
+
+This exercises the broader RAG query set.
+
+The script currently requires manual relevance review.
+
+Its output should therefore be inspected rather than interpreted as an automatic pass/fail relevance score.
+
+---
+
+## 9.6 Test Keyword Fallback
+
+Run:
+
+```bash
+python scripts/test_t23_fallback.py
+```
+
+This verifies:
+
+```text
+normal semantic retrieval
+low-confidence keyword fallback
+hybrid fallback ranking
+exact-title rescue
+```
+
+The existing fallback regression should continue to pass after knowledge-base changes.
+
+---
+
+## 9.7 Run Full Regression Tests
+
+Finally run:
+
+```bash
+python -m pytest -v
+```
+
+At the end of T-31, the project baseline was:
+
+```text
+216 passed
+0 failed
+```
+
+A knowledge-base update should not introduce regression failures.
+
+---
+
+# 10. Worked Example: Adding a New Disease
+
+This example describes the complete developer workflow.
+
+The example uses placeholders intentionally so that unsupported agricultural facts are not introduced into the knowledge base.
+
+Assume a verified source describes a disease with:
+
+```text
+Disease key : <new_disease_key>
+Document ID : <NEW-D-001>
+Crop        : <crop>
+Source      : <verified publication>
+```
+
+---
+
+## 10.1 Step 1 — Add the Disease Record
+
+Open:
+
+```text
+knowledge_base/disease_kb.json
+```
+
+Add:
+
+```json
+"<new_disease_key>": {
+  "id": "<NEW-D-001>",
+  "name": "<Disease Name>",
+  "scientific_name": "<Scientific Name>",
+  "disease_type": "<Disease Type>",
+  "crop": "<crop>",
+  "symptoms": [
+    "<verified symptom 1>",
+    "<verified symptom 2>"
+  ],
+  "severity": {
+    "level": "<level>",
+    "basis": "<source-supported basis>"
+  },
+  "region": [
+    "Sri Lanka"
+  ],
+  "source": {
+    "source_id": "<NEW-D-001>",
+    "name": "<Verified Source Name>"
+  }
+}
+```
+
+Ensure the surrounding JSON syntax remains valid.
+
+---
+
+## 10.2 Step 2 — Add the Matching Treatment Record
+
+Open:
+
+```text
+knowledge_base/treatment_db.json
+```
+
+Use exactly the same top-level disease key:
+
+```json
+"<new_disease_key>": {
+  "disease": "<Disease Name>",
+  "chemical": [],
+  "organic": [],
+  "cultural": [
+    "<verified cultural recommendation>"
+  ],
+  "prevention": [
+    "<verified prevention recommendation>"
+  ],
+  "source": {
+    "source_id": "<NEW-D-001>",
+    "name": "<Verified Source Name>"
+  }
+}
+```
+
+If no source-backed recommendation exists for a treatment category, keep the list empty.
+
+Do not invent missing treatment information.
+
+---
+
+## 10.3 Step 3 — Add the RAG Document
+
+Open:
+
+```text
+knowledge_base/documents.json
+```
+
+Append:
+
+```json
+{
+  "id": "<NEW-D-001>",
+  "title": "<Disease Name>",
+  "text": "<Verified source-backed description, symptoms and management information>",
+  "crop": "<crop>",
+  "category": "disease",
+  "language": "en",
+  "source_id": "<NEW-D-001>",
+  "source": "<Verified Source Name>",
+  "region": "Sri Lanka",
+  "season": "general"
+}
+```
+
+If both English and Sinhala versions are maintained, create separate unique IDs.
+
+---
+
+## 10.4 Step 4 — Record the Source
+
+Update:
+
+```text
+knowledge_base/source_tracking.md
+```
+
+Add the source and URL with verification notes.
+
+Example:
+
+```markdown
+| <NEW-D-001> | <Crop> | Disease | <Disease Name> | <Source> | <URL> | ✅ | Completed | Symptoms and management verified |
+```
+
+---
+
+## 10.5 Step 5 — Validate the Structured Data
+
+Run:
+
+```bash
+python scripts/validate_disease_kb.py
+python scripts/validate_treatment_db.py
+```
+
+Confirm that:
+
+```text
+disease validation passes
+treatment validation passes
+no missing treatment key exists
+no orphan treatment key exists
+```
+
+---
+
+## 10.6 Step 6 — Run Knowledge-Base QA
+
+Run:
+
+```bash
+python scripts/audit_t31_kb.py
+```
+
+Review the output.
+
+The following should normally remain zero:
+
+```text
+Schema issues
+Duplicate IDs
+Missing source records
+Diseases without treatment record
+Treatments without disease record
+Numeric dosage without safety caveat
+Dosage documents without safety caveat
+```
+
+Also verify that the new crop/document appears in the relevant coverage output.
+
+---
+
+## 10.7 Step 7 — Re-index ChromaDB
+
+Run:
+
+```bash
+python scripts/index_knowledge_base.py
+```
+
+Confirm:
+
+```text
+Source document count == ChromaDB document count
+```
+
+If one new document was added to the current 303-document baseline:
+
+```text
+304 == 304
+```
+
+should be expected.
+
+---
+
+## 10.8 Step 8 — Verify Retrieval
+
+Run:
+
+```bash
+python scripts/test_retrieval.py
+```
+
+Then test terminology specific to the newly added disease and verify that the expected document is returned.
+
+Also run:
+
+```bash
+python scripts/test_rag_quality.py
+python scripts/test_t23_fallback.py
+```
+
+Review the RAG-quality output manually and ensure fallback tests still pass.
+
+---
+
+## 10.9 Step 9 — Run the Regression Suite
+
+Run:
+
+```bash
+python -m pytest -v
+```
+
+The update is ready when:
+
+```text
+structured validators pass
+KB audit has no unexpected issues
+ChromaDB count matches documents.json
+new disease can be retrieved
+fallback behaviour remains correct
+full regression suite passes
+```
+
+---
+
+## 10.10 Developer Checklist
+
+Before committing a knowledge-base update, confirm:
+
+```text
+[ ] Source is authoritative and recorded
+[ ] New ID is unique
+[ ] disease_kb.json updated
+[ ] matching treatment_db.json key added
+[ ] treatment arrays use correct list structure
+[ ] pesticide safety caveat added where required
+[ ] documents.json updated with all 10 fields
+[ ] language metadata included
+[ ] source_tracking.md updated
+[ ] validate_disease_kb.py passes
+[ ] validate_treatment_db.py passes
+[ ] audit_t31_kb.py reviewed
+[ ] duplicate IDs = 0
+[ ] missing sources = 0
+[ ] disease/treatment mismatch = 0
+[ ] pesticide safety issues = 0
+[ ] ChromaDB re-indexed
+[ ] ChromaDB count matches source count
+[ ] retrieval tested
+[ ] fallback regression tested
+[ ] full pytest suite passes
+```
 
 ---
 
