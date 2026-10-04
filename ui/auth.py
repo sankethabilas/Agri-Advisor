@@ -29,17 +29,17 @@ logger = logging.getLogger(__name__)
 # Endpoint paths
 # ---------------------------------------------------------------------------
 REGISTER_URL = f"{API_BASE_URL}/api/auth/register"
-LOGIN_URL = f"{API_BASE_URL}/api/auth/login"
+LOGIN_URL    = f"{API_BASE_URL}/api/auth/login"
 
 # ---------------------------------------------------------------------------
 # Session-state keys (single source of truth)
 # ---------------------------------------------------------------------------
-_KEY_TOKEN = "jwt_token"
-_KEY_USER_ID = "user_id"
-_KEY_DISTRICT = "saved_district"
-_KEY_AUTH_ERR = "auth_error"
-_KEY_AUTH_PAGE = "auth_page"         # "login" | "register"
-_KEY_TOKEN_EXP = "token_expired"
+_KEY_TOKEN      = "jwt_token"
+_KEY_USER_ID    = "user_id"
+_KEY_DISTRICT   = "saved_district"
+_KEY_AUTH_ERR   = "auth_error"
+_KEY_AUTH_PAGE  = "auth_page"         # "login" | "register"
+_KEY_TOKEN_EXP  = "token_expired"
 
 
 def init_auth_session() -> None:
@@ -52,7 +52,7 @@ def init_auth_session() -> None:
         _KEY_USER_ID:   None,    # str | None  — authenticated username
         _KEY_DISTRICT:  None,    # str | None  — district saved at registration
         _KEY_AUTH_ERR:  None,    # str | None  — last auth error message
-        _KEY_AUTH_PAGE: "login",  # which auth screen to show
+        _KEY_AUTH_PAGE: "login", # which auth screen to show
         _KEY_TOKEN_EXP: False,   # True if the last API call returned 401
     }
     for key, default in defaults.items():
@@ -82,9 +82,9 @@ def store_token(token: str, user_id: str, district: str | None = None) -> None:
         user_id:  Authenticated username / user identifier.
         district: Pre-saved district (from registration form); may be None.
     """
-    st.session_state[_KEY_TOKEN] = token
-    st.session_state[_KEY_USER_ID] = user_id
-    st.session_state[_KEY_AUTH_ERR] = None
+    st.session_state[_KEY_TOKEN]     = token
+    st.session_state[_KEY_USER_ID]   = user_id
+    st.session_state[_KEY_AUTH_ERR]  = None
     st.session_state[_KEY_TOKEN_EXP] = False
     if district:
         st.session_state[_KEY_DISTRICT] = district
@@ -107,7 +107,6 @@ def clear_auth() -> None:
         "last_is_fallback",
         "last_error",
         "session_id",
-        "history_owner",
     ):
         st.session_state.pop(key, None)
 
@@ -183,18 +182,15 @@ def call_register(
             return resp.json()
         # Surface server error message
         try:
-            detail = resp.json().get("detail") or resp.json().get(
-                "error", {}).get("message", "")
+            detail = resp.json().get("detail") or resp.json().get("error", {}).get("message", "")
         except Exception:
             detail = resp.text or "Registration failed."
         raise AuthError(resp.status_code, detail)
 
     except requests.exceptions.ConnectionError:
-        raise AuthError(
-            0, "Cannot connect to the server. Please check your network.")
+        raise AuthError(0, "Cannot connect to the server. Please check your network.")
     except requests.exceptions.Timeout:
-        raise AuthError(
-            0, "The server did not respond in time. Please try again.")
+        raise AuthError(0, "The server did not respond in time. Please try again.")
     except AuthError:
         raise
     except Exception as exc:
@@ -224,18 +220,15 @@ def call_login(
         if resp.status_code == 200:
             return resp.json()
         try:
-            detail = resp.json().get("detail") or resp.json().get(
-                "error", {}).get("message", "")
+            detail = resp.json().get("detail") or resp.json().get("error", {}).get("message", "")
         except Exception:
             detail = resp.text or "Login failed."
         raise AuthError(resp.status_code, detail)
 
     except requests.exceptions.ConnectionError:
-        raise AuthError(
-            0, "Cannot connect to the server. Please check your network.")
+        raise AuthError(0, "Cannot connect to the server. Please check your network.")
     except requests.exceptions.Timeout:
-        raise AuthError(
-            0, "The server did not respond in time. Please try again.")
+        raise AuthError(0, "The server did not respond in time. Please try again.")
     except AuthError:
         raise
     except Exception as exc:

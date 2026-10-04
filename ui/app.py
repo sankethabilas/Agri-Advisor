@@ -1,6 +1,6 @@
 """
 ui/app.py
-Agri-Advisor — Streamlit UI Shell  (Task T-08 + T-17 + T-20 + T-21)
+Agri-Advisor — Streamlit UI Shell  (Task T-08 + T-17 + T-20)
 
 Entry point:
     streamlit run ui/app.py
@@ -19,20 +19,9 @@ T-20 additions:
     - Login screen with client-side validation  (T-20.2)
     - JWT stored in session_state, attached to every API request  (T-20.4)
     - Query screen is gated behind authentication  (T-20.5)
-    - Logout control  (T-20.5)  -> now lives in the top navigation bar
+    - Logout control in sidebar  (T-20.5)
     - Friendly error messages for invalid credentials / expired tokens  (T-20.6)
     - Authenticated user_id and saved district in query payload  (T-20.7)
-
-T-21 additions (navigation / layout refresh):
-    - Fixed top navigation bar:
-        left  : sidebar toggle (☰) + logo + "Agri Advisor"
-        right : profile avatar + Log Out button (authenticated users only)
-    - Single sidebar (one source of truth):
-        Navigation links (Crop Management, Market Prices, Weather Updates,
-        Community Forum) -> Display Mode -> Session panel -> Language (bottom)
-    - The ☰ button drives st.session_state["show_nav_menu"], which shows /
-      hides the sidebar.  No duplicate "Navigation" buttons in the page body.
-    - Dark-green header banner + central welcome card on the home page.
 """
 from __future__ import annotations
 import streamlit as st
@@ -42,6 +31,7 @@ from ui.auth import (
     get_auth_headers,
     init_auth_session,
     is_authenticated,
+    mark_token_expired,
     token_just_expired,
 )
 from ui.auth_pages import render_auth_screen
@@ -61,12 +51,10 @@ from ui.history_store import load_history, save_history
 from ui.styles import DARK_MODE_CSS, GLOBAL_CSS, LIGHT_MODE_CSS
 from utils.i18n import SUPPORTED_LANGUAGES, get_string
 
-import base64
-import html
-import re
 import sys
 import uuid
 from pathlib import Path
+from typing import Any
 
 # Make project-local packages importable when Streamlit launches this file
 # directly (for example: `streamlit run ui/app.py`).
@@ -86,11 +74,11 @@ st.set_page_config(
     page_title=f"{APP_TITLE} — {APP_SUBTITLE}",
     page_icon=APP_ICON,
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
     menu_items={
         "Get help":     "https://doa.gov.lk",
         "Report a bug": None,
-        "About":        f"**{get_string('app_title', 'en')}** · {get_string('app_subtitle', 'en')} · v0.1.0",
+        "About":        f"**{APP_TITLE}** · Smart Farming Assistant for Sri Lanka · v0.1.0",
     },
 )
 
@@ -113,9 +101,8 @@ NAV_ITEMS = (
 # Session-state initialisation
 # ============================================================================
 
-
 def _init_session() -> None:
-    """Initialise all session-state keys on first load (T-08 + T-17 + T-20 + T-21)."""
+    """Initialise all session-state keys on first load (T-08 + T-17 + T-20)."""
     # T-20: auth keys first (they gate everything else)
     init_auth_session()
 
@@ -174,501 +161,6 @@ _sync_widget_state()
 
 
 # ============================================================================
-# Small helpers
-# ============================================================================
-
-def _s(key: str, lang: str, default: str) -> str:
-    """get_string() with a safe English fallback for keys not yet in i18n."""
-    try:
-        value = get_string(key, lang)
-    except Exception:  # noqa: BLE001
-        return default
-    return value if value and value != key else default
-
-
-def _asset_data_uri(*names: str) -> str | None:
-    """Return a data: URI for the first existing file in ui/assets/, else None."""
-    mime = {
-        ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
-        ".webp": "image/webp", ".svg": "image/svg+xml",
-    }
-    for name in names:
-        path = ASSETS_DIR / name
-        if path.is_file() and path.suffix.lower() in mime:
-            encoded = base64.b64encode(path.read_bytes()).decode("ascii")
-            return f"data:{mime[path.suffix.lower()]};base64,{encoded}"
-    return None
-
-
-def _initials(user_id: str) -> str:
-    letters = re.sub(r"[^A-Za-z0-9]", "", user_id or "")
-    return (letters[:2] or "U").upper()
-
-
-# Built-in welcome illustration (used when ui/assets/welcome_illustration.* is absent)
-_WELCOME_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 250" fill="none" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="150" cy="150" r="88" fill="#E6F4EA"/>
-<g stroke="#1F3D2B" stroke-width="2.4">
-<circle cx="150" cy="26" r="9" fill="#FDE68A" stroke="#C99A12"/>
-<path d="M150 8v6M150 38v6M132 26h6M162 26h6M137 13l4 4M159 35l4 4M163 13l-4 4M141 35l-4 4" stroke="#C99A12"/>
-<path d="M70 38h30M78 32h14" /><path d="M205 30h34M214 24h16"/>
-<path d="M12 98Q80 70 150 92T290 80"/><path d="M12 116Q90 88 160 110T290 100"/>
-<path d="M12 134Q100 108 170 128T290 120"/>
-<path d="M205 70v-18l20-12 20 12v18z" fill="#fff"/><path d="M215 70V58h20v12"/>
-<path d="M60 82v-24M60 66l-8-8M60 72l8-8" stroke="#2E7D4F"/>
-<path d="M82 84V60M82 70l-7-7M82 76l7-7" stroke="#2E7D4F"/>
-<path d="M104 86V66M104 74l-6-6M104 80l6-6" stroke="#2E7D4F"/>
-<rect x="112" y="118" width="86" height="112" rx="8" fill="#fff"/>
-<path d="M124 190V170M138 190V158M152 190V148M166 190V164" stroke="#E0A526" stroke-width="7"/>
-<path d="M124 150l16-14 14 8 28-22" stroke="#2E7D4F"/>
-<path d="M124 205h62M124 216h40" stroke="#9CA3AF" stroke-width="2"/>
-</g>
-<circle cx="214" cy="140" r="19" fill="#FBBF24" stroke="#1F3D2B" stroke-width="2.4"/>
-<text x="214" y="148" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1F3D2B">$</text>
-<g fill="#FBBF24" stroke="#1F3D2B" stroke-width="2.2">
-<ellipse cx="226" cy="226" rx="26" ry="8"/><ellipse cx="226" cy="214" rx="26" ry="8"/><ellipse cx="226" cy="202" rx="26" ry="8"/>
-</g>
-<g fill="#4CAF72" stroke="#1F3D2B" stroke-width="2.2">
-<path d="M62 232V170"/><path d="M62 200q-26-4-30-30 26 2 30 30z"/><path d="M62 184q24-2 30-26-26-2-30 26z"/>
-<path d="M62 218q-22 0-28-20 22 0 28 20z"/>
-</g>
-<g fill="#4CAF72" stroke="#1F3D2B" stroke-width="2.2">
-<path d="M262 232v-34"/><path d="M262 214q-18-2-22-20 18 0 22 20z"/><path d="M262 204q18-2 22-20-18 0-22 20z"/>
-</g>
-</svg>"""
-
-
-def _welcome_illustration_uri() -> str:
-    uri = _asset_data_uri(
-        "welcome_illustration.svg", "welcome_illustration.png",
-        "welcome_illustration.jpg", "welcome_illustration.webp",
-    )
-    if uri:
-        return uri
-    return "data:image/svg+xml;base64," + base64.b64encode(
-        _WELCOME_SVG.encode("utf-8")
-    ).decode("ascii")
-
-
-def _logo_html(css_class: str = "aa-logo") -> str:
-    """Brand mark: ui/assets/logo.* when present, otherwise APP_ICON."""
-    uri = _asset_data_uri("logo.svg", "logo.png", "logo.webp", "logo.jpg")
-    if uri:
-        return f'<img class="{css_class}" src="{uri}" alt="logo"/>'
-    return f'<span class="topnav-mark">{html.escape(str(APP_ICON))}</span>'
-
-
-# ============================================================================
-# Shell CSS  (top bar + sidebar + banner + welcome card)
-#   Injected AFTER GLOBAL_CSS / theme CSS so these layout rules win.
-# ============================================================================
-
-_LIGHT_VARS = (
-    "--aa-bg:#F6FAF7;--aa-nav-bg:#EEFBF1;--aa-side-bg:#EEFBF1;--aa-card:#FFFFFF;"
-    "--aa-text:#1F2937;--aa-muted:#6B7280;--aa-border:#D5EADB;"
-    "--aa-active:#D6F0DD;--aa-hover:#E1F5E7;--aa-avatar-ring:#FFFFFF;"
-)
-_DARK_VARS = (
-    "--aa-bg:#0E1712;--aa-nav-bg:#12201A;--aa-side-bg:#12201A;--aa-card:#182A21;"
-    "--aa-text:#E7F1EA;--aa-muted:#9DB3A5;--aa-border:#25402F;"
-    "--aa-active:#1F3A2B;--aa-hover:#1A3024;--aa-avatar-ring:#25402F;"
-)
-
-_SHELL_CSS = """
-<style>
-:root{--aa-nav-h:64px;--aa-side-w:300px;}
-__THEME_VARS__
-
-/* ---- Streamlit chrome we replace ------------------------------------- */
-header[data-testid="stHeader"]{display:none !important;}
-[data-testid="stSidebarHeader"],
-[data-testid="stSidebarCollapseButton"],
-[data-testid="stSidebarCollapsedControl"],
-[data-testid="collapsedControl"],
-[data-testid="stExpandSidebarButton"]{display:none !important;}
-.stApp{background:var(--aa-bg) !important;}
-.block-container,[data-testid="stMainBlockContainer"]{
-    padding-top:calc(var(--aa-nav-h) + 1.75rem) !important;}
-
-/* ---- Top navigation bar ---------------------------------------------- */
-div[data-testid="stHorizontalBlock"]:has(.topnav-brand){
-    position:fixed;top:0;left:0;right:0;width:100% !important;
-    height:var(--aa-nav-h);z-index:1000;margin:0;padding:0 1.25rem;
-    display:flex;flex-wrap:nowrap !important;align-items:center;gap:.5rem !important;
-    background:var(--aa-nav-bg);border-bottom:1px solid var(--aa-border);
-    box-shadow:0 1px 6px rgba(20,83,45,.08);}
-div[data-testid="stHorizontalBlock"]:has(.topnav-brand) > div{
-    flex:0 0 auto !important;width:auto !important;min-width:0 !important;}
-div[data-testid="stHorizontalBlock"]:has(.topnav-brand) > div:has(.topnav-brand){
-    flex:1 1 auto !important;}
-.topnav-brand{display:flex;align-items:center;gap:.6rem;color:var(--aa-text);
-    font-size:1.2rem;font-weight:700;white-space:nowrap;}
-.topnav-mark{font-size:1.6rem;line-height:1;}
-.aa-logo{height:34px;width:auto;}
-.topnav-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;
-    display:flex;align-items:center;justify-content:center;
-    background:#16A34A;color:#fff;font-weight:700;font-size:.95rem;
-    border:2px solid var(--aa-avatar-ring);box-shadow:0 1px 4px rgba(0,0,0,.2);}
-.topnav-avatar img{width:100%;height:100%;object-fit:cover;}
-/* ☰ toggle (first column) */
-div[data-testid="stHorizontalBlock"]:has(.topnav-brand) > div:first-child button{
-    background:transparent !important;border:none !important;box-shadow:none !important;
-    color:var(--aa-text) !important;font-size:1.6rem !important;line-height:1 !important;
-    padding:.25rem .65rem !important;min-height:0 !important;}
-div[data-testid="stHorizontalBlock"]:has(.topnav-brand) > div:first-child button:hover{
-    background:var(--aa-hover) !important;}
-/* Log Out (last column, authenticated only) */
-div[data-testid="stHorizontalBlock"]:has(.topnav-brand) > div:last-child button{
-    background:var(--aa-card) !important;color:var(--aa-text) !important;
-    border:1px solid var(--aa-text) !important;border-radius:8px !important;
-    padding:.35rem 1.1rem !important;font-weight:500 !important;box-shadow:none !important;}
-div[data-testid="stHorizontalBlock"]:has(.topnav-brand) > div:last-child button:hover{
-    background:var(--aa-hover) !important;}
-div[data-testid="stHorizontalBlock"]:has(.topnav-brand) > div:first-child:last-child button{
-    border:none !important;}
-
-/* ---- Sidebar ---------------------------------------------------------- */
-section[data-testid="stSidebar"]{
-    position:fixed !important;top:var(--aa-nav-h) !important;left:0 !important;bottom:0 !important;
-    height:auto !important;width:var(--aa-side-w) !important;min-width:var(--aa-side-w) !important;
-    max-width:var(--aa-side-w) !important;transform:none !important;margin-left:0 !important;
-    visibility:visible !important;z-index:900 !important;
-    background:var(--aa-side-bg) !important;border-right:1px solid var(--aa-border);}
-section[data-testid="stSidebar"] > div{width:100% !important;height:100% !important;}
-section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"],
-section[data-testid="stSidebar"] [data-testid="stSidebarContent"]{padding-top:.5rem;}
-section[data-testid="stSidebar"] label p,
-section[data-testid="stSidebar"] .side-heading{color:var(--aa-text);}
-.side-heading{font-weight:700;font-size:1rem;margin:.4rem 0 .3rem 0;}
-.side-hint{font-size:.85rem;color:var(--aa-muted);margin-bottom:.6rem;}
-/* navigation links */
-[class*="st-key-nav_"] button{
-    justify-content:flex-start !important;text-align:left !important;width:100% !important;
-    background:transparent !important;border:none !important;box-shadow:none !important;
-    color:var(--aa-text) !important;font-weight:500 !important;border-radius:8px !important;
-    padding:.45rem .6rem !important;}
-[class*="st-key-nav_"] button:hover{background:var(--aa-hover) !important;}
-[class*="st-key-nav_"] button[kind="primary"],
-[class*="st-key-nav_"] [data-testid="stBaseButton-primary"]{
-    background:var(--aa-active) !important;font-weight:700 !important;}
-
-/* ---- Main area offset (sidebar is fixed, so push the content) --------- */
-__SIDEBAR_RULES__
-
-/* ---- Header banner + welcome card ------------------------------------ */
-.aa-hero{max-width:820px;margin:0 auto 1.6rem auto;padding:2.4rem 1rem;border-radius:12px;
-    background:linear-gradient(135deg,#14532D 0%,#15803D 100%);color:#fff;
-    display:flex;justify-content:center;align-items:center;gap:.6rem;
-    font-size:1.55rem;font-weight:700;box-shadow:0 6px 18px rgba(20,83,45,.25);}
-.aa-hero .aa-logo{height:30px;}
-.aa-welcome{max-width:430px;margin:0 auto 1.8rem auto;padding:2rem 1.6rem;text-align:center;
-    background:var(--aa-card);border:1px solid var(--aa-border);border-radius:22px;
-    box-shadow:0 8px 24px rgba(0,0,0,.07);}
-.aa-welcome img{width:100%;max-width:260px;height:auto;}
-.aa-welcome-title{margin:.8rem 0 .4rem 0;font-size:1.65rem;font-weight:800;color:var(--aa-text);}
-.aa-welcome-text{margin:0;color:var(--aa-muted);font-size:.98rem;line-height:1.55;}
-
-@media (max-width: 768px){
-    section[data-testid="stSidebar"]{width:min(var(--aa-side-w),88vw) !important;
-        min-width:0 !important;box-shadow:4px 0 18px rgba(0,0,0,.18);}
-    [data-testid="stMain"],section.main{padding-left:0 !important;}
-    .topnav-brand{font-size:1.05rem;}
-}
-</style>
-"""
-
-_SIDEBAR_OPEN_RULES = """
-section[data-testid="stSidebar"]{display:flex !important;}
-[data-testid="stMain"],section.main{padding-left:var(--aa-side-w);}
-"""
-_SIDEBAR_CLOSED_RULES = """
-section[data-testid="stSidebar"]{display:none !important;}
-[data-testid="stMain"],section.main{padding-left:0;}
-"""
-
-
-def _shell_css(theme_mode: str, sidebar_open: bool) -> str:
-    """Build the shell CSS for the active display mode and sidebar state."""
-    if theme_mode == "Dark":
-        theme_vars = f":root{{{_DARK_VARS}}}"
-    elif theme_mode == "Light":
-        theme_vars = f":root{{{_LIGHT_VARS}}}"
-    else:  # System -> follow the OS preference
-        theme_vars = (
-            f":root{{{_LIGHT_VARS}}}"
-            f"@media (prefers-color-scheme: dark){{:root{{{_DARK_VARS}}}}}"
-        )
-    side_rules = _SIDEBAR_OPEN_RULES if sidebar_open else _SIDEBAR_CLOSED_RULES
-    return (
-        _SHELL_CSS
-        .replace("__THEME_VARS__", theme_vars)
-        .replace("__SIDEBAR_RULES__", side_rules)
-    )
-
-
-# ============================================================================
-# Navigation callbacks
-# ============================================================================
-
-def toggle_navigation() -> None:
-    """☰ handler: show / hide the sidebar (stored in session state)."""
-    st.session_state.show_nav_menu = not st.session_state.get("show_nav_menu", True)
-
-
-def _set_page(page_id: str) -> None:
-    """Sidebar link handler: switch the active page."""
-    st.session_state.active_page = page_id
-
-
-# ============================================================================
-# Top navigation bar
-# ============================================================================
-
-def _render_top_nav() -> None:
-    """
-    Fixed top bar.
-      left  : ☰ sidebar toggle · logo · application title
-      right : profile avatar · Log Out   (only when signed in)
-    """
-    _lang = st.session_state.get("selected_language", "en")
-    authed = is_authenticated()
-
-    if authed:
-        c_toggle, c_brand, c_avatar, c_logout = st.columns(
-            [1, 1, 1, 1], vertical_alignment="center"
-        )
-    else:
-        c_toggle, c_brand = st.columns([1, 1], vertical_alignment="center")
-
-    with c_toggle:
-        st.button(
-            "☰",
-            key="topnav_sidebar_toggle",
-            on_click=toggle_navigation,
-            help="Show / hide the sidebar",
-        )
-
-    with c_brand:
-        tagline = html.escape(get_string("app_tagline", _lang))
-        st.markdown(
-            f'<div class="topnav-brand" title="{tagline}">'
-            f'{_logo_html()}<span>{html.escape(get_string("app_title", _lang))}</span>'
-            f"</div>",
-            unsafe_allow_html=True,
-        )
-
-    if authed:
-        user_id = str(st.session_state.get("user_id") or "")
-        with c_avatar:
-            avatar_src = st.session_state.get("profile_image")  # URL or data URI
-            if avatar_src:
-                inner = f'<img src="{html.escape(str(avatar_src), quote=True)}" alt="profile"/>'
-            else:
-                inner = html.escape(_initials(user_id))
-            st.markdown(
-                f'<div class="topnav-avatar" title="{html.escape(user_id)}">{inner}</div>',
-                unsafe_allow_html=True,
-            )
-        with c_logout:
-            # T-20.5: logout control (moved here from the sidebar)
-            if st.button(get_string("btn_logout", _lang), key="btn_logout"):
-                clear_auth()
-                st.rerun()
-
-
-# ============================================================================
-# Sidebar  (always rendered; CSS shows / hides it from the ☰ state)
-# ============================================================================
-
-def _render_sidebar():
-    """
-    Sidebar order:  Navigation -> Display Mode -> Session panel slot -> Language.
-    Returns the container that _fill_session_slot() populates at the end of the
-    run (so session info is always fresh).
-    """
-    _lang = st.session_state.get("selected_language", "en")
-    active = st.session_state.get("active_page", "crop")
-
-    with st.sidebar:
-        st.markdown(
-            f'<div class="side-heading">{html.escape(_s("nav_heading", _lang, "Navigation"))}</div>',
-            unsafe_allow_html=True,
-        )
-        if is_authenticated():
-            for page_id, key, default, icon in NAV_ITEMS:
-                st.button(
-                    _s(key, _lang, default),
-                    key=f"nav_{page_id}",
-                    icon=icon,
-                    type="primary" if page_id == active else "secondary",
-                    use_container_width=True,
-                    on_click=_set_page,
-                    args=(page_id,),
-                )
-        else:
-            st.markdown("**🔐 Sign in or create an account**")
-            st.markdown(
-                '<div class="side-hint">Start here to ask about your crops</div>',
-                unsafe_allow_html=True,
-            )
-
-        st.markdown("&nbsp;", unsafe_allow_html=True)
-        st.selectbox(
-            _s("lbl_display_mode", _lang, "Display Mode"),
-            options=THEME_OPTIONS,
-            index=THEME_OPTIONS.index(st.session_state.get("theme_mode", "System")),
-            key="theme_mode_selector",
-            help="Choose Light or Dark, or follow your device setting.",
-        )
-
-        # Session info + clear-conversation are filled in at the end of the run
-        session_slot = st.container()
-
-        # Language selector — bottom of the sidebar
-        lang_options = list(SUPPORTED_LANGUAGES.keys())
-        current_label = next(
-            (label for label, code in SUPPORTED_LANGUAGES.items() if code == _lang),
-            lang_options[0],
-        )
-        st.selectbox(
-            "🌐 " + get_string("lbl_language", _lang),
-            options=lang_options,
-            index=lang_options.index(current_label),
-            key="lang_selector",
-        )
-    return session_slot
-
-
-def _fill_session_slot(slot) -> None:
-    """Session panel + clear-conversation button (T-08 / T-17 / T-20.7)."""
-    if not is_authenticated():
-        return
-    _slang = st.session_state.get("selected_language", "en")
-
-    with slot:
-        with st.expander(get_string("sidebar_heading", _slang), expanded=False):
-            auth_user = html.escape(str(st.session_state.get("user_id", "")))
-            saved_district = html.escape(str(st.session_state.get("saved_district", "—")))
-            st.markdown(
-                f"""
-                <div style="
-                    background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
-                    border: 1px solid #BBF7D0;
-                    border-radius: 10px;
-                    padding: 12px 16px;
-                    margin-bottom: 12px;
-                ">
-                    <p style="margin:0;font-size:0.9rem;color:#166534;font-weight:600;">
-                        👤 {auth_user}
-                    </p>
-                    <p style="margin:4px 0 0 0;font-size:0.8rem;color:#4B5563;">
-                        📍 {saved_district}
-                    </p>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-
-            if st.session_state.session_id:
-                st.markdown(
-                    f"{get_string('lbl_session_id', _slang)} `{st.session_state.session_id}`")
-            st.markdown(f"{get_string('lbl_language_code', _slang)} `{_slang}`")
-            st.markdown(
-                f"{get_string('lbl_turns', _slang)} {len(st.session_state.conversation_history)}")
-
-            # Clear conversation
-            if st.button(get_string("btn_clear", _slang), use_container_width=True, key="btn_clear_conv"):
-                for key in ("conversation_history", "last_response", "last_is_fallback",
-                            "last_error", "session_id"):
-                    if key in st.session_state:
-                        del st.session_state[key]
-                st.session_state.history_owner = st.session_state.get("user_id")
-                save_history(st.session_state.get("user_id"), [])
-                st.rerun()
-
-            st.markdown(
-                '<p style="font-size:0.78rem;color:#6B7280;">Agri-Advisor v0.1.0<br>'
-                'T-08 · T-17 · T-20 · T-21 · UI Shell</p>',
-                unsafe_allow_html=True,
-            )
-
-
-# ============================================================================
-# Main-area building blocks
-# ============================================================================
-
-def _render_banner() -> None:
-    """Dark-green header banner with the brand name."""
-    _lang = st.session_state.get("selected_language", "en")
-    st.markdown(
-        f'<div class="aa-hero">{_logo_html()}'
-        f'<span>{html.escape(get_string("app_title", _lang))}</span></div>',
-        unsafe_allow_html=True,
-    )
-
-
-def _render_welcome_card(
-    title: str | None = None, body: str | None = None
-) -> None:
-    """Central welcome card: illustration + welcome text."""
-    _lang = st.session_state.get("selected_language", "en")
-    app_name = get_string("app_title", _lang)
-    title = title or _s("welcome_title", _lang, f"Welcome to {app_name}")
-    body = body or _s(
-        "welcome_body", _lang,
-        "Describe a crop problem below and get a diagnosis, treatment steps "
-        "and weather-aware advice for your district.",
-    )
-    st.markdown(
-        f'<div class="aa-welcome">'
-        f'<img src="{_welcome_illustration_uri()}" alt="Agri Advisor illustration"/>'
-        f'<div class="aa-welcome-title">{html.escape(title)}</div>'
-        f'<p class="aa-welcome-text">{html.escape(body)}</p>'
-        f"</div>",
-        unsafe_allow_html=True,
-    )
-
-
-def _render_placeholder_page(page_id: str) -> None:
-    """Landing card for sections that are not built yet (Market / Weather / Forum)."""
-    _lang = st.session_state.get("selected_language", "en")
-    for pid, key, default, _icon in NAV_ITEMS:
-        if pid == page_id:
-            label = _s(key, _lang, default)
-            break
-    else:
-        label = page_id.title()
-    _render_welcome_card(
-        title=label,
-        body=_s("coming_soon", _lang,
-                "This section is coming soon. Use Crop Management to get advisory now."),
-    )
-
-
-# ============================================================================
-# Page shell: CSS -> top bar -> sidebar
-# ============================================================================
-
-# Inject global CSS after the display mode is known. Streamlit reruns the
-# script when the selector changes, so the theme updates without JavaScript.
-st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
-if st.session_state.theme_mode == "Dark":
-    st.markdown(DARK_MODE_CSS, unsafe_allow_html=True)
-elif st.session_state.theme_mode == "Light":
-    st.markdown(LIGHT_MODE_CSS, unsafe_allow_html=True)
-st.markdown(
-    _shell_css(
-        st.session_state.theme_mode,
-        bool(st.session_state.get("show_nav_menu", True)),
-    ),
-    unsafe_allow_html=True,
-)
-
-_render_top_nav()
-_session_slot = _render_sidebar()
-
-
-# ============================================================================
 # T-20.5 — Auth gate: redirect unauthenticated users to login/register
 # ============================================================================
 
@@ -677,8 +169,8 @@ if not is_authenticated():
     st.markdown(
         f"""
         <div class="auth-hero">
-                <h1>{APP_ICON} {get_string('app_title', st.session_state.get('selected_language', 'en'))}</h1>
-                <p>{get_string('app_subtitle', st.session_state.get('selected_language', 'en'))}</p>
+            <h1>{APP_ICON} {APP_TITLE}</h1>
+            <p>Smart Farming Assistant for Sri Lanka</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -694,37 +186,88 @@ if not is_authenticated():
 # T-20.6 — surface token-expiry banner on re-entry
 if token_just_expired():
     st.error(
-        get_string("err_auth_expired", st.session_state.get(
-            "selected_language", "en")),
+        "⏱️ **Your session has expired.** Please sign in again.",
         icon="🔒",
     )
     clear_auth()
     st.rerun()
 
-# T-17: resolve active language code for all form strings
-_lang = st.session_state.get("selected_language", "en")
 
-# T-21: header banner on every page
-_render_banner()
+# ============================================================================
+# Header
+# ============================================================================
 
-# T-21: non-advisory sections get a placeholder card
-if st.session_state.get("active_page", "crop") != "crop":
-    _render_placeholder_page(st.session_state.active_page)
-    _fill_session_slot(_session_slot)
-    st.stop()
+def _render_header() -> None:
+    """
+    Render the green gradient header with language selector and user chip.
 
-# T-21: welcome card on the home page until the first advisory is requested
-if (
-    not st.session_state.conversation_history
-    and st.session_state.last_response is None
-    and st.session_state.last_error is None
-):
-    _render_welcome_card()
+    T-17.1 -- The selectbox persists the chosen locale code in
+    both ``st.session_state.selected_language`` (T-17 canonical key)
+    and ``st.session_state.language`` (legacy key used by the API payload).
+
+    T-20 -- Shows a user chip with the authenticated username.
+    """
+    header_col, user_col, lang_col = st.columns([4, 1.5, 1])
+
+    _lang = st.session_state.get("selected_language", "en")
+
+    with header_col:
+        tagline = get_string("app_tagline", _lang)
+        st.markdown(
+            f"""
+            <div class="agri-header">
+                <h1>{APP_ICON} {APP_TITLE}</h1>
+                <p>{tagline}</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    # T-20: authenticated user chip
+    with user_col:
+        st.markdown("<br><br>", unsafe_allow_html=True)
+        user_id = st.session_state.get("user_id", "")
+        if user_id:
+            st.markdown(
+                f'<div class="user-chip">👤 {user_id}</div>',
+                unsafe_allow_html=True,
+            )
+
+    with lang_col:
+        st.markdown("<br><br>", unsafe_allow_html=True)
+
+        # T-17.1: language selector
+        lang_options = list(SUPPORTED_LANGUAGES.keys())
+        current_code = st.session_state.get("selected_language", "en")
+        current_label = next(
+            (lbl for lbl, code in SUPPORTED_LANGUAGES.items() if code == current_code),
+            lang_options[0],
+        )
+        default_index = lang_options.index(current_label)
+
+        selected_lang_label = st.selectbox(
+            get_string("lbl_language", current_code),
+            options=lang_options,
+            index=default_index,
+            key="lang_selector",
+            label_visibility="visible",
+        )
+        selected_code = SUPPORTED_LANGUAGES[selected_lang_label]
+
+        # Persist in BOTH keys for backward compatibility
+        st.session_state.selected_language = selected_code
+        st.session_state.language = selected_code
+
+
+_render_header()
 
 
 # ============================================================================
 # Input form
 # ============================================================================
+
+# T-17: resolve active language code for all form strings
+_lang = st.session_state.get("selected_language", "en")
 
 st.markdown(f"### 🌱 {get_string('app_subtitle', _lang)}")
 
@@ -791,7 +334,6 @@ if submitted:
     # Client-side validation (T-17: localised error message)
     if not query_text.strip():
         st.error(get_string("err_empty_query", _lang))
-        _fill_session_slot(_session_slot)
         st.stop()
 
     # T-20.7: use the authenticated user_id; fall back gracefully
@@ -839,10 +381,6 @@ if submitted:
                 "answer_summary": answer_summary,
                 "session_id":     session_id,
             })
-            save_history(
-                auth_user_id,
-                st.session_state.conversation_history,
-            )
 
         except _ApiError as exc:
             progress.empty()
@@ -894,7 +432,7 @@ elif st.session_state.last_response is not None:
 
 
 # ============================================================================
-# Sidebar — session info (filled last so it reflects this run's results)
+# Sidebar — session info + T-20.5 logout control
 # ============================================================================
 
 _fill_session_slot(_session_slot)

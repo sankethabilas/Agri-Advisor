@@ -254,16 +254,8 @@ def restore_technical_terms(
 # ---------------------------------------------------------------------------
 
 def _google_api_key() -> str | None:
-    """Return the Google Cloud Translation API key, or None if not set / placeholder."""
-    key = os.environ.get("TRANSLATION_API_KEY", "").strip()
-    if not key or key.lower() in ("your_google_cloud_api_key", "none", "null") or key.startswith("your_"):
-        return None
-    return key
-
-
-def _translation_backend() -> str:
-    """Return the configured translation backend preference."""
-    return os.environ.get("TRANSLATION_BACKEND", "").strip().lower()
+    """Return the Google Cloud Translation API key, or None if not set."""
+    return os.environ.get("TRANSLATION_API_KEY") or None
 
 
 def _has_google_cloud_library() -> bool:
@@ -287,14 +279,16 @@ def _translate_google_rest(text: str, target_lang: str) -> str:
     if not api_key:
         raise RuntimeError("TRANSLATION_API_KEY not set in environment.")
 
-    endpoint = f"https://translation.googleapis.com/language/translate/v2?key={urllib.parse.quote(api_key)}"
-    payload = json.dumps({
+    endpoint = "https://translation.googleapis.com/language/translate/v2"
+    params = urllib.parse.urlencode({
         "q":      text,
         "target": target_lang,
         "format": "text",
-    }).encode("utf-8")
-    req = urllib.request.Request(endpoint, data=payload, method="POST")
-    req.add_header("Content-Type", "application/json; charset=utf-8")
+        "key":    api_key,
+    })
+    url = f"{endpoint}?{params}"
+    req = urllib.request.Request(url, method="POST")
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
 
     with urllib.request.urlopen(req, timeout=_TIMEOUT_SECS) as resp:
         body = json.loads(resp.read().decode("utf-8"))
@@ -444,20 +438,6 @@ def translate_advisory_text(
     # -- T-17.5: protect technical terms ------------------------------------
     protected_text, term_mapping = protect_technical_terms(text, technical_terms)
 
-    # If backend preference is set to MyMemory, attempt it first
-    backend_pref = _translation_backend()
-    if backend_pref == "mymemory":
-        try:
-            translated = _translate_mymemory(protected_text, bcp47_lang)
-            restored = restore_technical_terms(translated, term_mapping)
-            return TranslationResult(
-                text=restored,
-                success=True,
-                backend="mymemory",
-            )
-        except Exception as exc:  # noqa: BLE001
-            logger.warning("MyMemory translation failed: %s", exc)
-
     # -- Try back-end 1: Google Cloud REST API ------------------------------
     if _google_api_key():
         try:
@@ -484,18 +464,17 @@ def translate_advisory_text(
         except Exception as exc:  # noqa: BLE001
             logger.warning("Google Cloud library translation failed: %s", exc)
 
-    # -- Try back-end 3: MyMemory free API (if not already tried) -----------
-    if backend_pref != "mymemory":
-        try:
-            translated = _translate_mymemory(protected_text, bcp47_lang)
-            restored = restore_technical_terms(translated, term_mapping)
-            return TranslationResult(
-                text=restored,
-                success=True,
-                backend="mymemory",
-            )
-        except Exception as exc:  # noqa: BLE001
-            logger.warning("MyMemory translation failed: %s", exc)
+    # -- Try back-end 3: MyMemory free API ----------------------------------
+    try:
+        translated = _translate_mymemory(protected_text, bcp47_lang)
+        restored = restore_technical_terms(translated, term_mapping)
+        return TranslationResult(
+            text=restored,
+            success=True,
+            backend="mymemory",
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("MyMemory translation failed: %s", exc)
 
     # -- T-17.7: Graceful fallback ------------------------------------------
     # All backends failed; return original English text with a warning signal.
