@@ -87,7 +87,7 @@ st.set_page_config(
     page_title=f"{APP_TITLE} — {APP_SUBTITLE}",
     page_icon=APP_ICON,
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
     menu_items={
         "Get help":     "https://doa.gov.lk",
         "Report a bug": None,
@@ -140,9 +140,9 @@ def _init_session() -> None:
     if "theme_mode" not in st.session_state:
         st.session_state.theme_mode = "System"
 
-    # T-21: sidebar is open by default; ☰ in the top bar flips this flag
+    # T-21: sidebar is closed by default; ☰ in the top bar flips this flag
     if "show_nav_menu" not in st.session_state:
-        st.session_state.show_nav_menu = True
+        st.session_state.show_nav_menu = False
     if "active_page" not in st.session_state:
         st.session_state.active_page = "crop"
 
@@ -373,8 +373,12 @@ __SIDEBAR_RULES__
 .aa-welcome-text{margin:0;color:var(--aa-muted);font-size:.98rem;line-height:1.55;}
 
 @media (max-width: 768px){
-    section[data-testid="stSidebar"]{width:min(var(--aa-side-w),88vw) !important;
-        min-width:0 !important;box-shadow:4px 0 18px rgba(0,0,0,.18);}
+    section[data-testid="stSidebar"]{
+        width:var(--app-sidebar-mobile-width) !important;
+        min-width:var(--app-sidebar-mobile-width) !important;
+        max-width:var(--app-sidebar-mobile-width) !important;
+        box-shadow:4px 0 18px rgba(0,0,0,.18);
+    }
     [data-testid="stMain"],section.main{padding-left:0 !important;}
     .topnav-brand{font-size:1.05rem;}
 }
@@ -382,12 +386,36 @@ __SIDEBAR_RULES__
 """
 
 _SIDEBAR_OPEN_RULES = """
-section[data-testid="stSidebar"]{display:flex !important;}
-[data-testid="stMain"],section.main{padding-left:var(--aa-side-w);}
+section[data-testid="stSidebar"] {
+    display: flex !important;
+    visibility: visible !important;
+}
+
+[data-testid="stMain"],
+section.main {
+    margin-left: var(--aa-side-w) !important;
+    width: calc(100% - var(--aa-side-w)) !important;
+}
+
+@media (max-width: 768px) {
+    [data-testid="stMain"],
+    section.main {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+}
 """
 _SIDEBAR_CLOSED_RULES = """
-section[data-testid="stSidebar"]{display:none !important;}
-[data-testid="stMain"],section.main{padding-left:0;}
+section[data-testid="stSidebar"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+[data-testid="stMain"],
+section.main {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
 """
 
 
@@ -416,7 +444,7 @@ def _shell_css(theme_mode: str, sidebar_open: bool) -> str:
 
 def toggle_navigation() -> None:
     """☰ handler: show / hide the sidebar (stored in session state)."""
-    st.session_state.show_nav_menu = not st.session_state.get("show_nav_menu", True)
+    st.session_state.show_nav_menu = not st.session_state.get("show_nav_menu", False)
 
 
 def _set_page(page_id: str) -> None:

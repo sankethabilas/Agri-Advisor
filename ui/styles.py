@@ -154,8 +154,80 @@ hr {
 }
 
 /* ── Sidebar ─────────────────────────────────────────────────────────────── */
-[data-testid="stSidebar"] {
-    background: #F0FDF4 !important;
+:root {
+    --app-sidebar-width: 300px;
+    --app-sidebar-mobile-width: min(86vw, 320px);
+    --app-sidebar-bg: #EEFBF1;
+    --app-sidebar-border: #D5EADB;
+    --app-sidebar-text: #1F2937;
+    --app-sidebar-muted: #6B7280;
+    --app-sidebar-hover: #E1F5E7;
+    --app-sidebar-active: #D6F0DD;
+}
+
+section[data-testid="stSidebar"] {
+    background: var(--app-sidebar-bg) !important;
+    border-right: 1px solid var(--app-sidebar-border) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+
+section[data-testid="stSidebar"] > div,
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"],
+section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
+    padding: 1rem !important;
+}
+
+section[data-testid="stSidebar"] .stButton {
+    width: 100% !important;
+    margin-bottom: 0.4rem !important;
+}
+
+section[data-testid="stSidebar"] .stButton > button {
+    width: 100% !important;
+    min-height: 42px !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    padding: 0.6rem 0.75rem !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    color: var(--app-sidebar-text) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+section[data-testid="stSidebar"] .stButton > button:hover {
+    background: var(--app-sidebar-hover) !important;
+}
+
+section[data-testid="stSidebar"] .stButton > button[kind="primary"],
+section[data-testid="stSidebar"] [data-testid="stBaseButton-primary"] {
+    color: #14532D !important;
+    background: var(--app-sidebar-active) !important;
+    font-weight: 700 !important;
+}
+
+@media (max-width: 768px) {
+    section[data-testid="stSidebar"] {
+        width: var(--app-sidebar-mobile-width) !important;
+        min-width: var(--app-sidebar-mobile-width) !important;
+        max-width: var(--app-sidebar-mobile-width) !important;
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
+        padding: 0.85rem !important;
+    }
+
+    section[data-testid="stSidebar"] .stButton > button {
+        min-height: 46px !important;
+    }
 }
 
 /* ── Scrollbar ───────────────────────────────────────────────────────────── */

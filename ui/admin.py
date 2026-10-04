@@ -132,17 +132,46 @@ def render_admin_login() -> None:
 # ============================================================================
 
 _ADMIN_SIDEBAR_OPEN = """
-section[data-testid="stSidebar"] { display: flex !important; }
-[data-testid="stMain"], section.main { padding-left: 270px !important; }
+section[data-testid="stSidebar"] {
+    display: flex !important;
+    visibility: visible !important;
+}
+
+[data-testid="stMain"],
+section.main {
+    margin-left: var(--app-sidebar-width) !important;
+    width: calc(100% - var(--app-sidebar-width)) !important;
+}
+
+@media (max-width: 768px) {
+    [data-testid="stMain"],
+    section.main {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+}
 """
 
 _ADMIN_SIDEBAR_CLOSED = """
-section[data-testid="stSidebar"] { display: none !important; }
-[data-testid="stMain"], section.main { padding-left: 0 !important; }
+section[data-testid="stSidebar"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+[data-testid="stMain"],
+section.main {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
 """
 
 ADMIN_CSS_BASE = """
 <style>
+
+:root {
+    --app-sidebar-width: 300px;
+    --app-sidebar-mobile-width: min(86vw, 320px);
+}
 
 /* Hide default Streamlit navbar/header chrome */
 header[data-testid="stHeader"],
@@ -230,9 +259,9 @@ section[data-testid="stSidebar"] {
     top: 64px !important;
     left: 0 !important;
     bottom: 0 !important;
-    width: 270px !important;
-    min-width: 270px !important;
-    max-width: 270px !important;
+    width: var(--app-sidebar-width) !important;
+    min-width: var(--app-sidebar-width) !important;
+    max-width: var(--app-sidebar-width) !important;
     z-index: 9000 !important;
     background: #F1F8F3 !important;
     border-right: 1px solid #D5EADB !important;
@@ -310,9 +339,9 @@ section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
 
 @media (max-width: 768px) {
     section[data-testid="stSidebar"] {
-        width: 85vw !important;
-        min-width: 0 !important;
-        max-width: 85vw !important;
+        width: var(--app-sidebar-mobile-width) !important;
+        min-width: var(--app-sidebar-mobile-width) !important;
+        max-width: var(--app-sidebar-mobile-width) !important;
     }
     [data-testid="stMain"],
     section.main {
@@ -682,7 +711,10 @@ def _render_health() -> None:
 
 def render_admin_dashboard() -> None:
     """Render the isolated, read-only admin dashboard."""
-    sidebar_open = bool(st.session_state.get("show_nav_menu", True))
+    if "show_nav_menu" not in st.session_state:
+        st.session_state["show_nav_menu"] = False
+
+    sidebar_open = bool(st.session_state["show_nav_menu"])
     sidebar_css = _ADMIN_SIDEBAR_OPEN if sidebar_open else _ADMIN_SIDEBAR_CLOSED
 
     st.markdown(ADMIN_CSS_BASE + f"<style>{sidebar_css}</style>", unsafe_allow_html=True)
