@@ -16,6 +16,7 @@ render_register_page()
 from __future__ import annotations
 
 import re
+from typing import Any
 
 import streamlit as st
 
@@ -26,7 +27,6 @@ from ui.auth import (
     store_token,
 )
 from ui.config import DISTRICTS, LANGUAGES
-from utils.i18n import get_string
 
 
 # ---------------------------------------------------------------------------
@@ -52,7 +52,6 @@ def _auth_card_wrapper(content_fn, *args, **kwargs):
 
 def render_login_page() -> None:
     """Render the login form with client-side validation (T-20.2)."""
-    lang = st.session_state.get("selected_language", "en")
     _, mid, _ = st.columns([1, 2, 1])
     with mid:
         # Header inside card
@@ -61,8 +60,8 @@ def render_login_page() -> None:
             <div class="auth-card">
                 <div class="auth-header-block">
                     <span class="auth-icon">🌾</span>
-                    <h2 class="auth-title">{get_string('auth_login_title', lang)}</h2>
-                    <p class="auth-subtitle">{get_string('auth_login_subtitle', lang)}</p>
+                    <h2 class="auth-title">Welcome Back</h2>
+                    <p class="auth-subtitle">Sign in to your Agri-Advisor account</p>
                 </div>
             """,
             unsafe_allow_html=True,
@@ -71,7 +70,7 @@ def render_login_page() -> None:
         # T-20.6: Expired token banner
         if st.session_state.get("token_expired"):
             st.error(
-                get_string("err_auth_expired", lang),
+                "⏱️ **Your session has expired.** Please sign in again to continue.",
                 icon="🔒",
             )
             # Reset flag so it shows once
@@ -79,20 +78,20 @@ def render_login_page() -> None:
 
         with st.form(key="login_form", clear_on_submit=False):
             username = st.text_input(
-                get_string("lbl_username", lang),
-                placeholder=get_string("ph_username", lang),
+                "👤 Username",
+                placeholder="Enter your username",
                 max_chars=254,
                 key="login_username",
             )
             password = st.text_input(
-                get_string("lbl_password", lang),
+                "🔑 Password",
                 type="password",
-                placeholder=get_string("ph_password", lang),
+                placeholder="Enter your password",
                 max_chars=128,
                 key="login_password",
             )
             submitted = st.form_submit_button(
-                get_string("btn_login", lang),
+                "🔓 Sign In",
                 use_container_width=True,
                 type="primary",
             )
@@ -120,15 +119,15 @@ def render_login_page() -> None:
                         st.success("✅ Signed in successfully!")
                         st.rerun()
                     except AuthError as exc:
-                        _render_auth_error(exc, lang)
+                        _render_auth_error(exc)
 
         # ── Switch to register ────────────────────────────────────────────
         st.markdown(
-            f'<p class="auth-switch-text">{get_string("auth_switch_new", lang)}</p>',
+            '<p class="auth-switch-text">New to Agri-Advisor?</p>',
             unsafe_allow_html=True,
         )
         if st.button(
-            get_string("btn_go_register", lang),
+            "✏️ Create an account",
             key="go_to_register",
             use_container_width=True,
         ):
@@ -154,7 +153,6 @@ def render_register_page() -> None:
         - District
         - Preferred language
     """
-    lang = st.session_state.get("selected_language", "en")
     _, mid, _ = st.columns([1, 2, 1])
     with mid:
         st.markdown(
@@ -162,8 +160,8 @@ def render_register_page() -> None:
             <div class="auth-card">
                 <div class="auth-header-block">
                     <span class="auth-icon">🌱</span>
-                    <h2 class="auth-title">{get_string('auth_register_title', lang)}</h2>
-                    <p class="auth-subtitle">{get_string('auth_register_subtitle', lang)}</p>
+                    <h2 class="auth-title">Create Your Account</h2>
+                    <p class="auth-subtitle">Join thousands of Sri Lankan farmers</p>
                 </div>
             """,
             unsafe_allow_html=True,
@@ -171,16 +169,16 @@ def render_register_page() -> None:
 
         with st.form(key="register_form", clear_on_submit=False):
             # ── Personal info ─────────────────────────────────────────────
-            st.markdown(f"##### {get_string('lbl_personal_info', lang)}")
+            st.markdown("##### 👤 Personal Information")
             full_name = st.text_input(
-                get_string("lbl_full_name", lang),
-                placeholder=get_string("ph_full_name", lang),
+                "Full Name",
+                placeholder="e.g. Saman Perera",
                 max_chars=120,
                 key="reg_full_name",
             )
             phone_or_email = st.text_input(
-                get_string("lbl_phone_email", lang),
-                placeholder=get_string("ph_phone_email", lang),
+                "Phone Number or Email",
+                placeholder="e.g. 0771234567 or saman@example.com",
                 max_chars=254,
                 key="reg_phone_email",
             )
@@ -188,36 +186,37 @@ def render_register_page() -> None:
             st.markdown("---")
 
             # ── Account credentials ───────────────────────────────────────
-            st.markdown(f"##### {get_string('lbl_account_creds', lang)}")
+            st.markdown("##### 🔐 Account Credentials")
             st.info(
-                get_string("info_register_username", lang),
+                "ℹ️ **Username rules:** 3–254 characters, letters, digits, "
+                "`.`, `_`, `@`, `+`, `-` only. Must start with a letter or digit.",
                 icon=None,
             )
             username = st.text_input(
-                get_string("lbl_username", lang),
-                placeholder=get_string("ph_username", lang),
+                "Username",
+                placeholder="e.g. saman_farmer",
                 max_chars=254,
                 key="reg_username",
             )
 
             st.info(
-                get_string("info_register_password", lang),
+                "ℹ️ **Password rules:** Minimum 12 characters.",
                 icon=None,
             )
             col_pw1, col_pw2 = st.columns(2)
             with col_pw1:
                 password = st.text_input(
-                    get_string("lbl_password", lang),
+                    "Password",
                     type="password",
-                    placeholder=get_string("ph_password", lang),
+                    placeholder="Min. 12 characters",
                     max_chars=128,
                     key="reg_password",
                 )
             with col_pw2:
                 password_confirm = st.text_input(
-                    get_string("lbl_confirm_password", lang),
+                    "Confirm Password",
                     type="password",
-                    placeholder=get_string("ph_confirm_password", lang),
+                    placeholder="Repeat your password",
                     max_chars=128,
                     key="reg_password_confirm",
                 )
@@ -225,9 +224,9 @@ def render_register_page() -> None:
             st.markdown("---")
 
             # ── Farming context ───────────────────────────────────────────
-            st.markdown(f"##### {get_string('lbl_farming_context', lang)}")
+            st.markdown("##### 🌾 Farming Context")
             district = st.selectbox(
-                get_string("lbl_district", lang),
+                "📍 Your District",
                 options=DISTRICTS,
                 index=DISTRICTS.index("Anuradhapura"),
                 help="Select the district where your farm is located.",
@@ -236,7 +235,7 @@ def render_register_page() -> None:
 
             lang_options = list(LANGUAGES.keys())
             preferred_language = st.selectbox(
-                get_string("lbl_preferred_language", lang),
+                "🌐 Preferred Language",
                 options=lang_options,
                 index=0,
                 help="The language in which you'd like to receive advice.",
@@ -245,7 +244,7 @@ def render_register_page() -> None:
 
             st.markdown("<br>", unsafe_allow_html=True)
             submitted = st.form_submit_button(
-                get_string("btn_register", lang),
+                "🌱 Create Account",
                 use_container_width=True,
                 type="primary",
             )
@@ -269,8 +268,7 @@ def render_register_page() -> None:
                         login_data = call_login(username.strip(), password)
                         store_token(
                             token=login_data["access_token"],
-                            user_id=login_data.get(
-                                "user_id", username.strip()),
+                            user_id=login_data.get("user_id", username.strip()),
                             district=district,
                         )
                         # Also save preferred language
@@ -283,15 +281,15 @@ def render_register_page() -> None:
                         )
                         st.rerun()
                     except AuthError as exc:
-                        _render_auth_error(exc, lang)
+                        _render_auth_error(exc)
 
         # ── Switch to login ───────────────────────────────────────────────
         st.markdown(
-            f'<p class="auth-switch-text">{get_string("auth_switch_have_account", lang)}</p>',
+            '<p class="auth-switch-text">Already have an account?</p>',
             unsafe_allow_html=True,
         )
         if st.button(
-            get_string("btn_go_login", lang),
+            "🔓 Sign In",
             key="go_to_login",
             use_container_width=True,
         ):
@@ -337,8 +335,7 @@ def _validate_registration(
     if not password:
         errors.append("Password is required.")
     elif len(password) < _MIN_PASSWORD_LEN:
-        errors.append(
-            f"Password must be at least {_MIN_PASSWORD_LEN} characters long.")
+        errors.append(f"Password must be at least {_MIN_PASSWORD_LEN} characters long.")
 
     if password and password != password_confirm:
         errors.append("Passwords do not match. Please re-enter.")
@@ -350,21 +347,22 @@ def _validate_registration(
 # T-20.6 — Friendly error display
 # ---------------------------------------------------------------------------
 
-def _render_auth_error(exc: AuthError, lang: str = "en") -> None:
+def _render_auth_error(exc: AuthError) -> None:
     """
     Display a friendly, farmer-facing error message for auth failures.
 
     Maps HTTP status codes to plain-language explanations (T-20.6).
     """
     friendly: dict[int, str] = {
-        401: get_string("err_auth_invalid", lang),
+        401: "❌ **Incorrect username or password.** Please check and try again.",
         403: "❌ **Access denied.** Your account may be suspended.",
-        409: get_string("err_auth_duplicate", lang),
+        409: "❌ **An account with that username already exists.** "
+             "Please choose a different username or sign in.",
         422: "❌ **Please check your details.** Make sure your username and "
              "password meet the requirements listed above.",
-        429: get_string("err_auth_rate_limit", lang),
-        500: get_string("err_auth_server", lang),
-        0:   get_string("err_auth_network", lang),
+        429: "❌ **Too many attempts.** Please wait a moment before trying again.",
+        500: "❌ **Something went wrong on our end.** Please try again shortly.",
+        0:   f"❌ **Connection problem.** {exc.message}",
     }
     message = friendly.get(
         exc.status_code,
