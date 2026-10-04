@@ -524,11 +524,21 @@ async def root_overview() -> Dict[str, Any]:
             "weather_advice": "/api/weather/advice",
             "rag_retrieve": "/api/rag/retrieve",
             "crop_advice": "/api/crop/advice",
+            "sentinel_scan": "/api/sentinel/scan",
+            "sentinel_decisions": "/api/sentinel/decisions",
             "health_check": "/api/health",
             "docs": "/docs",
         },
         "active_sessions": session_manager.get_active_sessions_count(),
     }
+
+
+# Mount Sentinel Agent sub-app
+try:
+    from sentinel_agent.main import app as sentinel_subapp
+    app.mount("", sentinel_subapp)
+except Exception as _e:
+    pass
 
 
 if __name__ == "__main__":

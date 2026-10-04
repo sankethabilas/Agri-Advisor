@@ -10,3 +10,4 @@ requests==2.34.2
 python-jose[cryptography]==3.5.0
 python-dotenv==1.2.1
 pytest==8.4.2
+apscheduler==3.10.4

@@ -161,3 +161,31 @@ To create or update the local ChromaDB vector index, run:
 
 ```bash
 python scripts/index_knowledge_base.py
+```
+
+---
+
+## 🛡️ Outbreak Sentinel Agent
+
+The Outbreak Sentinel is an autonomous surveillance agent that operates on a continuous **Sense -> Reason -> Decide -> Act -> Learn** loop to detect disease clusters across Sri Lankan districts:
+
+1. **SENSE**: Ingests anonymized diagnostic logs (48h window, confidence $\ge 0.7$).
+2. **REASON**: Computes 28-day baseline and standard deviation to detect anomalous spikes ($count \ge 5$ and $count > baseline + 2\sigma$).
+3. **DECIDE**: Cross-references with the Weather Agent risk level to classify as `none`, `watch`, or `outbreak`.
+4. **ACT**: Dispatches localized multi-lingual SMS/Console alerts to Extension Officers and subscribed farmers in target and neighbouring districts with DOA/IRRI verified RAG treatments.
+5. **LEARN**: Automatically evaluates alerts after 5 days to adapt threshold multipliers ($\pm 0.25$ bounded in $[1.0, 3.0]$).
+
+### Running Outbreak Sentinel Demo
+
+```powershell
+# 1. Seed simulated Bacterial Leaf Blight outbreak data for Anuradhapura
+Invoke-RestMethod -Method Post -Uri "http://127.0.0.1:8000/api/sentinel/seed-demo"
+
+# 2. Trigger surveillance scan
+Invoke-RestMethod -Method Post -Uri "http://127.0.0.1:8000/api/sentinel/scan"
+
+# 3. View logged decisions
+Invoke-RestMethod -Method Get -Uri "http://127.0.0.1:8000/api/sentinel/decisions"
+```
+
+For the complete technical specification, see [docs/sentinel_agent_guide.md](docs/sentinel_agent_guide.md).

@@ -171,7 +171,7 @@ class DiseaseAgent:
         treatment = load_treatment_db().get(top["key"], {})
         severity = _severity(top.get("severity", {}).get("level", "medium"))
         source = top.get("source", {}).get("name", "Sri Lanka Department of Agriculture")
-        return DiseaseDiagnoseResponse(
+        response = DiseaseDiagnoseResponse(
             disease=f"{top['name']} ({top.get('scientific_name', 'unknown')})",
             confidence=top["confidence"],
             severity=severity,
@@ -188,6 +188,20 @@ class DiseaseAgent:
                 for item in ranked[1:4]
             ],
         )
+
+        # Telemetry hook for Outbreak Sentinel Agent (fail-safe)
+        try:
+            from sentinel_agent.db import record_diagnosis
+            record_diagnosis(
+                crop=request.crop,
+                disease=top.get("name", "Unknown Disease"),
+                district=request.location or "Unknown",
+                confidence=top["confidence"],
+            )
+        except Exception:
+            pass
+
+        return response
 
 
 disease_agent = DiseaseAgent()
