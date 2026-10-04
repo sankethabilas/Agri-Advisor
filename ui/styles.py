@@ -19,6 +19,43 @@ html, body, [class*="css"] {
     font-family: 'Inter', sans-serif !important;
 }
 
+/* Replace Streamlit's Deploy toolbar with the application navbar. */
+[data-testid="stHeader"] {
+    height: 0 !important;
+    min-height: 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+    pointer-events: none !important;
+}
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+/* Keep Streamlit's native sidebar toggle, but place it on our navbar. */
+[data-testid="stSidebarCollapseButton"],
+[data-testid="stSidebarCollapsedControl"] {
+    display: flex !important;
+    position: fixed !important;
+    top: 12px !important;
+    left: 14px !important;
+    z-index: 100000 !important;
+    pointer-events: auto !important;
+}
+[data-testid="stSidebarCollapseButton"] button,
+[data-testid="stSidebarCollapsedControl"] button {
+    width: 38px !important;
+    height: 38px !important;
+    border: 1px solid #86EFAC !important;
+    border-radius: 8px !important;
+    background: #FFFFFF !important;
+    color: #14532D !important;
+    box-shadow: 0 2px 8px rgba(20, 83, 45, 0.16) !important;
+}
+
+section[data-testid="stMain"] > div.block-container {
+    padding-top: 0.25rem !important;
+}
+
 /* Increase base body text to satisfy the ≥16 px rule */
 .stApp p, .stApp li, .stApp label,
 .stApp .stTextInput > label,
@@ -29,26 +66,55 @@ html, body, [class*="css"] {
     color: #1F2937 !important;
 }
 
-/* ── Header banner ───────────────────────────────────────────────────────── */
-.agri-header {
-    background: linear-gradient(135deg, #14532D 0%, #166534 50%, #15803D 100%);
+/* ── Top navigation ──────────────────────────────────────────────────────── */
+.top-nav-brand {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px 10px 58px;
+    background: linear-gradient(135deg, #14532D, #15803D);
     border-radius: 12px;
-    padding: 20px 28px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 16px rgba(21, 128, 61, 0.3);
+    box-shadow: 0 4px 16px rgba(21, 128, 61, 0.22);
 }
-.agri-header h1 {
-    color: #FFFFFF !important;
-    font-size: 1.9rem !important;
-    font-weight: 700 !important;
-    margin: 0 !important;
-    letter-spacing: -0.5px;
+.top-nav-mark { font-size: 2rem; line-height: 1; }
+.top-nav-brand strong {
+    display: block;
+    color: #FFFFFF;
+    font-size: 1.35rem;
+    line-height: 1.2;
 }
-.agri-header p {
-    color: #BBF7D0 !important;
-    font-size: 1rem !important;
-    margin: 4px 0 0 0 !important;
+.top-nav-brand small {
+    display: block;
+    color: #BBF7D0;
+    font-size: 0.78rem;
+    margin-top: 3px;
 }
+.top-nav-user {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    color: #14532D;
+    background: #ECFDF5;
+    border: 1px solid #86EFAC;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.navbar-menu-panel {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 6px 0 14px;
+    padding: 10px 16px;
+    color: #14532D;
+    background: #ECFDF5;
+    border: 1px solid #BBF7D0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+.navbar-menu-panel span { color: #166534; }
 
 /* ── Input labels ────────────────────────────────────────────────────────── */
 .stTextArea textarea {

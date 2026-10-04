@@ -2,52 +2,45 @@
 """
 utils/i18n.py
 Agri-Advisor -- Task T-17.1 & T-17.2: Static UI String Table.
-
 All user-visible UI copy (labels, placeholders, buttons, block headings,
-error messages) lives here.  Dynamic advisory *content* is translated at
-render-time by utils.translator (T-17.3/T-17.4); this module covers
-only static shell strings.
+error messages) lives here. Dynamic advisory *content* is translated at
+render-time by utils.translator; this module covers only static shell strings.
 
 Usage
 -----
     from utils.i18n import get_string, get_all_strings, SUPPORTED_LANGUAGES
-
     submit_label = get_string("btn_submit", lang_code)
     all_strings  = get_all_strings(lang_code)   # full dict, en-backed
 
 Key naming convention
 ---------------------
-    lbl_*    form labels / section headings
-    ph_*     placeholder text for inputs
-    btn_*    button labels
-    blk_*    eight-block advisory section headings
-    err_*    error / warning messages
-    info_*   informational / toast strings
-
-Every key MUST exist in all three locales. Missing keys fall back to "en"
-then to the raw key string so the UI never silently breaks.
+    lbl_*     form labels / section headings
+    ph_*      placeholder text for inputs
+    btn_*     button labels
+    blk_*     eight-block advisory section headings
+    err_*     error / warning messages
+    info_*    informational / toast strings
 """
 from __future__ import annotations
-
 from typing import Final
 
 # ---------------------------------------------------------------------------
 # Supported locales
 # ---------------------------------------------------------------------------
 SUPPORTED_LANGUAGES: Final[dict[str, str]] = {
-    "English":          "en",
-    "Sinhala":          "si",
-    "Tamil":            "ta",
+    "English": "en",
+    "Sinhala": "si",
+    "Tamil":   "ta",
 }
 
-# Reverse map  code -> display label  (useful for UI badges / session panel)
-LANGUAGE_LABELS: Final[dict[str, str]] = {v: k for k, v in SUPPORTED_LANGUAGES.items()}
+# Reverse map: code -> display label
+LANGUAGE_LABELS: Final[dict[str, str]] = {
+    v: k for k, v in SUPPORTED_LANGUAGES.items()}
 
 # ---------------------------------------------------------------------------
 # Master string table
 # ---------------------------------------------------------------------------
 UI_STRINGS: Final[dict[str, dict[str, str]]] = {
-
     # ========================================================================
     # ENGLISH  (en)
     # ========================================================================
@@ -56,47 +49,40 @@ UI_STRINGS: Final[dict[str, dict[str, str]]] = {
         "app_title":                "Agri-Advisor",
         "app_subtitle":             "Smart Farming Assistant",
         "app_tagline":              "Helping Sri Lankan farmers grow better crops",
-
         # -- Language selector -----------------------------------------------
-        "lbl_language":             "\U0001f310 Language",
-
+        "lbl_language":             "🌐 Language",
         # -- Input form labels -----------------------------------------------
-        "lbl_district":             "\U0001f4cd Your District",
-        "lbl_crop":                 "\U0001f33e Crop Type (optional)",
+        "lbl_district":             "📍 Your District",
+        "lbl_crop":                 "🌾 Crop Type (optional)",
         "lbl_query":                "Describe your crop problem",
-        "lbl_char_counter":         "{count} / 1\u202f000 characters",
-
+        "lbl_char_counter":         "{count} / 1000 characters",
         # -- Input placeholders ---------------------------------------------
         "ph_query": (
             "e.g. My paddy has yellowing leaves with small brown spots. "
             "What disease is this and how should I treat it?"
         ),
-
         # -- Buttons --------------------------------------------------------
-        "btn_submit":               "\U0001f50d Ask Agri-Advisor",
-        "btn_clear":                "\U0001f5d1 Clear conversation",
-        "btn_helpful_yes":          "\U0001f44d Yes",
-        "btn_helpful_no":           "\U0001f44e No",
-
+        "btn_submit":               "🔍 Ask Agri-Advisor",
+        "btn_clear":                "🗑️ Clear conversation",
+        "btn_helpful_yes":          "👍 Yes",
+        "btn_helpful_no":           "👎 No",
         # -- Advisory report headings ---------------------------------------
-        "report_heading":           "\U0001f33e Agricultural Advisory Report",
+        "report_heading":           "🌾 Agricultural Advisory Report",
         "report_followup": (
-            "\U0001f4ac **Have another question?** Type your follow-up in the "
-            "box above and click **Ask Agri-Advisor** \u2014 your conversation "
+            "💬 **Have another question?** Type your follow-up in the "
+            "box above and click **Ask Agri-Advisor** — your conversation "
             "context will be remembered."
         ),
         "report_feedback":          "**Was this advice helpful?**",
-
         # -- Eight-block section headings (T-17.2) --------------------------
-        "blk_diagnosis":            "Block 1 \u2014 Disease Diagnosis",
-        "blk_treatment":            "Block 2 \u2014 Immediate Treatment",
-        "blk_prevention":           "Block 3 \u2014 Prevention",
-        "blk_weather":              "Block 4 \u2014 Weather Advisory",
-        "blk_sources":              "Block 5 \u2014 Sources",
-        "blk_disclaimer":           "Block 6 \u2014 Disclaimer",
-        "blk_why":                  "Block 7 \u2014 Why? Explanation",
+        "blk_diagnosis":            "Block 1 — Disease Diagnosis",
+        "blk_treatment":            "Block 2 — Immediate Treatment",
+        "blk_prevention":           "Block 3 — Prevention",
+        "blk_weather":              "Block 4 — Weather Advisory",
+        "blk_sources":              "Block 5 — Sources",
+        "blk_disclaimer":           "Block 6 — Disclaimer",
+        "blk_why":                  "Block 7 — Why? Explanation",
         "blk_raw_answer":           "Advisory",
-
         # -- Block sub-labels -----------------------------------------------
         "lbl_severity":             "Severity:",
         "lbl_confidence":           "Confidence:",
@@ -112,307 +98,341 @@ UI_STRINGS: Final[dict[str, dict[str, str]]] = {
         "lbl_systems":              "Systems:",
         "lbl_intent":               "Intent:",
         "lbl_response_time":        "Response Time:",
-
         # -- Sidebar / session panel ----------------------------------------
-        "sidebar_heading":          "\u2699\ufe0f Session Info",
+        "sidebar_heading":          "⚙️ Session Info",
         "lbl_user_id":              "**User ID:**",
         "lbl_session_id":           "**Session ID:**",
         "lbl_language_code":        "**Language:**",
         "lbl_turns":                "**Turns:**",
-
         # -- Demo / fallback banners ----------------------------------------
         "demo_mode_warning": (
-            "\u26a0\ufe0f **Demo Mode** \u2014 The Agri-Advisor server is not running. "
+            "⚠️ **Demo Mode** — The Agri-Advisor server is not running. "
             "Displaying sample advisory data so you can explore the interface."
         ),
-
         # -- Error messages -------------------------------------------------
-        "err_empty_query":          "\u274c Please describe your crop problem before submitting.",
-        "err_api_unavailable":      "\U0001f534 The advisory service is currently unreachable.",
-        "err_unknown":              "\u26a0\ufe0f An unexpected error occurred. Please try again.",
-        "err_char_limit":           "Character limit reached (1\u202f000 max).",
-
+        "err_empty_query":          "❌ Please describe your crop problem before submitting.",
+        "err_api_unavailable":      "🔴 The advisory service is currently unreachable.",
+        "err_unknown":              "⚠️ An unexpected error occurred. Please try again.",
+        "err_char_limit":           "Character limit reached (1000 max).",
         # -- Translation / i18n notices (T-17.7) ----------------------------
         "info_translation_warn": (
-            "\u26a0\ufe0f Translation service unavailable \u2014 "
+            "⚠️ Translation service unavailable — "
             "showing original English advisory."
         ),
         "info_translation_partial": (
-            "\u2139\ufe0f Some sections could not be translated and are shown in English."
+            "ℹ️️ Some sections could not be translated and are shown in English."
         ),
-
         # -- Misc -----------------------------------------------------------
-        "lbl_details_expander":     "\U0001f50d Response Details",
-        "lbl_why_expander":         "\U0001f4a1 Why did Agri-Advisor suggest this?",
+        "lbl_details_expander":     "🔍 Response Details",
+        "lbl_why_expander":         "💡 Why did Agri-Advisor suggest this?",
         "lbl_helpful_toast_yes":    "Thank you for your feedback!",
-        "lbl_helpful_toast_no":     "Sorry to hear that. We\u2019ll keep improving!",
+        "lbl_helpful_toast_no":     "Sorry to hear that. We'll keep improving!",
         "lbl_no_sources":           "No peer-reviewed sources were cited for this advisory.",
-
+        "sub_prevention":           "Long-term measures to prevent recurrence",
+        "sub_why":                  "AI reasoning & confidence breakdown",
+        "lbl_view_sources":         "View Sources",
+        "lbl_risk_score":           "Disease Risk Score",
+        "lbl_alert_valid":          "Alert Valid Until",
+        "lbl_model_reasoning":      "Model Reasoning:",
+        "lbl_confidence_by_agent":  "Confidence by Agent:",
+        "lbl_systems_consulted":    "Systems consulted:",
+        "lbl_partial_warning":      "Some specialist agents did not return details. The available advisory information is shown below; ask a follow-up question for more detail.",
         # -- T-20: Authentication strings -----------------------------------
         "auth_login_title":         "Welcome Back",
         "auth_login_subtitle":      "Sign in to your Agri-Advisor account",
         "auth_register_title":      "Create Your Account",
         "auth_register_subtitle":   "Join thousands of Sri Lankan farmers",
-        "lbl_username":             "\U0001f464 Username",
-        "lbl_password":             "\U0001f511 Password",
-        "lbl_confirm_password":     "\U0001f511 Confirm Password",
+        "lbl_username":             "👤 Username",
+        "lbl_password":             "🔑 Password",
+        "lbl_confirm_password":     "🔑 Confirm Password",
         "lbl_full_name":            "Full Name",
         "lbl_phone_email":          "Phone Number or Email",
-        "lbl_preferred_language":   "\U0001f310 Preferred Language",
+        "lbl_preferred_language":   "🌐 Preferred Language",
         "ph_username":              "e.g. saman_farmer",
         "ph_password":              "Min. 12 characters",
         "ph_confirm_password":      "Repeat your password",
         "ph_full_name":             "e.g. Saman Perera",
         "ph_phone_email":           "e.g. 0771234567 or saman@example.com",
-        "btn_login":                "\U0001f513 Sign In",
-        "btn_register":             "\U0001f331 Create Account",
-        "btn_go_register":          "\u270f\ufe0f Create an account",
-        "btn_go_login":             "\U0001f513 Sign In",
-        "btn_logout":               "\U0001f6aa Sign Out",
+        "btn_login":                "🔓 Sign In",
+        "btn_register":             "🌱 Create Account",
+        "btn_go_register":          "✏️ Create an account",
+        "btn_go_login":             "🔓 Sign In",
+        "btn_logout":               "🚪 Sign Out",
         "auth_switch_have_account": "Already have an account?",
         "auth_switch_new":          "New to Agri-Advisor?",
-        "err_auth_invalid":         "\u274c **Incorrect username or password.** Please check and try again.",
-        "err_auth_expired":         "\u23f1\ufe0f **Your session has expired.** Please sign in again to continue.",
-        "err_auth_duplicate":       "\u274c **An account with that username already exists.** Please choose a different username or sign in.",
-        "err_auth_server":          "\u274c **Something went wrong on our end.** Please try again shortly.",
-        "err_auth_network":         "\u274c **Connection problem.** Please check your network and try again.",
-        "err_auth_rate_limit":      "\u274c **Too many attempts.** Please wait a moment before trying again.",
-        "info_register_username":   "Username: 3\u2013254 characters, letters, digits, '.', '_', '@', '+', '-' only.",
+        "err_auth_invalid":         "❌ **Incorrect username or password.** Please check and try again.",
+        "err_auth_expired":         "⏰ **Your session has expired.** Please sign in again to continue.",
+        "err_auth_duplicate":       "❌ **An account with that username already exists.** Please choose a different username or sign in.",
+        "err_auth_server":          "❌ **Something went wrong on our end.** Please try again shortly.",
+        "err_auth_network":         "❌ **Connection problem.** Please check your network and try again.",
+        "err_auth_rate_limit":      "❌ **Too many attempts.** Please wait a moment before trying again.",
+        "info_register_username":   "Username: 3–254 characters, letters, digits, '.', '_', '@', '+', '-' only.",
         "info_register_password":   "Password: Minimum 12 characters.",
-        "lbl_personal_info":        "\U0001f464 Personal Information",
-        "lbl_account_creds":        "\U0001f510 Account Credentials",
-        "lbl_farming_context":      "\U0001f33e Farming Context",
+        "lbl_personal_info":        "👤 Personal Information",
+        "lbl_account_creds":        "🔑 Account Credentials",
+        "lbl_farming_context":      "🌾 Farming Context",
     },
-
     # ========================================================================
     # SINHALA  (si)
     # ========================================================================
     "si": {
-        "app_title":                "\u0d9a\u0dd8\u0dc2\u0dd2-\u0d8b\u0db4\u0daf\u0dda\u0dc1\u0d9a",
-        "app_subtitle":             "\u0dc3\u0dca\u0db8\u0dcf\u0dbb\u0dca\u0da7\u0dca \u0d9c\u0ddc\u0dc0\u0dd2\u0dad\u0dd0\u0db1\u0dca \u0dc3\u0dc4\u0dcf\u0dba\u0d9a\u0dba\u0dcf",
-        "app_tagline":              "\u0dc1\u0dca\u200d\u0dbb\u0dd3 \u0dbd\u0dcf\u0d82\u0d9a\u0dd2\u0d9a \u0d9c\u0ddc\u0dc5\u0dd3\u0db1\u0dca\u0da7 \u0dc0\u0dda\u0daf\u0dcf \u0dc4\u0ddc\u0d82\u0daf \u0db6\u0ddc\u0d9c \u0dc5\u0d9c\u0dcf \u0d9a\u0dd2\u0dbb\u0dd3\u0db8\u0da7 \u0dc3\u0dc4\u0dcf\u0dba",
-        "lbl_language":             "\U0001f310 \u0db7\u0dcf\u0dc2\u0dcf\u0dc0",
-        "lbl_district":             "\U0001f4cd \u0d94\u0db6\u0dda \u0daf\u0dd2\u0dc3\u0dca\u0dad\u0dca\u200d\u0dbb\u0dd2\u0d9a\u0dca\u0d9a\u0dba",
-        "lbl_crop":                 "\U0001f33e \u0db6\u0ddd\u0d9c \u0dc0\u0dbb\u0dca\u0d9c\u0dba (\u0d85\u0dad\u0dca\u200d\u0dba\u0dc5\u0dc1\u0dca\u200d\u0dba \u0db1\u0ddc\u0dc0\u0dda)",
-        "lbl_query":                "\u0d94\u0db6\u0dda \u0db6\u0ddd\u0d9c \u0d9c\u0dd0\u0da7\u0dbd\u0dd4\u0dc0 \u0dc5\u0dd2\u0dc3\u0dca\u0dad\u0dbb \u0d9a\u0dbb\u0db1\u0dca\u0db1",
-        "lbl_char_counter":         "{count} / 1\u202f000 \u0d85\u0d9a\u0dca\u0dc2\u0dbb",
+        "app_title":                "කෘෂි-උපදේශක",
+        "app_subtitle":             "ස්මාර්ට් ගොවිතැන් සහායකයා",
+        "app_tagline":              "ශ්‍රී ලාංකික ගොවීන්ට වඩා හොඳ අස්වැන්නක් ලබා ගැනීමට සහාය වේ",
+        "lbl_language":             "🌐 භාෂාව",
+        "lbl_district":             "📍 ඔබේ දිස්ත්‍රික්කය",
+        "lbl_crop":                 "🌾 බෝග වර්ගය (අත්‍යවශ්‍ය නොවේ)",
+        "lbl_query":                "ඔබේ බෝග ගැටලුව විස්තර කරන්න",
+        "lbl_char_counter":         "{count} / 1000 අක්ෂර",
         "ph_query": (
-            "\u0d8b\u0daf\u0dcf: \u0db8\u0d9c\u0dda \u0dc5\u0dd3 \u0dc4\u0ddc\u0dbd\u0dca \u0d9a\u0dc4 \u0db4\u0dd0\u0dc4\u0dd0 \u0d9c\u0db1\u0dca\u0db1\u0dcf \u0d85\u0dad\u0dbb \u0d9a\u0dd4\u0dda\u0daf\u0dcf \u0daf\u0dd4\u0db9\u0dd4\u0dbb\u0dd4 \u0dbd\u0db4 \u0d87\u0dad. "
-            "\u0db8\u0dd9\u0dba \u0d9a\u0dd4\u0db8\u0db1 \u0dbb\u0ddd\u0d9c\u0dba\u0daf, \u0db4\u0dca\u200d\u0dbb\u0dad\u0dd2\u0d9a\u0dcf\u0dbb \u0d9a\u0dbb\u0db1\u0dca\u0db1\u0dda \u0d9a\u0dda\u0dc3\u0daf?"
+            "උදා: මගේ වී වගාවේ කොළ කහ පැහැ වී කුඩා දුඹුරු ලප ඇති වී තිබේ. "
+            "මෙය කුමන රෝගයක්ද? ඊට ප්‍රතිකාර කරන්නේ කෙසේද?"
         ),
-        "btn_submit":               "\U0001f50d \u0d9a\u0dd8\u0dc2\u0dd2-\u0d8b\u0db4\u0daf\u0dda\u0dc1\u0d9a\u0dba\u0dd9\u0db1\u0dca \u0d85\u0dc3\u0db1\u0dca\u0db1",
-        "btn_clear":                "\U0001f5d1 \u0dc3\u0d82\u0dc5\u0dcf\u0daf\u0dba \u0db8\u0d9a\u0db1\u0dca\u0db1",
-        "btn_helpful_yes":          "\U0001f44d \u0d94\u0dc5\u0dca",
-        "btn_helpful_no":           "\U0001f44e \u0db1\u0dd0\u0dc4\u0dd0",
-        "report_heading":           "\U0001f33e \u0d9a\u0dd8\u0dc2\u0dd2\u0d9a\u0dcf\u0dbb\u0dca\u0db8\u0dd2\u0d9a \u0d8b\u0db4\u0daf\u0dda\u0dc1 \u0dc5\u0dcf\u0dbb\u0dca\u0dad\u0dcf\u0dc0",
+        "btn_submit":               "🔍 කෘෂි-උපදේශකගෙන් අසන්න",
+        "btn_clear":                "🗑️ සංවාදය මකන්න",
+        "btn_helpful_yes":          "👍 ඔවු",
+        "btn_helpful_no":           "👎 නැත",
+        "report_heading":           "🌾 කෘෂිකාර්මික උපදේශන වාර්තාව",
         "report_followup": (
-            "\U0001f4ac **\u0dad\u0dc0\u0dad\u0dca \u0db4\u0dca\u200d\u0dbb\u0dc1\u0dca\u0db1\u0dba\u0d9a\u0dca \u0dad\u0dd2\u0db6\u0dda\u0daf?** \u0d89\u0dc4\u0dad \u0d9a\u0ddc\u0da7\u0dd4\u0dc0\u0dda \u0d94\u0db6\u0dda \u0db4\u0dc3\u0dd4 \u0dc5\u0dd2\u0db8\u0dc3\u0dd3\u0db8 \u0da7\u0dba\u0dd2\u0db4\u0dca \u0d9a\u0dbb "
-            "**\u0d9a\u0dd8\u0dc2\u0dd2-\u0d8b\u0db4\u0daf\u0dda\u0dc1\u0d9a\u0dba\u0dd9\u0db1\u0dca \u0d85\u0dc3\u0db1\u0dca\u0db1** \u0d9a\u0dca\u0dbd\u0dd2\u0d9a\u0dca \u0d9a\u0dbb\u0db1\u0dca\u0db1 \u2014 \u0d94\u0db6\u0dda \u0dc3\u0d82\u0dc5\u0dcf\u0daf \u0dc3\u0db1\u0dca\u0daf\u0dbb\u0dca\u0db7\u0dba \u0db8\u0dad\u0d9a\u0dba\u0dda \u0dad\u0db6\u0dcf \u0d9c\u0dd0\u0db1\u0dda."
+            "💬 **තවත් ප්‍රශ්නයක් තිබේද?** ඉහත කොටුවේ ඔබේ පසු විමසීම ටයිප් කර "
+            "**කෘෂි-උපදේශකගෙන් අසන්න** ක්ලික් කරන්න — ඔබේ සංවාද සන්දර්භය මතකයේ තබා ගනී."
         ),
-        "report_feedback":          "**\u0db8\u0dd9\u0db8 \u0d8b\u0db4\u0daf\u0dd9\u0dc3 \u0db4\u0dca\u200d\u0dbb\u0dba\u0ddd\u0da2\u0db1\u0dc0\u0dad\u0daf?**",
-        "blk_diagnosis":            "\u0d9a\u0ddc\u0da7\u0dc3 1 \u2014 \u0dbb\u0ddd\u0d9c \u0dc4\u0dda\u0daf\u0dd4\u0db1\u0dcf\u0d9c\u0dd0\u0db1\u0dd3\u0db8",
-        "blk_treatment":            "\u0d9a\u0ddc\u0da7\u0dc3 2 \u2014 \u0d9a\u0dca\u0dc2\u0dab\u0dd2\u0d9a \u0db4\u0dca\u200d\u0dbb\u0dad\u0dd2\u0d9a\u0dcf\u0dbb\u0dba",
-        "blk_prevention":           "\u0d9a\u0ddc\u0da7\u0dc3 3 \u2014 \u0dc5\u0dd0\u0dbd\u0dd0\u0d9a\u0dca\u0dc5\u0dd3\u0db8",
-        "blk_weather":              "\u0d9a\u0ddc\u0da7\u0dc3 4 \u2014 \u0d9a\u0dcf\u0dbd\u0d9c\u0dd4\u0dab \u0d8b\u0db4\u0daf\u0dda\u0dc1\u0dba",
-        "blk_sources":              "\u0d9a\u0ddc\u0da7\u0dc3 5 \u2014 \u0db4\u0dca\u200d\u0dbb\u0db7\u0dc5\u0dba\u0db1\u0dca",
-        "blk_disclaimer":           "\u0d9a\u0ddc\u0da7\u0dc3 6 \u2014 \u0dc5\u0d9c\u0d9a\u0dd3\u0db8\u0dca \u0d85\u0dc3\u0dca\u0dc5\u0dd3\u0db8",
-        "blk_why":                  "\u0d9a\u0ddc\u0da7\u0dc3 7 \u2014 \u0d87\u0dba\u0dd2? \u0db4\u0dd0\u0dc4\u0dd0\u0daf\u0dd2\u0dbd\u0dd3 \u0d9a\u0dd2\u0dbb\u0dd3\u0db8",
-        "blk_raw_answer":           "\u0d8b\u0db4\u0daf\u0dda\u0dc1\u0dba",
-        "lbl_severity":             "\u0db6\u0dbb\u0db4\u0dad\u0dbd\u0d9a\u0db8:",
-        "lbl_confidence":           "\u0dc5\u0dd2\u0dc1\u0dca\u0dc5\u0dcf\u0dc3\u0dba:",
-        "lbl_symptoms":             "\u0dad\u0dc4\u0dc5\u0dd4\u0dbb\u0dd4 \u0dbb\u0ddd\u0d9c \u0dbd\u0d9a\u0dca\u0dc2\u0dab:",
-        "lbl_differentials":        "\u0d85\u0db1\u0dda\u0d9a\u0dd4\u0dad\u0dca \u0d91 \u0dc4\u0dcf \u0dc3\u0db8\u0dcf\u0db1 \u0dbb\u0ddd\u0d9c:",
-        "lbl_urgency":              "\u0dc4\u0daf\u0dd2\u0dc3\u0dd2\u0d9a\u0db8:",
-        "lbl_application":          "\u0dba\u0dd9\u0daf\u0dd3\u0db8:",
-        "lbl_dosage":               "\u0db4\u0dca\u200d\u0dbb\u0db8\u0dcf\u0dab\u0dba:",
-        "lbl_frequency":            "\u0db1\u0dd2\u0dad\u0dd2\u0dad\u0dcf\u0dc5:",
-        "lbl_action_window":        "\u0d9a\u0dca\u200d\u0dbb\u0dd2\u0dba\u0dcf \u0d9a\u0dcf\u0dbd\u0dba:",
-        "lbl_risk":                 "\u0d85\u0dc5\u0daf\u0dcf\u0db1\u0db8\u0dca \u0db8\u0da7\u0dca\u0da7\u0db8:",
-        "lbl_source_type":          "\u0dc5\u0dbb\u0dca\u0d9c\u0dba:",
-        "lbl_systems":              "\u0db4\u0daf\u0dca\u0daa\u0dad\u0dd2:",
-        "lbl_intent":               "\u0d85\u0db7\u0dd2\u0db4\u0dca\u200d\u0dbb\u0dcf\u0dba:",
-        "lbl_response_time":        "\u0db4\u0dca\u200d\u0dbb\u0dad\u0dd2\u0da0\u0dcf\u0dbb \u0d9a\u0dcf\u0dbd\u0dba:",
-        "sidebar_heading":          "\u2699\ufe0f \u0dc3\u0dd0\u0dc3\u0dd2 \u0dad\u0ddc\u0dbb\u0dad\u0dd4\u0dbb\u0dd4",
-        "lbl_user_id":              "**\u0db4\u0dbb\u0dd2\u0dc1\u0dd3\u0dbd\u0d9a \u0dc4\u0dd0\u0daf\u0dd4\u0db1\u0dd4\u0db8:**",
-        "lbl_session_id":           "**\u0dc3\u0dd0\u0dc3\u0dd2 \u0dc4\u0dd0\u0daf\u0dd4\u0db1\u0dd4\u0db8:**",
-        "lbl_language_code":        "**\u0db7\u0dcf\u0dc2\u0dcf\u0dc0:**",
-        "lbl_turns":                "**\u0dc4\u0dd0\u0dbb\u0dc5\u0dd3\u0db8\u0dca:**",
+        "report_feedback":          "**මෙම උපදෙස ප්‍රයෝජනවත්ද?**",
+        "blk_diagnosis":            "කොටස 1 — රෝග විනිශ්චය",
+        "blk_treatment":            "කොටස 2 — ක්ෂණික ප්‍රතිකාර",
+        "blk_prevention":           "කොටස 3 — පූර්ව ආරක්ෂණ පියවර",
+        "blk_weather":              "කොටස 4 — කාලගුණ උපදේශය",
+        "blk_sources":              "කොටස 5 — තොරතුරු මූලාශ්‍ර",
+        "blk_disclaimer":           "කොටස 6 — වගකීම් ලිහිල් කිරීම",
+        "blk_why":                  "කොටස 7 — හේතු පැහැදිලි කිරීම",
+        "blk_raw_answer":           "උපදේශය",
+        "lbl_severity":             "බරපතලකම:",
+        "lbl_confidence":           "විශ්වාසනීයත්වය:",
+        "lbl_symptoms":             "තහවුරු වූ රෝග ලක්ෂණ:",
+        "lbl_differentials":        "වෙනත් සමාන රෝග නිශ්චයන්:",
+        "lbl_urgency":              "හදිසිභාවය:",
+        "lbl_application":          "යෙදීම:",
+        "lbl_dosage":               "ප්‍රමාණය:",
+        "lbl_frequency":            "වාර ගණන:",
+        "lbl_action_window":        "ක්‍රියාත්මක විය යුතු කාලය:",
+        "lbl_risk":                 "අවදානම් මට්ටම:",
+        "lbl_source_type":          "වර්ගය:",
+        "lbl_systems":              "පද්ධති:",
+        "lbl_intent":               "අභිප්‍රාය:",
+        "lbl_response_time":        "ප්‍රතිචාර කාලය:",
+        "sidebar_heading":          "⚙️ සැසි තොරතුරු",
+        "lbl_user_id":              "**පරිශීලක ID:**",
+        "lbl_session_id":           "**සැසි ID:**",
+        "lbl_language_code":        "**භාෂාව:**",
+        "lbl_turns":                "**වාර ගණන:**",
         "demo_mode_warning": (
-            "\u26a0\ufe0f **Demo Mode** \u2014 Agri-Advisor \u0dc3\u0dda\u0dc5\u0dcf\u0daf\u0dcf\u0dba\u0d9a\u0dba \u0d9a\u0dca\u200d\u0dbb\u0dd2\u0dba\u0dcf\u0dad\u0dca\u0db8\u0d9a \u0db1\u0ddc\u0dc0\u0dda. "
-            "\u0db1\u0dd2\u0dbb\u0dd6\u0db4\u0dab \u0d8b\u0db4\u0daf\u0dda\u0dc1 \u0daf\u0dad\u0dca \u0db4\u0dd9\u0db1\u0dca\u0dc5\u0db1\u0dd4 \u0dbd\u0dd0\u0db6\u0dda."
+            "⚠️ **Demo Mode** — කෘෂි-උපදේශක සේවාදායකය සක්‍රිය නැත. "
+            "ආදර්ශ උපදේශන දත්ත පෙන්වනු ලැබේ."
         ),
-        "err_empty_query":          "\u274c \u0d89\u0daf\u0dd2\u0dbb\u0dd2\u0db4\u0dad\u0dca \u0d9a\u0dd2\u0dbb\u0dd3\u0db8\u0da7 \u0db4\u0dd9\u0dbb \u0d94\u0db6\u0dda \u0db6\u0ddd\u0d9c \u0d9a\u0dd0\u0da7\u0dbd\u0dd4\u0dc0 \u0dc5\u0dd2\u0dc3\u0dca\u0dad\u0dbb \u0d9a\u0dbb\u0db1\u0dca\u0db1.",
-        "err_api_unavailable":      "\U0001f534 \u0d8b\u0db4\u0daf\u0dda\u0dc1 \u0dc3\u0dda\u0dc5\u0dcf\u0dc0 \u0daf\u0dd0\u0db1\u0da7 \u0dbd\u0d9f\u0dcf \u0dc5\u0dd2\u0dba \u0db1\u0ddc\u0dc4\u0dd0\u0d9a.",
-        "err_unknown":              "\u26a0\ufe0f \u0d85\u0db1\u0db4\u0dda\u0d9a\u0dca\u0dc2\u0dd2\u0dad \u0daf\u0ddd\u0dc2\u0dba\u0d9a\u0dca \u0dc3\u0dd2\u0daf\u0dd4 \u0dc5\u0dd2\u0dba. \u0db1\u0dd0\u0dc5\u0dad \u0d8b\u0dad\u0dca\u0dc3\u0dcf\u0dc4 \u0d9a\u0dbb\u0db1\u0dca\u0db1.",
-        "err_char_limit":           "\u0d85\u0d9a\u0dca\u0dc2\u0dbb \u0dc3\u0dd3\u0db8\u0dcf\u0dc0\u0da7 \u0dbd\u0d9f\u0dcf \u0dc5\u0dd2\u0dba (\u0d8b\u0db4\u0dbb\u0dd2\u0db8 1\u202f000).",
-        "info_translation_warn":    "\u26a0\ufe0f \u0db4\u0dbb\u0dd2\u0dc5\u0dbb\u0dca\u0dad\u0db1 \u0dc3\u0dda\u0dc5\u0dcf\u0dc0 \u0dbd\u0db6\u0dcf \u0d9c\u0dad \u0db1\u0ddc\u0dc4\u0dd0\u0d9a\u0dd2\u0dba\u0dcf \u2014 \u0db8\u0dd6\u0dbd \u0d89\u0d82\u0d9c\u0dca\u200d\u0dbb\u0dd3\u0dc3\u0dd2 \u0d8b\u0db4\u0daf\u0dda\u0dc1\u0dba \u0db4\u0dd9\u0db1\u0dca\u0dc5\u0db1\u0dd4 \u0dbd\u0dd0\u0db6\u0dda.",
-        "info_translation_partial": "\u2139\ufe0f \u0dc3\u0db8\u0dc4\u0dbb \u0d9a\u0ddc\u0da7\u0dc3\u0dca \u0db4\u0dbb\u0dd2\u0dc5\u0dbb\u0dca\u0dad\u0db1\u0dba \u0d9a\u0dbd \u0db1\u0ddc\u0dc4\u0dd0\u0d9a\u0dd2 \u0d85\u0dad\u0dbb \u0d89\u0d82\u0d9c\u0dca\u200d\u0dbb\u0dd3\u0dc3\u0dd2\u0dba\u0dd9\u0db1\u0dca \u0db4\u0dd9\u0db1\u0dca\u0dc5\u0db1\u0dd4 \u0dbd\u0dd0\u0db6\u0dda.",
-        "lbl_details_expander":     "\U0001f50d \u0db4\u0dca\u200d\u0dbb\u0dad\u0dd2\u0da0\u0dcf\u0dbb \u0dc5\u0dd2\u0dc3\u0dca\u0dad\u0dbb",
-        "lbl_why_expander":         "\U0001f4a1 \u0d9a\u0dd8\u0dc2\u0dd2-\u0d8b\u0db4\u0daf\u0dda\u0dc1\u0d9a\u0dba\u0dcf \u0db8\u0dd9\u0dba \u0dba\u0ddd\u0da2\u0db1\u0dcf \u0d9a\u0dbd\u0dda \u0d87\u0dba\u0dd2?",
-        "lbl_helpful_toast_yes":    "\u0d94\u0db6\u0dda \u0db4\u0dca\u200d\u0dbb\u0dad\u0dd2\u0db4\u0ddd\u0dc2\u0dab\u0dba\u0da7 \u0dc3\u0dca\u0dad\u0dd6\u0dad\u0dd2\u0dba\u0dd2!",
-        "lbl_helpful_toast_no":     "\u0d91 \u0d9c\u0dd0\u0db1 \u0d9a\u0dab\u0d9c\u0dcf\u0da7\u0dd4\u0dba\u0dd2. \u0d85\u0db4\u0dd2 \u0daf\u0dd2\u0d9c\u0da7\u0db8 \u0dc5\u0dd0\u0daf\u0dd2\u0daf\u0dd2\u0dba\u0dd4\u0dab\u0dd4 \u0d9a\u0dbb\u0db1\u0dca\u0db1\u0dda\u0db8\u0dd4!",
-        "lbl_no_sources":           "\u0db8\u0dd9\u0db8 \u0d8b\u0db4\u0daf\u0dda\u0dc1\u0dba \u0dc3\u0daf\u0dc4\u0dcf \u0dc3\u0db8 \u0d9a\u0dbb\u0db1 \u0dbd\u0daf \u0db4\u0dca\u200d\u0dbb\u0db7\u0dc5\u0dba\u0db1\u0dca \u0d8b\u0db4\u0dd4\u0da7\u0dcf \u0db1\u0ddc\u0daf\u0d9a\u0dca\u0dc5\u0dcf \u0d87\u0dad.",
-
+        "err_empty_query":          "❌ ඉදිරිපත් කිරීමට පෙර ඔබේ බෝග ගැටලුව විස්තර කරන්න.",
+        "err_api_unavailable":      "🔴 උපදේශන සේවාව දැනට ලබා ගත නොහැක.",
+        "err_unknown":              "⚠️ අනපේක්ෂිත දෝෂයක් සිදු විය. නැවත උත්සාහ කරන්න.",
+        "err_char_limit":           "අක්ෂර සීමාවට ළඟා විය (උපරිම 1000).",
+        "info_translation_warn":    "⚠️ පරිවර්තන සේවාව ලබා ගත නොහැක — මුල් ඉංග්‍රීසි උපදේශය පෙන්වනු ලැබේ.",
+        "info_translation_partial": "ℹ️ සමහර කොටස් පරිවර්තනය කළ නොහැකි වූ අතර ඒවා ඉංග්‍රීසියෙන් පෙන්වයි.",
+        "lbl_details_expander":     "🔍 ප්‍රතිචාර විස්තර",
+        "lbl_why_expander":         "💡 කෘෂි-උපදේශක මෙය යෝජනා කළේ ඇයි?",
+        "lbl_helpful_toast_yes":    "ඔබේ ප්‍රතිපෝෂණයට ස්තූතියි!",
+        "lbl_helpful_toast_no":     "කනගාටුයි. අපි තවදුරටත් වැඩිදියුණු කරන්නෙමු!",
+        "lbl_no_sources":           "මෙම උපදේශය සඳහා මූලාශ්‍ර උපුටා දක්වා නැත.",
+        "sub_prevention":           "නැවත ඇතිවීම වැළැක්වීම සඳහා දීර්ඝකාලීන පියවර",
+        "sub_why":                  "AI තර්කනය සහ විශ්වාසනීයත්ව විග්‍රහය",
+        "lbl_view_sources":         "මූලාශ්‍ර බලන්න",
+        "lbl_risk_score":           "රෝග අවදානම් ලකුණු",
+        "lbl_alert_valid":          "අනතුරු ඇඟවීම වලංගු කාලය",
+        "lbl_model_reasoning":      "මාදිලි තර්කනය:",
+        "lbl_confidence_by_agent":  "නියෝජිතයා අනුව විශ්වාසනීයත්වය:",
+        "lbl_systems_consulted":    "විමසූ පද්ධති:",
+        "lbl_partial_warning":      "සමහර විශේෂඥ නියෝජිතයින් තොරතුරු ලබා දී නැත. පවතින තොරතුරු පහත දැක්වේ; වැඩි විස්තර සඳහා පසු විමසුම් ප්‍රශ්නයක් අසන්න.",
         # -- T-20: Authentication (Sinhala) ---------------------------------
-        "auth_login_title":         "\u0db4\u0dd4\u0daf\u0db1\u0dba \u0daa\u0dd3\u0dbb\u0dd3\u0db8\u0dca\u0db4\u0dd3\u0db8",
-        "auth_login_subtitle":      "\u0d94\u0db6\u0dda \u0d9a\u0dd8\u0dc2\u0dd2-\u0d8b\u0db4\u0daf\u0dda\u0dc1\u0d9a \u0d9a\u0dad\u0dd4\u0dc0\u0da7 \u0d87\u0dad\u0dd4\u0dbd\u0dd4 \u0dc0\u0db1\u0dca\u0db1",
-        "auth_register_title":      "\u0d94\u0db6\u0dda \u0d9c\u0dd3\u0db1\u0dd4\u0db8 \u0dc3\u0dd4\u0daf\u0dd4\u0dc3\u0dd4 \u0d9a\u0dbb\u0db1\u0dca\u0db1",
-        "auth_register_subtitle":   "\u0dc3\u0dd2\u0dba\u0dbd\u0dd0 \u0dbd\u0dcf\u0d82\u0d9a\u0dd2\u0d9a \u0d9a\u0dd8\u0dc2\u0dd2\u0d9a\u0dcf\u0dbb\u0db8\u0dd2\u0dba\u0db1\u0dca \u0dc3\u0dc4\u0dba",
-        "lbl_username":             "\U0001f464 \u0db4\u0dbb\u0dd2\u0dc1\u0dd0\u0dbd\u0d9a \u0db1\u0dcf\u0db8\u0dba",
-        "lbl_password":             "\U0001f511 \u0d9c\u0dd4\u0db4\u0dca\u0dad \u0db4\u0daf\u0dba",
-        "lbl_confirm_password":     "\U0001f511 \u0d9c\u0dd4\u0db4\u0dca\u0dad \u0db4\u0daf \u0dad\u0dc4\u0dc0\u0dad\u0dca \u0d9a\u0dbb\u0db1\u0dca\u0db1",
-        "lbl_full_name":            "\u0dc3\u0dd0\u0db8 \u0db1\u0db8",
-        "lbl_phone_email":          "\u0daf\u0dd4\u0dbb\u0d9a\u0dad\u0dbd\u0dca\u0db4 \u0d85\u0d82\u0d9a\u0dba \u0dc4\u0ddc \u0d89-\u0dad\u0db4\u0dcf\u0dbd",
-        "lbl_preferred_language":   "\U0001f310 \u0d8b\u0b5a\u1e43\u0dd4\u0dba \u0db7\u0dcf\u0dc2\u0dcf\u0dc0",
-        "btn_login":                "\U0001f513 \u0d87\u0dad\u0dd4\u0dbd\u0dd4 \u0dc0\u0db1\u0dca\u0db1",
-        "btn_register":             "\U0001f331 \u0d9c\u0dd3\u0db1\u0dd4\u0db8 \u0dc3\u0dd4\u0daf\u0dd4\u0dc3\u0dd4 \u0d9a\u0dbb\u0db1\u0dca\u0db1",
-        "btn_logout":               "\U0001f6aa \u0d9c\u0dd3\u0d9a\u0dd2\u0db1 \u0db1\u0dd2\u0d9a\u0dbd\u0dca \u0dc0\u0db1\u0dca\u0db1",
-        "err_auth_invalid":         "\u274c \u0dc3\u0dca\u0dae\u0dd2\u0dbb \u0db4\u0dbb\u0dd2\u0dc1\u0dd0\u0dbd\u0d9a \u0db1\u0dcf\u0db8\u0dba \u0dc4\u0ddc \u0d9c\u0dd4\u0db4\u0dca\u0dad \u0db4\u0daf\u0dba. \u0d9a\u0dbb\u0dd4\u0dab\u0dcf\u0d9a\u0dbb \u0db4\u0dbb\u0dd3\u0d9a\u0dca\u0dc2\u0dcf \u0db1\u0dd0\u0dc5\u0dad \u0d8a\u0dbd\u0dd6 \u0d9a\u0dbb\u0db1\u0dca\u0db1.",
-        "err_auth_expired":         "\u23f1\ufe0f \u0d94\u0db6\u0dda \u0dc3\u0dd0\u0dc3\u0dd2\u0dba \u0d9a\u0dcf\u0dbd\u0dba \u0d89\u0d9a\u0dd4\u0dad\u0dd4 \u0dc0\u0dd2\u0dba. \u0db1\u0dd0\u0dc5\u0dad \u0d87\u0dad\u0dd4\u0dbd\u0dd4 \u0dc0\u0db1\u0dca\u0db1.",
-        "err_auth_duplicate":       "\u274c \u0d86 \u0db4\u0dbb\u0dd2\u0dc1\u0dd0\u0dbd\u0d9a \u0db1\u0dcf\u0db8\u0dba\u0d9a\u0dca \u0dc3\u0dc4\u0dd2\u0dad \u0d9a\u0dad\u0dd4\u0dc0\u0d9a\u0dca \u0d87\u0dad.",
-        "err_auth_server":          "\u274c \u0d85\u0db4\u0dda \u0d9a\u0dd0\u0db1\u0dca \u0daf\u0ddd\u0dc2\u0dba\u0d9a\u0dca \u0dc3\u0dd2\u0daf\u0dd4 \u0dc5\u0dd2\u0dba. \u0db1\u0dd0\u0dc5\u0dad \u0d8a\u0dbd\u0dd6 \u0d9a\u0dbb\u0db1\u0dca\u0db1.",
-        "err_auth_network":         "\u274c \u0dc3\u0db9\u0dca\u0dba\u0ddd\u0d9c \u0d9c\u0dd0\u0da7\u0dbd\u0dd4\u0dc0. \u0d94\u0db6\u0dda \u0da2\u0dcf\u0dbd \u0dc3\u0db9\u0dca\u0dba\u0ddd\u0d9c\u0dba \u0db4\u0dbb\u0dd3\u0d9a\u0dca\u0dc2\u0dcf \u0db1\u0dd0\u0dc5\u0dad \u0d8a\u0dbd\u0dd6 \u0d9a\u0dbb\u0db1\u0dca\u0db1.",
-        "err_auth_rate_limit":      "\u274c \u0d9a\u0dc5\u0d9a\u0dc0\u0dbb \u0d87\u0dad\u0dd4\u0dbd\u0dd4 \u0dc0\u0dd3\u0db8\u0dca. \u0d9a\u0dbb\u0dd4\u0dab\u0dcf\u0d9a\u0dbb \u0d9a\u0dc5\u0d9a \u0d87\u0dad\u0dd4\u0dbd\u0dd4 \u0dc0\u0db1\u0dca\u0db1.",
+        "auth_login_title":         "සාදරයෙන් පිළිගනිමු",
+        "auth_login_subtitle":      "ඔබේ කෘෂි-උපදේශක ගිණුමට ඇතුළු වන්න",
+        "auth_register_title":      "නව ගිණුමක් තනන්න",
+        "auth_register_subtitle":   "දහස් ගණනක් වූ ශ්‍රී ලාංකික ගොවි ප්‍රජාව හා එක්වන්න",
+        "lbl_username":             "👤 පරිශීලක නාමය",
+        "lbl_password":             "🔑 මුරපදය",
+        "lbl_confirm_password":     "🔑 මුරපදය තහවුරු කරන්න",
+        "lbl_full_name":            "සම්පූර්ණ නම",
+        "lbl_phone_email":          "දුරකථන අංකය හෝ විද්‍යුත් තපෑල",
+        "lbl_preferred_language":   "🌐 කැමති භාෂාව",
+        "ph_username":              "උදා: saman_farmer",
+        "ph_password":              "අවම අක්ෂර 12ක්",
+        "ph_confirm_password":      "මුරපදය නැවත ටයිප් කරන්න",
+        "ph_full_name":             "උදා: සමන් පෙරේරා",
+        "ph_phone_email":           "උදා: 0771234567 හෝ saman@example.com",
+        "btn_login":                "🔓 ඇතුළු වන්න",
+        "btn_register":             "🌱 ගිණුම සාදන්න",
+        "btn_go_register":          "✏️ ගිණුමක් සාදන්න",
+        "btn_go_login":             "🔓 ඇතුළු වන්න",
+        "btn_logout":               "🚪 නික්මෙන්න",
+        "auth_switch_have_account": "දැනටමත් ගිණුමක් තිබේද?",
+        "auth_switch_new":          "කෘෂි-උපදේශක වෙත නවකයෙක්ද?",
+        "err_auth_invalid":         "❌ **පරිශීලක නාමය හෝ මුරපදය වැරදියි.** පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
+        "err_auth_expired":         "⏰ **ඔබේ සැසියේ කාලය ඉකුත් වී ඇත.** ඉදිරියට යාමට නැවත ඇතුළු වන්න.",
+        "err_auth_duplicate":       "❌ **මෙම පරිශීලක නාමයෙන් ගිණුමක් දැනටමත් පවතී.** වෙනත් නමක් තෝරන්න හෝ ඇතුළු වන්න.",
+        "err_auth_server":          "❌ **පද්ධතියේ අභ්‍යන්තර දෝෂයක් සිදු විය.** මොහොතකින් නැවත උත්සාහ කරන්න.",
+        "err_auth_network":         "❌ **සබැඳි දෝෂයක්.** ඔබේ ජාල සබඳතාව පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
+        "err_auth_rate_limit":      "❌ **වැඩි වාර ගණනක් උත්සාහ කර ඇත.** මොහොතක් රැඳී සිට නැවත උත්සාහ කරන්න.",
+        "info_register_username":   "පරිශීලක නාමය: අක්ෂර 3–254, ඉංග්‍රීසි අකුරු, ඉලක්කම්, '.', '_', '@', '+', '-' පමණි.",
+        "info_register_password":   "මුරපදය: අවම වශයෙන් අක්ෂර 12ක් තිබිය යුතුය.",
+        "lbl_personal_info":        "👤 පෞද්ගලික තොරතුරු",
+        "lbl_account_creds":        "🔑 ගිණුම් විස්තර",
+        "lbl_farming_context":      "🌾 ගොවිතැන් සන්දර්භය",
     },
-
     # ========================================================================
     # TAMIL  (ta)
     # ========================================================================
     "ta": {
-        "app_title":                "\u0bb5\u0bc7\u0bb3\u0bbe\u0ba3\u0bcd-\u0b86\u0bb2\u0bcb\u0b9a\u0b95\u0bb0\u0bcd",
-        "app_subtitle":             "\u0bb8\u0bcd\u0bae\u0bbe\u0bb0\u0bcd\u0b9f\u0bcd \u0bb5\u0bbf\u0bb5\u0b9a\u0bbe\u0baf \u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0bbe\u0bb3\u0bb0\u0bcd",
-        "app_tagline":              "\u0b87\u0bb2\u0b99\u0bcd\u0b95\u0bc8 \u0bb5\u0bbf\u0bb5\u0b9a\u0bbe\u0baf\u0bbf\u0b95\u0bb3\u0bcd \u0b9a\u0bbf\u0bb1\u0ba8\u0bcd\u0ba4 \u0baa\u0baf\u0bbf\u0bb0\u0bcd\u0b95\u0bb3\u0bc8 \u0bb5\u0bb3\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0b89\u0ba4\u0bb5\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1",
-        "lbl_language":             "\U0001f310 \u0bae\u0bca\u0bb4\u0bbf",
-        "lbl_district":             "\U0001f4cd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bae\u0bbe\u0bb5\u0b9f\u0bcd\u0b9f\u0bae\u0bcd",
-        "lbl_crop":                 "\U0001f33e \u0baa\u0baf\u0bbf\u0bb0\u0bcd \u0bb5\u0b95\u0bc8 (\u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bbf\u0ba9\u0bbe\u0bb2\u0bcd)",
-        "lbl_query":                "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0baf\u0bbf\u0bb0\u0bcd \u0baa\u0bbf\u0bb0\u0b9a\u0bcd\u0b9a\u0ba9\u0bc8\u0baf\u0bc8 \u0bb5\u0bbf\u0bb5\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd",
-        "lbl_char_counter":         "{count} / 1\u202f000 \u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bb3\u0bcd",
+        "app_title":                "வேளாண்-ஆலோசகர்",
+        "app_subtitle":             "ஸ்மார்ட் விவசாய உதவியாளர்",
+        "app_tagline":              "இலங்கை விவசாயிகள் சிறந்த பயிர்களை வளர்க்க உதவுகிறது",
+        "lbl_language":             "🌐 மொழி",
+        "lbl_district":             "📍 உங்கள் மாவட்டம்",
+        "lbl_crop":                 "🌾 பயிர் வகை (விருப்பத்திற்குரியது)",
+        "lbl_query":                "உங்கள் பயிர் பிரச்சினையை விவரிக்கவும்",
+        "lbl_char_counter":         "{count} / 1000 எழுத்துக்கள்",
         "ph_query": (
-            "\u0b8e.\u0b95\u0bbe. \u0b8e\u0ba9\u0bcd \u0ba8\u0bc6\u0bb2\u0bcd \u0b87\u0bb2\u0bc8\u0b95\u0bb3\u0bcd \u0bae\u0b9e\u0bcd\u0b9a\u0bb3\u0bbe\u0b95\u0bbf \u0b9a\u0bbf\u0bb1\u0bbf\u0baf \u0baa\u0bb4\u0bc1\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf\u0b95\u0bb3\u0bcd \u0b89\u0bb3\u0bcd\u0bb3\u0ba9. "
-            "\u0b87\u0ba4\u0bc1 \u0b8e\u0ba9\u0bcd\u0ba9 \u0ba8\u0bcb\u0baf\u0bcd, \u0b8e\u0bb5\u0bcd\u0bb5\u0bbe\u0bb1\u0bc1 \u0b9a\u0bbf\u0b95\u0bbf\u0b9a\u0bcd\u0b9a\u0bc8\u0baf\u0bb3\u0bbf\u0b95\u0bcd\u0b95 \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd?"
+            "எ.கா. என் நெல் இலைகள் மஞ்சளாகி சிறிய பழுப்பு புள்ளிகள் உள்ளன. "
+            "இது என்ன நோய், எவ்வாறு சிகிச்சையளிக்க வேண்டும்?"
         ),
-        "btn_submit":               "\U0001f50d \u0bb5\u0bc7\u0bb3\u0bbe\u0ba3\u0bcd-\u0b86\u0bb2\u0bcb\u0b9a\u0b95\u0bb0\u0bbf\u0b9f\u0bae\u0bcd \u0b95\u0bc7\u0bb3\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd",
-        "btn_clear":                "\U0001f5d1 \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bc8 \u0b85\u0bb4\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd",
-        "btn_helpful_yes":          "\U0001f44d \u0b86\u0bae\u0bcd",
-        "btn_helpful_no":           "\U0001f44e \u0b87\u0bb2\u0bcd\u0bb2\u0bc8",
-        "report_heading":           "\U0001f33e \u0bb5\u0bc7\u0bb3\u0bbe\u0ba3\u0bcd \u0b86\u0bb2\u0bcb\u0b9a\u0ba9\u0bc8 \u0b85\u0bb1\u0bbf\u0b95\u0bcd\u0b95\u0bc8",
+        "btn_submit":               "🔍 வேளாண்-ஆலோசகரிடம் கேட்கவும்",
+        "btn_clear":                "🗑️ உரையாடலை அழிக்கவும்",
+        "btn_helpful_yes":          "👍 ஆம்",
+        "btn_helpful_no":           "👎 இல்லை",
+        "report_heading":           "🌾 வேளாண் ஆலோசனை அறிக்கை",
         "report_followup": (
-            "\U0001f4ac **\u0bae\u0bc7\u0bb2\u0bc1\u0bae\u0bcd \u0b95\u0bc7\u0bb3\u0bcd\u0bb5\u0bbf \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bbe?** \u0bae\u0bc7\u0bb2\u0bc7 \u0b89\u0bb3\u0bcd\u0bb3 \u0baa\u0bc6\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0ba4\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 "
-            "**\u0bb5\u0bc7\u0bb3\u0bbe\u0ba3\u0bcd-\u0b86\u0bb2\u0bcb\u0b9a\u0b95\u0bb0\u0bbf\u0b9f\u0bae\u0bcd \u0b95\u0bc7\u0bb3\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd** \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u2014 "
-            "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b89\u0bb0\u0bc8\u0baf\u0bbe\u0b9f\u0bb2\u0bcd \u0b9a\u0bc2\u0bb4\u0bb2\u0bcd \u0ba8\u0bbf\u0ba9\u0bc8\u0bb5\u0bbf\u0bb2\u0bcd \u0bb5\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd."
+            "💬 **மேலும் கேள்வி உள்ளதா?** மேலே உள்ள பெட்டியில் தட்டச்சு செய்து "
+            "**வேளாண்-ஆலோசகரிடம் கேட்கவும்** கிளிக் செய்யவும் — "
+            "உங்கள் உரையாடல் சூழல் நினைவில் வைக்கப்படும்."
         ),
-        "report_feedback":          "**\u0b87\u0ba8\u0bcd\u0ba4 \u0b86\u0bb2\u0bcb\u0b9a\u0ba9\u0bc8 \u0b89\u0ba4\u0bb5\u0bbf\u0baf\u0ba4\u0bbe?**",
-        "blk_diagnosis":            "\u0baa\u0b95\u0bc1\u0ba4\u0bbf 1 \u2014 \u0ba8\u0bcb\u0baf\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bb1\u0bbf\u0ba4\u0bb2\u0bcd",
-        "blk_treatment":            "\u0baa\u0b95\u0bc1\u0ba4\u0bbf 2 \u2014 \u0b89\u0b9f\u0ba9\u0b9f\u0bbf \u0b9a\u0bbf\u0b95\u0bbf\u0b9a\u0bcd\u0b9a\u0bc8",
-        "blk_prevention":           "\u0baa\u0b95\u0bc1\u0ba4\u0bbf 3 \u2014 \u0ba4\u0b9f\u0bc1\u0baa\u0bcd\u0baa\u0bc1 \u0ba8\u0b9f\u0bb5\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0b95\u0bb3\u0bcd",
-        "blk_weather":              "\u0baa\u0b95\u0bc1\u0ba4\u0bbf 4 \u2014 \u0bb5\u0bbe\u0ba9\u0bbf\u0bb2\u0bc8 \u0b86\u0bb2\u0bcb\u0b9a\u0ba9\u0bc8",
-        "blk_sources":              "\u0baa\u0b95\u0bc1\u0ba4\u0bbf 5 \u2014 \u0b86\u0ba4\u0bbe\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd",
-        "blk_disclaimer":           "\u0baa\u0b95\u0bc1\u0ba4\u0bbf 6 \u2014 \u0bae\u0bb1\u0bc1\u0baa\u0bcd\u0baa\u0bc1",
-        "blk_why":                  "\u0baa\u0b95\u0bc1\u0ba4\u0bbf 7 \u2014 \u0b8f\u0ba9\u0bcd? \u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0bae\u0bcd",
-        "blk_raw_answer":           "\u0b86\u0bb2\u0bcb\u0b9a\u0ba9\u0bc8",
-        "lbl_severity":             "\u0ba4\u0bc0\u0bb5\u0bbf\u0bb0\u0bae\u0bcd:",
-        "lbl_confidence":           "\u0ba8\u0bae\u0bcd\u0baa\u0b95\u0ba4\u0bcd\u0ba4\u0ba9\u0bcd\u0bae\u0bc8:",
-        "lbl_symptoms":             "\u0b89\u0bb1\u0bc1\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b85\u0bb1\u0bbf\u0b95\u0bc1\u0bb1\u0bbf\u0b95\u0bb3\u0bcd:",
-        "lbl_differentials":        "\u0bb5\u0bc7\u0bb1\u0bc1\u0baa\u0b9f\u0bcd\u0b9f \u0ba8\u0bcb\u0baf\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bb1\u0bbf\u0ba4\u0bb2\u0bcd\u0b95\u0bb3\u0bcd:",
-        "lbl_urgency":              "\u0b85\u0bb5\u0b9a\u0bb0\u0bae\u0bcd:",
-        "lbl_application":          "\u0baa\u0baf\u0ba9\u0bcd\u0baa\u0bbe\u0b9f\u0bc1:",
-        "lbl_dosage":               "\u0b85\u0bb3\u0bb5\u0bc1:",
-        "lbl_frequency":            "\u0b85\u0ba4\u0bbf\u0bb0\u0bcd\u0bb5\u0bc6\u0ba3\u0bcd:",
-        "lbl_action_window":        "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd \u0b95\u0bbe\u0bb2\u0bae\u0bcd:",
-        "lbl_risk":                 "\u0b85\u0baa\u0bbe\u0baf \u0ba8\u0bbf\u0bb2\u0bc8:",
-        "lbl_source_type":          "\u0bb5\u0b95\u0bc8:",
-        "lbl_systems":              "\u0b85\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd:",
-        "lbl_intent":               "\u0ba8\u0bcb\u0b95\u0bcd\u0b95\u0bae\u0bcd:",
-        "lbl_response_time":        "\u0bae\u0bb1\u0bc1\u0bae\u0bca\u0bb4\u0bbf \u0ba8\u0bc7\u0bb0\u0bae\u0bcd:",
-        "sidebar_heading":          "\u2699\ufe0f \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc1 \u0ba4\u0b95\u0bb5\u0bb2\u0bcd",
-        "lbl_user_id":              "**\u0baa\u0baf\u0ba9\u0bb0\u0bcd ID:**",
-        "lbl_session_id":           "**\u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc1 ID:**",
-        "lbl_language_code":        "**\u0bae\u0bca\u0bb4\u0bbf:**",
-        "lbl_turns":                "**\u0b9a\u0bc1\u0bb1\u0bcd\u0bb1\u0bc1\u0b95\u0bb3\u0bcd:**",
+        "report_feedback":          "**இந்த ஆலோசனை உதவியதா?**",
+        "blk_diagnosis":            "பகுதி 1 — நோய் கண்டறிதல்",
+        "blk_treatment":            "பகுதி 2 — உடனடி சிகிச்சை",
+        "blk_prevention":           "பகுதி 3 — தடுப்பு நடவடிக்கைகள்",
+        "blk_weather":              "பகுதி 4 — வானிலை ஆலோசனை",
+        "blk_sources":              "பகுதி 5 — ஆதாரங்கள்",
+        "blk_disclaimer":           "பகுதி 6 — பொறுப்புத் துறப்பு",
+        "blk_why":                  "பகுதி 7 — ஏன்? விளக்கம்",
+        "blk_raw_answer":           "ஆலோசனை",
+        "lbl_severity":             "தீவிரம்:",
+        "lbl_confidence":           "நம்பகத்தன்மை:",
+        "lbl_symptoms":             "உறுதிப்படுத்தப்பட்ட அறிகுறிகள்:",
+        "lbl_differentials":        "வேறுபட்ட நோய் கண்டறிதல்கள்:",
+        "lbl_urgency":              "அவசியம்:",
+        "lbl_application":          "பயன்பாடு:",
+        "lbl_dosage":               "அளவு:",
+        "lbl_frequency":            "அதிர்வெண்:",
+        "lbl_action_window":        "செயல் காலம்:",
+        "lbl_risk":                 "அபாய நிலை:",
+        "lbl_source_type":          "வகை:",
+        "lbl_systems":              "அமைப்புகள்:",
+        "lbl_intent":               "நோக்கம்:",
+        "lbl_response_time":        "மறுமொழி நேரம்:",
+        "sidebar_heading":          "⚙️ அமர்வு தகவல்",
+        "lbl_user_id":              "**பயனர் ID:**",
+        "lbl_session_id":           "**அமர்வு ID:**",
+        "lbl_language_code":        "**மொழி:**",
+        "lbl_turns":                "**சுற்றுகள்:**",
         "demo_mode_warning": (
-            "\u26a0\ufe0f **Demo Mode** \u2014 Agri-Advisor \u0b9a\u0bc7\u0bb5\u0bc8\u0baf\u0b95\u0bae\u0bcd \u0b87\u0baf\u0b99\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. "
-            "\u0bae\u0bbe\u0ba4\u0bbf\u0bb0\u0bbf \u0b86\u0bb2\u0bcb\u0b9a\u0ba9\u0bc8 \u0ba4\u0bb0\u0bb5\u0bc1 \u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1."
+            "⚠️ **Demo Mode** — வேளாண்-ஆலோசகர் சேவையகம் இயங்கவில்லை. "
+            "மாதிரி ஆலோசனை தரவு காட்டப்படுகிறது."
         ),
-        "err_empty_query":          "\u274c \u0b9a\u0bae\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0ba9\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0baf\u0bbf\u0bb0\u0bcd \u0baa\u0bbf\u0bb0\u0b9a\u0bcd\u0b9a\u0ba9\u0bc8\u0baf\u0bc8 \u0bb5\u0bbf\u0bb5\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.",
-        "err_api_unavailable":      "\U0001f534 \u0b86\u0bb2\u0bcb\u0b9a\u0ba9\u0bc8 \u0b9a\u0bc7\u0bb5\u0bc8 \u0ba4\u0bb1\u0bcd\u0baa\u0bcb\u0ba4\u0bc1 \u0b85\u0ba3\u0bc1\u0b95 \u0b87\u0baf\u0bb2\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8.",
-        "err_unknown":              "\u26a0\ufe0f \u0b8e\u0ba4\u0bbf\u0bb0\u0bcd\u0baa\u0bbe\u0bb0\u0bbe\u0ba4 \u0baa\u0bbf\u0bb4\u0bc8 \u0b8f\u0bb1\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1. \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.",
-        "err_char_limit":           "\u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1 \u0bb5\u0bb0\u0bae\u0bcd\u0baa\u0bc8 \u0b8e\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0ba4\u0bc1 (\u0b85\u0ba4\u0bbf\u0b95\u0baa\u0b9f\u0bcd\u0b9a\u0bae\u0bcd 1\u202f000).",
-        "info_translation_warn":    "\u26a0\ufe0f \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0b9a\u0bc7\u0bb5\u0bc8 \u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8 \u2014 \u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2 \u0b86\u0bb2\u0bcb\u0b9a\u0ba9\u0bc8 \u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
-        "info_translation_partial": "\u2139\ufe0f \u0b9a\u0bbf\u0bb2 \u0baa\u0b95\u0bc1\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8, \u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
-        "lbl_details_expander":     "\U0001f50d \u0bae\u0bb1\u0bc1\u0bae\u0bca\u0bb4\u0bbf \u0bb5\u0bbf\u0bb5\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd",
-        "lbl_why_expander":         "\U0001f4a1 \u0bb5\u0bc7\u0bb3\u0bbe\u0ba3\u0bcd-\u0b86\u0bb2\u0bcb\u0b9a\u0b95\u0bb0\u0bcd \u0b8f\u0ba9\u0bcd \u0b87\u0ba4\u0bc8 \u0baa\u0bb0\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1\u0bb0\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd?",
-        "lbl_helpful_toast_yes":    "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0ba8\u0ba9\u0bcd\u0bb1\u0bbf!",
-        "lbl_helpful_toast_no":     "\u0bae\u0ba9\u0bcd\u0ba9\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd. \u0ba8\u0bbe\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bc1 \u0bae\u0bc7\u0bae\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bcb\u0bae\u0bcd!",
-        "lbl_no_sources":           "\u0b87\u0ba8\u0bcd\u0ba4 \u0b86\u0bb2\u0bcb\u0b9a\u0ba9\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0b95 \u0bae\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bbe\u0baf\u0bcd\u0bb5\u0bc1 \u0b9a\u0bc6\u0baf\u0bcd\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b86\u0ba4\u0bbe\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba4\u0bc1\u0bb5\u0bc1\u0bae\u0bcd \u0bae\u0bc7\u0bb1\u0bcd\u0b95\u0bcb\u0bb3\u0bcd \u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0baa\u0bcd\u0baa\u0b9f\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8.",
-
+        "err_empty_query":          "❌ சமர்ப்பிக்கும் முன் உங்கள் பயிர் பிரச்சினையை விவரிக்கவும்.",
+        "err_api_unavailable":      "🔴 ஆலோசனை சேவை தற்போது அணுக இயலவில்லை.",
+        "err_unknown":              "⚠️️ எதிர்பார்க்காத பிழை ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்.",
+        "err_char_limit":           "எழுத்து வரம்பை எட்டியது (அதிகபட்சம் 1000).",
+        "info_translation_warn":    "⚠️ மொழிபெயர்ப்பு சேவை கிடைக்கவில்லை — ஆங்கில ஆலோசனை காட்டப்படுகிறது.",
+        "info_translation_partial": "ℹ️ சில பகுதிகளை மொழிபெயர்க்க முடியவில்லை, ஆங்கிலத்தில் காட்டப்படுகிறது.",
+        "lbl_details_expander":     "🔍 மறுமொழி விவரங்கள்",
+        "lbl_why_expander":         "💡 வேளாண்-ஆலோசகர் ஏன் இதை பரிந்துரைத்தார்?",
+        "lbl_helpful_toast_yes":    "உங்கள் கருத்துக்களுக்கு நன்றி!",
+        "lbl_helpful_toast_no":     "மன்னிக்கவும். நாங்கள் தொடர்ந்து மேம்படுத்துவோம்!",
+        "lbl_no_sources":           "இந்த ஆலோசனைக்கு ஆதாரங்கள் எதுவும் மேற்கோள் காட்டப்படவில்லை.",
+        "sub_prevention":           "மீண்டும் ஏற்படுவதைத் தடுப்பதற்கான நீண்டகால நடவடிக்கைகள்",
+        "sub_why":                  "AI பகுத்தறிவு மற்றும் நம்பகத்தன்மை முறிவு",
+        "lbl_view_sources":         "ஆதாரங்களைக் காண்க",
+        "lbl_risk_score":           "நோய் அபாய மதிப்பபெண்",
+        "lbl_alert_valid":          "எச்சரிக்கை செல்லுபடியாகும் வரை",
+        "lbl_model_reasoning":      "மாதிரி பகுத்தறிவு:",
+        "lbl_confidence_by_agent":  "முகவர் வாரியான நம்பகத்தன்மை:",
+        "lbl_systems_consulted":    "ஆலோசிக்கப்பட்ட அமைப்புகள்:",
+        "lbl_partial_warning":      "சில நிபுணர் முகவர்கள் விவரங்களை வழங்கவில்லை. கிடைக்கக்கூடிய ஆலோசனைகள் கீழே காட்டப்பட்டுள்ளன; கூடுதல் விவரங்களுக்கு பின்தொடர் கேள்வியைக் கேட்கவும்.",
         # -- T-20: Authentication (Tamil) -----------------------------------
-        "auth_login_title":         "\u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bb5\u0bb0\u0bc1\u0b95!",
-        "auth_login_subtitle":      "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0bc7\u0bb3\u0bbe\u0ba3\u0bcd-\u0b86\u0bb2\u0bcb\u0b9a\u0b95\u0bb0\u0bcd \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0baf\u0bb5\u0bc1\u0bae\u0bcd",
-        "auth_register_title":      "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd",
-        "auth_register_subtitle":   "\u0b87\u0bb2\u0b99\u0bcd\u0b95\u0bc8 \u0bb5\u0bbf\u0bb5\u0b9a\u0bbe\u0baf\u0bbf\u0b95\u0bb3\u0bc1\u0b9f\u0ba9\u0bcd \u0b87\u0ba3\u0bc8\u0baf\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd",
-        "lbl_username":             "\U0001f464 \u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0baa\u0bc6\u0baf\u0bb0\u0bcd",
-        "lbl_password":             "\U0001f511 \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb1\u0bcd",
-        "lbl_confirm_password":     "\U0001f511 \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb1\u0bcd \u0b89\u0bb1\u0bc1\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd",
-        "lbl_full_name":            "\u0bae\u0bc1\u0bb4\u0bc1 \u0baa\u0bc6\u0baf\u0bb0\u0bcd",
-        "lbl_phone_email":          "\u0ba4\u0bca\u0bb2\u0bc8\u0baa\u0bc7\u0b9a\u0bbf \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd",
-        "lbl_preferred_language":   "\U0001f310 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bbf\u0baf \u0bae\u0bca\u0bb4\u0bbf",
-        "btn_login":                "\U0001f513 \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0baf\u0bc1\u0bae\u0bcd",
-        "btn_register":             "\U0001f331 \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd",
-        "btn_logout":               "\U0001f6aa \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bc1",
-        "err_auth_invalid":         "\u274c \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9 \u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0baa\u0bc6\u0baf\u0bb0\u0bcd \u0b85\u0bb2\u0bcd\u0bb2\u0ba4\u0bc1 \u0b95\u0b9f\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bca\u0bb1\u0bcd. \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.",
-        "err_auth_expired":         "\u23f1\ufe0f \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b85\u0bae\u0bb0\u0bcd\u0bb5\u0bc1 \u0b95\u0bbe\u0bb2\u0bbe\u0bb5\u0ba4\u0bbf \u0bae\u0bc0\u0bb1\u0bbf\u0baf\u0ba4\u0bc1. \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b89\u0bb3\u0bcd\u0ba8\u0bc1\u0bb4\u0bc8\u0baf\u0bc1\u0bae\u0bcd.",
-        "err_auth_duplicate":       "\u274c \u0b87\u0ba8\u0bcd\u0ba4 \u0baa\u0baf\u0ba9\u0bb0\u0bcd \u0baa\u0bc6\u0baf\u0bb0\u0bc1\u0b9f\u0ba9\u0bcd \u0b88\u0b9a\u0bcd\u0b9a\u0bc1 \u0b92\u0bb0\u0bc1 \u0b95\u0ba3\u0b95\u0bcd\u0b95\u0bc1 \u0b89\u0bb3\u0bcd\u0bb3\u0ba4\u0bc1.",
-        "err_auth_server":          "\u274c \u0b8e\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0b95\u0bcd\u0b95\u0bae\u0bcd \u0baa\u0bbf\u0bb4\u0bc8 \u0b8f\u0bb1\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1. \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.",
-        "err_auth_network":         "\u274c \u0b87\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0baa\u0bbf\u0bb0\u0b9a\u0bcd\u0b9a\u0ba9\u0bc8. \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0b9a\u0bb0\u0bbf\u0baa\u0bbe\u0bb0\u0bcd\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.",
-        "err_auth_rate_limit":      "\u274c \u0bae\u0bbf\u0b95\u0bc1\u0ba4\u0bbf \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bb3\u0bcd. \u0b9a\u0bbf\u0bb1\u0bbf\u0ba4\u0bc1 \u0ba8\u0bc7\u0bb0\u0bae\u0bcd \u0b95\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd.",
+        "auth_login_title":         "மீண்டும் வருக!",
+        "auth_login_subtitle":      "உங்கள் வேளாண்-ஆலோசகர் கணக்கில் உள்நுழையவும்",
+        "auth_register_title":      "உங்கள் கணக்கை உருவாக்கவும்",
+        "auth_register_subtitle":   "ஆயிரக்கணக்கான இலங்கை விவசாயிகளுடன் இணையுங்கள்",
+        "lbl_username":             "👤 பயனர் பெயர்",
+        "lbl_password":             "🔑 கடவுச்சொல்",
+        "lbl_confirm_password":     "🔑 கடவுச்சொல்லை உறுதிப்படுத்தவும்",
+        "lbl_full_name":            "முழு பெயர்",
+        "lbl_phone_email":          "தொலைபேசி அல்லது மின்னஞ்சல்",
+        "lbl_preferred_language":   "🌐 விரும்பிய மொழி",
+        "ph_username":              "எ.கா. saman_farmer",
+        "ph_password":              "குறைந்தது 12 எழுத்துக்கள்",
+        "ph_confirm_password":      "கடவுச்சொல்லை மீண்டும் தட்டச்சு செய்யவும்",
+        "ph_full_name":             "எ.கா. சமன் பெரேரா",
+        "ph_phone_email":           "எ.கா. 0771234567 அல்லது saman@example.com",
+        "btn_login":                "🔓 உள்நுழையவும்",
+        "btn_register":             "🌱 கணக்கை உருவாக்கவும்",
+        "btn_go_register":          "✏️ கணக்கை உருவாக்கவும்",
+        "btn_go_login":             "🔓 உள்நுழையவும்",
+        "btn_logout":               "🚪 வெளியேறு",
+        "auth_switch_have_account": "ஏற்கனவே கணக்கு உள்ளதா?",
+        "auth_switch_new":          "வேளாண்-ஆலோசகருக்கு புதியவரா?",
+        "err_auth_invalid":         "❌ **தவறான பயனர் பெயர் அல்லது கடவுச்சொல்.** சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+        "err_auth_expired":         "⏰ **உங்கள் அமர்வு காலாவதியானது.** தொடர மீண்டும் உள்நுழையவும்.",
+        "err_auth_duplicate":       "❌ **இந்த பயனர் பெயருடன் ஏற்கனவே ஒரு கணக்கு உள்ளது.** வேறு பெயரைத் தேர்ந்தெடுக்கவும்.",
+        "err_auth_server":          "❌ **எங்கள் பக்கத்தில் பிழை ஏற்பட்டது.** சிறிது நேரத்தில் மீண்டும் முயற்சிக்கவும்.",
+        "err_auth_network":         "❌ **இணைப்பு பிரச்சினை.** நெட்வொர்க்கை சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+        "err_auth_rate_limit":      "❌ **மிகுதி முயற்சிகள்.** சிறிது நேரம் காத்திருந்து மீண்டும் முயற்சிக்கவும்.",
+        "info_register_username":   "பயனர் பெயர்: 3–254 எழுத்துக்கள், ஆங்கில எழுத்துக்கள், எண்கள், '.', '_', '@', '+', '-' மட்டும்.",
+        "info_register_password":   "கடவுச்சொல்: குறைந்தபட்சம் 12 எழுத்துக்கள் இருக்க வேண்டும்.",
+        "lbl_personal_info":        "👤 தனிப்பட்ட தகவல்",
+        "lbl_account_creds":        "🔑 கணக்கு விவரங்கள்",
+        "lbl_farming_context":      "🌾 விவசாய சூழல்",
     },
 }
-
 
 # ---------------------------------------------------------------------------
 # Public helpers
 # ---------------------------------------------------------------------------
 
+
 def get_string(key: str, lang_code: str = "en") -> str:
     """
     Return the localised string for *key* in *lang_code*.
-
     Fallback order:
         1. Requested locale (lang_code)
         2. English ("en")
         3. Raw key string  -- safety net, should never happen in production
-
-    Args:
-        key:       The string key, e.g. "btn_submit".
-        lang_code: ISO 639-1 locale code; one of "en", "si", "ta".
-
-    Returns:
-        The localised string, guaranteed to be non-empty.
     """
-    # 1 -- Primary locale
-    value = UI_STRINGS.get(lang_code, {}).get(key)
-    if value is not None:
-        return value
-    # 2 -- English fallback
-    value = UI_STRINGS.get("en", {}).get(key)
-    if value is not None:
-        return value
-    # 3 -- Absolute last resort
-    return key
+    english_value = UI_STRINGS.get("en", {}).get(key)
+    localized_fallback = UI_STRINGS.get(lang_code, {}).get(key)
+
+    if lang_code == "en":
+        return english_value if english_value is not None else key
+
+    if localized_fallback is not None:
+        return localized_fallback
+
+    # Static UI copy uses the reviewed locale table; dynamic translation is
+    # reserved for advisory content.
+    if english_value is not None and lang_code in SUPPORTED_LANGUAGES.values():
+        return english_value
+
+    return english_value if english_value is not None else key
 
 
 def get_all_strings(lang_code: str = "en") -> dict[str, str]:
     """
     Return the full string table for *lang_code* merged on top of English
     so every possible key is always present.
-
-    Useful when a renderer needs many strings without per-key calls.
-
-    Args:
-        lang_code: One of "en", "si", "ta".
-
-    Returns:
-        dict mapping every key to the best available translated string.
     """
     base = dict(UI_STRINGS.get("en", {}))
     if lang_code != "en":

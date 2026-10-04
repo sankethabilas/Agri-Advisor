@@ -13,6 +13,9 @@ T-17 additions:
     utils.translator.translate_advisory_text.  The stored response dict is
     never mutated (pipeline always stays in English, per T-17.4).
 
+T-21: duplicate "Navigation" controls removed from this module; the top bar and
+sidebar are owned by ui/app.py.
+
 Entry point:
     render_eight_block_advisory(response: dict, is_fallback: bool = False, lang: str = "en")
 
@@ -31,8 +34,9 @@ Fixture wire-up:
     /tests/fixtures/orchestrator_response.json
 """
 from __future__ import annotations
+from utils.i18n import get_string
 from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE
-from ui.auth import clear_auth, get_auth_headers
+from ui.auth import clear_auth, get_auth_headers, is_authenticated  # noqa: F401
 from ui.api_client import _ApiError, submit_feedback
 
 import math
@@ -42,6 +46,7 @@ from pathlib import Path
 from typing import Any
 
 import streamlit as st
+
 
 # Allow utils.* imports when this module is loaded from any entry point
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -58,6 +63,12 @@ except ImportError:
 # ============================================================================
 # T-17 Translation helper
 # ============================================================================
+
+
+def _t(key: str, lang: str = "en", **values: Any) -> str:
+    """Return a reviewed static UI string in the requested locale."""
+    text = get_string(key, lang)
+    return text.format(**values) if values else text
 
 
 def _translate_block_text(
@@ -212,7 +223,7 @@ def _block_header(icon: str, title: str, subtitle: str = "") -> None:
 # § Block 1 — Diagnosis
 # ============================================================================
 
-def render_block1_diagnosis(diagnosis: dict[str, Any]) -> None:
+def render_block1_diagnosis(diagnosis: dict[str, Any], lang: str = "en") -> None:
     """
     Block 1: Disease Diagnosis card.
     Renders disease name, scientific name, severity badge, and confidence bar.
@@ -229,7 +240,7 @@ def render_block1_diagnosis(diagnosis: dict[str, Any]) -> None:
     symptoms = diagnosis.get("symptoms_confirmed") or []
     differentials = diagnosis.get("differential_diagnoses") or []
 
-    _block_header("🔬", "Block 1 — Disease Diagnosis")
+    _block_header("🔬", _t("blk_diagnosis", lang))
 
     sev_badge = _diagnosis_severity_badge(severity)
     sci_html = (
@@ -247,7 +258,7 @@ def render_block1_diagnosis(diagnosis: dict[str, Any]) -> None:
           </div>
           <div style="margin:8px 0;">
             <span style="font-size:0.88rem;color:#374151;margin-right:10px;">
-              Severity:
+              {_t("lbl_severity", lang)}
             </span>
             {sev_badge}
           </div>
@@ -258,20 +269,20 @@ def render_block1_diagnosis(diagnosis: dict[str, Any]) -> None:
 
     # Confidence progress bar
     bar_label = (
-        f"Diagnosis confidence — {conf_label}" if conf_label
-        else "Diagnosis confidence"
+        f"{_t('lbl_confidence', lang)} — {conf_label}" if conf_label
+        else _t("lbl_confidence", lang)
     )
     _confidence_bar(confidence, bar_label)
 
     # Confirmed symptoms
     if symptoms:
-        with st.expander("✅ Confirmed Symptoms", expanded=False):
+        with st.expander(f"✅ {_t('lbl_symptoms', lang)}", expanded=False):
             for sym in symptoms:
                 st.markdown(f"- {sym}")
 
     # Differential diagnoses
     if differentials:
-        with st.expander("🔍 Differential Diagnoses Considered", expanded=False):
+        with st.expander(f"🔍 {_t('lbl_differentials', lang)}", expanded=False):
             for diff in differentials:
                 d_name = _safe_str(diff.get("disease"), "Unknown")
                 d_conf = float(diff.get("confidence") or 0.0)
@@ -293,7 +304,9 @@ def render_block1_diagnosis(diagnosis: dict[str, Any]) -> None:
 # § Block 2 — Immediate Treatment
 # ============================================================================
 
-def render_block2_immediate_treatment(immediate_treatment: dict[str, Any]) -> None:
+def render_block2_immediate_treatment(
+    immediate_treatment: dict[str, Any], lang: str = "en"
+) -> None:
     """
     Block 2: Immediate Treatment numbered list with urgency badges.
     Gracefully omitted when `immediate_treatment` dict is absent or has no steps.
@@ -309,7 +322,7 @@ def render_block2_immediate_treatment(immediate_treatment: dict[str, Any]) -> No
         return
 
     subtitle = " · ".join(filter(None, [urgency, action_win]))
-    _block_header("💊", "Block 2 — Immediate Treatment", subtitle)
+    _block_header("💊", _t("blk_treatment", lang), subtitle)
 
     for step in steps:
         priority = step.get("priority", "—")
@@ -351,7 +364,7 @@ def render_block2_immediate_treatment(immediate_treatment: dict[str, Any]) -> No
 # § Block 3 — Prevention
 # ============================================================================
 
-def render_block3_prevention(prevention: list[str]) -> None:
+def render_block3_prevention(prevention: list[str], lang: str = "en") -> None:
     """
     Block 3: Long-term prevention guidelines as a styled bulleted list.
     Gracefully omitted when `prevention` list is absent or empty.
@@ -359,8 +372,7 @@ def render_block3_prevention(prevention: list[str]) -> None:
     if not prevention:
         return
 
-    _block_header("🛡️", "Block 3 — Prevention Guidelines",
-                  "Long-term measures to prevent recurrence")
+    _block_header("🛡️", _t("blk_prevention", lang), _t("sub_prevention", lang))
 
     items_html = "".join(
         f"""
@@ -389,7 +401,9 @@ def render_block3_prevention(prevention: list[str]) -> None:
 # § Block 4 — Weather Advisory
 # ============================================================================
 
-def render_block4_weather_advisory(weather_alert: dict[str, Any]) -> None:
+def render_block4_weather_advisory(
+    weather_alert: dict[str, Any], lang: str = "en"
+) -> None:
     """
     Block 4: Weather Advisory with colored risk cards and action window.
     Gracefully omitted when severity == 'none' or block is absent.
@@ -411,21 +425,22 @@ def render_block4_weather_advisory(weather_alert: dict[str, Any]) -> None:
     valid_until_raw = _safe_str(weather_alert.get("valid_until"))
     valid_until = _format_iso(valid_until_raw) if valid_until_raw else ""
 
-    _block_header("🌦️", "Block 4 — Weather Advisory")
+    _block_header("🌦️", _t("blk_weather", lang))
 
     badge_html = _severity_badge_html(severity)
 
     # Risk score metric strip
     metric_cols = st.columns(3)
     with metric_cols[0]:
-        st.metric("⚠️ Risk Level", risk_level or severity.capitalize())
+        st.metric(f"⚠️ {_t('lbl_risk', lang)}",
+                  risk_level or severity.capitalize())
     with metric_cols[1]:
         if risk_score_raw is not None:
             score_pct = round(float(risk_score_raw) * 100)
-            st.metric("🦠 Disease Risk Score", f"{score_pct}%")
+            st.metric(f"🦠 {_t('lbl_risk_score', lang)}", f"{score_pct}%")
     with metric_cols[2]:
         if valid_until:
-            st.metric("🕐 Alert Valid Until", valid_until)
+            st.metric(f"🕐 {_t('lbl_alert_valid', lang)}", valid_until)
 
     # Main alert card
     impact_block = (
@@ -446,7 +461,7 @@ def render_block4_weather_advisory(weather_alert: dict[str, Any]) -> None:
                     background:#F0FDF4;border-radius:8px;
                     border-left:3px solid #16A34A;">
           <span style="font-size:0.88rem;color:#166534;">
-            📅&nbsp;<strong>Action Window:</strong>&nbsp;{action_window}
+            📅&nbsp;<strong>{_t('lbl_action_window', lang)}</strong>&nbsp;{action_window}
           </span>
         </div>
         """
@@ -475,7 +490,7 @@ def render_block4_weather_advisory(weather_alert: dict[str, Any]) -> None:
 # § Block 5 — Sources
 # ============================================================================
 
-def render_block5_sources(sources: list[dict[str, Any]]) -> None:
+def render_block5_sources(sources: list[dict[str, Any]], lang: str = "en") -> None:
     """
     Block 5: Knowledge sources list sorted by confidence_score.
     Gracefully omitted when `sources` list is absent or empty.
@@ -489,10 +504,10 @@ def render_block5_sources(sources: list[dict[str, Any]]) -> None:
         reverse=True,
     )
 
-    _block_header("📚", "Block 5 — Knowledge Sources",
+    _block_header("📚", _t("blk_sources", lang),
                   f"{len(sorted_sources)} reference(s) used — sorted by relevance")
 
-    with st.expander("View Sources", expanded=False):
+    with st.expander(_t("lbl_view_sources", lang), expanded=False):
         for i, src in enumerate(sorted_sources, 1):
             title = _safe_str(src.get("title"), "Unknown Source")
             org = _safe_str(src.get("author_organization"))
@@ -553,7 +568,7 @@ def render_block6_disclaimer(
     Uses the structured `disclaimer` dict from the response when present,
     otherwise falls back to the config-level DISCLAIMERS lookup.
     """
-    _block_header("ℹ️", "Block 6 — Disclaimer & Helpline")
+    _block_header("ℹ️", _t("blk_disclaimer", language))
 
     if disclaimer:
         text = _safe_str(disclaimer.get("text"),
@@ -592,7 +607,9 @@ def render_block6_disclaimer(
 # § Block 7 — "Why?" Explanation Control
 # ============================================================================
 
-def render_block7_why_explanation(why_explanation: dict[str, Any]) -> None:
+def render_block7_why_explanation(
+    why_explanation: dict[str, Any], lang: str = "en"
+) -> None:
     """
     Block 7: Expandable 'Why did the AI recommend this?' control.
     Uses st.expander as the toggle mechanism.
@@ -601,8 +618,7 @@ def render_block7_why_explanation(why_explanation: dict[str, Any]) -> None:
     if not why_explanation:
         return
 
-    _block_header("🤔", "Block 7 — Why This Advisory?",
-                  "AI reasoning & confidence breakdown")
+    _block_header("🤔", _t("blk_why", lang), _t("sub_why", lang))
 
     summary = _safe_str(why_explanation.get("summary"))
     model_reasoning = _safe_str(why_explanation.get("model_reasoning"))
@@ -615,7 +631,7 @@ def render_block7_why_explanation(why_explanation: dict[str, Any]) -> None:
         "rag_agent":     "📚 Knowledge Base (RAG)",
     }
 
-    with st.expander("🔎 Why did Agri-Advisor give this recommendation?", expanded=False):
+    with st.expander(_t("lbl_why_expander", lang), expanded=False):
         if summary:
             st.markdown(
                 f'<p style="color:#1F2937;font-size:0.95rem;line-height:1.65;'
@@ -624,7 +640,7 @@ def render_block7_why_explanation(why_explanation: dict[str, Any]) -> None:
             )
 
         if model_reasoning:
-            st.markdown("**🤖 Model Reasoning:**")
+            st.markdown(f"**🤖 {_t('lbl_model_reasoning', lang)}**")
             st.markdown(
                 f'<div style="background:#F9FAFB;border-left:3px solid #6B7280;'
                 f'padding:10px 14px;border-radius:0 6px 6px 0;'
@@ -634,7 +650,7 @@ def render_block7_why_explanation(why_explanation: dict[str, Any]) -> None:
             )
 
         if conf_breakdown:
-            st.markdown("**📊 Confidence by Agent:**")
+            st.markdown(f"**📊 {_t('lbl_confidence_by_agent', lang)}**")
             for agent_key, score in conf_breakdown.items():
                 label = friendly_agents.get(
                     agent_key, agent_key.replace("_", " ").title())
@@ -644,7 +660,7 @@ def render_block7_why_explanation(why_explanation: dict[str, Any]) -> None:
             names = [friendly_agents.get(a, a) for a in agents_used]
             st.markdown(
                 f'<p style="font-size:0.83rem;color:#6B7280;margin-top:8px;">'
-                f'Systems consulted: {" · ".join(names)}</p>',
+                f'{_t("lbl_systems_consulted", lang)} {" · ".join(names)}</p>',
                 unsafe_allow_html=True,
             )
 
@@ -653,7 +669,7 @@ def render_block7_why_explanation(why_explanation: dict[str, Any]) -> None:
 # § Block 8 — Partial-Response Fallback / Raw Answer
 # ============================================================================
 
-def render_block8_raw_answer_fallback(answer: str) -> None:
+def render_block8_raw_answer_fallback(answer: str, lang: str = "en") -> None:
     """
     Block 8: Partial-response safety net.
     Renders the raw markdown `answer` field when structured blocks are
@@ -663,8 +679,8 @@ def render_block8_raw_answer_fallback(answer: str) -> None:
     if not answer:
         return
 
-    _block_header("📋", "Advisory Response",
-                  "Structured blocks not available — showing full AI response")
+    _block_header("📋", _t("blk_raw_answer", lang),
+                  _t("info_translation_partial", lang) if lang != "en" else "")
     st.markdown(answer, unsafe_allow_html=True)
 
 
@@ -672,7 +688,7 @@ def render_block8_raw_answer_fallback(answer: str) -> None:
 # § Orchestrator metadata ribbon
 # ============================================================================
 
-def _render_metadata_ribbon(metadata: dict[str, Any]) -> None:
+def _render_metadata_ribbon(metadata: dict[str, Any], lang: str = "en") -> None:
     """Collapsed ribbon showing agents consulted and response latency."""
     agents = metadata.get("agents_consulted") or []
     latency = metadata.get("latency_ms")
@@ -686,18 +702,21 @@ def _render_metadata_ribbon(metadata: dict[str, Any]) -> None:
         "weather_agent": "Weather Advisory",
         "rag_agent":     "Knowledge Base",
     }
-    with st.expander("🔍 Response Details", expanded=False):
+    with st.expander(_t("lbl_details_expander", lang), expanded=False):
         cols = st.columns(3)
         with cols[0]:
             if agents:
                 names = [friendly_agents.get(a, a) for a in agents]
-                st.markdown(f"**Systems:** {', '.join(names)}")
+                st.markdown(
+                    f"**{_t('lbl_systems', lang)}** {', '.join(names)}")
         with cols[1]:
             if intent:
-                st.markdown(f"**Intent:** {intent.replace('_', ' ').title()}")
+                st.markdown(
+                    f"**{_t('lbl_intent', lang)}** {intent.replace('_', ' ').title()}")
         with cols[2]:
             if latency:
-                st.markdown(f"**Response Time:** {latency} ms")
+                st.markdown(
+                    f"**{_t('lbl_response_time', lang)}** {latency} ms")
 
 
 # ============================================================================
@@ -726,15 +745,13 @@ def render_eight_block_advisory(
     # ── Demo mode banner ─────────────────────────────────────────────────────
     if is_fallback:
         st.warning(
-            "⚠️ **Demo Mode** — The Agri-Advisor server is not running. "
-            "Displaying sample advisory data so you can explore the interface.",
+            _t("demo_mode_warning", lang),
             icon="🔌",
         )
 
     if not response.get("diagnosis") and not response.get("immediate_treatment"):
         st.warning(
-            "Some specialist agents did not return details. The available advisory "
-            "information is shown below; ask a follow-up question for more detail.",
+            _t("lbl_partial_warning", lang),
             icon="ℹ️",
         )
 
@@ -748,7 +765,6 @@ def render_eight_block_advisory(
     disclaimer = response.get("disclaimer")          # may be None
     why_explanation = response.get("why_explanation") or {}
     metadata = response.get("metadata") or {}
-    language = _safe_str(metadata.get("language"), "en")
     session_id = metadata.get("session_id")
 
     # Detect whether the response is "structured" (has any Block 1–7 data)
@@ -860,63 +876,64 @@ def render_eight_block_advisory(
     # ── T-17.7: Single toast if translation degraded ──────────────────────────
     if _translation_warning and lang != "en":
         st.toast(
-            "⚠️ Translation service unavailable — showing original English advisory.",
+            _t("info_translation_warn", lang),
             icon="🌐",
         )
 
     # ── Report heading (T-17.6: st.markdown with UTF-8 str) ──────────────────
     st.markdown("---")
-    st.markdown("## 🌾 Agricultural Advisory Report")
+    # The sidebar toggle lives only in the top navigation bar (ui/app.py);
+    # no duplicate navigation controls are rendered inside the report.
+    st.markdown(f"## {_t('report_heading', lang)}")
 
     # ── Metadata ribbon ──────────────────────────────────────────────────────
     if metadata:
-        _render_metadata_ribbon(metadata)
+        _render_metadata_ribbon(metadata, lang)
 
     st.markdown("---")
 
     # ── Block 1: Diagnosis ───────────────────────────────────────────────────
-    render_block1_diagnosis(_translated_diagnosis)
+    render_block1_diagnosis(_translated_diagnosis, lang)
 
     # ── Block 2: Immediate Treatment ─────────────────────────────────────────
-    render_block2_immediate_treatment(_translated_treatment)
+    render_block2_immediate_treatment(_translated_treatment, lang)
 
     # ── Block 3: Prevention ──────────────────────────────────────────────────
-    render_block3_prevention(_translated_prevention)
+    render_block3_prevention(_translated_prevention, lang)
 
     # ── Block 4: Weather Advisory ────────────────────────────────────────────
-    render_block4_weather_advisory(_translated_weather)
+    render_block4_weather_advisory(_translated_weather, lang)
 
     # ── Block 5: Sources ─────────────────────────────────────────────────────
-    render_block5_sources(sources)
+    render_block5_sources(sources, lang)
 
     # ── Block 6: Disclaimer ──────────────────────────────────────────────────
-    render_block6_disclaimer(_disclaimer, language)
+    render_block6_disclaimer(_disclaimer, lang)
 
     # ── Block 7: "Why?" Explanation ──────────────────────────────────────────
-    render_block7_why_explanation(_translated_why)
+    render_block7_why_explanation(_translated_why, lang)
 
     # ── Block 8: Partial-response fallback ───────────────────────────────────
     if not has_structured_blocks:
-        render_block8_raw_answer_fallback(_translated_answer)
+        render_block8_raw_answer_fallback(_translated_answer, lang)
 
     # ── Follow-up prompt & feedback ───────────────────────────────────────────
     st.markdown("---")
     st.markdown(
-        "💬 **Have another question?** Type your follow-up in the box above and "
-        "click **Ask Agri-Advisor** — your conversation context will be remembered."
+        _t("report_followup", lang)
     )
     st.markdown(
         f'<p style="color:#374151;font-size:0.9rem;margin-top:8px;">{HELPLINE_TEXT}</p>',
         unsafe_allow_html=True,
     )
 
-    st.markdown("**Was this advice helpful?**")
+    st.markdown(_t("report_feedback", lang))
     col_yes, col_no, _ = st.columns([1, 1, 5])
     with col_yes:
-        if st.button("👍 Yes", key=f"helpful_yes_{session_id}"):
+        if st.button(_t("btn_helpful_yes", lang), key=f"helpful_yes_{session_id}"):
             _submit_feedback(session_id, True)
     with col_no:
-        if st.button("👎 No", key=f"helpful_no_{session_id}"):
+        if st.button(_t("btn_helpful_no", lang), key=f"helpful_no_{session_id}"):
             _submit_feedback(session_id, False)
 
 
