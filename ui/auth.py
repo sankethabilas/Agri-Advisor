@@ -58,6 +58,8 @@ def init_auth_session() -> None:
     for key, default in defaults.items():
         if key not in st.session_state:
             st.session_state[key] = default
+    if "admin_authenticated" not in st.session_state:
+        st.session_state["admin_authenticated"] = False
 
 
 # ---------------------------------------------------------------------------

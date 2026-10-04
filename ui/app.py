@@ -37,6 +37,7 @@ T-21 additions (navigation / layout refresh):
 from __future__ import annotations
 import streamlit as st
 from ui.api_client import _ApiError, build_payload, call_orchestrator
+from ui.admin import is_admin_authenticated, render_admin_dashboard
 from ui.auth import (
     clear_auth,
     get_auth_headers,
@@ -168,6 +169,9 @@ def _sync_widget_state() -> None:
     if mode in THEME_OPTIONS:
         st.session_state.theme_mode = mode
 
+if is_admin_authenticated():
+    render_admin_dashboard()
+    st.stop()
 
 _init_session()
 _sync_widget_state()
@@ -663,6 +667,7 @@ st.markdown(
     ),
     unsafe_allow_html=True,
 )
+
 
 _render_top_nav()
 _session_slot = _render_sidebar()

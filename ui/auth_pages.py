@@ -20,6 +20,7 @@ from typing import Any
 
 import streamlit as st
 
+from ui.admin import render_admin_login
 from ui.auth import (
     AuthError,
     call_login,
@@ -132,6 +133,10 @@ def render_login_page() -> None:
             use_container_width=True,
         ):
             st.session_state["auth_page"] = "register"
+            st.rerun()
+
+        if st.button("Admin sign in", key="go_to_admin_login", use_container_width=True):
+            st.session_state["auth_page"] = "admin_login"
             st.rerun()
 
         st.markdown("</div>", unsafe_allow_html=True)
@@ -385,5 +390,7 @@ def render_auth_screen() -> None:
     page = st.session_state.get("auth_page", "login")
     if page == "register":
         render_register_page()
+    elif page == "admin_login":
+        render_admin_login()
     else:
         render_login_page()
