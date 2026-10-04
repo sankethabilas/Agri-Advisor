@@ -1,359 +1,273 @@
 """
 ui/components.py
-Reusable Streamlit rendering components for the Agri-Advisor advisory response.
-
-Task T-08 (original blocks) + Task T-12 (structured 8-block renderer).
-
-The public entry point `render_advisory_response` now delegates to
-`ui.advisory_renderer.render_eight_block_advisory` when the response
-contains structured blocks (diagnosis, immediate_treatment, etc.).
-A legacy flat-answer path is preserved for older API shapes.
-
-Each individual block function is kept here for backwards compatibility
-and can be used standalone if needed.
+Production-grade reusable components for the Agri-Advisor Agricultural Operating System.
 """
 from __future__ import annotations
 
-import re
-from datetime import datetime, timezone
-from typing import Any
-
+import html
+from typing import Any, Dict, List, Optional
 import streamlit as st
 
-from ui.api_client import _ApiError, submit_feedback
-from ui.auth import clear_auth, get_auth_headers
+from ui.api_client import submit_feedback
+from ui.auth import get_auth_headers
 from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE
-from ui.advisory_renderer import render_eight_block_advisory  # T-12
+from ui.advisory_renderer import render_advisory_response, render_eight_block_advisory
+from utils.i18n import get_string
 
 
-# ============================================================================
-# § Utility helpers
-# ============================================================================
+def render_topbar(
+    active_page_name: str,
+    user_id: Optional[str] = None,
+    district: Optional[str] = None,
+    language: str = "en",
+) -> None:
+    """Renders the minimal, premium top navigation header."""
+    user_label = user_id or "Farmer"
+    district_label = district or "Sri Lanka"
 
-def _severity_badge(severity: str) -> str:
-    """Return an HTML badge string for a given weather severity level."""
-    s = SEVERITY_STYLE.get(severity.lower(), SEVERITY_STYLE["none"])
-    weight = "700" if s["bold"] else "500"
-    return (
-        f'<span style="background:{s["bg"]};color:{s["color"]};'
-        f'font-weight:{weight};padding:2px 10px;border-radius:12px;'
-        f'font-size:0.85rem;">{s["label"]}</span>'
-    )
-
-
-def _confidence_badge(label: str) -> str:
-    """Return an HTML badge for High / Medium / Low diagnosis confidence."""
-    mapping = {
-        "high":   ("#166534", "#DCFCE7"),
-        "medium": ("#92400E", "#FEF3C7"),
-        "low":    ("#9A3412", "#FEE2E2"),
-    }
-    color, bg = mapping.get(label.lower(), ("#374151", "#F3F4F6"))
-    return (
-        f'<span style="background:{bg};color:{color};font-weight:600;'
-        f'padding:2px 10px;border-radius:12px;font-size:0.82rem;">{label.capitalize()}</span>'
-    )
-
-
-def _format_datetime(iso_str: str) -> str:
-    """Convert an ISO-8601 timestamp to a human-friendly string."""
-    try:
-        dt = datetime.fromisoformat(iso_str.replace("Z", "+00:00"))
-        return dt.strftime("%a %d %b, %I:%M %p %Z")
-    except (ValueError, AttributeError):
-        return iso_str
-
-
-# ============================================================================
-# § Block 5 — Weather Advisory
-# ============================================================================
-
-def render_weather_alert(weather_alert: dict[str, Any]) -> None:
-    """Block 5: Weather Advisory card (omitted entirely when severity == 'none')."""
-    severity = (weather_alert.get("severity") or "none").lower()
-    if severity == "none":
-        return
-
-    s = SEVERITY_STYLE.get(severity, SEVERITY_STYLE["none"])
-    border_color = s["bg"] if severity in (
-        "none", "low", "moderate") else s["color"]
-
-    st.markdown("---")
-    st.markdown("#### 🌦 Weather Advisory")
-
-    badge_html = _severity_badge(severity)
-    title = weather_alert.get("title", "Weather Alert")
-    message = weather_alert.get("message", "")
-    impact = weather_alert.get("impact_warning", "")
-    valid_until_raw = weather_alert.get("valid_until", "")
-    valid_until = _format_datetime(valid_until_raw) if valid_until_raw else ""
-
-    card_html = f"""
-    <div style="
-        border-left: 5px solid {s['bg']};
-        background: #FAFAFA;
-        padding: 16px 20px;
-        border-radius: 8px;
-        margin-bottom: 12px;
-    ">
-        <div style="margin-bottom:8px;">{badge_html}&nbsp;&nbsp;
-            <strong style="font-size:1.05rem;">{title}</strong>
+    st.markdown(
+        f"""
+        <div class="topbar-container">
+            <div class="topbar-brand">
+                <div class="brand-badge-logo">🌾</div>
+                <div>
+                    <h2 class="brand-text-title">Agri-Advisor OS</h2>
+                    <p class="brand-text-subtitle">Autonomous Agricultural Intelligence</p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    <span>7 Agents Active</span>
+                </div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500; border-left: 1px solid var(--border-subtle); padding-left: 14px;">
+                    📍 <strong>{district_label}</strong> &nbsp;|&nbsp; 👤 {user_label}
+                </div>
+            </div>
         </div>
-        <p style="margin:4px 0;color:#374151;">{message}</p>
-        {f'<p style="margin:8px 0;padding:8px 12px;background:#FEF3C7;border-radius:6px;'
-         f'font-weight:600;color:#92400E;">⚠️ {impact}</p>' if impact else ""}
-        {f'<p style="margin:4px 0;font-size:0.82rem;color:#6B7280;">Valid until: {valid_until}</p>'
-         if valid_until else ""}
-    </div>
-    """
-    st.html(card_html)
-
-
-# ============================================================================
-# § Block 6 — Sources
-# ============================================================================
-
-def render_sources(sources: list[dict[str, Any]]) -> None:
-    """Block 6: Knowledge sources list (omitted when sources is empty)."""
-    if not sources:
-        return
-
-    # Sort descending by confidence_score
-    sorted_sources = sorted(
-        sources,
-        key=lambda s: s.get("confidence_score", 0.0),
-        reverse=True,
-    )
-
-    st.markdown("---")
-    with st.expander("📚 Knowledge Sources", expanded=False):
-        for i, src in enumerate(sorted_sources, 1):
-            title = src.get("title", "Unknown Source")
-            org = src.get("author_organization", "")
-            section = src.get("section", "")
-            url = src.get("reference_url")
-
-            title_html = (
-                f'<a href="{url}" target="_blank" style="color:#1d4ed8;text-decoration:none;">{title}</a>'
-                if url else title
-            )
-            section_html = f' <span style="color:#6B7280;font-size:0.82rem;">({section})</span>' if section else ""
-            org_html = f'<span style="color:#6B7280;font-size:0.85rem;"> — {org}</span>' if org else ""
-
-            st.html(
-                f'<div style="margin-bottom:10px;">'
-                f'<strong style="font-size:0.95rem;">{i}. {title_html}</strong>'
-                f'{section_html}{org_html}'
-                f'</div>'
-            )
-
-
-# ============================================================================
-# § Block 7 — Disclaimer
-# ============================================================================
-
-def render_disclaimer(language: str) -> None:
-    """Block 7: Static AI disclaimer notice."""
-    text = DISCLAIMERS.get(language, DISCLAIMERS["en"])
-    st.markdown("---")
-    st.info(f"ℹ️ **Important Notice**\n\n{text}")
-
-
-# ============================================================================
-# § Block 8 — Follow-up Prompt & Helpline
-# ============================================================================
-
-def render_followup(session_id: str | None = None) -> None:
-    """Block 8: Follow-up prompt, helpline, and feedback controls."""
-    st.markdown("---")
-    st.markdown(
-        "💬 **Have another question?** Type your follow-up in the box above and "
-        "click **Ask Agri-Advisor** — your conversation context will be remembered."
-    )
-    st.markdown(
-        f'<p style="color:#374151;font-size:0.9rem;margin-top:8px;">{HELPLINE_TEXT}</p>',
+        """,
         unsafe_allow_html=True,
     )
 
-    # "Was this helpful?" feedback widget
-    st.markdown("**Was this advice helpful?**")
-    col_yes, col_no, _ = st.columns([1, 1, 5])
-    with col_yes:
-        if st.button("👍 Yes", key=f"helpful_yes_{session_id}"):
-            _send_feedback(session_id, True)
-    with col_no:
-        if st.button("👎 No", key=f"helpful_no_{session_id}"):
-            _send_feedback(session_id, False)
 
-
-def _send_feedback(session_id: str | None, helpful: bool) -> None:
-    """Submit feedback for the legacy flat-response rendering path."""
-    if not session_id:
-        st.error("This advisory has no session ID, so feedback cannot be submitted.")
-        return
-    try:
-        submit_feedback(session_id, helpful, get_auth_headers())
-        st.toast(
-            "Thank you for your feedback!" if helpful else "Sorry to hear that. We'll keep improving!",
-            icon="✅" if helpful else "🙏",
-        )
-    except _ApiError as exc:
-        if exc.status_code == 401:
-            clear_auth()
-            st.rerun()
-        st.error("Feedback could not be submitted. Please try again later.")
-
-
-# ============================================================================
-# § Full Advisory Response renderer
-# ============================================================================
-
-def render_advisory_response(
-    response: dict[str, Any],
-    is_fallback: bool = False,
-    lang: str = "en",
+def render_hero_banner(
+    greeting: str = "Good day 👋",
+    title: str = "Your farm intelligence at a glance.",
+    subtitle: str = "Real-time agro-meteorology, disease surveillance, and AI advisory calibrated for Sri Lanka.",
 ) -> None:
-    """
-    Render the complete eight-block advisory response layout (T-08 / T-12).
+    """Renders the cinematic agricultural SaaS hero card."""
+    st.markdown(
+        f"""
+        <div class="hero-card">
+            <span style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-primary-300);">
+                {greeting}
+            </span>
+            <h1>{title}</h1>
+            <p>{subtitle}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    Delegation strategy:
-    - If the response contains any T-12 structured keys (diagnosis,
-      immediate_treatment, prevention, or why_explanation), delegate
-      entirely to `render_eight_block_advisory` from advisory_renderer.py.
-    - Otherwise fall back to the original flat-markdown rendering path
-      so that older orchestrator responses remain displayable.
 
-    Args:
-        response:    Orchestrator response dict.
-        is_fallback: True when fixture / demo data is being shown.
-        lang:        T-17 target locale code ("en", "si", "ta").
-                     Translation is applied inside render_eight_block_advisory
-                     at render-time; the stored response always stays in English.
-    """
-    # Detect structured T-12 blocks
-    has_structured = any([
-        response.get("diagnosis"),
-        response.get("immediate_treatment"),
-        response.get("prevention"),
-        response.get("why_explanation"),
-    ])
+def render_agent_stepper(current_stage: str = "ready") -> None:
+    """Visually exposes the live multi-agent collaboration pipeline."""
+    agents = [
+        ("🧠", "Orchestrator", "Intent & Routing"),
+        ("🌾", "Crop Agent", "Cultivation"),
+        ("🔬", "Disease Agent", "Pathology"),
+        ("🌦️", "Weather Agent", "Microclimate"),
+        ("📈", "Market Agent", "Economics"),
+        ("📚", "RAG Agent", "DOA Corpus"),
+        ("🛡️", "Sentinel", "Surveillance"),
+        ("💡", "Synthesis", "Final Advisory"),
+    ]
 
-    if has_structured:
-        # T-12 path: fully structured 8-block renderer
-        # T-17: pass lang so output blocks are translated before rendering
-        render_eight_block_advisory(
-            response, is_fallback=is_fallback, lang=lang)
-        return
-
-    # ── Legacy path: flat markdown answer (pre-T-12 responses) ────────────
-    if is_fallback:
-        st.warning(
-            "⚠️ **Demo Mode** — The Agri-Advisor server is not running. "
-            "Displaying sample advisory data so you can explore the interface.",
-            icon="🔌",
+    items_html = ""
+    for icon, name, sub in agents:
+        status_class = "agent-step-done" if current_stage == "completed" else (
+            "agent-step-active" if current_stage == "processing" else "agent-step-waiting"
+        )
+        status_text = "Verified" if current_stage == "completed" else (
+            "Analyzing" if current_stage == "processing" else "Ready"
         )
 
-    answer = response.get("answer", "")
-    sources = response.get("sources", [])
-    weather_alert = response.get("weather_alert", {})
-    metadata = response.get("metadata", {})
-    language = metadata.get("language", "en")
-    session_id = metadata.get("session_id")
+        items_html += f"""
+        <div class="agent-step-item {status_class}">
+            <div class="agent-step-icon">{icon}</div>
+            <div class="agent-step-label">{name}</div>
+            <div class="agent-step-status">{status_text}</div>
+        </div>
+        """
 
-    if answer:
-        st.markdown("### 📋 Advisory Response")
-
-        def _badge_replace(m: re.Match) -> str:  # type: ignore[type-arg]
-            label = m.group(0)
-            return f"{label} {_confidence_badge(label)}"
-
-        badged_answer = re.sub(
-            r"\b(High|Medium|Low)\b(?=.*confidence)",
-            _badge_replace,
-            answer,
-            count=1,
-            flags=re.IGNORECASE | re.DOTALL,
-        )
-        st.markdown(badged_answer, unsafe_allow_html=True)
-
-    agents = metadata.get("agents_consulted", [])
-    latency = metadata.get("latency_ms")
-    if agents or latency:
-        with st.expander("🔍 Response details", expanded=False):
-            if agents:
-                friendly_names = {
-                    "disease_agent": "Disease Identification",
-                    "weather_agent": "Weather Advisory",
-                    "rag_agent":     "Knowledge Base",
-                }
-                names = [friendly_names.get(a, a) for a in agents]
-                st.markdown(f"**Systems consulted:** {', '.join(names)}")
-            if latency:
-                st.markdown(f"**Response time:** {latency} ms")
-
-    render_weather_alert(weather_alert)
-    render_sources(sources)
-    render_disclaimer(language)
-    render_followup(session_id)
+    st.markdown(
+        f"""
+        <div class="agent-flow-container">
+            <div class="agent-flow-title">
+                <span>⚡ Multi-Agent Intelligence Pipeline</span>
+            </div>
+            <div class="agent-stepper">
+                {items_html}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
-# ============================================================================
-# § Error renderer
-# ============================================================================
+def render_bento_weather_card(
+    district: str = "Colombo",
+    temp_c: float = 29.5,
+    humidity: int = 78,
+    condition: str = "Partly Cloudy",
+    disease_risk: str = "Moderate",
+) -> None:
+    """Renders the Weather Bento Card."""
+    risk_color = "#EA580C" if disease_risk.lower() in ("high", "moderate") else "#10B981"
+    risk_bg = "#FFEDD5" if disease_risk.lower() in ("high", "moderate") else "#D1FAE5"
 
-def render_error(status_code: int, body: dict[str, Any]) -> None:
-    """
-    Render plain-language error messages mapped to HTTP codes (ui-spec.md §6).
-    Never exposes raw error.code, request_id, or stack traces to the farmer.
-    """
-    friendly: dict[int, str] = {
-        400: "Please check your input — make sure your question and district are filled in.",
-        401: "Your session has expired. Please log in again.",
-        403: "You don't have access to this feature.",
-        404: "We couldn't find advice for that crop or district. "
-             "Try selecting a different district or rephrasing your question.",
-        422: "There's a problem with your input. "
-             "Please check the district and question fields and try again.",
-        429: "You've sent too many requests. Please wait a moment and try again.",
-        500: "Something went wrong on our end. Please try again shortly.",
-        502: "Something went wrong on our end. Please try again shortly.",
-        503: "The advisory service is temporarily unavailable. Please try again shortly.",
-        504: "The advisory is taking too long to respond. Please try again in a moment.",
-    }
-    message = friendly.get(
-        status_code, "An unexpected error occurred. Please try again.")
-    st.error(f"❌ {message}")
+    st.markdown(
+        f"""
+        <div class="bento-card" style="height: 100%;">
+            <div class="bento-header">
+                <div class="bento-title">🌦️ Agro-Weather</div>
+                <span class="bento-badge" style="background: var(--accent-weather-bg); color: var(--accent-weather);">
+                    {district}
+                </span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 12px; margin: 12px 0;">
+                <div class="bento-stat-number">{temp_c:.1f}°C</div>
+                <div style="font-size: 1rem; color: var(--text-secondary); font-weight: 500;">{condition}</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px;">
+                <div style="background: var(--bg-subtle); padding: 8px 12px; border-radius: var(--radius-md);">
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Relative Humidity</div>
+                    <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">{humidity}%</div>
+                </div>
+                <div style="background: {risk_bg}; padding: 8px 12px; border-radius: var(--radius-md);">
+                    <div style="font-size: 0.75rem; color: {risk_color};">Fungal Risk</div>
+                    <div style="font-size: 0.95rem; font-weight: 700; color: {risk_color};">{disease_risk}</div>
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    # Debug details hidden in an expander (for devs, never primary text)
-    with st.expander("Technical details (for support use)", expanded=False):
-        st.code(f"HTTP {status_code}\n{body}", language="text")
+
+def render_bento_crop_health(
+    monitored_crops: int = 3,
+    avg_health_pct: int = 92,
+    active_advisories: int = 1,
+) -> None:
+    """Renders the Crop Health Bento Card."""
+    st.markdown(
+        f"""
+        <div class="bento-card" style="height: 100%;">
+            <div class="bento-header">
+                <div class="bento-title">🌾 Crop Health Index</div>
+                <span class="bento-badge" style="background: var(--accent-success-bg); color: var(--accent-success);">
+                    Good Standing
+                </span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 10px; margin: 12px 0;">
+                <div class="bento-stat-number">{avg_health_pct}%</div>
+                <div style="font-size: 0.88rem; color: var(--color-primary-600); font-weight: 600;">Optimal Vigor</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px;">
+                <div style="background: var(--bg-subtle); padding: 8px 12px; border-radius: var(--radius-md);">
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Monitored Plots</div>
+                    <div style="font-size: 0.95rem; font-weight: 700;">{monitored_crops} Fields</div>
+                </div>
+                <div style="background: var(--bg-subtle); padding: 8px 12px; border-radius: var(--radius-md);">
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Active Advisories</div>
+                    <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary-700);">{active_advisories} Active</div>
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
-# ============================================================================
-# § Conversation history renderer
-# ============================================================================
+def render_bento_market_card(
+    top_commodity: str = "Paddy (Nadu)",
+    price_lkr_kg: float = 125.0,
+    change_pct: float = 2.4,
+) -> None:
+    """Renders the Market Prices Bento Card."""
+    trend_color = "#10B981" if change_pct >= 0 else "#EF4444"
+    trend_sign = "+" if change_pct >= 0 else ""
 
-def render_conversation_history(history: list[dict[str, Any]]) -> None:
-    """Render the multi-turn conversation history above the response area."""
-    if not history:
-        return
+    st.markdown(
+        f"""
+        <div class="bento-card" style="height: 100%;">
+            <div class="bento-header">
+                <div class="bento-title">📈 Commodity Market</div>
+                <span class="bento-badge" style="background: var(--accent-market-bg); color: var(--accent-market);">
+                    Pettah / Dambulla
+                </span>
+            </div>
+            <div style="margin: 12px 0;">
+                <div style="font-size: 0.88rem; color: var(--text-muted); font-weight: 500;">{top_commodity}</div>
+                <div style="display: flex; align-items: baseline; gap: 8px;">
+                    <div class="bento-stat-number">Rs. {price_lkr_kg:.0f}</div>
+                    <div style="font-size: 0.85rem; font-weight: 700; color: {trend_color};">
+                        {trend_sign}{change_pct:.1f}% vs last week
+                    </div>
+                </div>
+            </div>
+            <div style="background: var(--bg-subtle); padding: 8px 12px; border-radius: var(--radius-md); font-size: 0.8rem; color: var(--text-secondary);">
+                💡 <em>Price trending upward. Consider forward contracts.</em>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    st.markdown("---")
-    st.markdown("#### 🗂 Conversation History")
 
-    with st.expander(f"Previous exchanges ({len(history)})", expanded=False):
-        for idx, turn in enumerate(reversed(history), 1):
-            q = turn.get("query", "")
-            district = turn.get("district", "")
-            summary = turn.get("answer_summary", "")
+def render_bento_sentinel_alert(
+    level: str = "Normal",
+    district: str = "Anuradhapura",
+    details: str = "Surveillance scans normal. No active regional outbreaks.",
+) -> None:
+    """Renders the Outbreak Sentinel Alert Bento Card."""
+    is_outbreak = level.lower() == "outbreak"
+    is_watch = level.lower() == "watch"
 
-            st.markdown(
-                f"""
-<div style="border-left:3px solid #4ADE80;padding:8px 14px;margin-bottom:10px;background:#F0FDF4;border-radius:0 6px 6px 0;">
-  <p style="margin:0 0 4px 0;font-size:0.8rem;color:#6B7280;">Turn {len(history) - idx + 1} · {district}</p>
-  <p style="margin:0 0 4px 0;font-weight:600;color:#166534;">Q: {q}</p>
-  {f'<p style="margin:0;font-size:0.9rem;color:#374151;">{summary}</p>' if summary else ""}
-</div>
-""",
-                unsafe_allow_html=True,
-            )
+    bg = "#FEE2E2" if is_outbreak else ("#FEF3C7" if is_watch else "#ECFDF5")
+    color = "#991B1B" if is_outbreak else ("#92400E" if is_watch else "#065F46")
+    badge_text = "CRITICAL OUTBREAK" if is_outbreak else ("WATCH ADVISORY" if is_watch else "CLEAN STATUS")
+
+    st.markdown(
+        f"""
+        <div class="bento-card" style="background: {bg}; border-color: {color}33;">
+            <div class="bento-header">
+                <div class="bento-title" style="color: {color};">🛡️ Outbreak Sentinel</div>
+                <span class="bento-badge" style="background: {color}; color: #ffffff;">
+                    {badge_text}
+                </span>
+            </div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: {color}; margin-bottom: 4px;">
+                {district} Surveillance Zone
+            </div>
+            <div style="font-size: 0.85rem; color: {color}; opacity: 0.9; line-height: 1.4;">
+                {details}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_error(error_msg: str) -> None:
+    """Renders a refined, accessible error card."""
+    st.markdown(
+        f"""
+        <div style="background: #FEF2F2; border: 1px solid #FCA5A5; border-radius: var(--radius-md); padding: 16px 20px; color: #991B1B; margin-bottom: 16px;">
+            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">⚠️ Notice</div>
+            <div style="font-size: 0.88rem;">{html.escape(error_msg)}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
