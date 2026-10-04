@@ -1,7 +1,22 @@
+import sys
+from pathlib import Path
+
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+sys.path.insert(
+    0,
+    str(PROJECT_ROOT)
+)
+
 from agents.rag.agent import RAGAgent
+from orchestrator.schemas import RagRetrieveRequest
 
 
-# 15 representative farmer queries
+# Original 15 representative farmer queries from T-11.
+# Keep these unchanged so T-23 can be compared fairly
+# against the original baseline.
+
 test_queries = [
     "My rice leaves have yellow spots",
     "Rice leaves have narrow brown lesions",
@@ -22,48 +37,104 @@ test_queries = [
 
 
 def main():
+
     agent = RAGAgent()
 
-    correct_count = 0
+    print()
+    print("=" * 75)
+    print("T-23 Retrieval Quality Evaluation")
+    print("=" * 75)
 
-    print("\nRAG Retrieval Quality Test")
-    print("=" * 60)
+    print()
+    print("T-11 Baseline:")
+    print("Correct top-ranked results : 14 / 15")
+    print("Top-1 retrieval accuracy   : 93.33%")
 
-    for index, query in enumerate(test_queries, start=1):
+    print()
+    print("=" * 75)
 
-        embedding = agent.encode_query(query)
+    for index, query in enumerate(
+        test_queries,
+        start=1
+    ):
 
-        results = agent.search(
-            query_embedding=embedding,
-            top_k=3
+        request = RagRetrieveRequest(
+            query=query,
+            top_k=3,
+            min_score=0.60,
         )
 
-        sources, confidence = agent.build_sources(
-            results,
-            min_score=0.60
+        response = agent.retrieve(
+            request
         )
 
-        print(f"\nTest {index}")
+        print()
+        print(f"Test {index}")
         print(f"Query: {query}")
 
-        if not sources:
-            print("Top Result: No relevant document found")
+        if not response.sources:
+
+            print(
+                "Top Result: "
+                "No relevant document found"
+            )
+
+            print("Source ID: N/A")
             print("Score: N/A")
-            print("Relevant? NO")
 
         else:
-            top_source = sources[0]
 
-            print(f"Top Result: {top_source['title']}")
-            print(f"Source: {top_source['source']}")
-            print(f"Score: {top_source['score']:.4f}")
+            top_source = (
+                response.sources[0]
+            )
 
-            # Manually inspect the result and change this later
-            print("Relevant?: REVIEW")
+            print(
+                f"Top Result: "
+                f"{top_source.title}"
+            )
 
-    print("\n" + "=" * 60)
-    print("Review each top-ranked result manually.")
-    print("Target: At least 12 out of 15 must be genuinely relevant.")
+            print(
+                f"Source ID: "
+                f"{top_source.source_id}"
+            )
+
+            print(
+                f"Source: "
+                f"{top_source.source}"
+            )
+
+            if response.confidence:
+
+                print(
+                    f"Score: "
+                    f"{response.confidence[0]:.4f}"
+                )
+
+        print(
+            "Retrieval Method:",
+            agent.last_retrieval_method
+        )
+
+        print(
+            "Semantic Top Similarity:",
+            f"{agent.last_top_similarity:.4f}"
+        )
+
+        print(
+            "Relevant?: REVIEW"
+        )
+
+    print()
+    print("=" * 75)
+    print(
+        "Review each top-ranked result "
+        "using the same relevance criteria as T-11."
+    )
+    print(
+        "Record the number of correct "
+        "top-ranked documents out of 15."
+    )
+    print("=" * 75)
 
 
 if __name__ == "__main__":

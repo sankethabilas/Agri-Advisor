@@ -107,7 +107,10 @@ class LLMClient:
                 if response.choices and len(response.choices) > 0:
                     return response.choices[0].message.content or ""
             except Exception as exc:
-                logger.warning(f"Groq SDK call failed ({exc}), falling back to REST request.")
+                logger.warning(
+                    "Groq SDK call failed (%s), falling back to REST request.",
+                    type(exc).__name__,
+                )
 
         # Fallback to direct HTTP REST request
         headers = {

@@ -22,7 +22,6 @@
       "name": "Sri Lanka Department of Agriculture - Rice Blast"
     }
   },
-
   "rice_sheath_blight": {
     "disease": "Sheath Blight",
     "chemical": [],
@@ -48,7 +47,6 @@
       "name": "Sri Lanka Department of Agriculture - Sheath Blight"
     }
   },
-
   "rice_brown_spot": {
     "disease": "Brown Spot",
     "chemical": [
@@ -76,9 +74,9 @@
     "source": {
       "source_id": "R-D-003",
       "name": "Sri Lanka Department of Agriculture - Brown Spot"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "rice_false_smut": {
     "disease": "False Smut",
     "chemical": [],
@@ -104,7 +102,6 @@
       "name": "Sri Lanka Department of Agriculture - False Smut"
     }
   },
-
   "rice_leaf_scald": {
     "disease": "Leaf Scald",
     "chemical": [],
@@ -126,7 +123,6 @@
       "name": "Sri Lanka Department of Agriculture - Leaf Scald"
     }
   },
-
   "rice_sheath_rot": {
     "disease": "Sheath Rot",
     "chemical": [],
@@ -152,7 +148,6 @@
       "name": "Sri Lanka Department of Agriculture - Sheath Rot"
     }
   },
-
   "rice_narrow_brown_leaf_spot": {
     "disease": "Narrow Brown Leaf Spot",
     "chemical": [],
@@ -176,7 +171,6 @@
       "name": "Sri Lanka Department of Agriculture - Narrow Brown Leaf Spot"
     }
   },
-
   "rice_bacterial_leaf_blight": {
     "disease": "Bacterial Leaf Blight",
     "chemical": [],
@@ -198,7 +192,6 @@
       "name": "Sri Lanka Department of Agriculture - Bacterial Leaf Blight"
     }
   },
-
   "tomato_early_blight": {
     "disease": "Tomato Early Blight",
     "chemical": [
@@ -215,9 +208,9 @@
     "source": {
       "source_id": "T-D-002",
       "name": "Sri Lanka Department of Agriculture"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "tomato_late_blight": {
     "disease": "Tomato Late Blight",
     "chemical": [
@@ -234,9 +227,9 @@
     "source": {
       "source_id": "T-D-003",
       "name": "Sri Lanka Department of Agriculture"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "tomato_target_spot": {
     "disease": "Tomato Target Spot",
     "chemical": [],
@@ -248,7 +241,6 @@
       "name": "Sri Lanka Department of Agriculture"
     }
   },
-
   "tomato_powdery_mildew": {
     "disease": "Tomato Powdery Mildew",
     "chemical": [
@@ -265,9 +257,9 @@
     "source": {
       "source_id": "T-D-005",
       "name": "Sri Lanka Department of Agriculture"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "tomato_anthracnose": {
     "disease": "Tomato Anthracnose",
     "chemical": [
@@ -285,9 +277,9 @@
     "source": {
       "source_id": "T-D-006",
       "name": "Sri Lanka Department of Agriculture"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "tomato_septoria_leaf_spot": {
     "disease": "Tomato Septoria Leaf Spot",
     "chemical": [
@@ -304,9 +296,9 @@
     "source": {
       "source_id": "T-D-007",
       "name": "Sri Lanka Department of Agriculture"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "tomato_collar_root_rot": {
     "disease": "Tomato Collar Rot and Root Rot",
     "chemical": [],
@@ -318,7 +310,6 @@
       "name": "Sri Lanka Department of Agriculture"
     }
   },
-
   "tomato_bacterial_wilt": {
     "disease": "Tomato Bacterial Wilt",
     "chemical": [],
@@ -338,7 +329,6 @@
       "name": "Sri Lanka Department of Agriculture"
     }
   },
-
   "tomato_yellow_leaf_curl_virus": {
     "disease": "Tomato Yellow Leaf Curl Virus",
     "chemical": [
@@ -360,9 +350,9 @@
     "source": {
       "source_id": "T-D-010",
       "name": "Sri Lanka Department of Agriculture"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "tomato_curly_top_virus": {
     "disease": "Tomato Curly Top Virus",
     "chemical": [
@@ -384,9 +374,9 @@
     "source": {
       "source_id": "T-D-011",
       "name": "Sri Lanka Department of Agriculture"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "chilli_damping_off": {
     "disease": "Chilli Damping-off",
     "chemical": [
@@ -411,9 +401,9 @@
     "source": {
       "source_id": "DOA-FIELD-CROP-GUIDE",
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "chilli_anthracnose": {
     "disease": "Chilli Anthracnose",
     "chemical": [
@@ -441,9 +431,9 @@
     "source": {
       "source_id": "DOA-FIELD-CROP-GUIDE",
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "chilli_cercospora_leaf_spot": {
     "disease": "Chilli Cercospora Leaf Spot",
     "chemical": [
@@ -468,9 +458,9 @@
     "source": {
       "source_id": "DOA-FIELD-CROP-GUIDE",
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "chilli_choanephora_blight": {
     "disease": "Chilli Choanephora Blight",
     "chemical": [
@@ -492,9 +482,9 @@
     "source": {
       "source_id": "DOA-FIELD-CROP-GUIDE",
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "chilli_collar_rot": {
     "disease": "Chilli Collar Rot",
     "chemical": [
@@ -513,9 +503,9 @@
     "source": {
       "source_id": "DOA-FIELD-CROP-GUIDE",
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "chilli_powdery_mildew": {
     "disease": "Chilli Powdery Mildew",
     "chemical": [
@@ -535,9 +525,9 @@
     "source": {
       "source_id": "DOA-FIELD-CROP-GUIDE",
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "chilli_bacterial_wilt": {
     "disease": "Chilli Bacterial Wilt",
     "chemical": [],
@@ -558,7 +548,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "chilli_leaf_curl_virus": {
     "disease": "Chilli Leaf Curl Virus",
     "chemical": [],
@@ -578,7 +567,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "maize_banded_leaf_sheath_blight": {
     "disease": "Maize Banded Leaf and Sheath Blight",
     "chemical": [],
@@ -597,7 +585,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "maize_southern_rust": {
     "disease": "Maize Southern Rust",
     "chemical": [],
@@ -609,7 +596,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "maize_physoderma_brown_spot": {
     "disease": "Maize Physoderma Brown Spot",
     "chemical": [],
@@ -627,7 +613,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "maize_bacterial_stalk_rot": {
     "disease": "Maize Bacterial Stalk Rot",
     "chemical": [],
@@ -645,7 +630,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "rice_bakanae": {
     "disease": "Bakanae",
     "chemical": [],
@@ -667,7 +651,6 @@
       "name": "IRRI Rice Diseases Online Resource"
     }
   },
-
   "rice_stem_rot": {
     "disease": "Stem Rot",
     "chemical": [],
@@ -679,7 +662,6 @@
       "name": "IRRI Rice Diseases Online Resource"
     }
   },
-
   "rice_bacterial_leaf_streak": {
     "disease": "Bacterial Leaf Streak",
     "chemical": [],
@@ -691,7 +673,6 @@
       "name": "IRRI Rice Diseases Online Resource"
     }
   },
-
   "rice_grassy_stunt": {
     "disease": "Grassy Stunt",
     "chemical": [],
@@ -703,7 +684,6 @@
       "name": "IRRI Rice Diseases Online Resource"
     }
   },
-
   "rice_ragged_stunt": {
     "disease": "Ragged Stunt",
     "chemical": [],
@@ -715,7 +695,6 @@
       "name": "IRRI Rice Diseases Online Resource"
     }
   },
-
   "tomato_damping_off": {
     "disease": "Tomato Damping-off",
     "chemical": [
@@ -739,9 +718,9 @@
     "source": {
       "source_id": "T-D-001",
       "name": "Sri Lanka Department of Agriculture"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "tomato_spotted_wilt_virus": {
     "disease": "Tomato Spotted Wilt Virus",
     "chemical": [
@@ -763,9 +742,9 @@
     "source": {
       "source_id": "T-D-012",
       "name": "Sri Lanka Department of Agriculture"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "tomato_cucumber_mosaic_virus": {
     "disease": "Tomato Cucumber Mosaic Virus",
     "chemical": [
@@ -784,9 +763,9 @@
     "source": {
       "source_id": "T-D-013",
       "name": "Sri Lanka Department of Agriculture"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "chilli_cucumber_mosaic_virus": {
     "disease": "Chilli Cucumber Mosaic Virus",
     "chemical": [],
@@ -808,7 +787,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "maize_helminthosporium_leaf_spot": {
     "disease": "Maize Helminthosporium Leaf Spot",
     "chemical": [],
@@ -826,7 +804,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "maize_northern_leaf_blight": {
     "disease": "Maize Northern Leaf Blight",
     "chemical": [],
@@ -842,7 +819,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "peanut_early_late_leaf_spot": {
     "disease": "Peanut Early and Late Leaf Spot",
     "chemical": [
@@ -856,9 +832,9 @@
     "source": {
       "source_id": "DOA-FIELD-CROP-GUIDE",
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "peanut_rust": {
     "disease": "Peanut Rust",
     "chemical": [],
@@ -870,7 +846,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "peanut_collar_rot": {
     "disease": "Peanut Collar Rot",
     "chemical": [],
@@ -882,7 +857,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "peanut_bud_necrosis": {
     "disease": "Peanut Bud Necrosis",
     "chemical": [],
@@ -898,7 +872,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "legume_cercospora_leaf_spot": {
     "disease": "Legume Cercospora Leaf Spot",
     "chemical": [
@@ -912,9 +885,9 @@
     "source": {
       "source_id": "DOA-FIELD-CROP-GUIDE",
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "legume_powdery_mildew": {
     "disease": "Legume Powdery Mildew",
     "chemical": [
@@ -927,9 +900,9 @@
     "source": {
       "source_id": "DOA-FIELD-CROP-GUIDE",
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "legume_anthracnose": {
     "disease": "Legume Anthracnose",
     "chemical": [
@@ -942,9 +915,9 @@
     "source": {
       "source_id": "DOA-FIELD-CROP-GUIDE",
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
-    }
+    },
+    "safety_caveat": "Safety note: Use only pesticides currently registered in Sri Lanka for the crop and target pest or disease. Follow the current product label for dosage, personal protective equipment (PPE), re-entry interval and pre-harvest interval (PHI). If this stored recommendation conflicts with the current product label or current Department of Agriculture / Registrar of Pesticides guidance, follow the current official guidance."
   },
-
   "legume_yellow_mosaic_virus": {
     "disease": "Legume Yellow Mosaic Virus",
     "chemical": [],
@@ -962,7 +935,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "legume_leaf_curl_virus": {
     "disease": "Legume Leaf Curl Virus",
     "chemical": [],
@@ -980,7 +952,6 @@
       "name": "Sri Lanka Department of Agriculture - Field Crop Disease, Pest and Nutrient Identification Guide"
     }
   },
-
   "legume_bacterial_blister_purple_seed_stain": {
     "disease": "Legume Bacterial Blister and Purple Seed Stain",
     "chemical": [],

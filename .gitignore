@@ -104,3 +104,6 @@ chroma_store/
 
 # Authentication user database
 data/users.sqlite3*
+
+# Local T-31 backups
+backups/t31/
