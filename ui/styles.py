@@ -426,7 +426,7 @@ hr {
 
 /* ── Theme-aware Streamlit surfaces ─────────────────────────────────────── */
 :root {
-    color-scheme: light dark;
+    color-scheme: light;
     --ui-page: #F8FAFC;
     --ui-surface: #FFFFFF;
     --ui-surface-muted: #F0FDF4;
@@ -437,13 +437,13 @@ hr {
 }
 
 .stApp {
-    background: var(--ui-page) !important;
-    color: var(--ui-text) !important;
+    background: transparent !important;
+    color: inherit !important;
 }
 .stApp p, .stApp li, .stApp label,
 .stApp [data-testid="stMarkdownContainer"],
 .stApp .stCaption {
-    color: var(--ui-text) !important;
+    color: inherit !important;
 }
 .stTextInput input, .stTextArea textarea,
 .stSelectbox div[data-baseweb="select"] > div {
@@ -465,47 +465,48 @@ hr {
     color: var(--ui-text) !important;
 }
 
-/* Follow the operating-system theme when System is selected. */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --ui-page: #111827;
-        --ui-surface: #1F2937;
-        --ui-surface-muted: #17251D;
-        --ui-text: #F3F4F6;
-        --ui-text-muted: #D1D5DB;
-        --ui-border: #4B5563;
-        --ui-input-border: #15803D;
-    }
-    .stAppHeader, header[data-testid="stHeader"] {
-        background: #111827 !important;
-    }
-    .stTextInput input, .stTextArea textarea,
-    .stSelectbox div[data-baseweb="select"] > div,
-    [data-baseweb="popover"] {
-        background: #1F2937 !important;
-        color: #F9FAFB !important;
-    }
-    .auth-card {
-        background: rgba(31, 41, 55, 0.98) !important;
-        border-color: #4B5563 !important;
-    }
-    .auth-title, .advisory-container h3, .advisory-container h4,
-    .advisory-block-header h3 {
-        color: #BBF7D0 !important;
-    }
-    .auth-subtitle, .auth-switch-text, .char-counter {
-        color: #D1D5DB !important;
-    }
-    .diagnosis-card, .prevention-list {
-        background: #163A27 !important;
-        border-color: #166534 !important;
-    }
-    hr { border-top-color: #4B5563 !important; }
-}
+</style>
+"""
 
-/* Explicit Dark mode selected in the sidebar. */
-html:has(.theme-dark),
-body:has(.theme-dark) { color-scheme: dark; }
+# Explicit Light mode is injected after GLOBAL_CSS so it wins over browser and
+# operating-system defaults. Keep the colors in variables for consistent
+# contrast across Streamlit surfaces and HTML advisory cards.
+LIGHT_MODE_CSS = """
+<style>
+:root {
+    color-scheme: light;
+    --ui-page: #F8FAFC;
+    --ui-surface: #FFFFFF;
+    --ui-surface-muted: #F0FDF4;
+    --ui-text: #1F2937;
+    --ui-text-muted: #6B7280;
+    --ui-border: #D1D5DB;
+    --ui-input-border: #A7F3D0;
+}
+.stApp, .stAppHeader, header[data-testid="stHeader"] {
+    background: var(--ui-page) !important;
+    color: var(--ui-text) !important;
+}
+.stApp p, .stApp li, .stApp label,
+.stApp [data-testid="stMarkdownContainer"], .stApp .stCaption,
+.streamlit-expanderHeader, .stSpinner p {
+    color: var(--ui-text) !important;
+}
+.stTextInput input, .stTextArea textarea,
+.stSelectbox div[data-baseweb="select"] > div,
+[data-baseweb="popover"] {
+    background: var(--ui-surface) !important;
+    color: var(--ui-text) !important;
+    border-color: var(--ui-input-border) !important;
+}
+.advisory-container, .treatment-step, .source-card,
+[data-testid="stMetric"], .auth-card {
+    background: var(--ui-surface) !important;
+    color: var(--ui-text) !important;
+    border-color: var(--ui-border) !important;
+}
+[data-testid="stSidebar"] { background: var(--ui-surface-muted) !important; }
+hr { border-top-color: var(--ui-border) !important; }
 </style>
 """
 
@@ -514,6 +515,7 @@ body:has(.theme-dark) { color-scheme: dark; }
 DARK_MODE_CSS = """
 <style>
 :root {
+    color-scheme: dark;
     --ui-page: #111827;
     --ui-surface: #1F2937;
     --ui-surface-muted: #17251D;
@@ -539,6 +541,38 @@ DARK_MODE_CSS = """
     background: #1F2937 !important;
     color: #F3F4F6 !important;
     border-color: #4B5563 !important;
+}
+[data-testid="stMarkdownContainer"] div[style*="background:#FFFFFF"],
+[data-testid="stMarkdownContainer"] div[style*="background: #FFFFFF"],
+[data-testid="stMarkdownContainer"] div[style*="background:#FAFAFA"],
+[data-testid="stMarkdownContainer"] div[style*="background: #FAFAFA"] {
+    background: #263445 !important;
+    border-color: #4B5563 !important;
+}
+[data-testid="stMarkdownContainer"] div[style*="background:#F0FDF4"],
+[data-testid="stMarkdownContainer"] div[style*="background: #F0FDF4"],
+[data-testid="stMarkdownContainer"] div[style*="background:#EFF6FF"],
+[data-testid="stMarkdownContainer"] div[style*="background: #EFF6FF"],
+[data-testid="stMarkdownContainer"] div[style*="background:#F9FAFB"],
+[data-testid="stMarkdownContainer"] div[style*="background: #F9FAFB"] {
+    background: #1F2937 !important;
+    border-color: #4B5563 !important;
+}
+[data-testid="stMarkdownContainer"] [style*="color:#1F2937"],
+[data-testid="stMarkdownContainer"] [style*="color: #1F2937"],
+[data-testid="stMarkdownContainer"] [style*="color:#374151"],
+[data-testid="stMarkdownContainer"] [style*="color: #374151"] {
+    color: #E5E7EB !important;
+}
+[data-testid="stMarkdownContainer"] [style*="color:#14532D"],
+[data-testid="stMarkdownContainer"] [style*="color: #14532D"],
+[data-testid="stMarkdownContainer"] [style*="color:#166534"],
+[data-testid="stMarkdownContainer"] [style*="color: #166534"] {
+    color: #BBF7D0 !important;
+}
+[data-testid="stMarkdownContainer"] [style*="color:#6B7280"],
+[data-testid="stMarkdownContainer"] [style*="color: #6B7280"] {
+    color: #CBD5E1 !important;
 }
 .auth-title, .advisory-container h3, .advisory-container h4,
 .advisory-block-header h3 { color: #BBF7D0 !important; }
