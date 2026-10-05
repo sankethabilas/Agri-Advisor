@@ -47,7 +47,7 @@ class LLMClient:
             self.provider = "groq"
             configured_key = getattr(settings, "groq_api_key", "") or os.getenv("GROQ_API_KEY", "")
             self.api_key = api_key if api_key is not None else configured_key
-            self.model = model or getattr(settings, "groq_model", "llama-3.1-8b-instant") or "llama-3.1-8b-instant"
+            self.model = model or getattr(settings, "groq_model", "qwen/qwen3.8-27b") or "qwen/qwen3.8-27b"
 
         self._groq_sdk_client = None
         if self.provider == "groq" and self.api_key:

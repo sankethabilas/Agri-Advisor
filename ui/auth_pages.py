@@ -26,7 +26,7 @@ from ui.auth import (
     call_register,
     store_token,
 )
-from ui.config import DISTRICTS, LANGUAGES
+from ui.config import DISTRICTS, LANGUAGES, get_app_icon_base64
 
 
 # ---------------------------------------------------------------------------
@@ -54,12 +54,14 @@ def render_login_page() -> None:
     """Render the login form with client-side validation (T-20.2)."""
     _, mid, _ = st.columns([1, 2, 1])
     with mid:
+        logo_b64 = get_app_icon_base64()
+        logo_html = f'<img src="data:image/png;base64,{logo_b64}" style="width: 56px; height: 56px; object-fit: contain; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);" alt="Logo" />' if logo_b64 else '<span class="auth-icon">🌾</span>'
         # Header inside card
         st.markdown(
-            """
+            f"""
             <div class="auth-card">
                 <div class="auth-header-block">
-                    <span class="auth-icon">🌾</span>
+                    {logo_html}
                     <h2 class="auth-title">Welcome Back</h2>
                     <p class="auth-subtitle">Sign in to your Agri-Advisor account</p>
                 </div>
@@ -155,11 +157,13 @@ def render_register_page() -> None:
     """
     _, mid, _ = st.columns([1, 2, 1])
     with mid:
+        logo_b64 = get_app_icon_base64()
+        logo_html = f'<img src="data:image/png;base64,{logo_b64}" style="width: 56px; height: 56px; object-fit: contain; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);" alt="Logo" />' if logo_b64 else '<span class="auth-icon">🌱</span>'
         st.markdown(
-            """
+            f"""
             <div class="auth-card">
                 <div class="auth-header-block">
-                    <span class="auth-icon">🌱</span>
+                    {logo_html}
                     <h2 class="auth-title">Create Your Account</h2>
                     <p class="auth-subtitle">Join thousands of Sri Lankan farmers</p>
                 </div>

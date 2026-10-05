@@ -43,11 +43,13 @@ from ui.components import (
 )
 from ui.config import (
     APP_ICON,
+    APP_ICON_PATH,
     APP_SUBTITLE,
     APP_TITLE,
     CROP_CONTEXTS,
     DISTRICTS,
     LANGUAGES,
+    get_app_icon_base64,
 )
 from ui.history_store import load_history, save_history
 from ui.styles import DARK_MODE_CSS, GLOBAL_CSS, LIGHT_MODE_CSS
@@ -58,7 +60,7 @@ from utils.i18n import SUPPORTED_LANGUAGES, get_string
 # ============================================================================
 st.set_page_config(
     page_title=f"{APP_TITLE} — Agricultural AI OS",
-    page_icon="🌾",
+    page_icon=str(APP_ICON_PATH) if APP_ICON_PATH.exists() else "🌾",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -123,11 +125,13 @@ saved_district = str(st.session_state.get("saved_district") or "Kurunegala")
 current_lang = str(st.session_state.get("language") or "en")
 
 with st.sidebar:
+    logo_b64 = get_app_icon_base64()
+    logo_html = f'<img src="data:image/png;base64,{logo_b64}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;" alt="Logo" />' if logo_b64 else '🌾'
     st.markdown(
-        """
+        f"""
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding: 4px 6px;">
-            <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #072D1B, #10B981); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
-                🌾
+            <div style="width: 42px; height: 42px; border-radius: 10px; background: #072D1B; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); padding: 2px;">
+                {logo_html}
             </div>
             <div>
                 <div style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--color-primary-950); line-height: 1.1;">Agri-Advisor</div>
@@ -402,6 +406,12 @@ elif st.session_state.active_page == "ai_advisor":
                 
                 # Save to history
                 save_history(user_id, problem_description.strip(), response_data)
+                if "conversation_history" not in st.session_state or not isinstance(st.session_state.conversation_history, list):
+                    st.session_state.conversation_history = []
+                st.session_state.conversation_history.append({
+                    "query": problem_description.strip(),
+                    "response": response_data,
+                })
                 render_agent_stepper("completed")
             except _ApiError as err:
                 st.session_state.last_error = f"API Error ({err.status_code}): {err.detail}"

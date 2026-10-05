@@ -27,11 +27,26 @@ FEEDBACK_URL = f"{API_BASE_URL}/api/feedback"
 API_TIMEOUT_SEC = 30
 
 # ---------------------------------------------------------------------------
-# UI Copy
+# UI Copy & Branding Assets
 # ---------------------------------------------------------------------------
+import base64
+
 APP_TITLE = "Agri-Advisor"
 APP_SUBTITLE = "Smart Farming Assistant"
 APP_ICON = "🌾"
+APP_ICON_PATH = PROJECT_ROOT / "ui" / "assets" / "app_icon.png"
+APP_FAVICON_PATH = PROJECT_ROOT / "ui" / "assets" / "favicon.ico"
+
+def get_app_icon_base64() -> str:
+    """Returns the base64-encoded string of the app logo image."""
+    try:
+        if APP_ICON_PATH.exists():
+            with open(APP_ICON_PATH, "rb") as f:
+                return base64.b64encode(f.read()).decode("utf-8")
+    except Exception:
+        pass
+    return ""
+
 
 # ---------------------------------------------------------------------------
 # Language options (display label → locale code)
