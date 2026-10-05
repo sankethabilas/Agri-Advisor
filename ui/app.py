@@ -406,6 +406,12 @@ elif st.session_state.active_page == "ai_advisor":
                 
                 # Save to history
                 save_history(user_id, problem_description.strip(), response_data)
+                if "conversation_history" not in st.session_state or not isinstance(st.session_state.conversation_history, list):
+                    st.session_state.conversation_history = []
+                st.session_state.conversation_history.append({
+                    "query": problem_description.strip(),
+                    "response": response_data,
+                })
                 render_agent_stepper("completed")
             except _ApiError as err:
                 st.session_state.last_error = f"API Error ({err.status_code}): {err.detail}"

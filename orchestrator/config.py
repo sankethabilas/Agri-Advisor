@@ -12,7 +12,7 @@ class Settings:
     openweather_api_key: str = os.getenv("OPENWEATHER_API_KEY", "")
     openweather_city: str = os.getenv("OPENWEATHER_CITY", "Colombo")
     groq_api_key: str = os.getenv("GROQ_API_KEY", "")
-    groq_model: str = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+    groq_model: str = os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b")
     openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
     openai_model: str = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
     llm_provider: str = os.getenv("LLM_PROVIDER", "groq")

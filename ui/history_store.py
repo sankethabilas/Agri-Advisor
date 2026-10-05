@@ -43,10 +43,28 @@ def load_history(user_id: str | None) -> list[dict[str, Any]]:
     return value if isinstance(value, list) else []
 
 
-def save_history(user_id: str | None, history: list[dict[str, Any]]) -> None:
-    """Replace one user's saved history atomically."""
+def save_history(user_id: str | None, history_or_query: Any, response: Any = None) -> None:
+    """Save history for an authenticated user.
+    
+    Supports both signatures:
+      - save_history(user_id, history_list)
+      - save_history(user_id, query_str, response_dict)
+    """
     if not user_id:
         return
+
+    if response is not None or isinstance(history_or_query, str):
+        existing = load_history(user_id)
+        existing.append({
+            "query": str(history_or_query),
+            "response": response if response is not None else {}
+        })
+        history = existing
+    elif isinstance(history_or_query, list):
+        history = history_or_query
+    else:
+        history = []
+
     with _connect() as connection:
         connection.execute(
             """
@@ -58,3 +76,4 @@ def save_history(user_id: str | None, history: list[dict[str, Any]]) -> None:
             """,
             (user_id, json.dumps(history, ensure_ascii=False)),
         )
+

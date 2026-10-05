@@ -14,7 +14,7 @@ IMPORTS = {
     "fastapi": "fastapi",
     "uvicorn": "uvicorn",
     "chromadb": "chromadb",
-    "sentence-transformers": "sentence-transformers",
+    "sentence-transformers": "sentence_transformers",
     "spacy": "spacy",
     "transformers": "transformers",
     "groq": "groq",
@@ -67,7 +67,7 @@ def verify_apis() -> None:
 
     completion = Groq(api_key=settings.groq_api_key).chat.completions.create(
         model = settings.groq_model,
-        message=[{"role": "user", "content": "Reply with the word OK."}],
+        messages=[{"role": "user", "content": "Reply with the word OK."}],
         max_tokens = 5,
     )
     if not completion.choices[0].message.content:
