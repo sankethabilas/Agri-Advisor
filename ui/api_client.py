@@ -162,7 +162,20 @@ def _flag_token_expired() -> None:
 class _ApiError(Exception):
     """Raised when the API returns an HTTP error that should be surfaced in the UI."""
 
-    def __init__(self, status_code: int, body: dict[str, Any]) -> None:
+    def __init__(self, status_code: int, body: dict[str, Any] | str | None = None) -> None:
         self.status_code = status_code
-        self.body = body
-        super().__init__(f"HTTP {status_code}")
+        if isinstance(body, dict):
+            self.body = body
+            self.detail = body.get("detail", body.get("message", f"HTTP error {status_code}"))
+        elif isinstance(body, str):
+            self.body = {"detail": body}
+            self.detail = body
+        else:
+            self.body = {}
+            self.detail = f"HTTP error {status_code}"
+            
+        if status_code == 401 and (self.detail in ("Not authenticated", "Unauthorized") or not self.detail):
+            self.detail = "Session expired or unauthorized. Please log in again."
+
+        super().__init__(f"HTTP {status_code}: {self.detail}")
+
