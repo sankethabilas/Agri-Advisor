@@ -10,7 +10,7 @@ import streamlit as st
 
 from ui.api_client import submit_feedback
 from ui.auth import get_auth_headers
-from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE
+from ui.config import DISCLAIMERS, HELPLINE_TEXT, SEVERITY_STYLE, get_app_icon_base64
 from ui.advisory_renderer import render_advisory_response, render_eight_block_advisory
 from utils.i18n import get_string
 
@@ -24,12 +24,14 @@ def render_topbar(
     """Renders the minimal, premium top navigation header."""
     user_label = user_id or "Farmer"
     district_label = district or "Sri Lanka"
+    logo_b64 = get_app_icon_base64()
+    logo_html = f'<img src="data:image/png;base64,{logo_b64}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" alt="Logo" />' if logo_b64 else '🌾'
 
     st.markdown(
         f"""
         <div class="topbar-container">
             <div class="topbar-brand">
-                <div class="brand-badge-logo">🌾</div>
+                <div class="brand-badge-logo" style="background: #072D1B; padding: 2px;">{logo_html}</div>
                 <div>
                     <h2 class="brand-text-title">Agri-Advisor OS</h2>
                     <p class="brand-text-subtitle">Autonomous Agricultural Intelligence</p>
