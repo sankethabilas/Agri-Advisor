@@ -1,9 +1,10 @@
 """FastAPI microservice for RAG / Information Retrieval Agent."""
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 
 from agents.rag.agent import rag_agent
 from orchestrator.schemas import RagRetrieveRequest, RagRetrieveResponse
+from orchestrator.security import get_current_user
 
 app = FastAPI(
     title="Agri Advisor RAG Agent",
@@ -13,7 +14,10 @@ app = FastAPI(
 
 
 @app.post("/api/rag/retrieve", response_model=RagRetrieveResponse)
-async def retrieve(request: RagRetrieveRequest) -> RagRetrieveResponse:
+async def retrieve(
+    request: RagRetrieveRequest,
+    current_user: str = Depends(get_current_user),
+) -> RagRetrieveResponse:
     """Retrieve grounded knowledge passages from ChromaDB."""
     return rag_agent.retrieve(request)
 

@@ -159,7 +159,14 @@ def test_weather_agent_stub_endpoint_t06_4():
 
 def test_rag_agent_stub_endpoint_t06_4():
     req_payload = load_fixture("rag_retrieve_request.json")
-    response = client.post("/api/rag/retrieve", json=req_payload)
+    unauth_response = client.post("/api/rag/retrieve", json=req_payload)
+    assert unauth_response.status_code == 401
+
+    response = client.post(
+        "/api/rag/retrieve",
+        json=req_payload,
+        headers=auth_headers("farmer_stub_user"),
+    )
     assert response.status_code == 200
     data = response.json()
     assert "context" in data

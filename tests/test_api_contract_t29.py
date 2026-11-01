@@ -202,7 +202,10 @@ def test_valid_responses_match_all_six_service_contracts_and_auth_contracts():
     timings["POST /api/weather/advice"] = TIMINGS_MS["/api/weather/advice"]
 
     rag_response = _timed_request(
-        "post", "/api/rag/retrieve", json=_fixture("rag_retrieve_request.json")
+        "post",
+        "/api/rag/retrieve",
+        json=_fixture("rag_retrieve_request.json"),
+        headers=_auth("farmer_anu_0842"),
     )
     assert rag_response.status_code == 200, rag_response.text
     rag = rag_response.json()
@@ -284,7 +287,7 @@ def test_valid_responses_match_all_six_service_contracts_and_auth_contracts():
         ("/api/orchestrator/process", "orchestrator_process_request.json", "query", "process"),
         ("/api/disease/diagnose", "disease_diagnose_request.json", "crop", None),
         ("/api/weather/advice", "weather_advice_request.json", "location", None),
-        ("/api/rag/retrieve", "rag_retrieve_request.json", "query", None),
+        ("/api/rag/retrieve", "rag_retrieve_request.json", "query", "rag"),
         ("/api/crop/advice", "crop_advice_request.json", "season", None),
         ("/api/auth/register", None, "username", None),
         ("/api/auth/login", None, "password", None),
@@ -293,7 +296,7 @@ def test_valid_responses_match_all_six_service_contracts_and_auth_contracts():
 def test_missing_required_fields_return_contract_validation_error(path, payload, field, headers):
     body = _fixture(payload) if payload else {"username": "t29_invalid", "password": "Strong-Password-2026"}
     body.pop(field, None)
-    request_headers = _auth(body.get("user_id", "farmer_anu_0842")) if headers == "process" else None
+    request_headers = _auth(body.get("user_id", "farmer_anu_0842")) if headers in ("process", "rag") else None
     response = client.post(path, json=body, headers=request_headers)
     _assert_error(response, 400)
 
@@ -313,7 +316,7 @@ def test_missing_required_fields_return_contract_validation_error(path, payload,
 def test_wrong_data_types_return_contract_validation_error(path, payload, field, wrong_value):
     body = _fixture(payload) if payload else {"username": "t29_invalid", "password": "Strong-Password-2026"}
     body[field] = wrong_value
-    headers = _auth(body["user_id"]) if path == "/api/orchestrator/process" else None
+    headers = _auth(body.get("user_id", "farmer_anu_0842")) if path in ("/api/orchestrator/process", "/api/rag/retrieve") else None
     _assert_error(client.post(path, json=body, headers=headers), 400)
 
 
@@ -331,7 +334,7 @@ def test_wrong_data_types_return_contract_validation_error(path, payload, field,
 )
 def test_malformed_json_returns_contract_validation_error(path, payload):
     headers = {"Content-Type": "application/json"}
-    if path == "/api/orchestrator/process":
+    if path in ("/api/orchestrator/process", "/api/rag/retrieve"):
         headers.update(_auth("farmer_anu_0842"))
     response = client.post(path, content="{", headers=headers)
     _assert_error(response, 400)
