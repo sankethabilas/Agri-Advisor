@@ -347,7 +347,10 @@ async def get_weather_advice(request: WeatherAdviceRequest) -> WeatherAdviceResp
     description="Performs semantic search over DOA/IRRI verified corpus using ChromaDB embeddings.",
     tags=["RAG Agent"],
 )
-async def retrieve_rag_knowledge(request: RagRetrieveRequest) -> RagRetrieveResponse:
+async def retrieve_rag_knowledge(
+    request: RagRetrieveRequest,
+    current_user: str = Depends(get_current_user),
+) -> RagRetrieveResponse:
     try:
         from agents.rag.agent import rag_agent
         return rag_agent.retrieve(request)

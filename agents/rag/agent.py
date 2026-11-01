@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 import math
 import os
 from pathlib import Path
+import re
 import time
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -76,6 +77,122 @@ class RAGAgent:
             "finger millet": ["finger millet", "Finger Millet", "finger_millet"],
         }
         return alias_map.get(c, [c, c.capitalize(), c.title(), c.upper()])
+
+    _INSTRUCTION_PATTERNS = (
+        re.compile(r"\bignore\s+(?:all\s+)?(?:previous|prior|the)\b", re.IGNORECASE),
+        re.compile(r"\bdisregard\s+(?:all\s+)?(?:previous|prior|the)\b", re.IGNORECASE),
+        re.compile(r"\bdo\s+not\s+use\s+(?:the\s+)?knowledge\s+base\b", re.IGNORECASE),
+        re.compile(r"\bdo\s+not\s+follow\b", re.IGNORECASE),
+        re.compile(r"\breturn\s+only\b", re.IGNORECASE),
+        re.compile(r"\banswer\s+only\b", re.IGNORECASE),
+        re.compile(r"\bas\s+the\s+answer\b", re.IGNORECASE),
+        re.compile(r"\b(?:reveal|print|show|repeat)\s+(?:the\s+)?(?:system|developer)\s+prompt\b", re.IGNORECASE),
+        re.compile(r"\b(?:system|developer)\s+prompt\b", re.IGNORECASE),
+        re.compile(r"\bretrieval\s+rules\b", re.IGNORECASE),
+        re.compile(r"\bforget\s+(?:all\s+)?(?:your\s+)?(?:rules|instructions)\b", re.IGNORECASE),
+    )
+
+    def _detect_primary_crop(self, query: str) -> Optional[str]:
+        """
+        Detect a crop only from high-confidence farmer-style statements.
+        Avoid trusting arbitrary crop names appearing anywhere in the query.
+        """
+        text = query.lower()
+        crop_aliases = {
+            "rice": "rice",
+            "paddy": "rice",
+            "tomato": "tomato",
+            "maize": "maize",
+            "chilli": "chilli",
+            "chili": "chilli",
+            "peanut": "peanut",
+            "legume": "legumes",
+            "legumes": "legumes",
+            "onion": "onion",
+            "big onion": "big onion",
+        }
+        crop_pattern = "|".join(sorted(map(re.escape, crop_aliases.keys()), key=len, reverse=True))
+
+        # Strongest signal: "my rice...", "our tomato...", "in my paddy..."
+        match = re.search(
+            rf"\b(?:my|our|in\s+my|in\s+our)\s+({crop_pattern})\b",
+            text,
+            flags=re.IGNORECASE,
+        )
+        if match:
+            return crop_aliases[match.group(1).lower()]
+
+        # Second strong signal: "rice leaves", "tomato plants", "paddy crop", etc.
+        match = re.search(
+            rf"\b({crop_pattern})\s+"
+            rf"(?:leaves?|plants?|crop|field|seedlings?|stems?|fruits?|flowers?|trees?)\b",
+            text,
+            flags=re.IGNORECASE,
+        )
+        if match:
+            return crop_aliases[match.group(1).lower()]
+
+        # Third signal: "in rice", "for rice", "of rice"
+        match = re.search(
+            rf"\b(?:in|for|of|on|about)\s+({crop_pattern})\b",
+            text,
+            flags=re.IGNORECASE,
+        )
+        if match:
+            return crop_aliases[match.group(1).lower()]
+
+        return None
+
+    def _prepare_retrieval_query(self, query: str) -> Tuple[str, Optional[str]]:
+        """
+        Sanitize raw query by removing instruction-like / adversarial text and keyword stuffing.
+        Extracts verified primary crop statement for metadata filtering.
+        """
+        detected_crop = self._detect_primary_crop(query)
+        crop_aliases = {
+            "rice": "rice",
+            "paddy": "rice",
+            "tomato": "tomato",
+            "maize": "maize",
+            "chilli": "chilli",
+            "chili": "chilli",
+            "peanut": "peanut",
+            "legume": "legumes",
+            "legumes": "legumes",
+            "onion": "onion",
+            "big onion": "big onion",
+        }
+        sentences = [s.strip() for s in re.split(r"(?<=[.!?\n])\s+", query) if s.strip()]
+        if not sentences:
+            return query, detected_crop
+
+        safe_sentences = []
+        for s in sentences:
+            if any(pat.search(s) for pat in self._INSTRUCTION_PATTERNS):
+                continue
+            if detected_crop:
+                s_low = s.lower()
+                conflicts = False
+                for alias, norm in crop_aliases.items():
+                    if norm != detected_crop and re.search(rf"\b{re.escape(alias)}\b", s_low):
+                        conflicts = True
+                        break
+                if conflicts:
+                    continue
+            words = re.findall(r"\b\w{3,}\b", s.lower())
+            counts: Dict[str, int] = {}
+            for w in words:
+                counts[w] = counts.get(w, 0) + 1
+            if any(c >= 3 for c in counts.values()):
+                continue
+            safe_sentences.append(s)
+
+        safe_query = " ".join(safe_sentences).strip()
+        if not safe_query:
+            crop_s = [s for s in sentences if detected_crop and detected_crop in s.lower()]
+            safe_query = crop_s[0] if crop_s else query
+
+        return safe_query, detected_crop
 
     def search(
         self,
@@ -325,12 +442,15 @@ class RAGAgent:
         self.last_retrieval_method = "semantic"
         self.last_top_similarity = 0.0
 
-        query_embedding = self.encode_query(request.query)
+        safe_query, detected_crop = self._prepare_retrieval_query(request.query)
+        effective_crop_filter = request.crop_filter or detected_crop
+
+        query_embedding = self.encode_query(safe_query)
 
         results = self.search(
             query_embedding=query_embedding,
             top_k=request.top_k,
-            crop_filter=request.crop_filter,
+            crop_filter=effective_crop_filter,
             category_filter=request.category_filter,
         )
 
@@ -347,10 +467,10 @@ class RAGAgent:
 
         if fallback_required:
             keyword_sources, keyword_confidence = self.keyword_fallback(
-                query=request.query,
+                query=safe_query,
                 query_embedding=query_embedding,
                 top_k=request.top_k,
-                crop_filter=request.crop_filter,
+                crop_filter=effective_crop_filter,
                 category_filter=request.category_filter,
             )
 
@@ -367,10 +487,10 @@ class RAGAgent:
         # --------------------------------------------------
         if not fallback_required and sources_raw:
             rescue_sources, rescue_confidence, matched_phrase = self.keyword_title_rescue(
-                query=request.query,
+                query=safe_query,
                 query_embedding=query_embedding,
                 top_k=request.top_k,
-                crop_filter=request.crop_filter,
+                crop_filter=effective_crop_filter,
                 category_filter=request.category_filter,
             )
 
@@ -390,8 +510,8 @@ class RAGAgent:
                     confidence = rescue_confidence
                     self.last_retrieval_method = "keyword_title_rescue"
 
-        # If strict crop filter gave 0 results, fall back to unfiltered search to ensure grounded context
-        if not sources_raw and request.crop_filter:
+        # If strict crop filter gave 0 results, fall back to unfiltered search ONLY if no reliable crop was detected
+        if not sources_raw and effective_crop_filter is None:
             results = self.search(
                 query_embedding=query_embedding,
                 top_k=request.top_k,
